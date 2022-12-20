@@ -20,6 +20,7 @@ import { SubmitButtonFieldComponent } from './fields/submit-button-field/submit-
 import { SelectFieldComponent } from './fields/select-field/select-field.component';
 import { TotsFormModalComponent } from './modals/tots-form-modal/tots-form-modal.component';
 import { LabelHtmlFieldComponent } from './fields/label-html-field/label-html-field.component';
+import { RowFieldComponent } from './fields/row-field/row-field.component';
 
 
 
@@ -33,7 +34,8 @@ import { LabelHtmlFieldComponent } from './fields/label-html-field/label-html-fi
     SubmitButtonFieldComponent,
     SelectFieldComponent,
     TotsFormModalComponent,
-    LabelHtmlFieldComponent
+    LabelHtmlFieldComponent,
+    RowFieldComponent
   ],
   imports: [
     CommonModule,
