@@ -13,4 +13,4 @@ import { TotsFormSidebarPageComponent } from './pages/form-sidebar-page/form-sid
     TotsFormSidebarPageComponent
   ]
 })
-export class FormSidebarPageModule { }
+export class TotsFormSidebarPageModule { }

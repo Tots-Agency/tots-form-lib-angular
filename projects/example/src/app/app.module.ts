@@ -7,17 +7,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormComponentComponent } from './pages/form-component/form-component.component';
 
 import { TotsFormModule } from 'projects/tots/form/src/public-api';
+import { FormSidebarComponent } from './pages/form-sidebar/form-sidebar.component';
+import { TotsFormSidebarPageModule } from 'projects/tots/form-sidebar-page/src/public-api';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormComponentComponent
+    FormComponentComponent,
+    FormSidebarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    TotsFormModule
+    TotsFormModule,
+    TotsFormSidebarPageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
