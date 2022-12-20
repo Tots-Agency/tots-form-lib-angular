@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { StringFieldComponent, SubmitButtonFieldComponent } from '@tots/form';
+import { StringFieldComponent, SubmitButtonFieldComponent, TotsActionForm } from '@tots/form';
 import { TotsFormSidebarPageConfig } from 'projects/tots/form-sidebar-page/src/lib/entities/tots-form-sidebar-page-config';
 import { LabelHtmlFieldComponent, RowFieldComponent } from 'projects/tots/form/src/public-api';
 
@@ -16,6 +16,14 @@ export class FormSidebarComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadConfig();
+  }
+
+  onActionForm(action: TotsActionForm) {
+    console.log(action);
+    if(action.key == 'load-item'){
+      action.item.isLoading = true;
+      setTimeout(() => { action.item.isLoading = false }, 2000);
+    }
   }
 
   loadConfig() {
@@ -45,7 +53,7 @@ export class FormSidebarComponent implements OnInit {
         fields: [
           { key: 'passowrd', component: StringFieldComponent, label: 'Password', validators: [Validators.required], extra: { } },
           { key: 'submit-pass', component: SubmitButtonFieldComponent, label: 'Cambiar password' }
-        ]
+        ],
       }
     ]
   }

@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { TotsActionForm, TotsFormComponent } from '@tots/form';
 import { TotsFormSidebarItem, TotsFormSidebarPageConfig } from '../../entities/tots-form-sidebar-page-config';
 
@@ -12,6 +12,8 @@ export class TotsFormSidebarPageComponent implements OnInit {
   @ViewChild('form') form!: TotsFormComponent;
 
   @Input() config!: TotsFormSidebarPageConfig;
+
+  @Output() onAction = new EventEmitter<TotsActionForm>();
 
   selectedItem?: TotsFormSidebarItem;
 
@@ -36,9 +38,11 @@ export class TotsFormSidebarPageComponent implements OnInit {
     // Load Forms
     this.selectedItem = item;
     this.changeDetector.detectChanges();
+    // Emit Action
+    this.onAction.emit({ key: 'load-item', item: item });
   }
 
   onActionForm(action: TotsActionForm) {
-    console.log(action);
+    this.onAction.emit(action);
   }
 }

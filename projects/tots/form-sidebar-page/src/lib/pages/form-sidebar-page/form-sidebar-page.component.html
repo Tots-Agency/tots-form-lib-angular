@@ -11,6 +11,7 @@
         </div>
     </div>
     <div class="form-sidebar-right">
-        <tots-form *ngIf="selectedItem" #form [fields]="selectedItem.fields" [item]="selectedItem.item" (onAction)="onActionForm($event)" [autoSave]="true"></tots-form>
+        <div *ngIf="selectedItem && selectedItem.isLoading" class="form-sidebar-loading">Loading...</div>
+        <tots-form *ngIf="selectedItem && (selectedItem.isLoading == undefined||!selectedItem.isLoading)" #form [fields]="selectedItem.fields" [item]="selectedItem.item" (onAction)="onActionForm($event)" [autoSave]="true"></tots-form>
     </div>
 </div>
