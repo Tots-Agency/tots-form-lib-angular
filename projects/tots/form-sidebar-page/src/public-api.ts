@@ -3,6 +3,11 @@
  */
 
 /**
+ * Entities
+ */
+export * from './lib/entities/tots-form-sidebar-page-config';
+
+/**
  * Pages
  */
 export * from './lib/pages/form-sidebar-page/form-sidebar-page.component';
