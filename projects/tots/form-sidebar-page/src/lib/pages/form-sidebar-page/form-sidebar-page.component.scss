@@ -1,0 +1,16 @@
+.form-sidebar-container {
+    display: flex;
+    min-height: 100%;
+}
+
+.form-sidebar-left {
+    max-width: 385px;
+    min-width: 250px;
+    min-height: 100%;
+    background-color: white;
+}
+
+.form-sidebar-right {
+    max-width: 100%;
+    min-height: 100%;
+}

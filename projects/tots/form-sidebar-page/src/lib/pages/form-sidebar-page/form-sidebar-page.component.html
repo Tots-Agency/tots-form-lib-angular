@@ -1,1 +1,16 @@
-<p>form-sidebar-page works!</p>
+<div class="form-sidebar-container">
+    <div class="form-sidebar-left">
+        <h1>{{config.title}}</h1>
+
+        <div class="form-sidebar-items">
+            <div *ngFor="let item of config.items" class="form-sidebar-item" [ngClass]="{'active': item.isSelected}" (click)="onClickItem(item)">
+                <mat-icon *ngIf="item.icon">{{item.icon}}</mat-icon>
+                <p>{{item.title}}</p>
+                <p *ngIf="item.subtitle">{{item.subtitle}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="form-sidebar-right">
+        <tots-form *ngIf="selectedItem" #form [fields]="selectedItem.fields" [item]="selectedItem.item" (onAction)="onActionForm($event)" [autoSave]="true"></tots-form>
+    </div>
+</div>

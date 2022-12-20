@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormSidebarPageComponent } from './form-sidebar-page.component';
+import { TotsFormSidebarPageComponent } from './form-sidebar-page.component';
 
 describe('FormSidebarPageComponent', () => {
-  let component: FormSidebarPageComponent;
-  let fixture: ComponentFixture<FormSidebarPageComponent>;
+  let component: TotsFormSidebarPageComponent;
+  let fixture: ComponentFixture<TotsFormSidebarPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FormSidebarPageComponent ]
+      declarations: [ TotsFormSidebarPageComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(FormSidebarPageComponent);
+    fixture = TestBed.createComponent(TotsFormSidebarPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
