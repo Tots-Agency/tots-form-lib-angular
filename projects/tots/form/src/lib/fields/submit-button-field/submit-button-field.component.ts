@@ -17,7 +17,7 @@ export class SubmitButtonFieldComponent extends TotsBaseFieldComponent implement
   override ngOnInit(): void { }
 
   onClick() {
-    this.onAction.next({ key: 'submit', item: {} });
+    this.onAction.next({ key: this.field.key, item: {} });
   }
 
   static override updateFormByItem(group: UntypedFormGroup, item: any, field: TotsFieldForm) { }
