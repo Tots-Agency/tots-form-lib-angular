@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { StringFieldComponent, SubmitButtonFieldComponent } from '@tots/form';
 import { TotsFormSidebarPageConfig } from 'projects/tots/form-sidebar-page/src/lib/entities/tots-form-sidebar-page-config';
+import { LabelHtmlFieldComponent } from 'projects/tots/form/src/public-api';
 
 @Component({
   selector: 'app-form-sidebar',
@@ -27,6 +28,7 @@ export class FormSidebarComponent implements OnInit {
         subtitle: 'Manage your public profile and private information.',
         item: this.item1,
         fields: [
+          { key: '', component: LabelHtmlFieldComponent, extra: { html: '<h2>Account</h2>' } },
           { key: 'title', component: StringFieldComponent, label: 'Titulo', validators: [Validators.required], extra: { caption: 'Este se mostrara publicamente...' } },
           { key: 'submit-account', component: SubmitButtonFieldComponent, label: 'Guardar account' }
         ]

@@ -20,6 +20,7 @@ export * from './lib/services/tots-form-modal.service';
 export * from './lib/fields/string-field/string-field.component';
 export * from './lib/fields/submit-button-field/submit-button-field.component';
 export * from './lib/fields/select-field/select-field.component';
+export * from './lib/fields/label-html-field/label-html-field.component';
 
 /**
  * Components

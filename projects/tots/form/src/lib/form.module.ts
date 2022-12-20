@@ -19,6 +19,7 @@ import { StringFieldComponent } from './fields/string-field/string-field.compone
 import { SubmitButtonFieldComponent } from './fields/submit-button-field/submit-button-field.component';
 import { SelectFieldComponent } from './fields/select-field/select-field.component';
 import { TotsFormModalComponent } from './modals/tots-form-modal/tots-form-modal.component';
+import { LabelHtmlFieldComponent } from './fields/label-html-field/label-html-field.component';
 
 
 
@@ -31,7 +32,8 @@ import { TotsFormModalComponent } from './modals/tots-form-modal/tots-form-modal
     StringFieldComponent,
     SubmitButtonFieldComponent,
     SelectFieldComponent,
-    TotsFormModalComponent
+    TotsFormModalComponent,
+    LabelHtmlFieldComponent
   ],
   imports: [
     CommonModule,
