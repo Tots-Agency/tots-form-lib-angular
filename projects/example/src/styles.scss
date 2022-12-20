@@ -2,3 +2,11 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: darkgrey; }
+
+:root {
+    --tots-form-sidebar-bg-left: #0f172a;
+    --tots-form-sidebar-bg-item-normal: #3A2E27;
+    --tots-form-sidebar-bg-item-hover: #52443C;
+    --tots-form-sidebar-bg-item-active: #9F8D84;
+    --tots-form-sidebar-border-item: #F4DED3;
+}
