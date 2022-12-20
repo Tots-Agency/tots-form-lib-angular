@@ -8,6 +8,9 @@
       ],
       "@tots/form-api": [
         "dist/tots/form-api"
+      ],
+      "@tots/form-sidebar-page": [
+        "dist/tots/form-sidebar-page"
       ]
     },
     "baseUrl": "./",
