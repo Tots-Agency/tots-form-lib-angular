@@ -17,6 +17,7 @@ export * from './lib/services/tots-form-modal.service';
 /**
  * Fields
  */
+export * from './lib/fields/tots-base-field.component';
 export * from './lib/fields/string-field/string-field.component';
 export * from './lib/fields/submit-button-field/submit-button-field.component';
 export * from './lib/fields/select-field/select-field.component';
