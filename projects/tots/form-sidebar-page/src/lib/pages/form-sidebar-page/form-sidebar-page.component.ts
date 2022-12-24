@@ -26,6 +26,8 @@ export class TotsFormSidebarPageComponent implements OnInit {
   ngOnInit(): void {
     this.selectedItem = this.config.items[0];
     this.selectedItem.isSelected = true;
+    // Emit Action
+    this.onAction.emit({ key: 'load-item', item: this.selectedItem });
   }
 
   onClickItem(item: TotsFormSidebarItem) {
