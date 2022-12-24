@@ -6,6 +6,7 @@
  * Entities
  */
 export * from './lib/entities/tots-form-sidebar-page-config';
+export * from './lib/entities/tots-action-sidebar-form';
 
 /**
  * Pages

@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { TotsActionForm, TotsFormComponent } from '@tots/form';
+import { TotsActionSidebarForm } from '../../entities/tots-action-sidebar-form';
 import { TotsFormSidebarItem, TotsFormSidebarPageConfig } from '../../entities/tots-form-sidebar-page-config';
 
 @Component({
@@ -13,7 +14,7 @@ export class TotsFormSidebarPageComponent implements OnInit {
 
   @Input() config!: TotsFormSidebarPageConfig;
 
-  @Output() onAction = new EventEmitter<TotsActionForm>();
+  @Output() onAction = new EventEmitter<TotsActionSidebarForm>();
 
   selectedItem?: TotsFormSidebarItem;
 
@@ -27,7 +28,7 @@ export class TotsFormSidebarPageComponent implements OnInit {
     this.selectedItem = this.config.items[0];
     this.selectedItem.isSelected = true;
     // Emit Action
-    this.onAction.emit({ key: 'load-item', item: this.selectedItem });
+    this.onAction.emit({ key: 'load-item', item: this.selectedItem, sidebarItem: this.selectedItem });
   }
 
   onClickItem(item: TotsFormSidebarItem) {
@@ -46,6 +47,10 @@ export class TotsFormSidebarPageComponent implements OnInit {
   }
 
   onActionForm(action: TotsActionForm) {
-    this.onAction.emit(action);
+    let newAction = new TotsActionSidebarForm();
+    newAction.key = action.key;
+    newAction.item = action.item;
+    newAction.sidebarItem = this.selectedItem;
+    this.onAction.emit(newAction);
   }
 }
