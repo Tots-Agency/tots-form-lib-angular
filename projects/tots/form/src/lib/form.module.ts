@@ -9,6 +9,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 /** Components */
 import { TotsFormComponent } from './components/tots-form/tots-form.component';
@@ -21,6 +24,8 @@ import { SelectFieldComponent } from './fields/select-field/select-field.compone
 import { TotsFormModalComponent } from './modals/tots-form-modal/tots-form-modal.component';
 import { LabelHtmlFieldComponent } from './fields/label-html-field/label-html-field.component';
 import { RowFieldComponent } from './fields/row-field/row-field.component';
+import { AvatarPhotoFieldComponent } from './fields/avatar-photo-field/avatar-photo-field.component';
+
 
 
 
@@ -35,7 +40,8 @@ import { RowFieldComponent } from './fields/row-field/row-field.component';
     SelectFieldComponent,
     TotsFormModalComponent,
     LabelHtmlFieldComponent,
-    RowFieldComponent
+    RowFieldComponent,
+    AvatarPhotoFieldComponent
   ],
   imports: [
     CommonModule,
@@ -48,6 +54,9 @@ import { RowFieldComponent } from './fields/row-field/row-field.component';
     MatSelectModule,
     MatButtonModule,
     MatDialogModule,
+    MatProgressSpinnerModule,
+    MatIconModule,
+    MatTooltipModule
   ],
   exports: [
     TotsFormComponent
