@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, UntypedFormGroup } from '@angular/forms';
-import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
-import { TotsFieldForm } from '@tots/form';
-import { map, Observable, of, startWith } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { TotsBaseFieldComponent } from '../tots-base-field.component';
 
 @Component({

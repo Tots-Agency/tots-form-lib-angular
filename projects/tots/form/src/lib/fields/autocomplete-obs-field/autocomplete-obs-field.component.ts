@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
-import { map, Observable, of, startWith, switchMap, takeWhile } from 'rxjs';
-import { AutocompleteFieldComponent } from '../autocomplete-field/autocomplete-field.component';
+import { Observable, startWith, switchMap, takeWhile } from 'rxjs';
 import { TotsBaseFieldComponent } from '../tots-base-field.component';
 
 @Component({
