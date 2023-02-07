@@ -28,6 +28,7 @@ import { LabelHtmlFieldComponent } from './fields/label-html-field/label-html-fi
 import { RowFieldComponent } from './fields/row-field/row-field.component';
 import { AvatarPhotoFieldComponent } from './fields/avatar-photo-field/avatar-photo-field.component';
 import { AutocompleteFieldComponent } from './fields/autocomplete-field/autocomplete-field.component';
+import { AutocompleteObsFieldComponent } from './fields/autocomplete-obs-field/autocomplete-obs-field.component';
 
 
 
@@ -45,7 +46,8 @@ import { AutocompleteFieldComponent } from './fields/autocomplete-field/autocomp
     LabelHtmlFieldComponent,
     RowFieldComponent,
     AvatarPhotoFieldComponent,
-    AutocompleteFieldComponent
+    AutocompleteFieldComponent,
+    AutocompleteObsFieldComponent
   ],
   imports: [
     CommonModule,

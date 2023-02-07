@@ -14,7 +14,7 @@ import { of } from 'rxjs';
 export class FormComponentComponent implements OnInit {
 
   fields = new Array<TotsFieldForm>();
-  item = { type: 2 };
+  item = { type: 2, customer_id: 3 };
 
   constructor(
     protected modalService: TotsFormModalService
