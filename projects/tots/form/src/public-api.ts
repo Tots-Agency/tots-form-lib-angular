@@ -30,6 +30,7 @@ export * from './lib/fields/label-html-field/label-html-field.component';
 export * from './lib/fields/row-field/row-field.component';
 export * from './lib/fields/avatar-photo-field/avatar-photo-field.component';
 export * from './lib/fields/autocomplete-field/autocomplete-field.component';
+export * from './lib/fields/autocomplete-obs-field/autocomplete-obs-field.component';
 
 /**
  * Components

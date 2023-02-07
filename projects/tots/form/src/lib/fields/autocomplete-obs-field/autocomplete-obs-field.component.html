@@ -1,1 +1,13 @@
-<p>autocomplete-obs-field works!</p>
+<mat-form-field *ngIf="input" [appearance]="getAppearance()" class="{{getClases()}}">
+    <mat-label *ngIf="field.label"> {{ field.label }} </mat-label>
+
+    <input matInput type="text" [formControl]="inputQuery" [matAutocomplete]="autoInput" [placeholder]="getPlaceholder()">
+
+    <mat-autocomplete #autoInput="matAutocomplete" [displayWith]="displayOption.bind(this)" (optionSelected)="selectedOption($event)">
+      <mat-option *ngFor="let item of filteredOptions | async" [value]="item">
+        {{ displayOption(item) }}
+      </mat-option>
+    </mat-autocomplete>
+
+    <mat-hint *ngIf="getCaption() != ''" [align]="'end'"> {{getCaption()}} </mat-hint>
+</mat-form-field>

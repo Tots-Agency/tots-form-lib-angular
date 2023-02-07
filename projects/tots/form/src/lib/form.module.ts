@@ -66,7 +66,10 @@ import { AutocompleteObsFieldComponent } from './fields/autocomplete-obs-field/a
     MatAutocompleteModule
   ],
   exports: [
-    TotsFormComponent
+    TotsFormComponent,
+
+    /** Fields */
+    AutocompleteObsFieldComponent
   ]
 })
 export class TotsFormModule { }
