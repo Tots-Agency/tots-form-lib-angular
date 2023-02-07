@@ -15,6 +15,11 @@ export * from './lib/entities/tots-modal-config';
 export * from './lib/services/tots-form-modal.service';
 
 /**
+ * Helpers
+ */
+export * from './lib/helpers/tots-form-helper';
+
+/**
  * Fields
  */
 export * from './lib/fields/tots-base-field.component';
