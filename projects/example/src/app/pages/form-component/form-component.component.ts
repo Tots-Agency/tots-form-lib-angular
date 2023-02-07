@@ -3,7 +3,7 @@ import { Validators } from '@angular/forms';
 import { TotsActionForm } from 'projects/tots/form/src/lib/entities/tots-action-form';
 import { TotsModalConfig } from 'projects/tots/form/src/lib/entities/tots-modal-config';
 import { SubmitButtonFieldComponent } from 'projects/tots/form/src/lib/fields/submit-button-field/submit-button-field.component';
-import { AvatarPhotoFieldComponent, SelectFieldComponent, StringFieldComponent, TotsFieldForm, TotsFormComponent, TotsFormModalService } from 'projects/tots/form/src/public-api';
+import { AutocompleteFieldComponent, AvatarPhotoFieldComponent, SelectFieldComponent, StringFieldComponent, TotsFieldForm, TotsFormComponent, TotsFormModalService } from 'projects/tots/form/src/public-api';
 import { of } from 'rxjs';
 
 @Component({
@@ -59,6 +59,18 @@ export class FormComponentComponent implements OnInit {
         { id: 2, title: 'Tipo 2'},
         { id: 3, title: 'Tipo 3'},
       ] } },
+
+      { key: 'customer_id', component: AutocompleteFieldComponent, label: 'Customer', extra: {
+        selected_key: 'id',
+        filter_key: 'title',
+        display_key: 'title',
+        options: [
+          { id: 1, title: 'Customer 1' },
+          { id: 2, title: 'Customer 2' },
+          { id: 3, title: 'Customer 3' },
+          { id: 4, title: 'Customer 4' },
+        ]
+      } },
 
       { key: 'submit', component: SubmitButtonFieldComponent, label: 'Enviar' }
     ];

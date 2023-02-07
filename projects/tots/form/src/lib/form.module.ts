@@ -12,6 +12,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+
 
 /** Components */
 import { TotsFormComponent } from './components/tots-form/tots-form.component';
@@ -25,6 +27,7 @@ import { TotsFormModalComponent } from './modals/tots-form-modal/tots-form-modal
 import { LabelHtmlFieldComponent } from './fields/label-html-field/label-html-field.component';
 import { RowFieldComponent } from './fields/row-field/row-field.component';
 import { AvatarPhotoFieldComponent } from './fields/avatar-photo-field/avatar-photo-field.component';
+import { AutocompleteFieldComponent } from './fields/autocomplete-field/autocomplete-field.component';
 
 
 
@@ -41,7 +44,8 @@ import { AvatarPhotoFieldComponent } from './fields/avatar-photo-field/avatar-ph
     TotsFormModalComponent,
     LabelHtmlFieldComponent,
     RowFieldComponent,
-    AvatarPhotoFieldComponent
+    AvatarPhotoFieldComponent,
+    AutocompleteFieldComponent
   ],
   imports: [
     CommonModule,
@@ -56,7 +60,8 @@ import { AvatarPhotoFieldComponent } from './fields/avatar-photo-field/avatar-ph
     MatDialogModule,
     MatProgressSpinnerModule,
     MatIconModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatAutocompleteModule
   ],
   exports: [
     TotsFormComponent
