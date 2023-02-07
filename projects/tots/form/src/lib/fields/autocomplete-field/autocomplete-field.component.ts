@@ -14,6 +14,8 @@ export class AutocompleteFieldComponent extends TotsBaseFieldComponent implement
   filteredOptions!: Observable<string[]>;
   inputQuery = new FormControl<string>('');
 
+  isFirstLoad = true;
+
   override ngOnInit(): void {
     super.ngOnInit();
     this.loadConfig();
@@ -24,10 +26,27 @@ export class AutocompleteFieldComponent extends TotsBaseFieldComponent implement
       startWith(''),
       map(value => this.filterProcessed(value))
     );
+    this.input.valueChanges.subscribe(value => {
+      if(this.inputQuery.value != ''&&this.inputQuery.value != undefined){
+        return;
+      }
+      if(this.isFirstLoad == false){
+        return;
+      }
+
+      this.inputQuery.setValue(this.getItem(value));
+
+      this.isFirstLoad = false;
+    });
   }
 
   selectedOption(event: MatAutocompleteSelectedEvent) {
     this.input.setValue(event.option.value[this.field.extra.selected_key]);
+  }
+
+  getItem(itemIdentifier: any): any {
+    let options: Array<any> = this.field.extra.options;
+    return options.find(i => i[this.field.extra.selected_key] == itemIdentifier);
   }
 
   filterProcessed(query?: any): Array<any> {
@@ -42,7 +61,7 @@ export class AutocompleteFieldComponent extends TotsBaseFieldComponent implement
       filterValue = query[this.field.extra.display_key];
     }
     
-    let options: Array<string> = this.field.extra.options;
+    let options: Array<any> = this.field.extra.options;
     return options.filter(option => option[this.field.extra.filter_key].toLowerCase().indexOf(filterValue) >= 0);
   }
 
