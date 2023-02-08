@@ -16,10 +16,14 @@ export class DatepickerFieldComponent extends TotsBaseFieldComponent {
   }
 
   static override updateFormByItem(group: UntypedFormGroup, item: any, field: TotsFieldForm) {
-    group.get(field.key)?.setValue(moment(item[field.key], 'YYYY-MM-DD HH:mm:ss'));
+    if(item[field.key] != undefined){
+      group.get(field.key)?.setValue(moment(item[field.key], 'YYYY-MM-DD HH:mm:ss'));
+    }
   }
 
   static override updateItemByForm(group: UntypedFormGroup, item: any, field: TotsFieldForm) {
+    if(group.get(field.key)?.value != undefined && group.get(field.key)?.value instanceof moment){
       item[field.key] = group.get(field.key)?.value.format('YYYY-MM-DD HH:mm:ss');
+    }
   }
 }
