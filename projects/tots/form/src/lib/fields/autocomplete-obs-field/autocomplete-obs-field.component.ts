@@ -51,6 +51,10 @@ export class AutocompleteObsFieldComponent extends TotsBaseFieldComponent implem
   }
 
   getItem(itemIdentifier: any): any {
+    if(this.field.extra.options == undefined){
+      return;
+    }
+
     let options: Array<any> = this.field.extra.options;
     return options.find(i => i[this.field.extra.selected_key] == itemIdentifier);
   }
