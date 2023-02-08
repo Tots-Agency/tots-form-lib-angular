@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Validators } from '@angular/forms';
+import { DatepickerFieldComponent } from 'projects/tots/date-field-form/src/lib/fields/datepicker-field/datepicker-field.component';
 import { TotsActionForm } from 'projects/tots/form/src/lib/entities/tots-action-form';
 import { TotsModalConfig } from 'projects/tots/form/src/lib/entities/tots-modal-config';
 import { SubmitButtonFieldComponent } from 'projects/tots/form/src/lib/fields/submit-button-field/submit-button-field.component';
@@ -14,7 +15,7 @@ import { of } from 'rxjs';
 export class FormComponentComponent implements OnInit {
 
   fields = new Array<TotsFieldForm>();
-  item = { type: 2, customer_id: 3 };
+  item = { type: 2, customer_id: 3, start_date: '2023-08-25' };
 
   constructor(
     protected modalService: TotsFormModalService
@@ -40,6 +41,8 @@ export class FormComponentComponent implements OnInit {
       ] } },
       // Campo Avatar
       { key: 'avatar', component: AvatarPhotoFieldComponent, label: 'Avatar', extra: { button_text: 'Subir imagen', remove_text: 'Eliminar imagen', service: { upload: () => { return of({ url: 'https://storage.googleapis.com/tots-send-public/Frame%2028.png' }) } } } },
+      // Campo Date
+      { key: 'start_date', component: DatepickerFieldComponent, label: 'Start date' },
 
       { key: 'submit', component: SubmitButtonFieldComponent, label: 'Enviar' }
     ];

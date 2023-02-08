@@ -3,6 +3,9 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
+      "@tots/date-field-form": [
+        "dist/tots/date-field-form"
+      ],
       "@tots/form": [
         "dist/tots/form"
       ],
