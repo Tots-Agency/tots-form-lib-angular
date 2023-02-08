@@ -22,7 +22,7 @@ export class DatepickerFieldComponent extends TotsBaseFieldComponent {
   }
 
   static override updateItemByForm(group: UntypedFormGroup, item: any, field: TotsFieldForm) {
-    if(group.get(field.key)?.value != undefined && group.get(field.key)?.value instanceof moment){
+    if(group.get(field.key)?.value != undefined){
       item[field.key] = group.get(field.key)?.value.format('YYYY-MM-DD HH:mm:ss');
     }
   }
