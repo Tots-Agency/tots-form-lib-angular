@@ -12,6 +12,31 @@ button {
     padding: 15px;
 }
 
+.selecteds-in-menu {
+    .item-selected {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+
+        img {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+        }
+    }
+
+    .item-result-image.not-photo {
+        display: flex;
+        background-color: lightgray;
+        color: black;
+        text-align: center;
+        font-weight: bold;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
 .item-result {
     display: flex;
     align-items: center;

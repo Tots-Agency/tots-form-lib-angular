@@ -4,6 +4,7 @@ export class TotsUsersSelectorMenuConfig {
     service!: TotsBaseHttpService<any>;
 
     searchFields!: Array<string>;
+    identifierField!: string;
     firstnameField!: string;
     lastnameField?: string;
     photoField?: string;

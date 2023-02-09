@@ -1,7 +1,17 @@
 <div class="tots-users-selector-menu-button">
     <button #selectorButton="matMenuTrigger"  mat-button [matMenuTriggerFor]="selector">
         <mat-icon *ngIf="config.prependIcon">{{config.prependIcon}}</mat-icon>
-        <span>{{config.textButton}}</span>
+        <span *ngIf="selecteds.length == 0">{{config.textButton}}</span>
+        <div *ngIf="selecteds.length > 0" class="selecteds-in-menu">
+            <div class="item-selected" *ngFor="let item of selecteds">
+                <div *ngIf="getPhoto(item) == undefined||getPhoto(item) == ''" class="item-result-image not-photo">
+                    <span>{{getNoPhoto(item)}}</span>
+                </div>
+                <div *ngIf="getPhoto(item) != undefined && getPhoto(item) != ''" class="item-result-image">
+                    <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="image">
+                </div>
+            </div>
+        </div>
     </button>
 
     <mat-menu #selector="matMenu" [class]="'container-users-selector-menu'" (closed)="onClosed()">
@@ -16,7 +26,7 @@
             <div *ngIf="!isLoading && results.length == 0" class="not-results">Ninguna persona coincide con tu busqueda.</div>
 
             <div *ngIf="!isLoading" class="results-selector-menu">
-                <div *ngFor="let item of results" class="item-result selected">
+                <div *ngFor="let item of results" class="item-result" [ngClass]="{'selected': isSelectedItem(item)}" (click)="selectItem(item)">
                     <div *ngIf="getPhoto(item) == undefined||getPhoto(item) == ''" class="item-result-image not-photo">
                         <span>{{getNoPhoto(item)}}</span>
                     </div>

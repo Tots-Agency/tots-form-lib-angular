@@ -91,6 +91,7 @@ export class FormComponentComponent implements OnInit {
   loadConfigUserSelector() {
     this.configUserSelector.service = this.userService;
     this.configUserSelector.searchFields = ['firstname', 'lastname'];
+    this.configUserSelector.identifierField = 'id';
     this.configUserSelector.firstnameField = 'firstname';
     this.configUserSelector.lastnameField = 'lastname';
     this.configUserSelector.photoField = 'photo';

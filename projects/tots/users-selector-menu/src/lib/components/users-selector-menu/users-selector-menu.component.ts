@@ -31,6 +31,15 @@ export class TotsUsersSelectorMenuComponent implements OnInit {
     // TODO: Informar que se cerro el menu de usuarios
   }
 
+  selectItem(item: any) {
+    if(this.isSelectedItem(item)){
+      this.selecteds = this.selecteds.filter(x => this.getIdentifier(x) !== this.getIdentifier(item));
+    } else {
+      this.selecteds.push(item);
+    }
+    this.inputQuery.setValue('');
+  }
+
   loadItems(text: string) {
     let query = new TotsQuery();
 
@@ -47,6 +56,18 @@ export class TotsUsersSelectorMenuComponent implements OnInit {
   loadInputSearch() {
     this.inputQuery.valueChanges
     .subscribe(val => this.loadItems(val));
+  }
+
+  isSelectedItem(item: any): boolean {
+    let find = this.selecteds.find(x => this.getIdentifier(x) === this.getIdentifier(item));
+    if(find == undefined){
+      return false;
+    }
+    return true;
+  }
+
+  getIdentifier(item: any): any {
+    return item[this.config.identifierField];
   }
 
   getFirstname(item: any): string {
