@@ -14,6 +14,9 @@
       ],
       "@tots/form-sidebar-page": [
         "dist/tots/form-sidebar-page"
+      ],
+      "@tots/users-selector-menu": [
+        "dist/tots/users-selector-menu"
       ]
     },
     "baseUrl": "./",
