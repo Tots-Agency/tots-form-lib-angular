@@ -10,6 +10,7 @@ import { TotsFormModule } from 'projects/tots/form/src/public-api';
 import { FormSidebarComponent } from './pages/form-sidebar/form-sidebar.component';
 import { TotsFormSidebarPageModule } from 'projects/tots/form-sidebar-page/src/public-api';
 import { TotsDateFieldFormModule } from 'projects/tots/date-field-form/src/public-api';
+import { TotsUsersSelectorMenuModule } from 'projects/tots/users-selector-menu/src/public-api';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { TotsDateFieldFormModule } from 'projects/tots/date-field-form/src/publi
     BrowserAnimationsModule,
     TotsFormModule,
     TotsFormSidebarPageModule,
-    TotsDateFieldFormModule
+    TotsDateFieldFormModule,
+    TotsUsersSelectorMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

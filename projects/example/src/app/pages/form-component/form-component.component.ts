@@ -5,6 +5,7 @@ import { TotsActionForm } from 'projects/tots/form/src/lib/entities/tots-action-
 import { TotsModalConfig } from 'projects/tots/form/src/lib/entities/tots-modal-config';
 import { SubmitButtonFieldComponent } from 'projects/tots/form/src/lib/fields/submit-button-field/submit-button-field.component';
 import { AutocompleteFieldComponent, AvatarPhotoFieldComponent, SelectFieldComponent, StringFieldComponent, TotsFieldForm, TotsFormComponent, TotsFormModalService } from 'projects/tots/form/src/public-api';
+import { TotsUsersSelectorMenuConfig } from 'projects/tots/users-selector-menu/src/lib/entities/tots-users-selector-menu-config';
 import { of } from 'rxjs';
 
 @Component({
@@ -17,12 +18,15 @@ export class FormComponentComponent implements OnInit {
   fields = new Array<TotsFieldForm>();
   item = { type: 2, customer_id: 3, start_date: '2023-08-25' };
 
+  configUserSelector = new TotsUsersSelectorMenuConfig();
+
   constructor(
     protected modalService: TotsFormModalService
   ) { }
 
   ngOnInit(): void {
     this.configForm();
+    this.loadConfigUserSelector();
   }
 
   onActionForm(action: TotsActionForm) {
@@ -80,5 +84,10 @@ export class FormComponentComponent implements OnInit {
     this.modalService.open(config).subscribe(action => {
       console.log(action)
     });
+  }
+
+  loadConfigUserSelector() {
+    this.configUserSelector.textButton = 'Select user';
+    this.configUserSelector.prependIcon = 'person';
   }
 }
