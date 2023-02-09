@@ -7,6 +7,7 @@ import { SubmitButtonFieldComponent } from 'projects/tots/form/src/lib/fields/su
 import { AutocompleteFieldComponent, AvatarPhotoFieldComponent, SelectFieldComponent, StringFieldComponent, TotsFieldForm, TotsFormComponent, TotsFormModalService } from 'projects/tots/form/src/public-api';
 import { TotsUsersSelectorMenuConfig } from 'projects/tots/users-selector-menu/src/lib/entities/tots-users-selector-menu-config';
 import { of } from 'rxjs';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-form-component',
@@ -21,7 +22,8 @@ export class FormComponentComponent implements OnInit {
   configUserSelector = new TotsUsersSelectorMenuConfig();
 
   constructor(
-    protected modalService: TotsFormModalService
+    protected modalService: TotsFormModalService,
+    protected userService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -87,6 +89,12 @@ export class FormComponentComponent implements OnInit {
   }
 
   loadConfigUserSelector() {
+    this.configUserSelector.service = this.userService;
+    this.configUserSelector.searchFields = ['firstname', 'lastname'];
+    this.configUserSelector.firstnameField = 'firstname';
+    this.configUserSelector.lastnameField = 'lastname';
+    this.configUserSelector.photoField = 'photo';
+
     this.configUserSelector.textButton = 'Select user';
     this.configUserSelector.prependIcon = 'person';
   }

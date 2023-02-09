@@ -11,6 +11,8 @@ import { FormSidebarComponent } from './pages/form-sidebar/form-sidebar.componen
 import { TotsFormSidebarPageModule } from 'projects/tots/form-sidebar-page/src/public-api';
 import { TotsDateFieldFormModule } from 'projects/tots/date-field-form/src/public-api';
 import { TotsUsersSelectorMenuModule } from 'projects/tots/users-selector-menu/src/public-api';
+import { TotsCoreModule } from '@tots/core';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { TotsUsersSelectorMenuModule } from 'projects/tots/users-selector-menu/s
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
+    TotsCoreModule,
     TotsFormModule,
     TotsFormSidebarPageModule,
     TotsDateFieldFormModule,

@@ -13,14 +13,18 @@
                 <input matInput type="text" [formControl]="inputQuery" [placeholder]="'Search...'"/>
             </mat-form-field>
 
-            <div class="results-selector-menu">
-                <div class="not-results">Ninguna persona coincide con tu busqueda.</div>
-                <div class="item-result selected">
-                    <div class="item-result-image">
+            <div *ngIf="!isLoading && results.length == 0" class="not-results">Ninguna persona coincide con tu busqueda.</div>
+
+            <div *ngIf="!isLoading" class="results-selector-menu">
+                <div *ngFor="let item of results" class="item-result selected">
+                    <div *ngIf="getPhoto(item) == undefined||getPhoto(item) == ''" class="item-result-image not-photo">
+                        <span>{{getNoPhoto(item)}}</span>
+                    </div>
+                    <div *ngIf="getPhoto(item) != undefined && getPhoto(item) != ''" class="item-result-image">
                         <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="image">
                     </div>
                     <div class="item-result-info">
-                        <div class="item-result-info-name">Axel Camiletti</div>
+                        <div class="item-result-info-name">{{getFirstname(item)}} {{getLastname(item)}}</div>
                     </div>
                 </div>
             </div>

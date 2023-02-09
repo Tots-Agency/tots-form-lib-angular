@@ -27,6 +27,16 @@ button {
             border-radius: 50%;
         }
     }
+
+    .item-result-image.not-photo {
+        display: flex;
+        background-color: lightgray;
+        color: black;
+        text-align: center;
+        font-weight: bold;
+        align-items: center;
+        justify-content: center;
+    }
 }
 
 .item-result.selected {

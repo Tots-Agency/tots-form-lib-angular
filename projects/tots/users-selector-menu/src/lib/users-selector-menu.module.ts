@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 /** Components */
 import { TotsUsersSelectorMenuComponent } from './components/users-selector-menu/users-selector-menu.component';
@@ -28,7 +29,8 @@ import { TotsUsersSelectorMenuComponent } from './components/users-selector-menu
     MatIconModule,
     MatMenuModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatAutocompleteModule
   ],
   exports: [
     /** Components */
