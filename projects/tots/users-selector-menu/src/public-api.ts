@@ -3,6 +3,11 @@
  */
 
 /**
+ * Entities
+ */
+export * from './lib/entities/tots-users-selector-menu-config';
+
+/**
  * Components
  */
 export * from './lib/components/users-selector-menu/users-selector-menu.component';
