@@ -29,6 +29,7 @@ import { RowFieldComponent } from './fields/row-field/row-field.component';
 import { AvatarPhotoFieldComponent } from './fields/avatar-photo-field/avatar-photo-field.component';
 import { AutocompleteFieldComponent } from './fields/autocomplete-field/autocomplete-field.component';
 import { AutocompleteObsFieldComponent } from './fields/autocomplete-obs-field/autocomplete-obs-field.component';
+import { FilesListFieldComponent } from './fields/files-list-field/files-list-field.component';
 
 
 
@@ -47,7 +48,8 @@ import { AutocompleteObsFieldComponent } from './fields/autocomplete-obs-field/a
     RowFieldComponent,
     AvatarPhotoFieldComponent,
     AutocompleteFieldComponent,
-    AutocompleteObsFieldComponent
+    AutocompleteObsFieldComponent,
+    FilesListFieldComponent
   ],
   imports: [
     CommonModule,
@@ -69,7 +71,8 @@ import { AutocompleteObsFieldComponent } from './fields/autocomplete-obs-field/a
     TotsFormComponent,
 
     /** Fields */
-    AutocompleteObsFieldComponent
+    AutocompleteObsFieldComponent,
+    FilesListFieldComponent
   ]
 })
 export class TotsFormModule { }
