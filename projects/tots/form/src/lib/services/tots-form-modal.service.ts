@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
-import { TotsFormModalComponent } from '../../public-api';
-import { TotsActionForm } from '../entities/tots-action-form';
+import { TotsActionModalForm, TotsFormModalComponent } from '../../public-api';
 import { TotsModalConfig } from '../entities/tots-modal-config';
 
 @Injectable({
@@ -14,7 +13,7 @@ export class TotsFormModalService {
     protected dialog: MatDialog
   ) { }
 
-  open(config: TotsModalConfig): Observable<TotsActionForm> {
+  open(config: TotsModalConfig): Observable<TotsActionModalForm> {
     let dialogRef = this.dialog.open(TotsFormModalComponent, {
       width: '700px',
       data: config
