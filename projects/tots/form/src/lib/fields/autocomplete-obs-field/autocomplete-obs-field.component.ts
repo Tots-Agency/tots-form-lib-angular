@@ -40,8 +40,8 @@ export class AutocompleteObsFieldComponent extends TotsBaseFieldComponent implem
   loadQueryConfig() {
     let obs: (query?: string) => Observable<Array<any>> = this.field.extra.obs;
     this.filteredOptions = this.inputQuery.valueChanges.pipe(
-      startWith(''),
-      takeWhile(value => typeof value === "string"),
+      //startWith(''),
+      //takeWhile(value => typeof value === "string"),
       switchMap(value => obs(value!)),
     );
   }
