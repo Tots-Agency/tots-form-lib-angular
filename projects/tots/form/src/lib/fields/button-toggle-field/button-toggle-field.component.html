@@ -1,0 +1,5 @@
+<p *ngIf="field.label"> {{ field.label }} </p>
+<mat-button-toggle-group (change)="onChange($event)">
+    <mat-button-toggle *ngFor="let option of field.extra.options" [value]="option.id">{{ option.title }}</mat-button-toggle>
+</mat-button-toggle-group>
+

@@ -33,6 +33,7 @@ export * from './lib/fields/avatar-photo-field/avatar-photo-field.component';
 export * from './lib/fields/autocomplete-field/autocomplete-field.component';
 export * from './lib/fields/autocomplete-obs-field/autocomplete-obs-field.component';
 export * from './lib/fields/files-list-field/files-list-field.component';
+export * from './lib/fields/button-toggle-field/button-toggle-field.component';
 
 /**
  * Components

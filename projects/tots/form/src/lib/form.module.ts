@@ -13,6 +13,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+
 
 
 /** Components */
@@ -30,6 +32,7 @@ import { AvatarPhotoFieldComponent } from './fields/avatar-photo-field/avatar-ph
 import { AutocompleteFieldComponent } from './fields/autocomplete-field/autocomplete-field.component';
 import { AutocompleteObsFieldComponent } from './fields/autocomplete-obs-field/autocomplete-obs-field.component';
 import { FilesListFieldComponent } from './fields/files-list-field/files-list-field.component';
+import { ButtonToggleFieldComponent } from './fields/button-toggle-field/button-toggle-field.component';
 
 
 
@@ -49,7 +52,8 @@ import { FilesListFieldComponent } from './fields/files-list-field/files-list-fi
     AvatarPhotoFieldComponent,
     AutocompleteFieldComponent,
     AutocompleteObsFieldComponent,
-    FilesListFieldComponent
+    FilesListFieldComponent,
+    ButtonToggleFieldComponent
   ],
   imports: [
     CommonModule,
@@ -65,7 +69,8 @@ import { FilesListFieldComponent } from './fields/files-list-field/files-list-fi
     MatProgressSpinnerModule,
     MatIconModule,
     MatTooltipModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatButtonToggleModule
   ],
   exports: [
     TotsFormComponent,
