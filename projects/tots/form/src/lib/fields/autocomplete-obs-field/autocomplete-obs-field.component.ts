@@ -51,6 +51,10 @@ export class AutocompleteObsFieldComponent extends TotsBaseFieldComponent implem
   }
 
   getItem(itemIdentifier: any): any {
+    if(this.field.extra.first_query != undefined){
+      return this.field.extra.first_query;
+    }
+
     if(this.field.extra.options == undefined){
       return;
     }

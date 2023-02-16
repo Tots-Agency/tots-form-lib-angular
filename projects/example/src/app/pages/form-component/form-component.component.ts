@@ -81,6 +81,7 @@ export class FormComponentComponent implements OnInit {
         selected_key: 'id',
         filter_key: 'title',
         display_key: 'title',
+        //first_query: { id: 4, title: 'Customer 4' },
         options: [
           { id: 1, title: 'Customer 1' },
           { id: 2, title: 'Customer 2' },
