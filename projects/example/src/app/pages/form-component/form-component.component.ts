@@ -17,7 +17,7 @@ import { UserService } from '../../services/user.service';
 export class FormComponentComponent implements OnInit {
 
   fields = new Array<TotsFieldForm>();
-  item = { type: 2, customer_id: 3, start_date: '2023-08-25' };
+  item = { type: 2, customer_id: 3, start_date: '2023-08-25', type_toggle: 2 };
 
   configUserSelector = new TotsUsersSelectorMenuConfig();
 

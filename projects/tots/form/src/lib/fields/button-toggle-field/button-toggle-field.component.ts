@@ -10,7 +10,6 @@ import { TotsBaseFieldComponent } from '../tots-base-field.component';
 export class ButtonToggleFieldComponent extends TotsBaseFieldComponent {
 
   onChange(event: MatButtonToggleChange) {
-    console.log(event);
     this.input.setValue(event.value);
   }
 }
