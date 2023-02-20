@@ -33,6 +33,7 @@ import { AutocompleteFieldComponent } from './fields/autocomplete-field/autocomp
 import { AutocompleteObsFieldComponent } from './fields/autocomplete-obs-field/autocomplete-obs-field.component';
 import { FilesListFieldComponent } from './fields/files-list-field/files-list-field.component';
 import { ButtonToggleFieldComponent } from './fields/button-toggle-field/button-toggle-field.component';
+import { OneFileFieldComponent } from './fields/one-file-field/one-file-field.component';
 
 
 
@@ -53,7 +54,8 @@ import { ButtonToggleFieldComponent } from './fields/button-toggle-field/button-
     AutocompleteFieldComponent,
     AutocompleteObsFieldComponent,
     FilesListFieldComponent,
-    ButtonToggleFieldComponent
+    ButtonToggleFieldComponent,
+    OneFileFieldComponent
   ],
   imports: [
     CommonModule,
@@ -77,7 +79,8 @@ import { ButtonToggleFieldComponent } from './fields/button-toggle-field/button-
 
     /** Fields */
     AutocompleteObsFieldComponent,
-    FilesListFieldComponent
+    FilesListFieldComponent,
+    OneFileFieldComponent
   ]
 })
 export class TotsFormModule { }

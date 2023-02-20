@@ -1,0 +1,23 @@
+<div class="tots-files-list-field">
+    <input type="hidden" [formControl]="input" />
+    <input #inputFile type="file" accept="image/png, image/jpeg, image/gif" style="display: none;" (change)="onChange($event.target)">
+
+    <div *ngIf="input.value" class="tots-file">
+        <div class="tots-file-name">
+            <mat-icon>insert_drive_file</mat-icon>
+            <span>{{displayName(input.value)}}</span>
+        </div>
+        <div class="tots-file-actions">
+            <button mat-icon-button (click)="onClickRemove()">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </div>
+    </div>
+
+    <div *ngIf="input.value == undefined" class="file-not-uploaded" (click)="inputFile.click()">
+        <div class="tots-file-name">
+            <mat-icon>insert_drive_file</mat-icon>
+            <span>{{field.label}}</span>
+        </div>
+    </div>
+</div>
