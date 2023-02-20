@@ -34,6 +34,7 @@ import { AutocompleteObsFieldComponent } from './fields/autocomplete-obs-field/a
 import { FilesListFieldComponent } from './fields/files-list-field/files-list-field.component';
 import { ButtonToggleFieldComponent } from './fields/button-toggle-field/button-toggle-field.component';
 import { OneFileFieldComponent } from './fields/one-file-field/one-file-field.component';
+import { TextareaFieldComponent } from './fields/textarea-field/textarea-field.component';
 
 
 
@@ -55,7 +56,8 @@ import { OneFileFieldComponent } from './fields/one-file-field/one-file-field.co
     AutocompleteObsFieldComponent,
     FilesListFieldComponent,
     ButtonToggleFieldComponent,
-    OneFileFieldComponent
+    OneFileFieldComponent,
+    TextareaFieldComponent
   ],
   imports: [
     CommonModule,
