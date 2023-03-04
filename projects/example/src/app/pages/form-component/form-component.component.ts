@@ -4,7 +4,7 @@ import { DatepickerFieldComponent } from 'projects/tots/date-field-form/src/lib/
 import { TotsActionForm } from 'projects/tots/form/src/lib/entities/tots-action-form';
 import { TotsModalConfig } from 'projects/tots/form/src/lib/entities/tots-modal-config';
 import { SubmitButtonFieldComponent } from 'projects/tots/form/src/lib/fields/submit-button-field/submit-button-field.component';
-import { AutocompleteFieldComponent, AutocompleteListFieldComponent, AvatarPhotoFieldComponent, ButtonToggleFieldComponent, FilesListFieldComponent, OneFileFieldComponent, SelectFieldComponent, StringFieldComponent, TextareaFieldComponent, TotsFieldForm, TotsFormComponent, TotsFormModalService } from 'projects/tots/form/src/public-api';
+import { AutocompleteFieldComponent, AutocompleteListFieldComponent, AvatarPhotoFieldComponent, ButtonToggleFieldComponent, FilesListFieldComponent, OneFileFieldComponent, RowFieldComponent, SelectFieldComponent, StringFieldComponent, TextareaFieldComponent, TotsFieldForm, TotsFormComponent, TotsFormModalService } from 'projects/tots/form/src/public-api';
 import { TotsUsersSelectorMenuConfig } from 'projects/tots/users-selector-menu/src/lib/entities/tots-users-selector-menu-config';
 import { Observable, of } from 'rxjs';
 import { UserService } from '../../services/user.service';
@@ -38,7 +38,12 @@ export class FormComponentComponent implements OnInit {
   configForm() {
     this.fields = [
       // Campo string
-      { key: 'title', component: StringFieldComponent, label: 'Titulo', validators: [Validators.required], extra: { caption: 'Este se mostrara publicamente...' } },
+      { key: 'title', component: StringFieldComponent, label: 'Titulo', validators: [Validators.required], extra: { caption: 'Este se mostrara publicamente...', icon: 'home' } },
+      // Campo Row
+      { key: '', component: RowFieldComponent, extra: { fields: [
+        { key: 'title', component: StringFieldComponent, label: 'Titulo', validators: [Validators.required], extra: { caption: 'Este se mostrara publicamente...', icon: 'home' } },
+        { key: 'title', component: StringFieldComponent, label: 'Titulo', validators: [Validators.required], extra: { caption: 'Este se mostrara publicamente...', icon: 'home' } },
+      ] } },
       // Campo de selector normal
       { key: 'type', component: SelectFieldComponent, label: 'Tipo', validators: [Validators.required], extra: { options: [
         { id: 1, title: 'Tipo 1'},

@@ -70,4 +70,14 @@ export class TotsFormComponent implements OnInit {
       this.updateItemByForm();
     });
   }
+
+  isHasIcon(field: TotsFieldForm) {
+    if(field.extra && field.extra.icon){ return true; }
+    return false;
+  }
+
+  getIconField(field: TotsFieldForm) {
+    if(field.extra && field.extra.icon){ return field.extra.icon; }
+    return '';
+  }
 }
