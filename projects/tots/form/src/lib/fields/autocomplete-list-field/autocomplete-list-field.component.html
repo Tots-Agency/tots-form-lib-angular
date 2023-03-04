@@ -1,0 +1,25 @@
+<mat-form-field *ngIf="input" [appearance]="getAppearance()" class="{{getClases()}}">
+    <mat-label *ngIf="field.label"> {{ field.label }} </mat-label>
+
+    <input matInput type="text" [formControl]="inputQuery" [matAutocomplete]="autoInput" [placeholder]="getPlaceholder()">
+
+    <mat-autocomplete #autoInput="matAutocomplete" [displayWith]="displayOption.bind(this)" (optionSelected)="selectedOption($event)" >
+      <mat-option *ngFor="let item of filteredOptions | async" [value]="item">
+        {{ displayOption(item) }}
+      </mat-option>
+    </mat-autocomplete>
+
+    <mat-hint *ngIf="getCaption() != ''" [align]="'end'"> {{getCaption()}} </mat-hint>
+</mat-form-field>
+
+<div class="tots-autocomplete-list">
+    <div *ngFor="let item of input.value" class="tots-item-auto">
+        <div class="tots-item-info">
+            <img *ngIf="isShowPhoto()" [src]="displayPhoto(item)" (error)="onImgError($event)" />
+            <p>{{ displayOption(item) }}</p>
+        </div>
+        <div class="tots-item-remove">
+            <button mat-icon-button color="warn" (click)="onClickRemove(item)"><mat-icon>close</mat-icon></button>
+        </div>
+    </div>
+</div>

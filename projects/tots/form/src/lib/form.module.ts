@@ -35,6 +35,7 @@ import { FilesListFieldComponent } from './fields/files-list-field/files-list-fi
 import { ButtonToggleFieldComponent } from './fields/button-toggle-field/button-toggle-field.component';
 import { OneFileFieldComponent } from './fields/one-file-field/one-file-field.component';
 import { TextareaFieldComponent } from './fields/textarea-field/textarea-field.component';
+import { AutocompleteListFieldComponent } from './fields/autocomplete-list-field/autocomplete-list-field.component';
 
 
 
@@ -57,7 +58,8 @@ import { TextareaFieldComponent } from './fields/textarea-field/textarea-field.c
     FilesListFieldComponent,
     ButtonToggleFieldComponent,
     OneFileFieldComponent,
-    TextareaFieldComponent
+    TextareaFieldComponent,
+    AutocompleteListFieldComponent
   ],
   imports: [
     CommonModule,
@@ -82,7 +84,8 @@ import { TextareaFieldComponent } from './fields/textarea-field/textarea-field.c
     /** Fields */
     AutocompleteObsFieldComponent,
     FilesListFieldComponent,
-    OneFileFieldComponent
+    OneFileFieldComponent,
+    AutocompleteListFieldComponent
   ]
 })
 export class TotsFormModule { }

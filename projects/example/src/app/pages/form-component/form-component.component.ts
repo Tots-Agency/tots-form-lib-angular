@@ -4,9 +4,9 @@ import { DatepickerFieldComponent } from 'projects/tots/date-field-form/src/lib/
 import { TotsActionForm } from 'projects/tots/form/src/lib/entities/tots-action-form';
 import { TotsModalConfig } from 'projects/tots/form/src/lib/entities/tots-modal-config';
 import { SubmitButtonFieldComponent } from 'projects/tots/form/src/lib/fields/submit-button-field/submit-button-field.component';
-import { AutocompleteFieldComponent, AvatarPhotoFieldComponent, ButtonToggleFieldComponent, FilesListFieldComponent, OneFileFieldComponent, SelectFieldComponent, StringFieldComponent, TextareaFieldComponent, TotsFieldForm, TotsFormComponent, TotsFormModalService } from 'projects/tots/form/src/public-api';
+import { AutocompleteFieldComponent, AutocompleteListFieldComponent, AvatarPhotoFieldComponent, ButtonToggleFieldComponent, FilesListFieldComponent, OneFileFieldComponent, SelectFieldComponent, StringFieldComponent, TextareaFieldComponent, TotsFieldForm, TotsFormComponent, TotsFormModalService } from 'projects/tots/form/src/public-api';
 import { TotsUsersSelectorMenuConfig } from 'projects/tots/users-selector-menu/src/lib/entities/tots-users-selector-menu-config';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -61,6 +61,15 @@ export class FormComponentComponent implements OnInit {
       { key: 'file_one', component: OneFileFieldComponent, label: 'Upload SIF File', extra: { display_key: 'filename', service: { upload: () => { return of({ filename: 'test_file.png', url: 'https://storage.googleapis.com/tots-send-public/Frame%2028.png' }) } } } },
       // Campo textarea
       { key: 'caption', component: TextareaFieldComponent, label: 'Caption' },
+      // Campo Autocompleete List
+      { key: 'customers', component: AutocompleteListFieldComponent, label: 'Select Customer', extra: {
+          selected_key: 'id',
+          filter_key: 'title',
+          display_key: 'title',
+          is_show_photo: false,
+          placeholder_photo: 'https://storage.googleapis.com/tots-send-public/Frame%2028.png',
+          obs: this.customerAutocompleteObsProcessed.bind(this)
+      } },
 
       { key: 'submit', component: SubmitButtonFieldComponent, label: 'Enviar' }
     ];
@@ -85,6 +94,7 @@ export class FormComponentComponent implements OnInit {
         selected_key: 'id',
         filter_key: 'title',
         display_key: 'title',
+        display_photo: 'photo',
         //first_query: { id: 4, title: 'Customer 4' },
         options: [
           { id: 1, title: 'Customer 1' },
@@ -111,5 +121,22 @@ export class FormComponentComponent implements OnInit {
 
     this.configUserSelector.textButton = 'Select user';
     this.configUserSelector.prependIcon = 'person';
+  }
+
+  customerAutocompleteObsProcessed(query?: string): Observable<Array<any>> {
+    console.log(query);
+
+    let customers = [
+      { id: 1, title: 'Customer 1' },
+      { id: 2, title: 'Customer 2' },
+      { id: 3, title: 'Customer 3' },
+      { id: 4, title: 'Customer 4' },
+    ];
+
+    if(query == undefined||query == ''){
+      return of(customers);
+    }
+
+    return of(customers.filter(c => c.title.toLowerCase().includes(query.toLowerCase())));
   }
 }

@@ -1,0 +1,20 @@
+mat-form-field { width: 100%; }
+.tots-item-auto {
+    display: flex;
+    justify-content: space-between;
+}
+
+.tots-item-info {
+    display: flex;
+    align-items: center;
+}
+
+.tots-item-info img {
+    width: 32px;
+    height: 32px;
+}
+
+.tots-item-info p {
+    margin: 0;
+    margin-left: 8px;
+}
