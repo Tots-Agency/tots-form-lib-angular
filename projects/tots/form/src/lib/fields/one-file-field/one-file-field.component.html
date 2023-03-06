@@ -1,6 +1,6 @@
 <div class="tots-files-list-field">
     <input type="hidden" [formControl]="input" />
-    <input #inputFile type="file" accept="image/png, image/jpeg, image/gif" style="display: none;" (change)="onChange($event.target)">
+    <input #inputFile type="file" style="display: none;" (change)="onChange($event.target)">
 
     <div *ngIf="input.value" class="tots-file">
         <div class="tots-file-name">
