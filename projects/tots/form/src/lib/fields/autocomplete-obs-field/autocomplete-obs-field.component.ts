@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
-import { Observable, startWith, switchMap, takeWhile } from 'rxjs';
+import { Observable, startWith, switchMap, takeWhile, tap } from 'rxjs';
 import { TotsBaseFieldComponent } from '../tots-base-field.component';
 
 @Component({
@@ -42,6 +42,11 @@ export class AutocompleteObsFieldComponent extends TotsBaseFieldComponent implem
     this.filteredOptions = this.inputQuery.valueChanges.pipe(
       //startWith(''),
       //takeWhile(value => typeof value === "string"),
+      tap(value => {
+        if(value == ''||value == undefined){
+          this.input.setValue(undefined);
+        }
+      }),
       switchMap(value => obs(value!)),
     );
   }
