@@ -36,6 +36,7 @@ import { ButtonToggleFieldComponent } from './fields/button-toggle-field/button-
 import { OneFileFieldComponent } from './fields/one-file-field/one-file-field.component';
 import { TextareaFieldComponent } from './fields/textarea-field/textarea-field.component';
 import { AutocompleteListFieldComponent } from './fields/autocomplete-list-field/autocomplete-list-field.component';
+import { IntegerFieldComponent } from './fields/integer-field/integer-field.component';
 
 
 
@@ -59,7 +60,8 @@ import { AutocompleteListFieldComponent } from './fields/autocomplete-list-field
     ButtonToggleFieldComponent,
     OneFileFieldComponent,
     TextareaFieldComponent,
-    AutocompleteListFieldComponent
+    AutocompleteListFieldComponent,
+    IntegerFieldComponent
   ],
   imports: [
     CommonModule,
