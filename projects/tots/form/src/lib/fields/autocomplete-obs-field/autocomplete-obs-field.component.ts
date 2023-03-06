@@ -43,7 +43,7 @@ export class AutocompleteObsFieldComponent extends TotsBaseFieldComponent implem
       //startWith(''),
       //takeWhile(value => typeof value === "string"),
       tap(value => {
-        if(value == ''||value == undefined){
+        if(typeof value === "string" && value == ''){
           this.input.setValue(undefined);
         }
       }),
