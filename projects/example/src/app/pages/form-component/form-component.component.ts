@@ -8,6 +8,7 @@ import { AutocompleteFieldComponent, AutocompleteListFieldComponent, Autocomplet
 import { TotsUsersSelectorMenuConfig } from 'projects/tots/users-selector-menu/src/lib/entities/tots-users-selector-menu-config';
 import { Observable, of } from 'rxjs';
 import { UserService } from '../../services/user.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-form-component',
@@ -20,6 +21,8 @@ export class FormComponentComponent implements OnInit {
   item = { type: 2, customer_id: 3, start_date: '2023-08-25', type_toggle: 2 };
 
   configUserSelector = new TotsUsersSelectorMenuConfig();
+
+  dateNow = moment();
 
   constructor(
     protected modalService: TotsFormModalService,
@@ -153,5 +156,9 @@ export class FormComponentComponent implements OnInit {
     }
 
     return of(customers.filter(c => c.title.toLowerCase().includes(query.toLowerCase())));
+  }
+
+  onChangeDate(value: any) {
+    console.log(value);
   }
 }

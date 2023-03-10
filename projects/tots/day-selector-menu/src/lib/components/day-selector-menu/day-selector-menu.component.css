@@ -1,0 +1,13 @@
+.tots-day-selector-menu {
+    display: flex;
+}
+
+mat-form-field {
+    width: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.day-button-arrow {
+    height: 56px;
+}

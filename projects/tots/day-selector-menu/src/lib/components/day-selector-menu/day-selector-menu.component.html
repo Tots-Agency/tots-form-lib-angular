@@ -1,0 +1,11 @@
+<div class="tots-day-selector-menu">
+    <button class="day-button-arrow" mat-stroked-button (click)="onClickLeft()"><mat-icon>chevron_left</mat-icon></button>
+
+    <mat-form-field *ngIf="input" (click)="picker.open()">
+        <input matInput [matDatepicker]="picker" [formControl]="input">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <button class="day-button-arrow" mat-stroked-button (click)="onClickRight()"><mat-icon>chevron_right</mat-icon></button>
+</div>

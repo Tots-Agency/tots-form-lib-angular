@@ -13,6 +13,7 @@ import { TotsDateFieldFormModule } from 'projects/tots/date-field-form/src/publi
 import { TotsUsersSelectorMenuModule } from 'projects/tots/users-selector-menu/src/public-api';
 import { TotsCoreModule } from '@tots/core';
 import { HttpClientModule } from '@angular/common/http';
+import { TotsDaySelectorMenuModule } from 'projects/tots/day-selector-menu/src/public-api';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
     TotsFormModule,
     TotsFormSidebarPageModule,
     TotsDateFieldFormModule,
-    TotsUsersSelectorMenuModule
+    TotsUsersSelectorMenuModule,
+    TotsDaySelectorMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

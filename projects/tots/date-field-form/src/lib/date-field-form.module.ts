@@ -45,6 +45,6 @@ import { DatepickerFieldComponent } from './fields/datepicker-field/datepicker-f
     { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS] },
     { provide: MAT_DATE_LOCALE, useValue: 'en-Us' },
     { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true, strict: true } },
-]
+  ]
 })
 export class TotsDateFieldFormModule { }
