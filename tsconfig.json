@@ -6,6 +6,9 @@
       "@tots/date-field-form": [
         "dist/tots/date-field-form"
       ],
+      "@tots/day-selector-menu": [
+        "dist/tots/day-selector-menu"
+      ],
       "@tots/form": [
         "dist/tots/form"
       ],
