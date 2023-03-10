@@ -1,11 +1,11 @@
 {
   "name": "@tots/day-selector-menu",
-  "version": "15.0.1",
+  "version": "15.0.4",
   "peerDependencies": {
-    "@angular/common": "^15.0.3",
-    "@angular/core": "^15.0.3",
-    "@angular/material": "^15.0.3",
-    "@angular/material-moment-adapter": "^15.0.3"
+    "@angular/common": "^15.0.0",
+    "@angular/core": "^15.0.0",
+    "@angular/material": "^15.0.0",
+    "@angular/material-moment-adapter": "^15.0.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
