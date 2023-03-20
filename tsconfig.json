@@ -18,6 +18,9 @@
       "@tots/form-sidebar-page": [
         "dist/tots/form-sidebar-page"
       ],
+      "@tots/range-date-selector-menu": [
+        "dist/tots/range-date-selector-menu"
+      ],
       "@tots/users-selector-menu": [
         "dist/tots/users-selector-menu"
       ]

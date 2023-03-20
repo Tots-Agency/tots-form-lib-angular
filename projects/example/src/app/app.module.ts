@@ -14,6 +14,7 @@ import { TotsUsersSelectorMenuModule } from 'projects/tots/users-selector-menu/s
 import { TotsCoreModule } from '@tots/core';
 import { HttpClientModule } from '@angular/common/http';
 import { TotsDaySelectorMenuModule } from 'projects/tots/day-selector-menu/src/public-api';
+import { TotsRangeDateSelectorMenuModule } from 'projects/tots/range-date-selector-menu/src/public-api';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { TotsDaySelectorMenuModule } from 'projects/tots/day-selector-menu/src/p
     TotsFormSidebarPageModule,
     TotsDateFieldFormModule,
     TotsUsersSelectorMenuModule,
-    TotsDaySelectorMenuModule
+    TotsDaySelectorMenuModule,
+    TotsRangeDateSelectorMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

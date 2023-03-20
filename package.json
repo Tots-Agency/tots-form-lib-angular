@@ -11,6 +11,7 @@
     "build5": "ng build --project=@tots/date-field-form --configuration production && cd dist/tots/date-field-form/ && npm publish --access public",
     "build6": "ng build --project=@tots/users-selector-menu --configuration production && cd dist/tots/users-selector-menu/ && npm publish --access public",
     "build7": "ng build --project=@tots/day-selector-menu --configuration production && cd dist/tots/day-selector-menu/ && npm publish --access public",
+    "build8": "ng build --project=@tots/range-date-selector-menu --configuration production && cd dist/tots/range-date-selector-menu/ && npm publish --access public",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
