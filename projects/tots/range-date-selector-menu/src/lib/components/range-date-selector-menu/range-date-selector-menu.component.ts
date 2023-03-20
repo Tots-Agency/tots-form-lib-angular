@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
-import * as moment from 'moment';
+import moment from 'moment'; 
 
 @Component({
   selector: 'tots-range-date-selector-menu',
