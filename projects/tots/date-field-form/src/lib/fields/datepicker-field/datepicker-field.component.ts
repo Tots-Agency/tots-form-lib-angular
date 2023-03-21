@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
 import { TotsBaseFieldComponent, TotsFieldForm } from '@tots/form';
-import * as moment from 'moment';
+import moment from 'moment';
 
 @Component({
   selector: 'tots-datepicker-field',
