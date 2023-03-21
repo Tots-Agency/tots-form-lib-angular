@@ -15,7 +15,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
-
+/** Tots Libraries */
+import { TotsLoadingModule } from '@tots/loading';
 
 /** Components */
 import { TotsFormComponent } from './components/tots-form/tots-form.component';
@@ -78,7 +79,10 @@ import { IntegerFieldComponent } from './fields/integer-field/integer-field.comp
     MatIconModule,
     MatTooltipModule,
     MatAutocompleteModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+
+    /** Tots Libraries */
+    TotsLoadingModule
   ],
   exports: [
     TotsFormComponent,

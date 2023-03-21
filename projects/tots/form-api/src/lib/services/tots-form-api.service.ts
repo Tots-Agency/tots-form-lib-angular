@@ -27,14 +27,27 @@ export class TotsFormApiService {
     .pipe(tap(item => (item !== false&&item !== undefined) ? dialogRef.close() : undefined));
   }
 
-  verifyActionIfSubmit(config: TotsFormModalApiConfig, action: TotsActionForm|TotsActionModalForm): Observable<any> {
+  verifyActionIfSubmit(config: TotsFormModalApiConfig, action: TotsActionModalForm): Observable<any> {
     if(action.key != 'submit'){
       return of(action);
     }
+    // Show Loading
+    action.modal?.componentInstance.showLoading();
+
     if(action.item && action.item.id && action.item.id > 0){
-      return config.service!.update(action.item);
+      return config.service!.update(action.item)
+      .pipe(catchError((err, obs) => {
+        // Hide Loading
+        action.modal?.componentInstance.hideLoading();
+        return obs;
+      }));
     }
 
-    return config.service!.create(action.item);
+    return config.service!.create(action.item)
+    .pipe(catchError((err, obs) => {
+      // Hide Loading
+      action.modal?.componentInstance.hideLoading();
+      return obs;
+    }));
   }
 }

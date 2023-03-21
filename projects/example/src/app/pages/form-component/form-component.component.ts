@@ -6,7 +6,7 @@ import { TotsModalConfig } from 'projects/tots/form/src/lib/entities/tots-modal-
 import { SubmitButtonFieldComponent } from 'projects/tots/form/src/lib/fields/submit-button-field/submit-button-field.component';
 import { AutocompleteFieldComponent, AutocompleteListFieldComponent, AutocompleteObsFieldComponent, AvatarPhotoFieldComponent, ButtonToggleFieldComponent, FilesListFieldComponent, OneFileFieldComponent, RowFieldComponent, SelectFieldComponent, StringFieldComponent, TextareaFieldComponent, TotsFieldForm, TotsFormComponent, TotsFormModalService } from 'projects/tots/form/src/public-api';
 import { TotsUsersSelectorMenuConfig } from 'projects/tots/users-selector-menu/src/lib/entities/tots-users-selector-menu-config';
-import { Observable, of } from 'rxjs';
+import { delay, Observable, of, tap } from 'rxjs';
 import { UserService } from '../../services/user.service';
 import * as moment from 'moment';
 
@@ -122,7 +122,15 @@ export class FormComponentComponent implements OnInit {
 
       { key: 'submit', component: SubmitButtonFieldComponent, label: 'Enviar' }
     ];
-    this.modalService.open(config).subscribe(action => {
+    this.modalService.open(config)
+    .pipe(tap(action => {
+      if(action.key == 'submit'){
+        action.modal?.componentInstance.showLoading();
+      }
+    }))
+    .pipe(delay(2000))
+    .pipe(tap(action => action.modal?.componentInstance.hideLoading()))
+    .subscribe(action => {
       console.log(action)
     });
   }

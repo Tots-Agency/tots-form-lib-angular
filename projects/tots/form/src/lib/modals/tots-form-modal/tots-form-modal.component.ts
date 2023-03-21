@@ -14,6 +14,10 @@ export class TotsFormModalComponent {
 
   actions = new Subject<TotsActionModalForm>();
 
+  isLoading = false;
+  typeLoading = 'square-in-bits';
+  colorLoading = '#80bc00';
+
   constructor(
     protected dialogRef: MatDialogRef<TotsFormModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: TotsModalConfig
@@ -25,5 +29,15 @@ export class TotsFormModalComponent {
     newAction.item = action.item;
     newAction.modal = this.dialogRef;
     this.actions.next(newAction);
+  }
+
+  showLoading(type: string = 'square-in-bits', color: string = '#80bc00') {
+    this.isLoading = true;
+    this.typeLoading = type;
+    this.colorLoading = color;
+  }
+
+  hideLoading() {
+    this.isLoading = false;
   }
 }
