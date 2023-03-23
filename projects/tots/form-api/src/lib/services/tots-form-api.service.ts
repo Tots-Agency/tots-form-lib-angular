@@ -22,7 +22,7 @@ export class TotsFormApiService {
     return dialogRef.componentInstance.actions.
     pipe(switchMap(action => this.verifyActionIfSubmit(config, action)))
     .pipe(catchError((err, obs) => {
-      return obs;
+      throw err;
     }))
     .pipe(tap(item => (item !== false&&item !== undefined) ? dialogRef.close() : undefined));
   }
@@ -39,7 +39,7 @@ export class TotsFormApiService {
       .pipe(catchError((err, obs) => {
         // Hide Loading
         action.modal?.componentInstance.hideLoading();
-        return obs;
+        throw err;
       }));
     }
 
@@ -47,7 +47,7 @@ export class TotsFormApiService {
     .pipe(catchError((err, obs) => {
       // Hide Loading
       action.modal?.componentInstance.hideLoading();
-      return obs;
+      throw err;
     }));
   }
 }
