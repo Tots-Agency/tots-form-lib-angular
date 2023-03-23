@@ -38,6 +38,7 @@ export * from './lib/fields/one-file-field/one-file-field.component';
 export * from './lib/fields/textarea-field/textarea-field.component';
 export * from './lib/fields/autocomplete-list-field/autocomplete-list-field.component';
 export * from './lib/fields/integer-field/integer-field.component';
+export * from './lib/fields/photos-field/photos-field.component';
 
 /**
  * Components

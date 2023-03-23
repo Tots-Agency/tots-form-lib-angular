@@ -38,6 +38,7 @@ import { OneFileFieldComponent } from './fields/one-file-field/one-file-field.co
 import { TextareaFieldComponent } from './fields/textarea-field/textarea-field.component';
 import { AutocompleteListFieldComponent } from './fields/autocomplete-list-field/autocomplete-list-field.component';
 import { IntegerFieldComponent } from './fields/integer-field/integer-field.component';
+import { PhotosFieldComponent } from './fields/photos-field/photos-field.component';
 
 
 
@@ -62,7 +63,8 @@ import { IntegerFieldComponent } from './fields/integer-field/integer-field.comp
     OneFileFieldComponent,
     TextareaFieldComponent,
     AutocompleteListFieldComponent,
-    IntegerFieldComponent
+    IntegerFieldComponent,
+    PhotosFieldComponent
   ],
   imports: [
     CommonModule,

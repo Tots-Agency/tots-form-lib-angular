@@ -4,7 +4,7 @@ import { DatepickerFieldComponent } from 'projects/tots/date-field-form/src/lib/
 import { TotsActionForm } from 'projects/tots/form/src/lib/entities/tots-action-form';
 import { TotsModalConfig } from 'projects/tots/form/src/lib/entities/tots-modal-config';
 import { SubmitButtonFieldComponent } from 'projects/tots/form/src/lib/fields/submit-button-field/submit-button-field.component';
-import { AutocompleteFieldComponent, AutocompleteListFieldComponent, AutocompleteObsFieldComponent, AvatarPhotoFieldComponent, ButtonToggleFieldComponent, FilesListFieldComponent, OneFileFieldComponent, RowFieldComponent, SelectFieldComponent, StringFieldComponent, TextareaFieldComponent, TotsFieldForm, TotsFormComponent, TotsFormModalService } from 'projects/tots/form/src/public-api';
+import { AutocompleteFieldComponent, AutocompleteListFieldComponent, AutocompleteObsFieldComponent, AvatarPhotoFieldComponent, ButtonToggleFieldComponent, FilesListFieldComponent, OneFileFieldComponent, PhotosFieldComponent, RowFieldComponent, SelectFieldComponent, StringFieldComponent, TextareaFieldComponent, TotsFieldForm, TotsFormComponent, TotsFormModalService } from 'projects/tots/form/src/public-api';
 import { TotsUsersSelectorMenuConfig } from 'projects/tots/users-selector-menu/src/lib/entities/tots-users-selector-menu-config';
 import { delay, Observable, of, tap } from 'rxjs';
 import { UserService } from '../../services/user.service';
@@ -86,6 +86,8 @@ export class FormComponentComponent implements OnInit {
           placeholder_photo: 'https://storage.googleapis.com/tots-send-public/Frame%2028.png',
           obs: this.customerAutocompleteObsProcessed.bind(this)
       } },
+      // Campo Files List
+      { key: 'photos', component: PhotosFieldComponent, label: 'Upload photo', extra: { display_key: 'url', service: { upload: () => { return of({ filename: 'test_file.png', url: 'https://storage.googleapis.com/tots-send-public/Frame%2028.png' }) } } } },
 
       { key: 'submit', component: SubmitButtonFieldComponent, label: 'Enviar' }
     ];
