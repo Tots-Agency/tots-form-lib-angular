@@ -79,4 +79,8 @@ export class AutocompleteObsFieldComponent extends TotsBaseFieldComponent implem
     if(this.field.extra && this.field.extra.caption){ return this.field.extra.caption; }
     return '';
   }
+
+  cleanInputQuery() {
+    this.inputQuery.setValue('');
+  }
 }
