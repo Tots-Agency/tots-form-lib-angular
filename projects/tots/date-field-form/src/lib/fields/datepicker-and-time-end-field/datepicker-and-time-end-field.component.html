@@ -1,0 +1,23 @@
+<mat-form-field *ngIf="input" class="{{getClases()}}" (click)="picker.open()" [appearance]="getAppearance()">
+    <mat-label *ngIf="field.label"> {{ field.label }} </mat-label>
+    <input matInput [matDatepicker]="picker" [formControl]="input" [placeholder]="getPlaceholder()">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <mat-hint *ngIf="getCaption() != ''" [align]="'end'"> {{getCaption()}} </mat-hint>
+</mat-form-field>
+
+<div class="tots-time-picker-container">
+    <mat-form-field [appearance]="getAppearance()">
+        <mat-label *ngIf="field.extra.label_start">{{field.extra.label_start}}</mat-label>
+        <mat-select [formControl]="inputStartTime">
+            <mat-option *ngFor="let it of hours" [value]="it.value">{{it.title}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    
+    <mat-form-field [appearance]="getAppearance()">
+        <mat-label *ngIf="field.extra.label_end">{{field.extra.label_end}}</mat-label>
+        <mat-select [formControl]="inputEndTime">
+            <mat-option *ngFor="let it of hours" [value]="it.value">{{it.title}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>

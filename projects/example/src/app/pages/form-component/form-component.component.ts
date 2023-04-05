@@ -9,6 +9,7 @@ import { TotsUsersSelectorMenuConfig } from 'projects/tots/users-selector-menu/s
 import { delay, Observable, of, tap } from 'rxjs';
 import { UserService } from '../../services/user.service';
 import * as moment from 'moment';
+import { DatepickerAndTimeEndFieldComponent } from 'projects/tots/date-field-form/src/public-api';
 
 @Component({
   selector: 'app-form-component',
@@ -18,7 +19,7 @@ import * as moment from 'moment';
 export class FormComponentComponent implements OnInit {
 
   fields = new Array<TotsFieldForm>();
-  item = { type: 2, customer_id: 3, start_date: '2023-08-25', type_toggle: 2 };
+  item = { type: 2, customer_id: 3, start_date: '2023-08-25', type_toggle: 2, datepicker_time: '1989-08-25 14:00:00', datepicker_time_end: '1989-08-25 18:00:00' };
 
   configUserSelector = new TotsUsersSelectorMenuConfig();
 
@@ -88,6 +89,7 @@ export class FormComponentComponent implements OnInit {
       } },
       // Campo Files List
       { key: 'photos', component: PhotosFieldComponent, label: 'Upload photo', extra: { display_key: 'url', service: { upload: () => { return of({ filename: 'test_file.png', url: 'https://storage.googleapis.com/tots-send-public/Frame%2028.png' }) } } } },
+      { key: 'datepicker_time', component: DatepickerAndTimeEndFieldComponent, label: 'Date picker and time', extra: { field_key_end: 'datepicker_time_end', label_start: 'Start time', label_end: 'End time' } },
 
       { key: 'submit', component: SubmitButtonFieldComponent, label: 'Enviar' }
     ];

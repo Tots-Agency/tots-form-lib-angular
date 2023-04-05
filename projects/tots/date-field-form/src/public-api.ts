@@ -6,6 +6,7 @@
  * Fields
  */
 export * from './lib/fields/datepicker-field/datepicker-field.component';
+export * from './lib/fields/datepicker-and-time-end-field/datepicker-and-time-end-field.component';
 
 /**
  * Modules
