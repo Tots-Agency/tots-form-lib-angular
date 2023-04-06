@@ -22,7 +22,7 @@ export class TotsFormApiService {
     return dialogRef.componentInstance.actions.
     pipe(switchMap(action => this.verifyActionIfSubmit(config, action)))
     .pipe(catchError((err, obs) => {
-      throw err;
+      return obs;
     }))
     .pipe(tap(item => (item !== false&&item !== undefined) ? dialogRef.close() : undefined));
   }

@@ -10,6 +10,7 @@ import { delay, Observable, of, tap } from 'rxjs';
 import { UserService } from '../../services/user.service';
 import * as moment from 'moment';
 import { DatepickerAndTimeEndFieldComponent } from 'projects/tots/date-field-form/src/public-api';
+import { TotsFormApiService, TotsFormModalApiConfig } from 'projects/tots/form-api/src/public-api';
 
 @Component({
   selector: 'app-form-component',
@@ -27,7 +28,8 @@ export class FormComponentComponent implements OnInit {
 
   constructor(
     protected modalService: TotsFormModalService,
-    protected userService: UserService
+    protected userService: UserService,
+    protected apiService: TotsFormApiService
   ) { }
 
   ngOnInit(): void {
@@ -137,6 +139,24 @@ export class FormComponentComponent implements OnInit {
     .subscribe(action => {
       console.log(action)
     });
+  }
+
+  onClickOpenModalApi() {
+    let config = new TotsFormModalApiConfig();
+    config.title = 'General Event';
+    config.autoSave = false;
+    config.service = this.userService;
+    config.item = {};
+    config.fields = [
+        { key: 'title', component: StringFieldComponent, label: 'Title', validators: [Validators.required] },
+        { key: 'submit', component: SubmitButtonFieldComponent, label: 'CREATE' }
+    ];
+
+    this.apiService.open(config)
+    .pipe(tap(action => {
+      console.log(action);
+    }))
+    .subscribe(res => console.log('Res'));
   }
 
   loadConfigUserSelector() {
