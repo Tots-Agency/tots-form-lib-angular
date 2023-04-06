@@ -14,7 +14,7 @@
         </mat-select>
     </mat-form-field>
     
-    <mat-form-field [appearance]="getAppearance()">
+    <mat-form-field class="tots-time-input-end" [appearance]="getAppearance()">
         <mat-label *ngIf="field.extra.label_end">{{field.extra.label_end}}</mat-label>
         <mat-select [formControl]="inputEndTime">
             <mat-option *ngFor="let it of hours" [value]="it.value">{{it.title}}</mat-option>
