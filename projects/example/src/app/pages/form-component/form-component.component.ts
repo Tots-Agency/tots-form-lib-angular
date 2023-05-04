@@ -91,6 +91,7 @@ export class FormComponentComponent implements OnInit {
       } },
       // Campo Files List
       { key: 'photos', component: PhotosFieldComponent, label: 'Upload photo', extra: { display_key: 'url', service: { upload: () => { return of({ filename: 'test_file.png', url: 'https://storage.googleapis.com/tots-send-public/Frame%2028.png' }) } } } },
+      //{ key: 'datepicker_time', component: DatepickerAndTimeEndFieldComponent, label: 'Date picker and time', extra: { field_key_end: 'datepicker_time_end', label_start: 'Start time', label_end: 'End time', format_output: 'YYYY-MM-DDTHH:mm:ss' } },
       { key: 'datepicker_time', component: DatepickerAndTimeEndFieldComponent, label: 'Date picker and time', extra: { field_key_end: 'datepicker_time_end', label_start: 'Start time', label_end: 'End time' } },
 
       { key: 'submit', component: SubmitButtonFieldComponent, label: 'Enviar' }
