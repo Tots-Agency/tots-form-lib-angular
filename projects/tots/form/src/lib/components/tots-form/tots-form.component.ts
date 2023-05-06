@@ -80,4 +80,20 @@ export class TotsFormComponent implements OnInit {
     if(field.extra && field.extra.icon){ return field.extra.icon; }
     return '';
   }
+
+  hasError(field: TotsFieldForm): boolean {
+    let control = this.group.get(field.key);
+    if(control == undefined){
+      return false;
+    }
+    return !control.valid;
+  }
+
+  getErrors(field: TotsFieldForm):Array<string> {
+    let control = this.group.get(field.key);
+    if(control == undefined){
+      return [];
+    }
+    return control.errors ? Object.keys(control.errors) : [];
+  }
 }
