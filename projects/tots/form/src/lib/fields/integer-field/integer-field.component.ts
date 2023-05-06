@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { TotsBaseFieldComponent } from '../tots-base-field.component';
 
 @Component({
-  selector: 'lib-integer-field',
+  selector: 'tots-integer-field',
   templateUrl: './integer-field.component.html',
   styleUrls: ['./integer-field.component.css']
 })
