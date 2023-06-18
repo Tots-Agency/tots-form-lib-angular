@@ -96,4 +96,8 @@ export class TotsFormComponent implements OnInit {
     }
     return control.errors ? Object.keys(control.errors) : [];
   }
+
+  public getFormGroup(): UntypedFormGroup {
+    return this.group;
+  }
 }
