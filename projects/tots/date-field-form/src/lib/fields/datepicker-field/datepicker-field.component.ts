@@ -15,6 +15,11 @@ export class DatepickerFieldComponent extends TotsBaseFieldComponent {
     return '';
   }
 
+  getMinDate() {
+    if(this.field.extra && this.field.extra.minDate){ return this.field.extra.minDate; }
+    return null;
+  }
+
   static override updateFormByItem(group: UntypedFormGroup, item: any, field: TotsFieldForm) {
     if(item[field.key] != undefined){
       group.get(field.key)?.setValue(moment(item[field.key], 'YYYY-MM-DD HH:mm:ss'));
