@@ -6,4 +6,5 @@ export class TotsFieldForm {
     label?: string = '';
     validators?: ValidatorFn[] = [];
     extra?: any;
+    errors?: Array<{ name: string, message: string }>
 }

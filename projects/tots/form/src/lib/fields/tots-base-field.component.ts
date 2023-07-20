@@ -43,6 +43,24 @@ export class TotsBaseFieldComponent implements OnInit {
         return false;
     }
 
+    hasError(): boolean {
+        return this.input.invalid && (this.input.dirty || this.input.touched);
+    }
+
+    getMessageError(): string {
+        if(this.field.errors == undefined){
+            return '';
+        }
+
+        for (const error of this.field.errors) {
+            if(this.input.hasError(error.name)){
+                return error.message;
+            }
+        }
+
+        return '';
+    }
+
     static updateFormByItem(group: UntypedFormGroup, item: any, field: TotsFieldForm) {
         group.get(field.key)?.setValue(item[field.key]);
     }

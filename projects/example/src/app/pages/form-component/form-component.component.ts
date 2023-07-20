@@ -45,12 +45,12 @@ export class FormComponentComponent implements OnInit {
   configForm() {
     this.fields = [
       // Campo string
-      { key: 'title', component: StringFieldComponent, label: 'Titulo', validators: [Validators.required], extra: { caption: 'Este se mostrara publicamente...', icon: 'home' } },
+      { key: 'title', component: StringFieldComponent, label: 'Titulo', validators: [Validators.required], extra: { caption: 'Este se mostrara publicamente...', icon: 'home' }, errors: [{ name: 'required', message: 'You must enter a value' }] },
       // Campo Row
-      { key: '', component: RowFieldComponent, extra: { fields: [
+      /*{ key: '', component: RowFieldComponent, extra: { fields: [
         { key: 'title', component: StringFieldComponent, label: 'Titulo', validators: [Validators.required], extra: { caption: 'Este se mostrara publicamente...', icon: 'home' } },
         { key: 'title', component: StringFieldComponent, label: 'Titulo', validators: [Validators.required], extra: { caption: 'Este se mostrara publicamente...', icon: 'home' } },
-      ] } },
+      ] } },*/
       // Campo de selector normal
       { key: 'type', component: SelectFieldComponent, label: 'Tipo', validators: [Validators.required], extra: { options: [
         { id: 1, title: 'Tipo 1'},
