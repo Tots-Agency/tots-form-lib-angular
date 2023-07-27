@@ -17,7 +17,8 @@ export class TotsFormApiService {
   open(config: TotsFormModalApiConfig): Observable<any> {
     let dialogRef = this.dialog.open(TotsFormModalComponent, {
       width: '700px',
-      data: config
+      data: config,
+      autoFocus: config.autoFocus
     });
     return dialogRef.componentInstance.actions.
     pipe(switchMap(action => this.verifyActionIfSubmit(config, action)))
