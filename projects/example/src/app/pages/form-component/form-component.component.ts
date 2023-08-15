@@ -60,7 +60,7 @@ export class FormComponentComponent implements OnInit {
       // Campo Avatar
       { key: 'avatar', component: AvatarPhotoFieldComponent, label: 'Avatar', extra: { button_text: 'Subir imagen', remove_text: 'Eliminar imagen', service: { upload: () => { return of({ url: 'https://storage.googleapis.com/tots-send-public/Frame%2028.png' }) } } } },
       // Campo Date
-      { key: 'start_date', component: DatepickerFieldComponent, label: 'Start date', extra: { minDate: new Date() } },
+      { key: 'start_date', component: DatepickerFieldComponent, label: 'Start date', extra: { minDate: new Date(), format_output: 'YYYY-MM-DDTHH:mm:ss' } },
       // Campo Files List
       { key: 'attachments', component: FilesListFieldComponent, label: 'Attachments', extra: { textAddButton: '+ Add new file', display_key: 'filename', service: { upload: () => { return of({ filename: 'test_file.png', url: 'https://storage.googleapis.com/tots-send-public/Frame%2028.png' }) } } } },
       // Campo Button Toggle
@@ -81,6 +81,7 @@ export class FormComponentComponent implements OnInit {
         filter_key: 'title',
         display_key: 'title',
         display_photo: 'photo',
+        first_query: { id: 4, title: 'Customer 4' },
         obs: this.customerAutocompleteObsProcessed.bind(this)
       } },
       // Campo Autocompleete List
