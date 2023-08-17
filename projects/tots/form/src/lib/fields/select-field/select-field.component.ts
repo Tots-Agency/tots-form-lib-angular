@@ -11,4 +11,9 @@ export class SelectFieldComponent extends TotsBaseFieldComponent {
     if(this.field.extra && this.field.extra.caption){ return this.field.extra.caption; }
     return '';
   }
+
+  isMultiple(): boolean {
+    if(this.field.extra && this.field.extra.multiple){ return this.field.extra.multiple; }
+    return false;
+  }
 }
