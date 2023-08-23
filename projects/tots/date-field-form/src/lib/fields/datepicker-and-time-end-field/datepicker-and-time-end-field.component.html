@@ -1,6 +1,6 @@
 <mat-form-field *ngIf="input" class="{{getClases()}}" (click)="picker.open()" [appearance]="getAppearance()">
     <mat-label *ngIf="field.label"> {{ field.label }} </mat-label>
-    <input matInput [matDatepicker]="picker" [formControl]="input" [placeholder]="getPlaceholder()">
+    <input matInput [matDatepicker]="picker" [formControl]="input" [placeholder]="getPlaceholder()" [min]="getMinDate()">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
     <mat-hint *ngIf="getCaption() != ''" [align]="'end'"> {{getCaption()}} </mat-hint>

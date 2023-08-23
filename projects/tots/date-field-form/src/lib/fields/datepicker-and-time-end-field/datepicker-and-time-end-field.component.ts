@@ -42,6 +42,11 @@ export class DatepickerAndTimeEndFieldComponent extends TotsBaseFieldComponent i
     return '';
   }
 
+  getMinDate() {
+    if(this.field.extra && this.field.extra.minDate){ return this.field.extra.minDate; }
+    return null;
+  }
+
   static getFormatOutput(field: TotsFieldForm) {
     if(field.extra.format_output != undefined){
       return field.extra.format_output;
