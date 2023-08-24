@@ -90,6 +90,7 @@ import { PhotosFieldComponent } from './fields/photos-field/photos-field.compone
     TotsFormComponent,
 
     /** Fields */
+    BasePrintFieldComponent,
     AutocompleteObsFieldComponent,
     FilesListFieldComponent,
     OneFileFieldComponent,
