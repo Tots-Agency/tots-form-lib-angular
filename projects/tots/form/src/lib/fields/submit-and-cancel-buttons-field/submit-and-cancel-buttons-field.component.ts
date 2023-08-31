@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
 import { TotsFieldForm } from '../../entities/tots-field-form';
 import { TotsBaseFieldComponent } from '../tots-base-field.component';
+import { ThemePalette } from '@angular/material/core';
 
 @Component({
   selector: 'tots-submit-and-cancel-buttons-field',
@@ -11,6 +12,7 @@ import { TotsBaseFieldComponent } from '../tots-base-field.component';
 export class SubmitAndCancelButtonsFieldComponent extends TotsBaseFieldComponent implements OnInit {
 
   cancelLabel! : string;
+  matColor! : ThemePalette;
 
   constructor() {
     super();
@@ -18,6 +20,7 @@ export class SubmitAndCancelButtonsFieldComponent extends TotsBaseFieldComponent
 
   override ngOnInit(): void {
     this.cancelLabel = this.field.extra.cancelLabel || "Cancel";
+    this.matColor = this.field.extra.matColor || "primary";
   }
 
   onClick() {
