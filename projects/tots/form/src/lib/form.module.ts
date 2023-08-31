@@ -39,6 +39,7 @@ import { TextareaFieldComponent } from './fields/textarea-field/textarea-field.c
 import { AutocompleteListFieldComponent } from './fields/autocomplete-list-field/autocomplete-list-field.component';
 import { IntegerFieldComponent } from './fields/integer-field/integer-field.component';
 import { PhotosFieldComponent } from './fields/photos-field/photos-field.component';
+import { SubmitAndCancelButtonsFieldComponent } from './fields/submit-and-cancel-buttons-field/submit-and-cancel-buttons-field.component';
 
 
 
@@ -64,7 +65,8 @@ import { PhotosFieldComponent } from './fields/photos-field/photos-field.compone
     TextareaFieldComponent,
     AutocompleteListFieldComponent,
     IntegerFieldComponent,
-    PhotosFieldComponent
+    PhotosFieldComponent,
+    SubmitAndCancelButtonsFieldComponent
   ],
   imports: [
     CommonModule,
