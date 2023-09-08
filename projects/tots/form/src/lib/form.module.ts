@@ -18,6 +18,9 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 /** Tots Libraries */
 import { TotsLoadingModule } from '@tots/loading';
 
+/** Entities */
+import { TOTS_FORM_BUTTONS_CONFIG, TotsFormButtonsConfig } from './entities/tots-buttons-config';
+
 /** Components */
 import { TotsFormComponent } from './components/tots-form/tots-form.component';
 
@@ -40,7 +43,6 @@ import { AutocompleteListFieldComponent } from './fields/autocomplete-list-field
 import { IntegerFieldComponent } from './fields/integer-field/integer-field.component';
 import { PhotosFieldComponent } from './fields/photos-field/photos-field.component';
 import { SubmitAndCancelButtonsFieldComponent } from './fields/submit-and-cancel-buttons-field/submit-and-cancel-buttons-field.component';
-import { TOTS_FORM_BUTTONS_CONFIG, TotsFormButtonsConfig } from './entities/tots-buttons-config';
 
 @NgModule({
   declarations: [
