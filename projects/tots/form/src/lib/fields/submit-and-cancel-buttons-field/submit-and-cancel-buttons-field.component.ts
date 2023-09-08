@@ -12,11 +12,10 @@ import { TOTS_FORM_BUTTONS_CONFIG, TotsFormButtonMatDirective, TotsFormButtonsCo
 })
 export class SubmitAndCancelButtonsFieldComponent extends TotsBaseFieldComponent implements OnInit {
 
-  cancelLabel! : string;
-
   submitMatColor! : ThemePalette;
   submitMatButtonDirective! : TotsFormButtonMatDirective;
 
+  cancelLabel! : string;
   cancelMatColor! : ThemePalette;
   cancelMatButtonDirective! : TotsFormButtonMatDirective;
 
@@ -25,13 +24,12 @@ export class SubmitAndCancelButtonsFieldComponent extends TotsBaseFieldComponent
   }
 
   override ngOnInit(): void {
-    this.submitMatColor = this.field.extra.matColor || this.totsButtonConfig.positiveButtonColor;
-    this.submitMatButtonDirective = this.field.extra.matButtonDirective || this.totsButtonConfig.positiveButtonMaterialDirective;
+    this.submitMatColor = this.field.extra?.matColor || this.totsButtonConfig.positiveButtonColor;
+    this.submitMatButtonDirective = this.field.extra?.matButtonDirective || this.totsButtonConfig.positiveButtonMaterialDirective;
 
-    this.cancelLabel = this.field.extra.cancelLabel || this.totsButtonConfig.negativeButtonCaption;
-
+    this.cancelLabel = this.field.extra?.cancelLabel || this.totsButtonConfig.negativeButtonCaption;
     this.cancelMatColor = this.totsButtonConfig.negativeButtonColor;
-    this.cancelMatButtonDirective = this.field.extra.matCancelButtonDirective || this.totsButtonConfig.negativeButtonMaterialDirective;
+    this.cancelMatButtonDirective = this.field.extra?.matCancelButtonDirective || this.totsButtonConfig.negativeButtonMaterialDirective;
   }
 
   onClick() {

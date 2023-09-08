@@ -20,8 +20,8 @@ export class SubmitButtonFieldComponent extends TotsBaseFieldComponent implement
   }
 
   override ngOnInit(): void {
-    this.matColor = this.field.extra.matColor || this.totsButtonConfig.positiveButtonColor;
-    this.matButtonDirective = this.field.extra.matButtonDirective || this.totsButtonConfig.positiveButtonMaterialDirective;
+    this.matColor = this.field.extra?.matColor || this.totsButtonConfig.positiveButtonColor;
+    this.matButtonDirective = this.field.extra?.matButtonDirective || this.totsButtonConfig.positiveButtonMaterialDirective;
   }
 
   onClick() {
