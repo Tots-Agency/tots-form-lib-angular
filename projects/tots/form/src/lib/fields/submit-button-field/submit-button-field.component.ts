@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
 import { TotsFieldForm } from '../../entities/tots-field-form';
 import { TotsBaseFieldComponent } from '../tots-base-field.component';
+import { ThemePalette } from '@angular/material/core';
+import { TotsFormButtonMatDirective, TOTS_FORM_BUTTONS_CONFIG, TotsFormButtonsConfig } from '../../entities/tots-buttons-config';
 
 @Component({
   selector: 'tots-submit-button-field',
@@ -10,11 +12,17 @@ import { TotsBaseFieldComponent } from '../tots-base-field.component';
 })
 export class SubmitButtonFieldComponent extends TotsBaseFieldComponent implements OnInit {
 
-  constructor() {
+  matColor : ThemePalette;
+  matButtonDirective! : TotsFormButtonMatDirective;
+
+  constructor(@Inject(TOTS_FORM_BUTTONS_CONFIG) protected totsButtonConfig: TotsFormButtonsConfig) {
     super();
   }
 
-  override ngOnInit(): void { }
+  override ngOnInit(): void {
+    this.matColor = this.field.extra.matColor || this.totsButtonConfig.positiveButtonColor;
+    this.matButtonDirective = this.field.extra.matButtonDirective || this.totsButtonConfig.positiveButtonMaterialDirective;
+  }
 
   onClick() {
     this.onAction.next({ key: this.field.key, item: {} });
