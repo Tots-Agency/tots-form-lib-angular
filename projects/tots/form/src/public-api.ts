@@ -9,6 +9,7 @@ export * from './lib/entities/tots-field-form';
 export * from './lib/entities/tots-action-form';
 export * from './lib/entities/tots-modal-config';
 export * from './lib/entities/tots-action-modal-form';
+export * from './lib/entities/tots-buttons-config';
 
 /**
  * Services
@@ -51,11 +52,6 @@ export * from './lib/components/tots-form/tots-form.component';
  * Modals
  */
 export * from './lib/modals/tots-form-modal/tots-form-modal.component';
-
-/**
- * Providers
- */
-export * from './lib/entities/tots-buttons-config';
 
 /**
  * Modules
