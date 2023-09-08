@@ -1,1 +1,15 @@
-<button mat-button type="button" [disabled]="!group.valid" (click)="onClick()">{{ field.label }}</button>
+<button
+    mat-button
+    [ngClass]="{
+        'mat-mdc-button': matButtonDirective=='mat-button',
+        'mat-mdc-unelevated-button mdc-button--unelevated': matButtonDirective=='mat-flat-button',
+        'mat-mdc-raised-button mdc-button--raised': matButtonDirective=='mat-raised-button',
+        'mat-mdc-outlined-button mdc-button--outlined': matButtonDirective=='mat-stroked-button'
+      }"
+    type="button"
+    [color]="matColor"
+    [disabled]="!group.valid"
+    (click)="onClick()"
+>
+    {{ field.label }}
+</button>

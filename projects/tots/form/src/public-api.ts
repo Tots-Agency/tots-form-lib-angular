@@ -53,6 +53,11 @@ export * from './lib/components/tots-form/tots-form.component';
 export * from './lib/modals/tots-form-modal/tots-form-modal.component';
 
 /**
+ * Providers
+ */
+export * from './lib/entities/tots-buttons-config';
+
+/**
  * Modules
  */
 export * from './lib/form.module';

@@ -1,4 +1,34 @@
 <div class="submit_and_cancel_wrapper">
-    <button mat-button type="button" (click)="onCancel()">{{ cancelLabel }}</button>
-    <button mat-button type="submit" [color]="matColor" [disabled]="!group.valid" (click)="onClick()">{{ field.label }}</button>
+
+  <button
+    mat-button
+    [ngClass]="{
+      'mat-mdc-button': cancelMatButtonDirective=='mat-button',
+      'mat-mdc-unelevated-button mdc-button--unelevated': cancelMatButtonDirective=='mat-flat-button',
+      'mat-mdc-raised-button mdc-button--raised': cancelMatButtonDirective=='mat-raised-button',
+      'mat-mdc-outlined-button mdc-button--outlined': cancelMatButtonDirective=='mat-stroked-button'
+    }"
+    type="button"
+    [color]="cancelMatColor"
+    (click)="onCancel()"
+  >
+    {{ cancelLabel }}
+  </button>
+
+  <button
+    mat-button
+    type="submit"
+    [ngClass]="{
+      'mat-mdc-button': submitMatButtonDirective=='mat-button',
+      'mat-mdc-unelevated-button mdc-button--unelevated': submitMatButtonDirective=='mat-flat-button',
+      'mat-mdc-raised-button mdc-button--raised': submitMatButtonDirective=='mat-raised-button',
+      'mat-mdc-outlined-button mdc-button--outlined': submitMatButtonDirective=='mat-stroked-button'
+    }"
+    [color]="submitMatColor"
+    [disabled]="!group.valid"
+    (click)="onClick()"
+  >
+    {{ field.label }}
+  </button>
+
 </div>
