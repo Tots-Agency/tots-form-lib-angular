@@ -62,10 +62,18 @@ export class TotsBaseFieldComponent implements OnInit {
     }
 
     static updateFormByItem(group: UntypedFormGroup, item: any, field: TotsFieldForm) {
+      if(Array.isArray(field.key)){
+        group.get(field.key.join('_'))?.setValue(TotsFormHelper.getItemValueByKey(item, field.key));
+      } else {
         group.get(field.key)?.setValue(item[field.key]);
+      }
     }
 
     static updateItemByForm(group: UntypedFormGroup, item: any, field: TotsFieldForm) {
+      if(Array.isArray(field.key)){
+        TotsFormHelper.setValueInItemByKey(item, field.key, group.get(field.key.join('_'))?.value);
+      } else {
         item[field.key] = group.get(field.key)?.value;
+      }
     }
 }

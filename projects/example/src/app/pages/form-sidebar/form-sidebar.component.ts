@@ -19,7 +19,6 @@ export class FormSidebarComponent implements OnInit {
   }
 
   onActionForm(action: TotsActionForm) {
-    console.log(action);
     if(action.key == 'load-item'){
       action.item.isLoading = true;
       setTimeout(() => { action.item.isLoading = false }, 2000);
@@ -30,8 +29,8 @@ export class FormSidebarComponent implements OnInit {
     this.config = new TotsFormSidebarPageConfig();
     this.config.title = 'Settings';
     this.config.items = [
-      { 
-        icon: 'settings', 
+      {
+        icon: 'settings',
         title: 'Account',
         subtitle: 'Manage your public profile and private information.',
         item: this.item1,
@@ -45,8 +44,8 @@ export class FormSidebarComponent implements OnInit {
           { key: 'submit-account', component: SubmitButtonFieldComponent, label: 'Guardar account' }
         ]
       },
-      { 
-        icon: 'settings', 
+      {
+        icon: 'settings',
         title: 'Security',
         subtitle: 'Manage your password and 2-step verification preferences.',
         item: {},

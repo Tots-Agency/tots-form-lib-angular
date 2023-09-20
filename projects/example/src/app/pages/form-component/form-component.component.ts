@@ -21,7 +21,7 @@ import { HtmlFieldComponent } from 'projects/tots/html-field-form/src/public-api
 export class FormComponentComponent implements OnInit {
 
   fields = new Array<TotsFieldForm>();
-  item = { type: 2, customer_id: 3, start_date: '2023-08-25', type_toggle: 2, datepicker_time: '1989-08-25 14:00:00', datepicker_time_end: '1989-08-25 18:00:00' };
+  item = { type: 2, customer_id: 3, start_date: '2023-08-25', type_toggle: 2, datepicker_time: '1989-08-25 14:00:00', datepicker_time_end: '1989-08-25 18:00:00', extra: { param_test: '123' } };
 
   configUserSelector = new TotsUsersSelectorMenuConfig();
 
@@ -60,7 +60,7 @@ export class FormComponentComponent implements OnInit {
       // Campo Avatar
       { key: 'avatar', component: AvatarPhotoFieldComponent, label: 'Avatar', extra: { button_text: 'Subir imagen', remove_text: 'Eliminar imagen', service: { upload: () => { return of({ url: 'https://storage.googleapis.com/tots-send-public/Frame%2028.png' }) } } } },
       // Campo Date
-      { key: 'start_date', component: DatepickerFieldComponent, label: 'Start date', extra: { minDate: new Date(), format_output: 'YYYY-MM-DDTHH:mm:ss' } },
+      { key: 'start_date', component: DatepickerFieldComponent, label: 'Start date', extra: { /*minDate: new Date(),*/ format_output: 'YYYY-MM-DDTHH:mm:ss' } },
       // Campo Files List
       { key: 'attachments', component: FilesListFieldComponent, label: 'Attachments', extra: { textAddButton: '+ Add new file', display_key: 'filename', service: { upload: () => { return of({ filename: 'test_file.png', url: 'https://storage.googleapis.com/tots-send-public/Frame%2028.png' }) } } } },
       // Campo Button Toggle
@@ -99,6 +99,8 @@ export class FormComponentComponent implements OnInit {
       { key: 'datepicker_time', component: DatepickerAndTimeEndFieldComponent, label: 'Date picker and time', extra: { field_key_end: 'datepicker_time_end', label_start: 'Start time', label_end: 'End time' } },
       // HTMl Editor
       { key: 'html_editor', component: HtmlFieldComponent, label: 'HTML Editor', extra: { fileService: { upload: () => { return of({ filename: 'test_file.png', url: 'https://storage.googleapis.com/tots-send-public/Frame%2028.png' }).pipe(map(res => res.url)) } } } },
+
+      { key: ['extra', 'param_test'], component: StringFieldComponent, label: 'Extra Param' },
 
       { key: 'submit', component: SubmitButtonFieldComponent, label: 'Enviar' }
     ];
