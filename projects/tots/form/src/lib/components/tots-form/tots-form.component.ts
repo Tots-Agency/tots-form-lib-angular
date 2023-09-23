@@ -64,7 +64,7 @@ export class TotsFormComponent implements OnInit {
 
   activateAutoSave() {
     if(!this.autoSave){
-      return 
+      return
     }
     this.group.valueChanges.subscribe(values => {
       this.updateItemByForm();
@@ -99,5 +99,10 @@ export class TotsFormComponent implements OnInit {
 
   public getFormGroup(): UntypedFormGroup {
     return this.group;
+  }
+
+  setItem(item: any) {
+    this.item = item;
+    this.updateFormByItem();
   }
 }
