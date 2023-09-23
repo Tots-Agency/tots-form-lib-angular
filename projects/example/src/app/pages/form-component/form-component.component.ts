@@ -12,6 +12,25 @@ import * as moment from 'moment';
 import { DatepickerAndTimeEndFieldComponent } from 'projects/tots/date-field-form/src/public-api';
 import { TotsFormApiService, TotsFormModalApiConfig } from 'projects/tots/form-api/src/public-api';
 import { HtmlFieldComponent } from 'projects/tots/html-field-form/src/public-api';
+import { MentionHtmlFieldComponent } from 'projects/tots/quill-mention-field-form/src/public-api';
+
+/** Mention Style */
+import Quill from 'quill';
+
+const MentionBlot = Quill.import("blots/mention");
+class StyledMentionBlot extends MentionBlot {
+  static render(data: any) {
+    const element = document.createElement('span');
+    element.innerText = data.value + '}}';
+    element.style.color = data.color;
+    return element;
+  }
+}
+StyledMentionBlot['blotName'] = "styled-mention";
+
+Quill.register(StyledMentionBlot);
+/** End Mention Style */
+
 
 @Component({
   selector: 'app-form-component',
@@ -99,6 +118,24 @@ export class FormComponentComponent implements OnInit {
       { key: 'datepicker_time', component: DatepickerAndTimeEndFieldComponent, label: 'Date picker and time', extra: { field_key_end: 'datepicker_time_end', label_start: 'Start time', label_end: 'End time' } },
       // HTMl Editor
       { key: 'html_editor', component: HtmlFieldComponent, label: 'HTML Editor', extra: { fileService: { upload: () => { return of({ filename: 'test_file.png', url: 'https://storage.googleapis.com/tots-send-public/Frame%2028.png' }).pipe(map(res => res.url)) } } } },
+      // HTMl Editor with mention
+      {
+        key: 'html_editor_mention',
+        component: MentionHtmlFieldComponent,
+        label: 'HTML Editor with Mention',
+        extra: {
+          denotationChars: ['@', '{{'],
+          blotName: 'styled-mention',
+          onSelect: this.mentionOnSelect.bind(this),
+          source: this.mentionSource.bind(this),
+
+          fileService: {
+            upload: () => {
+              return of({ filename: 'test_file.png', url: 'https://storage.googleapis.com/tots-send-public/Frame%2028.png' }).pipe(map(res => res.url))
+            }
+          }
+        }
+      },
 
       { key: ['extra', 'param_test'], component: StringFieldComponent, label: 'Extra Param' },
 
@@ -178,6 +215,31 @@ export class FormComponentComponent implements OnInit {
 
     this.configUserSelector.textButton = 'Select user';
     this.configUserSelector.prependIcon = 'person';
+  }
+
+  mentionOnSelect(editor: any, item: any, insertItem: any) {
+    insertItem(item)
+    // necessary because quill-mention triggers changes as 'api' instead of 'user'
+    editor.quillEditor.insertText(editor.quillEditor.getLength() - 1, '', 'user');
+  }
+
+  mentionSource(editor: any, searchTerm: any, renderList: any, mentionChar: any) {
+    let values = [
+      { id: 1, value: "Fredrik Sundqvist" },
+      { id: 2, value: "Patrik Sjölin" }
+    ];
+
+    if (searchTerm.length === 0) {
+      renderList(values, searchTerm);
+    } else {
+      const matches = [];
+      for (let i = 0; i < values.length; i++)
+        if (
+          ~values[i].value.toLowerCase().indexOf(searchTerm.toLowerCase())
+        )
+          matches.push(values[i]);
+      renderList(matches, searchTerm);
+    }
   }
 
   customerAutocompleteObsProcessed(query?: string): Observable<Array<any>> {

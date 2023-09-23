@@ -60,6 +60,7 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
+              "./node_modules/quill-mention/dist/quill.mention.min.css",
               "projects/example/src/styles.scss"
             ],
             "scripts": []
@@ -359,6 +360,39 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "tsConfig": "projects/tots/html-field-form/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "@tots/quill-mention-field-form": {
+      "projectType": "library",
+      "root": "projects/tots/quill-mention-field-form",
+      "sourceRoot": "projects/tots/quill-mention-field-form/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/tots/quill-mention-field-form/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/tots/quill-mention-field-form/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/tots/quill-mention-field-form/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/tots/quill-mention-field-form/tsconfig.spec.json",
             "polyfills": [
               "zone.js",
               "zone.js/testing"

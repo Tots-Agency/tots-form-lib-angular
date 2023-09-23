@@ -15,6 +15,8 @@ import { TotsCoreModule } from '@tots/core';
 import { HttpClientModule } from '@angular/common/http';
 import { TotsDaySelectorMenuModule } from 'projects/tots/day-selector-menu/src/public-api';
 import { TotsRangeDateSelectorMenuModule } from 'projects/tots/range-date-selector-menu/src/public-api';
+import { TotsQuillMentionFieldFormModule } from 'projects/tots/quill-mention-field-form/src/public-api';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -27,13 +29,17 @@ import { TotsRangeDateSelectorMenuModule } from 'projects/tots/range-date-select
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+
+    MatMenuModule,
+
     TotsCoreModule,
     TotsFormModule,
     TotsFormSidebarPageModule,
     TotsDateFieldFormModule,
     TotsUsersSelectorMenuModule,
     TotsDaySelectorMenuModule,
-    TotsRangeDateSelectorMenuModule
+    TotsRangeDateSelectorMenuModule,
+    TotsQuillMentionFieldFormModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -21,6 +21,9 @@
       "@tots/html-field-form": [
         "dist/tots/html-field-form"
       ],
+      "@tots/quill-mention-field-form": [
+        "dist/tots/quill-mention-field-form"
+      ],
       "@tots/range-date-selector-menu": [
         "dist/tots/range-date-selector-menu"
       ],
