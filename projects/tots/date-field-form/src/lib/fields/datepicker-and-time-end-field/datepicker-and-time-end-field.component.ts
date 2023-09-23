@@ -24,7 +24,7 @@ export class DatepickerAndTimeEndFieldComponent extends TotsBaseFieldComponent i
   initInputEnd() {
     this.inputStartTime = new UntypedFormControl();
     this.group.addControl(this.field.key + '_time', this.inputStartTime);
-    
+
     this.inputEndTime = new UntypedFormControl();
     this.group.addControl(this.field.extra.field_key_end, this.inputEndTime);
   }
@@ -56,20 +56,26 @@ export class DatepickerAndTimeEndFieldComponent extends TotsBaseFieldComponent i
   }
 
   static override updateFormByItem(group: UntypedFormGroup, item: any, field: TotsFieldForm) {
-    if(item[field.key] != undefined){
-      group.get(field.key)?.setValue(moment(item[field.key], 'YYYY-MM-DD HH:mm:ss'));
-      group.get(field.key + '_time')?.setValue(moment(item[field.key], 'YYYY-MM-DD HH:mm:ss').format('HH:mm:ss'));
-      group.get(field.extra.field_key_end)?.setValue(moment(item[field.extra.field_key_end], 'YYYY-MM-DD HH:mm:ss').format('HH:mm:ss'));
+    if(Array.isArray(field.key)){
+    } else {
+      if(item[field.key] != undefined){
+        group.get(field.key)?.setValue(moment(item[field.key], 'YYYY-MM-DD HH:mm:ss'));
+        group.get(field.key + '_time')?.setValue(moment(item[field.key], 'YYYY-MM-DD HH:mm:ss').format('HH:mm:ss'));
+        group.get(field.extra.field_key_end)?.setValue(moment(item[field.extra.field_key_end], 'YYYY-MM-DD HH:mm:ss').format('HH:mm:ss'));
+      }
     }
   }
 
   static override updateItemByForm(group: UntypedFormGroup, item: any, field: TotsFieldForm) {
-    if(group.get(field.key)?.value != undefined){
-      let newMomentVar = moment(group.get(field.key)?.value.format('YYYY-MM-DD') + ' ' + group.get(field.key + '_time')?.value, 'YYYY-MM-DD HH:mm:ss');
-      let newEndMomentVar = moment(group.get(field.key)?.value.format('YYYY-MM-DD') + ' ' + group.get(field.extra.field_key_end)?.value, 'YYYY-MM-DD HH:mm:ss');
+    if(Array.isArray(field.key)){
+    } else {
+      if(group.get(field.key)?.value != undefined){
+        let newMomentVar = moment(group.get(field.key)?.value.format('YYYY-MM-DD') + ' ' + group.get(field.key + '_time')?.value, 'YYYY-MM-DD HH:mm:ss');
+        let newEndMomentVar = moment(group.get(field.key)?.value.format('YYYY-MM-DD') + ' ' + group.get(field.extra.field_key_end)?.value, 'YYYY-MM-DD HH:mm:ss');
 
-      item[field.key] = newMomentVar.format(DatepickerAndTimeEndFieldComponent.getFormatOutput(field));
-      item[field.extra.field_key_end] = newEndMomentVar.format(DatepickerAndTimeEndFieldComponent.getFormatOutput(field));
+        item[field.key] = newMomentVar.format(DatepickerAndTimeEndFieldComponent.getFormatOutput(field));
+        item[field.extra.field_key_end] = newEndMomentVar.format(DatepickerAndTimeEndFieldComponent.getFormatOutput(field));
+      }
     }
   }
 }

@@ -21,14 +21,20 @@ export class DatepickerFieldComponent extends TotsBaseFieldComponent {
   }
 
   static override updateFormByItem(group: UntypedFormGroup, item: any, field: TotsFieldForm) {
-    if(item[field.key] != undefined){
-      group.get(field.key)?.setValue(moment(item[field.key], field.extra?.format_input ?? 'YYYY-MM-DD HH:mm:ss'));
+    if(Array.isArray(field.key)){
+    } else {
+      if(item[field.key] != undefined){
+        group.get(field.key)?.setValue(moment(item[field.key], field.extra?.format_input ?? 'YYYY-MM-DD HH:mm:ss'));
+      }
     }
   }
 
   static override updateItemByForm(group: UntypedFormGroup, item: any, field: TotsFieldForm) {
-    if(group.get(field.key)?.value != undefined){
-      item[field.key] = group.get(field.key)?.value.format(field.extra?.format_output ?? 'YYYY-MM-DD HH:mm:ss');
+    if(Array.isArray(field.key)){
+    } else {
+      if(group.get(field.key)?.value != undefined){
+        item[field.key] = group.get(field.key)?.value.format(field.extra?.format_output ?? 'YYYY-MM-DD HH:mm:ss');
+      }
     }
   }
 }
