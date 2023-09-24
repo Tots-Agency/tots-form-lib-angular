@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { TotsActionForm } from '../../entities/tots-action-form';
@@ -9,7 +9,7 @@ import { TotsFieldForm } from '../../entities/tots-field-form';
   templateUrl: './tots-form.component.html',
   styleUrls: ['./tots-form.component.scss']
 })
-export class TotsFormComponent implements OnInit {
+export class TotsFormComponent implements OnInit, AfterViewInit {
 
   @Input() fields: Array<TotsFieldForm> = new Array<TotsFieldForm>();
   @Input() item: any;
@@ -31,6 +31,7 @@ export class TotsFormComponent implements OnInit {
   ngAfterViewInit(): void {
     this.updateFormByItem();
     this.activateAutoSave();
+    this.emitInit();
   }
 
   updateFormByItem() {
@@ -69,6 +70,10 @@ export class TotsFormComponent implements OnInit {
     this.group.valueChanges.subscribe(values => {
       this.updateItemByForm();
     });
+  }
+
+  emitInit() {
+    this.onAction.emit({ key: 'tots-form-init', item: undefined });
   }
 
   isHasIcon(field: TotsFieldForm) {
