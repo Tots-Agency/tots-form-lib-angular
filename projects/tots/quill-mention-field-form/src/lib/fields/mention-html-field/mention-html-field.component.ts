@@ -15,7 +15,7 @@ export class MentionHtmlFieldComponent extends TotsBaseFieldComponent implements
   heightEditor = 250;
   theme?: string;
 
-  modules = {
+  modules: any = {
     mention: {
       allowedChars: /^[A-Za-z\sÅÄÖåäö]*$/,
       mentionDenotationChars: ["@"],
@@ -108,6 +108,14 @@ export class MentionHtmlFieldComponent extends TotsBaseFieldComponent implements
 
     this.modules.mention.source = (searchTerm: any, renderList: any, mentionChar: any) => {
       this.field.extra.source(this.editor, searchTerm, renderList, mentionChar);
+    }
+
+    if(this.field.extra.syntax != undefined){
+      this.modules.syntax = this.field.extra.syntax;
+    }
+
+    if(this.field.extra.toolbar != undefined){
+      this.modules.toolbar = this.field.extra.toolbar;
     }
   }
 }
