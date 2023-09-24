@@ -14,6 +14,7 @@
     "build8": "ng build --project=@tots/range-date-selector-menu --configuration production && cd dist/tots/range-date-selector-menu/ && npm publish --access public",
     "build9": "ng build --project=@tots/html-field-form --configuration production && cd dist/tots/html-field-form/ && npm publish --access public",
     "build10": "ng build --project=@tots/quill-mention-field-form --configuration production && cd dist/tots/quill-mention-field-form/ && npm publish --access public",
+    "build11": "ng build --project=@tots/monaco-editor-field-form --configuration production && cd dist/tots/monaco-editor-field-form/ && npm publish --access public",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -33,6 +34,7 @@
     "@tots/core": "^15.0.6",
     "@tots/loading": "^15.0.1",
     "moment": "^2.29.4",
+    "ngx-monaco-editor-v2": "^15.0.1",
     "ngx-quill": "^21.0.0",
     "quill": "^1.3.7",
     "quill-mention": "^4.0.0",

@@ -16,6 +16,7 @@ import { MentionHtmlFieldComponent } from 'projects/tots/quill-mention-field-for
 
 /** Mention Style */
 import Quill from 'quill';
+import { MonacoEditorFieldComponent } from 'projects/tots/monaco-editor-field-form/src/public-api';
 
 const MentionBlot = Quill.import("blots/mention");
 class StyledMentionBlot extends MentionBlot {
@@ -133,6 +134,38 @@ export class FormComponentComponent implements OnInit {
             upload: () => {
               return of({ filename: 'test_file.png', url: 'https://storage.googleapis.com/tots-send-public/Frame%2028.png' }).pipe(map(res => res.url))
             }
+          }
+        }
+      },
+      {
+        key: 'monaco_editor',
+        component: MonacoEditorFieldComponent,
+        label: 'Editor monaco',
+        extra: {
+          language: 'mysql',
+          // Kinds: https://microsoft.github.io/monaco-editor/typedoc/enums/languages.CompletionItemKind.html
+          suggestions: () => {
+            return [
+              {
+                label: 'Ejemplo1',
+                kind: (<any>window).monaco.languages.CompletionItemKind.Method,
+                insertText: '{{Ejemplo1}}',
+                documentation: 'Descripción de Ejemplo1',
+              },
+              {
+                label: 'Test2',
+                kind: (<any>window).monaco.languages.CompletionItemKind.Variable,
+                insertText: '{{Test2}}',
+                preselect: true,
+                documentation: 'Descripción de Ejemplo2',
+              },
+              {
+                label: 'Snipper',
+                kind: (<any>window).monaco.languages.CompletionItemKind.Snippet,
+                insertText: '${sinpper}',
+                //command: { id: 'editor.action.insertLineAfter' }
+              }
+            ];
           }
         }
       },

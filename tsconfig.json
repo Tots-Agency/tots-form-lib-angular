@@ -21,6 +21,9 @@
       "@tots/html-field-form": [
         "dist/tots/html-field-form"
       ],
+      "@tots/monaco-editor-field-form": [
+        "dist/tots/monaco-editor-field-form"
+      ],
       "@tots/quill-mention-field-form": [
         "dist/tots/quill-mention-field-form"
       ],

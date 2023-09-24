@@ -17,6 +17,8 @@ import { TotsDaySelectorMenuModule } from 'projects/tots/day-selector-menu/src/p
 import { TotsRangeDateSelectorMenuModule } from 'projects/tots/range-date-selector-menu/src/public-api';
 import { TotsQuillMentionFieldFormModule } from 'projects/tots/quill-mention-field-form/src/public-api';
 import { MatMenuModule } from '@angular/material/menu';
+import { TotsMonacoEditorFieldFormModule } from 'projects/tots/monaco-editor-field-form/src/public-api';
+import { MonacoEditorModule, NGX_MONACO_EDITOR_CONFIG } from 'ngx-monaco-editor-v2';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { MatMenuModule } from '@angular/material/menu';
 
     MatMenuModule,
 
+    MonacoEditorModule.forRoot(),
+
     TotsCoreModule,
     TotsFormModule,
     TotsFormSidebarPageModule,
@@ -39,7 +43,8 @@ import { MatMenuModule } from '@angular/material/menu';
     TotsUsersSelectorMenuModule,
     TotsDaySelectorMenuModule,
     TotsRangeDateSelectorMenuModule,
-    TotsQuillMentionFieldFormModule
+    TotsQuillMentionFieldFormModule,
+    TotsMonacoEditorFieldFormModule
   ],
   providers: [],
   bootstrap: [AppComponent]
