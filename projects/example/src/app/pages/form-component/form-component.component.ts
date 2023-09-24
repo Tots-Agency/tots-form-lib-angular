@@ -4,7 +4,7 @@ import { DatepickerFieldComponent } from 'projects/tots/date-field-form/src/lib/
 import { TotsActionForm } from 'projects/tots/form/src/lib/entities/tots-action-form';
 import { TotsModalConfig } from 'projects/tots/form/src/lib/entities/tots-modal-config';
 import { SubmitButtonFieldComponent } from 'projects/tots/form/src/lib/fields/submit-button-field/submit-button-field.component';
-import { AutocompleteFieldComponent, AutocompleteListFieldComponent, AutocompleteObsFieldComponent, AvatarPhotoFieldComponent, ButtonToggleFieldComponent, FilesListFieldComponent, IntegerFieldComponent, OneFileFieldComponent, PhotosFieldComponent, RowFieldComponent, SelectFieldComponent, StringFieldComponent, TextareaFieldComponent, TotsFieldForm, TotsFormComponent, TotsFormModalService } from 'projects/tots/form/src/public-api';
+import { AutocompleteFieldComponent, AutocompleteListFieldComponent, AutocompleteObsFieldComponent, AvatarPhotoFieldComponent, ButtonToggleFieldComponent, FilesListFieldComponent, IntegerFieldComponent, OneFileFieldComponent, PhotosFieldComponent, RowFieldComponent, SelectFieldComponent, SelectObsFieldComponent, StringFieldComponent, TextareaFieldComponent, TotsFieldForm, TotsFormComponent, TotsFormModalService } from 'projects/tots/form/src/public-api';
 import { TotsUsersSelectorMenuConfig } from 'projects/tots/users-selector-menu/src/lib/entities/tots-users-selector-menu-config';
 import { delay, map, Observable, of, tap } from 'rxjs';
 import { UserService } from '../../services/user.service';
@@ -171,6 +171,12 @@ export class FormComponentComponent implements OnInit {
       },
 
       { key: ['extra', 'param_test'], component: StringFieldComponent, label: 'Extra Param' },
+      // campo Slect OBS
+      { key: 'select_obs', component: SelectObsFieldComponent, label: 'Select Customers', extra: {
+        selected_key: 'id',
+        display_key: 'title',
+        obs: this.customerForSelectObs.bind(this)
+      } },
 
       { key: 'submit', component: SubmitButtonFieldComponent, label: 'Enviar' }
     ];
@@ -292,6 +298,17 @@ export class FormComponentComponent implements OnInit {
     }
 
     return of(customers.filter(c => c.title.toLowerCase().includes(query.toLowerCase())));
+  }
+
+  customerForSelectObs(): Observable<Array<any>> {
+    let customers = [
+      { id: 1, title: 'Customer 1' },
+      { id: 2, title: 'Customer 2' },
+      { id: 3, title: 'Customer 3' },
+      { id: 4, title: 'Customer 4' },
+    ];
+
+    return of(customers);
   }
 
   onChangeDate(value: any) {

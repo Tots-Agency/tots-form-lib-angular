@@ -43,6 +43,7 @@ import { AutocompleteListFieldComponent } from './fields/autocomplete-list-field
 import { IntegerFieldComponent } from './fields/integer-field/integer-field.component';
 import { PhotosFieldComponent } from './fields/photos-field/photos-field.component';
 import { SubmitAndCancelButtonsFieldComponent } from './fields/submit-and-cancel-buttons-field/submit-and-cancel-buttons-field.component';
+import { SelectObsFieldComponent } from './fields/select-obs-field/select-obs-field.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { SubmitAndCancelButtonsFieldComponent } from './fields/submit-and-cancel
     AutocompleteListFieldComponent,
     IntegerFieldComponent,
     PhotosFieldComponent,
-    SubmitAndCancelButtonsFieldComponent
+    SubmitAndCancelButtonsFieldComponent,
+    SelectObsFieldComponent
   ],
   imports: [
     CommonModule,
@@ -96,7 +98,8 @@ import { SubmitAndCancelButtonsFieldComponent } from './fields/submit-and-cancel
     AutocompleteObsFieldComponent,
     FilesListFieldComponent,
     OneFileFieldComponent,
-    AutocompleteListFieldComponent
+    AutocompleteListFieldComponent,
+    SelectObsFieldComponent
   ],
   providers: [
     {
