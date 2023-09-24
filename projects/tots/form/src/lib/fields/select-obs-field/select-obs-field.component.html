@@ -1,7 +1,7 @@
-<mat-form-field *ngIf="input" [appearance]="getAppearance()" class="{{getClases()}}">
+<mat-form-field *ngIf="input && options" [appearance]="getAppearance()" class="{{getClases()}}">
   <mat-label *ngIf="field.label"> {{ field.label }} </mat-label>
 
-  <mat-select *ngIf="options" [formControl]="input" [placeholder]="getPlaceholder()" [multiple]="isMultiple()">
+  <mat-select [formControl]="input" [placeholder]="getPlaceholder()" [multiple]="isMultiple()">
       <mat-option *ngFor="let option of options" [value]="displayId(option)"> {{ displayOption(option) }} </mat-option>
   </mat-select>
 
