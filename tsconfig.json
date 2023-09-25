@@ -18,6 +18,9 @@
       "@tots/form-sidebar-page": [
         "dist/tots/form-sidebar-page"
       ],
+      "@tots/form-wizard": [
+        "dist/tots/form-wizard"
+      ],
       "@tots/html-field-form": [
         "dist/tots/html-field-form"
       ],

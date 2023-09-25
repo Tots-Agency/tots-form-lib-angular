@@ -19,12 +19,15 @@ import { TotsQuillMentionFieldFormModule } from 'projects/tots/quill-mention-fie
 import { MatMenuModule } from '@angular/material/menu';
 import { TotsMonacoEditorFieldFormModule } from 'projects/tots/monaco-editor-field-form/src/public-api';
 import { MonacoEditorModule, NGX_MONACO_EDITOR_CONFIG } from 'ngx-monaco-editor-v2';
+import { TotsFormWizardModule } from 'projects/tots/form-wizard/src/public-api';
+import { FormWizardComponent } from './pages/form-wizard/form-wizard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormComponentComponent,
-    FormSidebarComponent
+    FormSidebarComponent,
+    FormWizardComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,8 @@ import { MonacoEditorModule, NGX_MONACO_EDITOR_CONFIG } from 'ngx-monaco-editor-
     TotsDaySelectorMenuModule,
     TotsRangeDateSelectorMenuModule,
     TotsQuillMentionFieldFormModule,
-    TotsMonacoEditorFieldFormModule
+    TotsMonacoEditorFieldFormModule,
+    TotsFormWizardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

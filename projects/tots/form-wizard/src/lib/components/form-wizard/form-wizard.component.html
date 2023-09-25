@@ -1,0 +1,16 @@
+<div class="tots-wizard-form-container">
+  <div class="tots-header-wizard-form">
+    <h1>{{config.title}}</h1>
+    <div *ngFor="let step of config.steps; let index = index" class="item" (click)="onClickItem(step)">
+      <div class="item-contain">
+        <div class="item-number">{{index + 1}}</div>
+        <div class="item-title">{{step.title}}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tots-body-wizard-form">
+    <div *ngIf="selectedItem && selectedItem.isLoading" class="form-sidebar-loading">Loading...</div>
+    <tots-form *ngIf="selectedItem && (selectedItem.isLoading == undefined||!selectedItem.isLoading)" #form [fields]="selectedItem.fields" [item]="config.item" (onAction)="onActionForm($event)" [autoSave]="true"></tots-form>
+  </div>
+</div>
