@@ -1,15 +1,17 @@
-import { Component } from '@angular/core';
-import { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { Component, OnInit } from '@angular/core';
 import { TotsBaseFieldComponent } from '../tots-base-field.component';
+import { ThemePalette } from '@angular/material/core';
 
 @Component({
   selector: 'tots-toggle-field',
   templateUrl: './toggle-field.component.html',
   styleUrls: ['./toggle-field.component.scss']
 })
-export class ToggleFieldComponent extends TotsBaseFieldComponent {
+export class ToggleFieldComponent extends TotsBaseFieldComponent implements OnInit {
 
-  onChange(event: MatSlideToggleChange) {
-    this.input.setValue(event.checked);
+  matColor : ThemePalette
+
+  override ngOnInit(): void {
+    this.matColor = this.field.extra?.matColor || "primary";
   }
 }
