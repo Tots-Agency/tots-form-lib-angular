@@ -1,9 +1,9 @@
 import { Component, ElementRef, HostListener, Inject, ViewChild } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Subject } from 'rxjs';
-import { TotsActionForm, } from '../../entities/tots-action-form';
 import { TotsActionModalForm } from '../../entities/tots-action-modal-form';
 import { TotsModalConfig } from '../../entities/tots-modal-config';
+import { TotsActionForm } from '../../entities/tots-action-form';
 
 @Component({
   selector: 'tots-form-modal',
@@ -18,12 +18,12 @@ export class TotsFormModalComponent {
   typeLoading = 'square-in-bits';
   colorLoading = '#80bc00';
 
-  private isDialogOpen = false;
   @ViewChild('dialog') dialog? : ElementRef;
 
   @HostListener('document:click', ['$event'])
-  onDocumentClick(event: Event): void {
-    if (this.isDialogOpen && !this.dialog?.nativeElement.contains(event.target)) {
+  onDocumentClick(event: Event): void {   
+    const target = event.target as HTMLElement;
+    if (target.classList.contains("cdk-overlay-backdrop")) {
       let newAction = new TotsActionModalForm();
       newAction.key = "cancel";
       newAction.item = null;
@@ -36,12 +36,6 @@ export class TotsFormModalComponent {
     protected dialogRef: MatDialogRef<TotsFormModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: TotsModalConfig
   ) { }
-
-  ngAfterViewInit(): void {
-    setTimeout(() => {
-      this.isDialogOpen = true;
-    });
-  }
 
   onActionForm(action: TotsActionForm) {
     let newAction = new TotsActionModalForm();
