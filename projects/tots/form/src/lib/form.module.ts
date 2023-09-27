@@ -43,7 +43,9 @@ import { AutocompleteListFieldComponent } from './fields/autocomplete-list-field
 import { IntegerFieldComponent } from './fields/integer-field/integer-field.component';
 import { PhotosFieldComponent } from './fields/photos-field/photos-field.component';
 import { SubmitAndCancelButtonsFieldComponent } from './fields/submit-and-cancel-buttons-field/submit-and-cancel-buttons-field.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { SelectObsFieldComponent } from './fields/select-obs-field/select-obs-field.component';
+import { ToggleFieldComponent } from './fields/toggle-field/toggle-field.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +70,8 @@ import { SelectObsFieldComponent } from './fields/select-obs-field/select-obs-fi
     IntegerFieldComponent,
     PhotosFieldComponent,
     SubmitAndCancelButtonsFieldComponent,
-    SelectObsFieldComponent
+    SelectObsFieldComponent,
+    ToggleFieldComponent
   ],
   imports: [
     CommonModule,
@@ -86,6 +89,7 @@ import { SelectObsFieldComponent } from './fields/select-obs-field/select-obs-fi
     MatTooltipModule,
     MatAutocompleteModule,
     MatButtonToggleModule,
+    MatSlideToggleModule,
 
     /** Tots Libraries */
     TotsLoadingModule

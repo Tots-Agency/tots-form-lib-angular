@@ -43,6 +43,7 @@ export * from './lib/fields/integer-field/integer-field.component';
 export * from './lib/fields/photos-field/photos-field.component';
 export * from './lib/fields/submit-and-cancel-buttons-field/submit-and-cancel-buttons-field.component';
 export * from './lib/fields/select-obs-field/select-obs-field.component';
+export * from './lib/fields/toggle-field/toggle-field.component';
 
 /**
  * Components
