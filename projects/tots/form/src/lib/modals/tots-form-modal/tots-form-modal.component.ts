@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, ElementRef, HostListener, Inject, ViewChild } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Subject } from 'rxjs';
 import { TotsActionForm, } from '../../entities/tots-action-form';
@@ -17,6 +17,19 @@ export class TotsFormModalComponent {
   isLoading = false;
   typeLoading = 'square-in-bits';
   colorLoading = '#80bc00';
+
+  @ViewChild('dialog') dialog? : ElementRef;
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: Event): void {
+    if (this.dialog && !this.dialog.nativeElement.contains(event.target)) {
+      let newAction = new TotsActionModalForm();
+      newAction.key = "cancel";
+      newAction.item = null;
+      newAction.modal = this.dialogRef;
+      this.dialogRef.close();
+    }
+  }
 
   constructor(
     protected dialogRef: MatDialogRef<TotsFormModalComponent>,

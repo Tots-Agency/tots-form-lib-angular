@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TotsBaseFieldComponent } from '../tots-base-field.component';
 import { ThemePalette } from '@angular/material/core';
+import { TotsBaseFieldComponent } from '../tots-base-field.component';
 
 @Component({
   selector: 'tots-toggle-field',
@@ -12,6 +12,7 @@ export class ToggleFieldComponent extends TotsBaseFieldComponent implements OnIn
   matColor : ThemePalette
 
   override ngOnInit(): void {
+    super.ngOnInit();
     this.matColor = this.field.extra?.matColor || "primary";
   }
 }
