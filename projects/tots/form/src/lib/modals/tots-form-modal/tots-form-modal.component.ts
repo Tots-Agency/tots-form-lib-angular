@@ -22,12 +22,12 @@ export class TotsFormModalComponent {
 
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: Event): void {
-    if (this.dialog && !this.dialog.nativeElement.contains(event.target)) {
+    if (!this.dialog?.nativeElement.contains(event.target)) {
       let newAction = new TotsActionModalForm();
       newAction.key = "cancel";
       newAction.item = null;
       newAction.modal = this.dialogRef;
-      this.dialogRef.close();
+      this.actions.next(newAction);
     }
   }
 
