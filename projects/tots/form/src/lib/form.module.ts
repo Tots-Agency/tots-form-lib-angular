@@ -43,6 +43,8 @@ import { AutocompleteListFieldComponent } from './fields/autocomplete-list-field
 import { IntegerFieldComponent } from './fields/integer-field/integer-field.component';
 import { PhotosFieldComponent } from './fields/photos-field/photos-field.component';
 import { SubmitAndCancelButtonsFieldComponent } from './fields/submit-and-cancel-buttons-field/submit-and-cancel-buttons-field.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { ToggleFieldComponent } from './fields/toggle-field/toggle-field.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +68,8 @@ import { SubmitAndCancelButtonsFieldComponent } from './fields/submit-and-cancel
     AutocompleteListFieldComponent,
     IntegerFieldComponent,
     PhotosFieldComponent,
-    SubmitAndCancelButtonsFieldComponent
+    SubmitAndCancelButtonsFieldComponent,
+    ToggleFieldComponent
   ],
   imports: [
     CommonModule,
@@ -84,6 +87,7 @@ import { SubmitAndCancelButtonsFieldComponent } from './fields/submit-and-cancel
     MatTooltipModule,
     MatAutocompleteModule,
     MatButtonToggleModule,
+    MatSlideToggleModule,
 
     /** Tots Libraries */
     TotsLoadingModule
