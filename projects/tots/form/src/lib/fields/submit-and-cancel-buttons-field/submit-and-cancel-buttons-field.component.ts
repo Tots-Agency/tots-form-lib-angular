@@ -33,7 +33,11 @@ export class SubmitAndCancelButtonsFieldComponent extends TotsBaseFieldComponent
   }
 
   onClick() {
-    this.onAction.next({ key: this.field.key, item: {} });
+    if(Array.isArray(this.field.key)){
+      this.onAction.next({ key: this.field.key.join('_'), item: {} });
+    } else {
+      this.onAction.next({ key: this.field.key, item: {} });
+    }
   }
   onCancel() {
     this.onAction.next({ key: "cancel", item: {} });

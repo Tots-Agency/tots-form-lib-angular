@@ -25,7 +25,11 @@ export class SubmitButtonFieldComponent extends TotsBaseFieldComponent implement
   }
 
   onClick() {
-    this.onAction.next({ key: this.field.key, item: {} });
+    if(Array.isArray(this.field.key)){
+      this.onAction.next({ key: this.field.key.join('_'), item: {} });
+    } else {
+      this.onAction.next({ key: this.field.key, item: {} });
+    }
   }
 
   static override updateFormByItem(group: UntypedFormGroup, item: any, field: TotsFieldForm) { }

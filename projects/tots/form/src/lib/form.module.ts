@@ -44,6 +44,7 @@ import { IntegerFieldComponent } from './fields/integer-field/integer-field.comp
 import { PhotosFieldComponent } from './fields/photos-field/photos-field.component';
 import { SubmitAndCancelButtonsFieldComponent } from './fields/submit-and-cancel-buttons-field/submit-and-cancel-buttons-field.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { SelectObsFieldComponent } from './fields/select-obs-field/select-obs-field.component';
 import { ToggleFieldComponent } from './fields/toggle-field/toggle-field.component';
 
 @NgModule({
@@ -69,6 +70,7 @@ import { ToggleFieldComponent } from './fields/toggle-field/toggle-field.compone
     IntegerFieldComponent,
     PhotosFieldComponent,
     SubmitAndCancelButtonsFieldComponent,
+    SelectObsFieldComponent,
     ToggleFieldComponent
   ],
   imports: [
@@ -100,7 +102,8 @@ import { ToggleFieldComponent } from './fields/toggle-field/toggle-field.compone
     AutocompleteObsFieldComponent,
     FilesListFieldComponent,
     OneFileFieldComponent,
-    AutocompleteListFieldComponent
+    AutocompleteListFieldComponent,
+    SelectObsFieldComponent
   ],
   providers: [
     {

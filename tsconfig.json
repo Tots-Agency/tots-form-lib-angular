@@ -18,8 +18,17 @@
       "@tots/form-sidebar-page": [
         "dist/tots/form-sidebar-page"
       ],
+      "@tots/form-wizard": [
+        "dist/tots/form-wizard"
+      ],
       "@tots/html-field-form": [
         "dist/tots/html-field-form"
+      ],
+      "@tots/monaco-editor-field-form": [
+        "dist/tots/monaco-editor-field-form"
+      ],
+      "@tots/quill-mention-field-form": [
+        "dist/tots/quill-mention-field-form"
       ],
       "@tots/range-date-selector-menu": [
         "dist/tots/range-date-selector-menu"

@@ -4,7 +4,7 @@ import { DatepickerFieldComponent } from 'projects/tots/date-field-form/src/lib/
 import { TotsActionForm } from 'projects/tots/form/src/lib/entities/tots-action-form';
 import { TotsModalConfig } from 'projects/tots/form/src/lib/entities/tots-modal-config';
 import { SubmitButtonFieldComponent } from 'projects/tots/form/src/lib/fields/submit-button-field/submit-button-field.component';
-import { AutocompleteFieldComponent, AutocompleteListFieldComponent, AutocompleteObsFieldComponent, AvatarPhotoFieldComponent, ButtonToggleFieldComponent, FilesListFieldComponent, IntegerFieldComponent, OneFileFieldComponent, PhotosFieldComponent, RowFieldComponent, SelectFieldComponent, StringFieldComponent, TextareaFieldComponent, TotsFieldForm, TotsFormComponent, TotsFormModalService } from 'projects/tots/form/src/public-api';
+import { AutocompleteFieldComponent, AutocompleteListFieldComponent, AutocompleteObsFieldComponent, AvatarPhotoFieldComponent, ButtonToggleFieldComponent, FilesListFieldComponent, IntegerFieldComponent, OneFileFieldComponent, PhotosFieldComponent, RowFieldComponent, SelectFieldComponent, SelectObsFieldComponent, StringFieldComponent, TextareaFieldComponent, TotsFieldForm, TotsFormComponent, TotsFormModalService } from 'projects/tots/form/src/public-api';
 import { TotsUsersSelectorMenuConfig } from 'projects/tots/users-selector-menu/src/lib/entities/tots-users-selector-menu-config';
 import { delay, map, Observable, of, tap } from 'rxjs';
 import { UserService } from '../../services/user.service';
@@ -12,6 +12,26 @@ import * as moment from 'moment';
 import { DatepickerAndTimeEndFieldComponent } from 'projects/tots/date-field-form/src/public-api';
 import { TotsFormApiService, TotsFormModalApiConfig } from 'projects/tots/form-api/src/public-api';
 import { HtmlFieldComponent } from 'projects/tots/html-field-form/src/public-api';
+import { MentionHtmlFieldComponent } from 'projects/tots/quill-mention-field-form/src/public-api';
+
+/** Mention Style */
+import Quill from 'quill';
+import { MonacoEditorFieldComponent } from 'projects/tots/monaco-editor-field-form/src/public-api';
+
+const MentionBlot = Quill.import("blots/mention");
+class StyledMentionBlot extends MentionBlot {
+  static render(data: any) {
+    const element = document.createElement('span');
+    element.innerText = data.value + '}}';
+    element.style.color = data.color;
+    return element;
+  }
+}
+StyledMentionBlot['blotName'] = "styled-mention";
+
+Quill.register(StyledMentionBlot);
+/** End Mention Style */
+
 
 @Component({
   selector: 'app-form-component',
@@ -21,7 +41,7 @@ import { HtmlFieldComponent } from 'projects/tots/html-field-form/src/public-api
 export class FormComponentComponent implements OnInit {
 
   fields = new Array<TotsFieldForm>();
-  item = { type: 2, customer_id: 3, start_date: '2023-08-25', type_toggle: 2, datepicker_time: '1989-08-25 14:00:00', datepicker_time_end: '1989-08-25 18:00:00' };
+  item = { type: 2, customer_id: 3, start_date: '2023-08-25', type_toggle: 2, datepicker_time: '1989-08-25 14:00:00', datepicker_time_end: '1989-08-25 18:00:00', extra: { param_test: '123' } };
 
   configUserSelector = new TotsUsersSelectorMenuConfig();
 
@@ -60,7 +80,7 @@ export class FormComponentComponent implements OnInit {
       // Campo Avatar
       { key: 'avatar', component: AvatarPhotoFieldComponent, label: 'Avatar', extra: { button_text: 'Subir imagen', remove_text: 'Eliminar imagen', service: { upload: () => { return of({ url: 'https://storage.googleapis.com/tots-send-public/Frame%2028.png' }) } } } },
       // Campo Date
-      { key: 'start_date', component: DatepickerFieldComponent, label: 'Start date', extra: { minDate: new Date(), format_output: 'YYYY-MM-DDTHH:mm:ss' } },
+      { key: 'start_date', component: DatepickerFieldComponent, label: 'Start date', extra: { /*minDate: new Date(),*/ format_output: 'YYYY-MM-DDTHH:mm:ss' } },
       // Campo Files List
       { key: 'attachments', component: FilesListFieldComponent, label: 'Attachments', extra: { textAddButton: '+ Add new file', display_key: 'filename', service: { upload: () => { return of({ filename: 'test_file.png', url: 'https://storage.googleapis.com/tots-send-public/Frame%2028.png' }) } } } },
       // Campo Button Toggle
@@ -99,6 +119,64 @@ export class FormComponentComponent implements OnInit {
       { key: 'datepicker_time', component: DatepickerAndTimeEndFieldComponent, label: 'Date picker and time', extra: { field_key_end: 'datepicker_time_end', label_start: 'Start time', label_end: 'End time' } },
       // HTMl Editor
       { key: 'html_editor', component: HtmlFieldComponent, label: 'HTML Editor', extra: { fileService: { upload: () => { return of({ filename: 'test_file.png', url: 'https://storage.googleapis.com/tots-send-public/Frame%2028.png' }).pipe(map(res => res.url)) } } } },
+      // HTMl Editor with mention
+      {
+        key: 'html_editor_mention',
+        component: MentionHtmlFieldComponent,
+        label: 'HTML Editor with Mention',
+        extra: {
+          denotationChars: ['@', '{{'],
+          blotName: 'styled-mention',
+          onSelect: this.mentionOnSelect.bind(this),
+          source: this.mentionSource.bind(this),
+
+          fileService: {
+            upload: () => {
+              return of({ filename: 'test_file.png', url: 'https://storage.googleapis.com/tots-send-public/Frame%2028.png' }).pipe(map(res => res.url))
+            }
+          }
+        }
+      },
+      {
+        key: 'monaco_editor',
+        component: MonacoEditorFieldComponent,
+        label: 'Editor monaco',
+        extra: {
+          language: 'mysql',
+          // Kinds: https://microsoft.github.io/monaco-editor/typedoc/enums/languages.CompletionItemKind.html
+          suggestions: () => {
+            return [
+              {
+                label: 'Ejemplo1',
+                kind: (<any>window).monaco.languages.CompletionItemKind.Method,
+                insertText: '{{Ejemplo1}}',
+                documentation: 'Descripción de Ejemplo1',
+              },
+              {
+                label: 'Test2',
+                kind: (<any>window).monaco.languages.CompletionItemKind.Variable,
+                insertText: '{{Test2}}',
+                preselect: true,
+                documentation: 'Descripción de Ejemplo2',
+              },
+              {
+                label: 'Snipper',
+                kind: (<any>window).monaco.languages.CompletionItemKind.Snippet,
+                insertText: '${sinpper}',
+                //command: { id: 'editor.action.insertLineAfter' }
+              }
+            ];
+          }
+        }
+      },
+
+      { key: ['extra', 'param_test'], component: StringFieldComponent, label: 'Extra Param' },
+      // campo Slect OBS
+      { key: 'select_obs', component: SelectObsFieldComponent, label: 'Select Customers', extra: {
+        selected_key: 'id',
+        display_key: 'title',
+        obs: this.customerForSelectObs.bind(this)
+      } },
 
       { key: 'submit', component: SubmitButtonFieldComponent, label: 'Enviar' }
     ];
@@ -178,6 +256,31 @@ export class FormComponentComponent implements OnInit {
     this.configUserSelector.prependIcon = 'person';
   }
 
+  mentionOnSelect(editor: any, item: any, insertItem: any) {
+    insertItem(item)
+    // necessary because quill-mention triggers changes as 'api' instead of 'user'
+    editor.quillEditor.insertText(editor.quillEditor.getLength() - 1, '', 'user');
+  }
+
+  mentionSource(editor: any, searchTerm: any, renderList: any, mentionChar: any) {
+    let values = [
+      { id: 1, value: "Fredrik Sundqvist" },
+      { id: 2, value: "Patrik Sjölin" }
+    ];
+
+    if (searchTerm.length === 0) {
+      renderList(values, searchTerm);
+    } else {
+      const matches = [];
+      for (let i = 0; i < values.length; i++)
+        if (
+          ~values[i].value.toLowerCase().indexOf(searchTerm.toLowerCase())
+        )
+          matches.push(values[i]);
+      renderList(matches, searchTerm);
+    }
+  }
+
   customerAutocompleteObsProcessed(query?: string): Observable<Array<any>> {
     if(typeof query !== "string"){
       return of();
@@ -195,6 +298,17 @@ export class FormComponentComponent implements OnInit {
     }
 
     return of(customers.filter(c => c.title.toLowerCase().includes(query.toLowerCase())));
+  }
+
+  customerForSelectObs(): Observable<Array<any>> {
+    let customers = [
+      { id: 1, title: 'Customer 1' },
+      { id: 2, title: 'Customer 2' },
+      { id: 3, title: 'Customer 3' },
+      { id: 4, title: 'Customer 4' },
+    ];
+
+    return of(customers);
   }
 
   onChangeDate(value: any) {

@@ -15,25 +15,40 @@ import { TotsCoreModule } from '@tots/core';
 import { HttpClientModule } from '@angular/common/http';
 import { TotsDaySelectorMenuModule } from 'projects/tots/day-selector-menu/src/public-api';
 import { TotsRangeDateSelectorMenuModule } from 'projects/tots/range-date-selector-menu/src/public-api';
+import { TotsQuillMentionFieldFormModule } from 'projects/tots/quill-mention-field-form/src/public-api';
+import { MatMenuModule } from '@angular/material/menu';
+import { TotsMonacoEditorFieldFormModule } from 'projects/tots/monaco-editor-field-form/src/public-api';
+import { MonacoEditorModule, NGX_MONACO_EDITOR_CONFIG } from 'ngx-monaco-editor-v2';
+import { TotsFormWizardModule } from 'projects/tots/form-wizard/src/public-api';
+import { FormWizardComponent } from './pages/form-wizard/form-wizard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormComponentComponent,
-    FormSidebarComponent
+    FormSidebarComponent,
+    FormWizardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+
+    MatMenuModule,
+
+    MonacoEditorModule.forRoot(),
+
     TotsCoreModule,
     TotsFormModule,
     TotsFormSidebarPageModule,
     TotsDateFieldFormModule,
     TotsUsersSelectorMenuModule,
     TotsDaySelectorMenuModule,
-    TotsRangeDateSelectorMenuModule
+    TotsRangeDateSelectorMenuModule,
+    TotsQuillMentionFieldFormModule,
+    TotsMonacoEditorFieldFormModule,
+    TotsFormWizardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
