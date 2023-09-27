@@ -3,7 +3,7 @@ import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { TotsBaseFieldComponent } from '../tots-base-field.component';
 
 @Component({
-  selector: 'tots-checkbox-field',
+  selector: 'tots-toggle-field',
   templateUrl: './toggle-field.component.html',
   styleUrls: ['./toggle-field.component.scss']
 })
