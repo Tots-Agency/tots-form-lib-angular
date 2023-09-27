@@ -18,11 +18,12 @@ export class TotsFormModalComponent {
   typeLoading = 'square-in-bits';
   colorLoading = '#80bc00';
 
+  private isDialogOpen = false;
   @ViewChild('dialog') dialog? : ElementRef;
 
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: Event): void {
-    if (!this.dialog?.nativeElement.contains(event.target)) {
+    if (this.isDialogOpen && !this.dialog?.nativeElement.contains(event.target)) {
       let newAction = new TotsActionModalForm();
       newAction.key = "cancel";
       newAction.item = null;
@@ -35,6 +36,12 @@ export class TotsFormModalComponent {
     protected dialogRef: MatDialogRef<TotsFormModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: TotsModalConfig
   ) { }
+
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.isDialogOpen = true;
+    });
+  }
 
   onActionForm(action: TotsActionForm) {
     let newAction = new TotsActionModalForm();
