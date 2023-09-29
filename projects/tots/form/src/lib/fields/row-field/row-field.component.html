@@ -1,5 +1,5 @@
 <div class="tots-row-field">
-    <div *ngFor="let field of field.extra.fields" class="tots-field-main-container">
+    <div *ngFor="let field of field.extra.fields" class="tots-field-main-container {{ field.extra.classes ?? '' }}">
         <mat-icon *ngIf="isHasIcon(field)">{{getIconField(field)}}</mat-icon>
         <div class="tots-field-print-container"><tots-base-print-field [field]="field" [group]="group" [onAction]="onAction"></tots-base-print-field></div>
     </div>
