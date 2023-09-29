@@ -1,16 +1,27 @@
 <div class="tots-wizard-form-container">
   <div class="tots-header-wizard-form">
     <h1>{{config.title}}</h1>
-    <div *ngFor="let step of config.steps; let index = index" class="item" (click)="onClickItem(step)">
-      <div class="item-contain">
-        <div class="item-number">{{index + 1}}</div>
-        <div class="item-title">{{step.title}}</div>
-      </div>
-    </div>
+    <mat-stepper labelPosition="bottom" #stepper [selectedIndex]="selectedIndex" (selectionChange)="onStepChange($event)">
+      <mat-step *ngFor="let step of config.steps; let index = index">
+        <ng-template matStepLabel>{{step.title}}</ng-template>
+      </mat-step>
+    </mat-stepper>
   </div>
 
   <div class="tots-body-wizard-form">
     <div *ngIf="selectedItem && selectedItem.isLoading" class="form-sidebar-loading">Loading...</div>
     <tots-form *ngIf="selectedItem && (selectedItem.isLoading == undefined||!selectedItem.isLoading)" #form [fields]="selectedItem.fields" [item]="config.item" (onAction)="onActionForm($event)" [autoSave]="true"></tots-form>
   </div>
+
+  <div class="tots-actions-wizard-form">
+    <div class="wizard-form-left">
+      <button *ngIf="selectedIndex != config.steps.length-1" mat-button (click)="onClickContinue()">SKIP</button>
+    </div>
+    <div class="wizard-form-right">
+      <button *ngIf="selectedIndex > 0" mat-button (click)="onClickBack()">BACK</button>
+      <button *ngIf="selectedIndex != config.steps.length-1" mat-button [color]="'primary'" (click)="onClickContinue()">CONTINUE</button>
+      <button *ngIf="selectedIndex == config.steps.length-1" mat-button [color]="'primary'">SAVE</button>
+    </div>
+  </div>
+
 </div>

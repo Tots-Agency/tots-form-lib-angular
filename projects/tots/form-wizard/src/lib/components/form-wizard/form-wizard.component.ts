@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { TotsConfigWizardForm, TotsStepWizard } from '../../entities/tots-config-wizard-form';
 import { TotsActionForm, TotsFormComponent } from '@tots/form';
+import { CdkStep, StepperSelectionEvent } from '@angular/cdk/stepper';
 
 @Component({
   selector: 'tots-form-wizard',
@@ -29,6 +30,22 @@ export class FormWizardComponent {
     this.selectedItem.isSelected = true;
     // Emit Action
     this.onAction.emit({ key: 'load-item', item: this.selectedItem });
+  }
+
+  onClickBack() {
+    this.onClickItem(this.config.steps[this.selectedIndex-1]);
+  }
+
+  onClickContinue() {
+    this.onClickItem(this.config.steps[this.selectedIndex+1]);
+  }
+
+  onClickSave() {
+    this.onAction.emit({ key: 'submit', item: this.config.item });
+  }
+
+  onStepChange(cdkStep: StepperSelectionEvent) {
+    this.onClickItem(this.config.steps[cdkStep.selectedIndex]);
   }
 
   onClickItem(item: TotsStepWizard) {

@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+/** Angular Material */
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatButtonModule } from '@angular/material/button';
+
 /** Tots Libraries */
 import { TotsFormModule } from '@tots/form';
 
@@ -17,6 +21,9 @@ import { FormWizardComponent } from './components/form-wizard/form-wizard.compon
   ],
   imports: [
     CommonModule,
+
+    MatStepperModule,
+    MatButtonModule,
 
     TotsFormModule,
   ],
