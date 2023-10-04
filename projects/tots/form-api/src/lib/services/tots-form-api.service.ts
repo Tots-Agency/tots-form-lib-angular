@@ -25,7 +25,7 @@ export class TotsFormApiService {
     .pipe(catchError((err, obs) => {
       return obs;
     }))
-    .pipe(tap(item => (item !== false&&item !== undefined) ? dialogRef.close() : undefined));
+    .pipe(tap(item => (item !== false&&item !== undefined && item.key != 'tots-form-init') ? dialogRef.close() : undefined));
   }
 
   verifyActionIfSubmit(config: TotsFormModalApiConfig, action: TotsActionModalForm): Observable<any> {
