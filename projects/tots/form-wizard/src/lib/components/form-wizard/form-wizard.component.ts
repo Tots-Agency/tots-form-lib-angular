@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, EventEmitter, Input, Output, ViewChild } 
 import { TotsConfigWizardForm, TotsStepWizard } from '../../entities/tots-config-wizard-form';
 import { TotsActionForm, TotsFormComponent } from '@tots/form';
 import { CdkStep, StepperSelectionEvent } from '@angular/cdk/stepper';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'tots-form-wizard',
@@ -69,5 +70,21 @@ export class FormWizardComponent {
     newAction.key = action.key;
     newAction.item = action.item;
     this.onAction.emit(newAction);
+  }
+
+  getActiveGroup(): FormGroup {
+    if(this.form == undefined){
+      return new FormGroup({});
+    }
+
+    return this.form.group;
+  }
+
+  isDisabled(): boolean {
+    if(this.form == undefined){
+      return true;
+    }
+
+    return !this.form.group.valid;
   }
 }
