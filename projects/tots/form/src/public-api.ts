@@ -10,6 +10,7 @@ export * from './lib/entities/tots-action-form';
 export * from './lib/entities/tots-modal-config';
 export * from './lib/entities/tots-action-modal-form';
 export * from './lib/entities/tots-buttons-config';
+export * from './lib/entities/tots-item-interface';
 
 /**
  * Services
