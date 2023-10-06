@@ -20,7 +20,7 @@
     <div class="wizard-form-right">
       <button *ngIf="selectedIndex > 0" mat-button (click)="onClickBack()">BACK</button>
       <button *ngIf="selectedIndex != config.steps.length-1" mat-button [color]="'primary'" (click)="onClickContinue()" [disabled]="isDisabled()">CONTINUE</button>
-      <button *ngIf="selectedIndex == config.steps.length-1" mat-button [color]="'primary'" [disabled]="isDisabled()">SAVE</button>
+      <button *ngIf="selectedIndex == config.steps.length-1" mat-button [color]="'primary'" (click)="onClickSave()" [disabled]="isDisabled()">SAVE</button>
     </div>
   </div>
 
