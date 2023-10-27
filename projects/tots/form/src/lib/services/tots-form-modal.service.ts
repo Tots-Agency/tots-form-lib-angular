@@ -16,6 +16,7 @@ export class TotsFormModalService {
   open(config: TotsModalConfig): Observable<TotsActionModalForm> {
     let dialogRef = this.dialog.open(TotsFormModalComponent, {
       width: '700px',
+      panelClass: 'tots-form-modal-overlay-pane',
       data: config
     });
     return dialogRef.componentInstance.actions;

@@ -17,6 +17,7 @@ export class TotsFormApiService {
   open(config: TotsFormModalApiConfig): Observable<any> {
     let dialogRef = this.dialog.open(TotsFormModalComponent, {
       width: '700px',
+      panelClass: 'tots-form-modal-overlay-pane',
       data: config,
       autoFocus: config.autoFocus
     });
