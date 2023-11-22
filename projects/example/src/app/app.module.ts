@@ -18,9 +18,10 @@ import { TotsRangeDateSelectorMenuModule } from 'projects/tots/range-date-select
 import { TotsQuillMentionFieldFormModule } from 'projects/tots/quill-mention-field-form/src/public-api';
 import { MatMenuModule } from '@angular/material/menu';
 import { TotsMonacoEditorFieldFormModule } from 'projects/tots/monaco-editor-field-form/src/public-api';
-import { MonacoEditorModule, NGX_MONACO_EDITOR_CONFIG } from 'ngx-monaco-editor-v2';
-import { TotsFormWizardModule } from 'projects/tots/form-wizard/src/public-api';
+import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
 import { FormWizardComponent } from './pages/form-wizard/form-wizard.component';
+import { wizardDefaultConfig } from './helpers/tots-wizard-form-default-config';
+import { TOTS_WIZARD_FORM_DEFAULT_CONFIG, TotsFormWizardModule } from '@tots/form-wizard';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,12 @@ import { FormWizardComponent } from './pages/form-wizard/form-wizard.component';
     TotsMonacoEditorFieldFormModule,
     TotsFormWizardModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: TOTS_WIZARD_FORM_DEFAULT_CONFIG,
+      useValue: wizardDefaultConfig
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

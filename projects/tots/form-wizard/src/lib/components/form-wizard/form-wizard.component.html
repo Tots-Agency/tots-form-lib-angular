@@ -1,27 +1,51 @@
-<div class="tots-wizard-form-container">
-  <div class="tots-header-wizard-form">
-    <h1>{{config.title}}</h1>
-    <mat-stepper labelPosition="bottom" #stepper [selectedIndex]="selectedIndex" (selectionChange)="onStepChange($event)">
-      <mat-step *ngFor="let step of config.steps; let index = index">
-        <ng-template matStepLabel>{{step.title}}</ng-template>
-      </mat-step>
-    </mat-stepper>
-  </div>
+<div class="tots-wizard-form">
+  
+  <h1>{{config.title}}</h1>
 
-  <div class="tots-body-wizard-form">
-    <div *ngIf="selectedItem && selectedItem.isLoading" class="form-sidebar-loading">Loading...</div>
-    <tots-form *ngIf="selectedItem && (selectedItem.isLoading == undefined||!selectedItem.isLoading)" #form [fields]="selectedItem.fields" [item]="config.item" (onAction)="onActionForm($event)" [autoSave]="true"></tots-form>
-  </div>
+  <div class="tots-wizard-form-container" [ngClass]="{'side-stepper': config.stepperPosition=='side', 'top-stepper':config.stepperPosition=='top'}">
 
-  <div class="tots-actions-wizard-form">
-    <div class="wizard-form-left">
-      <button *ngIf="selectedIndex != config.steps.length-1" mat-button (click)="onClickContinue()">SKIP</button>
+    <div class="tots-wizard-form-header">
+      <mat-stepper labelPosition="bottom" #stepper [orientation]="stepperOrientation" [selectedIndex]="selectedIndex" (selectionChange)="onStepChange($event)">
+        <mat-step *ngFor="let step of config.steps; let index = index">
+          <ng-template matStepLabel>{{step.title}}</ng-template>
+        </mat-step>
+      </mat-stepper>
     </div>
-    <div class="wizard-form-right">
-      <button *ngIf="selectedIndex > 0" mat-button (click)="onClickBack()">BACK</button>
-      <button *ngIf="selectedIndex != config.steps.length-1" mat-button [color]="'primary'" (click)="onClickContinue()" [disabled]="isDisabled()">CONTINUE</button>
-      <button *ngIf="selectedIndex == config.steps.length-1" mat-button [color]="'primary'" (click)="onClickSave()" [disabled]="isDisabled()">SAVE</button>
+  
+    <div class="tots-wizard-form">
+  
+      <div class="tots-wizard-form-body">
+        <mat-tab-group [selectedIndex]="selectedIndex">
+          <mat-tab *ngFor="let step of config.steps">
+            <h1 class="tots-wizard-form-step-title">{{step.title}}</h1>
+            <tots-form #form [fields]="step.fields" [item]="config.item" (onAction)="onActionForm($event)" [autoSave]="true"></tots-form>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+  
+      <div class="tots-wizard-form-actions">
+        <div class="wizard-form-left">
+          <button *ngIf="selectedIndex != config.steps.length-1 && currentStep.hasSkip" mat-button [color]="skipButtonColor" (click)="onClickContinue()" [disabled]="currentStep.isLoading">{{skipButtonCaption}}</button>
+        </div>
+        <div class="wizard-form-right">
+          <button *ngIf="selectedIndex > 0" mat-button [class]="backButtonDirectiveClass" [color]="backButtonColor" (click)="onClickBack()" [disabled]="currentStep.isLoading">{{backButtonCaption}}</button>
+          <button *ngIf="selectedIndex != config.steps.length-1" mat-button [class]="nextSubmitButtonDirectiveClass" [color]="nextSubmitStepButtonColor" (click)="onClickContinue()" [disabled]="isNextSubmitDisabled()">
+            <div class="button_inner_container">
+              <mat-spinner matPrefix *ngIf="currentStep.isLoading" diameter="16" strokeWidth="2"></mat-spinner>
+              <span>{{nextStepButtonCaption}}</span>
+            </div>
+          </button>
+          <button *ngIf="selectedIndex == config.steps.length-1" mat-button [color]="nextSubmitStepButtonColor" (click)="onClickSave()" [disabled]="isNextSubmitDisabled()">
+            <div class="button_inner_container">
+              <mat-spinner matPrefix *ngIf="currentStep.isLoading" diameter="16" strokeWidth="2"></mat-spinner>
+              <span>{{submitButtonCaption}}</span>
+            </div>
+          </button>
+        </div>
+      </div>
+  
     </div>
+
   </div>
 
 </div>

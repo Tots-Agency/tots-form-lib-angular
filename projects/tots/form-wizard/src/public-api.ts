@@ -6,6 +6,7 @@
  * Entities
  */
 export * from './lib/entities/tots-config-wizard-form';
+export * from './lib/entities/tots-wizard-form-default-config';
 
 /**
  * Components
