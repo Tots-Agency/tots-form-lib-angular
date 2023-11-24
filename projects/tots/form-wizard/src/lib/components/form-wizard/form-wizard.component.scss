@@ -1,4 +1,52 @@
-.tots-actions-wizard-form {
+.tots-wizard-form-container {
   display: flex;
-  justify-content: space-between;
+  gap: 30px;
+
+  &.side-stepper {
+    .tots-wizard-form {
+      flex: 1;
+    }
+  }
+
+  &.top-stepper {
+    flex-direction: column;
+  }
+
+  .tots-wizard-form {
+    .tots-wizard-form-body {
+      margin-bottom: 20px;
+
+      ::ng-deep {
+        mat-tab-header.mat-mdc-tab-header {
+          display: none !important;
+        }
+        mat-tab-body.mat-mdc-tab-body {
+          .mat-mdc-tab-body-content {
+            padding: 0;
+          }
+        }
+      }
+
+      .tots-wizard-form-step-title {
+        margin-bottom: 10px;
+      }
+    }
+
+    .tots-wizard-form-actions {
+      display: flex;
+      justify-content: space-between;
+
+      button {
+        .button_inner_container {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+
+          .mat-mdc-progress-spinner {
+            --mdc-circular-progress-active-indicator-color: white;
+          }
+        }
+      }
+    }
+  }
 }

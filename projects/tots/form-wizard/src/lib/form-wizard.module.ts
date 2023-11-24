@@ -4,12 +4,15 @@ import { CommonModule } from '@angular/common';
 /** Angular Material */
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 /** Tots Libraries */
 import { TotsFormModule } from '@tots/form';
 
 /** Components */
-import { FormWizardComponent } from './components/form-wizard/form-wizard.component';
+import { TotsFormWizardComponent } from './components/form-wizard/form-wizard.component';
+import { TOTS_WIZARD_FORM_DEFAULT_CONFIG, TotsWizardFormDefaultConfig } from './entities/tots-wizard-form-default-config';
 
 
 
@@ -17,19 +20,27 @@ import { FormWizardComponent } from './components/form-wizard/form-wizard.compon
   declarations: [
 
     /** Components */
-    FormWizardComponent
+    TotsFormWizardComponent
   ],
   imports: [
     CommonModule,
 
     MatStepperModule,
     MatButtonModule,
+    MatTabsModule,
+    MatProgressSpinnerModule,
 
     TotsFormModule,
   ],
   exports: [
     /** Components */
-    FormWizardComponent
+    TotsFormWizardComponent
+  ],
+  providers: [
+    {
+      provide: TOTS_WIZARD_FORM_DEFAULT_CONFIG,
+      useClass: TotsWizardFormDefaultConfig
+    }
   ]
 })
 export class TotsFormWizardModule { }

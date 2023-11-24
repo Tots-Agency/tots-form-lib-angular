@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { StringFieldComponent, TotsActionForm } from '@tots/form';
 import { TotsConfigWizardForm } from 'projects/tots/form-wizard/src/lib/entities/tots-config-wizard-form';
+import { TotsFormWizardComponent } from 'projects/tots/form-wizard/src/public-api';
 
 @Component({
   selector: 'app-form-wizard',
@@ -9,7 +10,9 @@ import { TotsConfigWizardForm } from 'projects/tots/form-wizard/src/lib/entities
   styleUrls: ['./form-wizard.component.scss']
 })
 export class FormWizardComponent implements OnInit {
+
   config!: TotsConfigWizardForm;
+  @ViewChild("wizardForm") wizardForm! : TotsFormWizardComponent;
 
   constructor() { }
 
@@ -18,9 +21,12 @@ export class FormWizardComponent implements OnInit {
   }
 
   onActionForm(action: TotsActionForm) {
-    if(action.key == 'load-item'){
+    if(action.key == 'next-step'){
       action.item.isLoading = true;
-      setTimeout(() => { action.item.isLoading = false }, 2000);
+      setTimeout(() => {
+        action.item.isLoading = false;
+        this.wizardForm.nextStep();
+      }, 2000);
     }
   }
 
@@ -28,8 +34,9 @@ export class FormWizardComponent implements OnInit {
     this.config = new TotsConfigWizardForm();
     this.config.title = 'Form Wizard Title';
     this.config.item = { subtitle: 'Testing' };
+    this.config.stepperPosition = "side";
+    this.config.backButtonCaption = "ATRÁS (por config)";
     this.config.steps = [
-
       {
         key: 'step-one',
         title: 'Step One',
