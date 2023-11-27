@@ -1,19 +1,21 @@
-import { ChangeDetectorRef, Component, EventEmitter, Inject, Input, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, EventEmitter, Inject, Input, Output, ViewChild } from '@angular/core';
 import { TotsConfigWizardForm, TotsStepWizard } from '../../entities/tots-config-wizard-form';
 import { TotsActionForm, TotsFormButtonMatDirective, TotsFormComponent } from '@tots/form';
 import { StepperOrientation, StepperSelectionEvent } from '@angular/cdk/stepper';
 import { FormGroup } from '@angular/forms';
 import { TOTS_WIZARD_FORM_DEFAULT_CONFIG, TotsWizardFormDefaultConfig } from '../../entities/tots-wizard-form-default-config';
 import { ThemePalette } from '@angular/material/core';
+import { MatStepper } from '@angular/material/stepper';
 
 @Component({
   selector: 'tots-form-wizard',
   templateUrl: './form-wizard.component.html',
   styleUrls: ['./form-wizard.component.scss']
 })
-export class TotsFormWizardComponent {
+export class TotsFormWizardComponent implements AfterViewInit {
 
   @ViewChild('form') form!: TotsFormComponent;
+  @ViewChild(MatStepper) stepper! : MatStepper;
 
   @Input() config!: TotsConfigWizardForm;
 
@@ -27,10 +29,15 @@ export class TotsFormWizardComponent {
   ) {
   }
 
+  //#region Init
   ngOnInit(): void {
     // Emit Action
     this.onAction.emit({ key: 'load-item', item: this.currentStep });
   }
+  ngAfterViewInit() {
+    this.stepper._getIndicatorType = ()=> 'number';
+  }
+  //#endregion
 
   //#region Getters
   protected get currentStep() : TotsStepWizard {

@@ -2,5 +2,5 @@
     <mat-label *ngIf="field.label"> {{ field.label }} </mat-label>
     <textarea matInput [formControl]="input" [placeholder]="getPlaceholder()"></textarea>
     <mat-hint *ngIf="getCaption() != ''" [align]="'end'"> {{getCaption()}} </mat-hint>
-    <mat-error *ngIf="hasError()">{{getMessageError()}}pepe</mat-error>
+    <mat-error *ngIf="hasError()">{{getMessageError()}}</mat-error>
 </mat-form-field>
