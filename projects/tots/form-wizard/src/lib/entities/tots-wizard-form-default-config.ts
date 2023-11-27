@@ -6,26 +6,26 @@ export const TOTS_WIZARD_FORM_DEFAULT_CONFIG = new InjectionToken<TotsWizardForm
 
 @Injectable()
 export class TotsWizardFormDefaultConfig {
-  backButtonCaption: string = "BACK";
+  backButtonCaption? : string = "BACK";
   /**
    * Material button style for the next step and submit buttons
    */
-  backButtonMaterialDirective : TotsFormButtonMatDirective = "mat-button";
+  backButtonMaterialDirective? : TotsFormButtonMatDirective = "mat-button";
   /**
    * Material button color for the next step and submit buttons
    */
-  backButtonColor : ThemePalette = undefined;
+  backButtonColor? : ThemePalette = undefined;
 
 
-  skipButtonCaption: string = "SKIP";
+  skipButtonCaption? : string = "SKIP";
   /**
    * Material button style for the next step and submit buttons
    */
-  skipButtonMaterialDirective : TotsFormButtonMatDirective = "mat-button";
+  skipButtonMaterialDirective? : TotsFormButtonMatDirective = "mat-button";
   /**
    * Material button color for the next step and submit buttons
    */
-  skipButtonColor : ThemePalette = undefined;
+  skipButtonColor? : ThemePalette = undefined;
 
 
   /**
@@ -35,20 +35,20 @@ export class TotsWizardFormDefaultConfig {
   /**
    * The caption that will be displayed in the last step.
    */
-  submitButtonCaption: string = "SAVE";
+  submitButtonCaption? : string = "SAVE";
   /**
    * Material button style for the next step and submit buttons
    */
-  nextSubmitButtonMaterialDirective : TotsFormButtonMatDirective = "mat-flat-button";
+  nextSubmitButtonMaterialDirective? : TotsFormButtonMatDirective = "mat-flat-button";
   /**
    * Material button color for the next step and submit buttons
    */
-  nextSubmitButtonColor : ThemePalette = "primary";
+  nextSubmitButtonColor? : ThemePalette = "primary";
 
   /**
    * Text that will appearwhen switching steps
    */
-  loadingCaption : string = "Loading...";
+  loadingCaption? : string = "Loading...";
 
-  stepperPosition : "top"|"side" = "top";
+  stepperPosition? : "top"|"side" = "top";
 }

@@ -12,6 +12,14 @@
     flex-direction: column;
   }
 
+  .tots-wizard-form-header {
+
+    .disable_click {
+      pointer-events: none;
+      cursor: not-allowed;
+    }
+  }
+
   .tots-wizard-form {
     .tots-wizard-form-body {
       margin-bottom: 20px;
