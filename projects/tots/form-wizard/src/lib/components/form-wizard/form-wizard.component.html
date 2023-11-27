@@ -5,7 +5,7 @@
   <div class="tots-wizard-form-container" [ngClass]="{'side-stepper': config.stepperPosition=='side', 'top-stepper':config.stepperPosition=='top'}">
 
     <div class="tots-wizard-form-header">
-      <mat-stepper labelPosition="bottom" #stepper [orientation]="stepperOrientation" [selectedIndex]="selectedIndex" (selectionChange)="onStepChange($event)">
+      <mat-stepper labelPosition="bottom" #stepper [linear]="true" [orientation]="stepperOrientation" [selectedIndex]="selectedIndex" (selectionChange)="onStepChange($event)" class="disable_click">
         <mat-step *ngFor="let step of config.steps; let index = index">
           <ng-template matStepLabel>{{step.title}}</ng-template>
         </mat-step>
