@@ -134,10 +134,6 @@ export class TotsFormWizardComponent implements AfterViewInit {
   }
 
   protected isNextSubmitDisabled(): boolean {
-    if(this.form == undefined){
-      return true;
-    }
-
     return this.form.group.invalid || !!this.currentStep.isLoading;
   }
 

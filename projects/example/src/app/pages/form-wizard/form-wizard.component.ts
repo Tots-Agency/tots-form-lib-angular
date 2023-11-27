@@ -41,7 +41,8 @@ export class FormWizardComponent implements OnInit {
         key: 'step-one',
         title: 'Step One',
         fields: [
-          { key: 'title', component: StringFieldComponent, label: 'Titulo', validators: [Validators.required], extra: { caption: 'Este se mostrara publicamente...', icon: 'home' }, errors: [{ name: 'required', message: 'You must enter a value' }] },
+          { key: 'title', component: StringFieldComponent, label: 'Titulo' },
+          //{ key: 'title', component: StringFieldComponent, label: 'Titulo', validators: [Validators.required], extra: { caption: 'Este se mostrara publicamente...', icon: 'home' }, errors: [{ name: 'required', message: 'You must enter a value' }] },
         ]
       },
       {
