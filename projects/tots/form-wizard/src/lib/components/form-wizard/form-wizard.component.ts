@@ -23,12 +23,11 @@ export class TotsFormWizardComponent {
 
   constructor(
     protected changeDetector: ChangeDetectorRef,
-    @Inject(TOTS_WIZARD_FORM_DEFAULT_CONFIG) private defaultConfig:TotsWizardFormDefaultConfig
+    @Inject(TOTS_WIZARD_FORM_DEFAULT_CONFIG) protected defaultConfig:TotsWizardFormDefaultConfig
   ) {
   }
 
   ngOnInit(): void {
-    console.log(this.defaultConfig);
     // Emit Action
     this.onAction.emit({ key: 'load-item', item: this.currentStep });
   }
@@ -38,22 +37,22 @@ export class TotsFormWizardComponent {
     return this.config.steps[this.selectedIndex];
   }
 
-  protected get backButtonCaption() : string {
+  protected get backButtonCaption() : string | undefined {
     return this.config.backButtonCaption || this.defaultConfig.backButtonCaption;
   }
   protected get backButtonColor() : ThemePalette {
     return this.defaultConfig.backButtonColor;
   }
-  protected get backButtonDirectiveClass() : string {
+  protected get backButtonDirectiveClass() : string | undefined {
     return this.getMaterialButtonClasses(this.defaultConfig.backButtonMaterialDirective);
   }
 
-  protected get nextStepButtonCaption() : string {
+  protected get nextStepButtonCaption() : string | undefined {
     if (this.currentStep.isLoading)
       return this.defaultConfig.loadingCaption;
     return this.config.nextStepButtonCaption || this.defaultConfig.nextStepButtonCaption!;
   }
-  protected get submitButtonCaption() : string {
+  protected get submitButtonCaption() : string | undefined {
     if (this.currentStep.isLoading)
       return this.defaultConfig.loadingCaption;
     return this.config.submitButtonCaption || this.defaultConfig.submitButtonCaption;
@@ -61,21 +60,21 @@ export class TotsFormWizardComponent {
   protected get nextSubmitStepButtonColor() : ThemePalette {
     return this.defaultConfig.nextSubmitButtonColor;
   }
-  protected get nextSubmitButtonDirectiveClass() : string {
+  protected get nextSubmitButtonDirectiveClass() : string | undefined {
     return this.getMaterialButtonClasses(this.defaultConfig.nextSubmitButtonMaterialDirective);
   }
 
-  protected get skipButtonCaption() : string {
+  protected get skipButtonCaption() : string | undefined {
     return this.config.skipButtonCaption || this.defaultConfig.skipButtonCaption;
   }
   protected get skipButtonColor() : ThemePalette {
     return this.defaultConfig.skipButtonColor;
   }
-  protected get skipButtonDirectiveClass() : string {
+  protected get skipButtonDirectiveClass() : string | undefined {
     return this.getMaterialButtonClasses(this.defaultConfig.skipButtonMaterialDirective);
   }
 
-  protected get loadingCaption() : string {
+  protected get loadingCaption() : string | undefined {
     return this.defaultConfig.loadingCaption;
   }
 
@@ -88,12 +87,13 @@ export class TotsFormWizardComponent {
   }
   //#endregion
 
-  private getMaterialButtonClasses(directive:TotsFormButtonMatDirective) {
+  private getMaterialButtonClasses(directive:TotsFormButtonMatDirective|undefined) {
     switch (directive) {
       case "mat-button" : return "mat-mdc-button";
       case "mat-flat-button" : return "mat-mdc-unelevated-button mdc-button--unelevated";
       case "mat-raised-button" : return "mat-mdc-raised-button mdc-button--raised";
       case "mat-stroked-button" : return "mat-mdc-outlined-button mdc-button--outlined";
+      default : return undefined;
     }
   }
 
@@ -117,9 +117,6 @@ export class TotsFormWizardComponent {
     // Set active step
     this.config.steps.forEach(i => i.isSelected = false);
     step.isSelected = true;
-
-    // Reset form
-    this.changeDetector.detectChanges();
 
     // Load Forms
     this.selectedIndex = this.config.steps.indexOf(step);
