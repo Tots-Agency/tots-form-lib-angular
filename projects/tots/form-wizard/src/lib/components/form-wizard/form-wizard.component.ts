@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, EventEmitter, Inject, Input, Output, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, EventEmitter, Inject, Input, OnInit, Output, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { TotsConfigWizardForm, TotsStepWizard } from '../../entities/tots-config-wizard-form';
 import { TotsActionForm, TotsFormButtonMatDirective, TotsFormComponent } from '@tots/form';
 import { StepperOrientation, StepperSelectionEvent } from '@angular/cdk/stepper';
@@ -12,14 +12,14 @@ import { MatStepper } from '@angular/material/stepper';
   templateUrl: './form-wizard.component.html',
   styleUrls: ['./form-wizard.component.scss']
 })
-export class TotsFormWizardComponent implements AfterViewInit {
+export class TotsFormWizardComponent implements OnInit, AfterViewInit {
 
-  @ViewChildren('form') forms!: QueryList<TotsFormComponent>;
-  @ViewChild(MatStepper) stepper! : MatStepper;
+  @ViewChildren('form') protected forms!: QueryList<TotsFormComponent>;
+  @ViewChild(MatStepper) protected stepper! : MatStepper;
 
   @Input() config!: TotsConfigWizardForm;
 
-  @Output() onAction = new EventEmitter<TotsActionForm>();
+  @Output() private onAction = new EventEmitter<TotsActionForm>();
 
   selectedIndex: number = 0;
 
