@@ -11,7 +11,7 @@
         </mat-step>
       </mat-stepper>
     </div>
-  
+    
     <div class="tots-wizard-form">
   
       <div class="tots-wizard-form-body">
@@ -22,19 +22,23 @@
           </mat-tab>
         </mat-tab-group>
       </div>
-  
+
       <div class="tots-wizard-form-actions">
         <div class="wizard-form-left">
           <button *ngIf="selectedIndex != config.steps.length-1 && currentStep.hasSkip" mat-button [color]="skipButtonColor" (click)="onClickContinue()" [disabled]="currentStep.isLoading">{{skipButtonCaption}}</button>
         </div>
+        
         <div class="wizard-form-right">
+  
           <button *ngIf="selectedIndex > 0" mat-button [class]="backButtonDirectiveClass" [color]="backButtonColor" (click)="onClickBack()" [disabled]="currentStep.isLoading">{{backButtonCaption}}</button>
+  
           <button *ngIf="selectedIndex != config.steps.length-1" mat-button [class]="nextSubmitButtonDirectiveClass" [color]="nextSubmitStepButtonColor" (click)="onClickContinue()" [disabled]="isNextSubmitDisabled()">
             <div class="button_inner_container">
               <mat-spinner matPrefix *ngIf="currentStep.isLoading" diameter="16" strokeWidth="2"></mat-spinner>
               <span>{{nextStepButtonCaption}}</span>
             </div>
           </button>
+          
           <button *ngIf="selectedIndex == config.steps.length-1" mat-button [color]="nextSubmitStepButtonColor" (click)="onClickSave()" [disabled]="isNextSubmitDisabled()">
             <div class="button_inner_container">
               <mat-spinner matPrefix *ngIf="currentStep.isLoading" diameter="16" strokeWidth="2"></mat-spinner>
@@ -45,7 +49,6 @@
       </div>
   
     </div>
-
   </div>
 
 </div>
