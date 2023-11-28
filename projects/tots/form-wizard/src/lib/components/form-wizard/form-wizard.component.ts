@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, EventEmitter, Inject, Input, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, EventEmitter, Inject, Input, Output, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { TotsConfigWizardForm, TotsStepWizard } from '../../entities/tots-config-wizard-form';
 import { TotsActionForm, TotsFormButtonMatDirective, TotsFormComponent } from '@tots/form';
 import { StepperOrientation, StepperSelectionEvent } from '@angular/cdk/stepper';
@@ -14,7 +14,7 @@ import { MatStepper } from '@angular/material/stepper';
 })
 export class TotsFormWizardComponent implements AfterViewInit {
 
-  @ViewChild('form') form!: TotsFormComponent;
+  @ViewChildren('form') forms!: QueryList<TotsFormComponent>;
   @ViewChild(MatStepper) stepper! : MatStepper;
 
   @Input() config!: TotsConfigWizardForm;
@@ -36,6 +36,7 @@ export class TotsFormWizardComponent implements AfterViewInit {
   }
   ngAfterViewInit() {
     this.stepper._getIndicatorType = ()=> 'number';
+    this.changeDetector.detectChanges();
   }
   //#endregion
 
@@ -134,7 +135,7 @@ export class TotsFormWizardComponent implements AfterViewInit {
   }
 
   protected isNextSubmitDisabled(): boolean {
-    return this.form.group.invalid || !!this.currentStep.isLoading;
+    return this.forms?.toArray()[this.selectedIndex].group.invalid || !!this.currentStep.isLoading;
   }
 
   protected onActionForm(action: TotsActionForm) {
@@ -147,11 +148,18 @@ export class TotsFormWizardComponent implements AfterViewInit {
 
   //#region Public
   getActiveGroup(): FormGroup {
-    if(this.form == undefined){
+    if (this.forms == undefined){
       return new FormGroup({});
     }
 
-    return this.form.group;
+    let fg = new FormGroup({});
+    this.forms.toArray().map(f=> f.group).forEach((g:FormGroup)=> {
+      for (const controlName in g.controls) {
+        fg.addControl(controlName, g.controls[controlName]);
+      }
+    });
+    
+    return fg;
   }
   nextStep() {
     this.onClickItem(this.config.steps[this.selectedIndex+1]);

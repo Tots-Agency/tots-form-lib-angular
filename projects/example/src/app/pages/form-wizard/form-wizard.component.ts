@@ -55,4 +55,11 @@ export class FormWizardComponent implements OnInit {
 
     ];
   }
+
+  getForm() {
+    let a = this.wizardForm.getActiveGroup();
+    console.log("----------------------");
+    console.log(a.valid);
+    console.log(a.value);
+  }
 }
