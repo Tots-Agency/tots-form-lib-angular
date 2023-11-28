@@ -147,9 +147,9 @@ export class TotsFormWizardComponent implements OnInit, AfterViewInit {
 
 
   //#region Public
-  getActiveGroup(): FormGroup {
+  getActiveGroup(): FormGroup | undefined {
     if (this.forms == undefined){
-      return new FormGroup({});
+      return undefined;
     }
 
     let fg = new FormGroup({});
