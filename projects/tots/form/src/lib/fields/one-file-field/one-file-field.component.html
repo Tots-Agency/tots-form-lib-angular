@@ -17,7 +17,11 @@
     <div *ngIf="input.value == undefined" class="file-not-uploaded" (click)="inputFile.click()">
         <div class="tots-file-name">
             <mat-icon>insert_drive_file</mat-icon>
-            <span>{{field.label}}</span>
+            <tots-outer-label
+                *ngIf="field.label"
+                [label]="field.label"
+                [isRequired]="isRequired()"
+            ></tots-outer-label>
         </div>
     </div>
 </div>

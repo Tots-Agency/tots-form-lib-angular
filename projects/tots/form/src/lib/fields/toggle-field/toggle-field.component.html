@@ -1,1 +1,7 @@
-<mat-slide-toggle [color]="matColor" [formControl]="input">{{ field.label }}</mat-slide-toggle>
+<mat-slide-toggle [color]="matColor" [formControl]="input">
+    <tots-outer-label
+        *ngIf="field.label"
+        [label]="field.label"
+        [isRequired]="isRequired()"
+    ></tots-outer-label>
+</mat-slide-toggle>

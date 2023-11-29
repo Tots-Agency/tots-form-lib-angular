@@ -1,3 +1,9 @@
+<tots-outer-label
+    *ngIf="field.label"
+    [label]="field.label"
+    [isRequired]="isRequired()"
+></tots-outer-label>
+
 <div class="avatar-photo-field">
     <input type="hidden" [formControl]="input" />
 
