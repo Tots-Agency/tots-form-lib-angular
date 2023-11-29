@@ -4,7 +4,11 @@
 
     <div class="tots-photo-upload-button" (click)="inputFile.click();">
         <mat-icon>home</mat-icon>
-        <h6>{{field.label}}</h6>
+        <tots-outer-label
+            *ngIf="field.label && totsFormDefaultConfig.labelPosition==eTotsFormLabelPosition.ABOVE"
+            [label]="field.label"
+            [isRequired]="isRequired()"
+        ></tots-outer-label>
     </div>
     <div *ngIf="input.value" class="tots-photos-list">
         <div class="tots-file" *ngFor="let file of input.value">

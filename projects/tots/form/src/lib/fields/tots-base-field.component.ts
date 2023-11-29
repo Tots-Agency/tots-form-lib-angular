@@ -1,9 +1,11 @@
-import { Component, EventEmitter, Input, OnInit } from "@angular/core";
-import { UntypedFormControl, UntypedFormGroup } from "@angular/forms";
+import { Component, Inject, Input, OnInit } from "@angular/core";
+import { UntypedFormControl, UntypedFormGroup, Validators } from "@angular/forms";
 import { Subject } from "rxjs";
 import { TotsActionForm } from "../entities/tots-action-form";
 import { TotsFieldForm } from "../entities/tots-field-form";
 import { TotsFormHelper } from "../helpers/tots-form-helper";
+import { TOTS_FORM_DEFAULT_CONFIG, TotsFormDefaultConfig, eTotsFormLabelPosition } from "../entities/tots-form-default-config";
+import { MatFormFieldAppearance } from "@angular/material/form-field";
 
 @Component({
     selector: 'tots-base-field',
@@ -17,15 +19,16 @@ export class TotsBaseFieldComponent implements OnInit {
 
     input!: UntypedFormControl;
 
-    constructor() { }
+    protected eTotsFormLabelPosition = eTotsFormLabelPosition;
+    
+    constructor(@Inject(TOTS_FORM_DEFAULT_CONFIG) protected totsFormDefaultConfig: TotsFormDefaultConfig) { }
 
     ngOnInit(): void {
         this.input = TotsFormHelper.createFormControl(this.field, this.group);
     }
 
-    getAppearance() {
-        if(this.field.extra && this.field.extra.appearance){ return this.field.extra.appearance; }
-        return 'fill';
+    getAppearance() : MatFormFieldAppearance {
+        return this.field.extra?.appearance;
     }
 
     getClases() {
@@ -41,6 +44,9 @@ export class TotsBaseFieldComponent implements OnInit {
     isDisabled(): boolean {
         if(this.field.extra && this.field.extra.disabled){ return this.field.extra.disabled; }
         return false;
+    }
+    isRequired() : boolean {
+      return !!this.field.validators?.includes(Validators.required)
     }
 
     hasError(): boolean {

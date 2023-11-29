@@ -3,9 +3,14 @@
     <input #inputFile type="file" style="display: none;" (change)="onChange($event.target)">
 
     <div class="tots-header-files">
-        <h6>{{field.label}}</h6>
+        <tots-outer-label
+            *ngIf="field.label"
+            [label]="field.label"
+            [isRequired]="isRequired()"
+        ></tots-outer-label>
         <button mat-button (click)="inputFile.click()">{{field.extra.textAddButton}}</button>
     </div>
+
     <div *ngIf="input.value" class="tots-files-list">
         <div class="tots-file" *ngFor="let file of input.value">
             <div class="tots-file-name">
@@ -18,4 +23,6 @@
                 </button>
             </div>
         </div>
+    </div>
+    
 </div>

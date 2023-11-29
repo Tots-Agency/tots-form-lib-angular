@@ -4,6 +4,7 @@ import { TotsFieldForm } from '../../entities/tots-field-form';
 import { TotsBaseFieldComponent } from '../tots-base-field.component';
 import { ThemePalette } from '@angular/material/core';
 import { TotsFormButtonMatDirective, TOTS_FORM_BUTTONS_CONFIG, TotsFormButtonsConfig } from '../../entities/tots-buttons-config';
+import { TOTS_FORM_DEFAULT_CONFIG, TotsFormDefaultConfig } from '../../entities/tots-form-default-config';
 
 @Component({
   selector: 'tots-submit-button-field',
@@ -15,8 +16,11 @@ export class SubmitButtonFieldComponent extends TotsBaseFieldComponent implement
   matColor : ThemePalette;
   matButtonDirective! : TotsFormButtonMatDirective;
 
-  constructor(@Inject(TOTS_FORM_BUTTONS_CONFIG) protected totsButtonConfig: TotsFormButtonsConfig) {
-    super();
+  constructor(
+    @Inject(TOTS_FORM_BUTTONS_CONFIG) protected totsButtonConfig: TotsFormButtonsConfig,
+    @Inject(TOTS_FORM_DEFAULT_CONFIG) totsFormDefaultConfig: TotsFormDefaultConfig
+  ) {
+    super(totsFormDefaultConfig);
   }
 
   override ngOnInit(): void {

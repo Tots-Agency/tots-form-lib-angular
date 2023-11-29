@@ -1,5 +1,11 @@
+<tots-outer-label
+    *ngIf="field.label && totsFormDefaultConfig.labelPosition==eTotsFormLabelPosition.ABOVE"
+    [label]="field.label"
+    [isRequired]="isRequired()"
+></tots-outer-label>
+
 <mat-form-field *ngIf="input" [appearance]="getAppearance()" class="{{getClases()}}">
-    <mat-label *ngIf="field.label"> {{ field.label }} </mat-label>
+    <mat-label *ngIf="field.label && totsFormDefaultConfig.labelPosition==eTotsFormLabelPosition.INSIDE"> {{ field.label }} </mat-label>
 
     <input matInput type="text" [formControl]="inputQuery" [matAutocomplete]="autoInput" [placeholder]="getPlaceholder()">
 

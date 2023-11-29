@@ -6,7 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 /** Angular Material */
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -20,9 +20,11 @@ import { TotsLoadingModule } from '@tots/loading';
 
 /** Entities */
 import { TOTS_FORM_BUTTONS_CONFIG, TotsFormButtonsConfig } from './entities/tots-buttons-config';
+import { TOTS_FORM_DEFAULT_CONFIG, TotsFormDefaultConfig } from './entities/tots-form-default-config';
 
 /** Components */
 import { TotsFormComponent } from './components/tots-form/tots-form.component';
+import { TotsOuterLabelComponent } from './components/outer-label/outer-label.component';
 
 /** Fields */
 import { BasePrintFieldComponent } from './fields/base-print-field/base-print-field.component';
@@ -51,6 +53,8 @@ import { ToggleFieldComponent } from './fields/toggle-field/toggle-field.compone
   declarations: [
     // Components
     TotsFormComponent,
+    TotsOuterLabelComponent,
+
     // Fields
     BasePrintFieldComponent,
     StringFieldComponent,
@@ -109,7 +113,19 @@ import { ToggleFieldComponent } from './fields/toggle-field/toggle-field.compone
     {
       provide: TOTS_FORM_BUTTONS_CONFIG,
       useClass: TotsFormButtonsConfig
-    }
+    },
+    {
+      provide: TOTS_FORM_DEFAULT_CONFIG,
+      useClass: TotsFormDefaultConfig
+    },
+
+    // Probando si anda bien sin tener que tocar appearance como variable dentro de TotsForm
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, 
+      useValue: {
+        appearance: "outline"
+      }
+    },
   ]
 })
 export class TotsFormModule { }

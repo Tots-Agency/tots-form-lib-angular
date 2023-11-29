@@ -4,6 +4,7 @@ import { TotsFieldForm } from '../../entities/tots-field-form';
 import { TotsBaseFieldComponent } from '../tots-base-field.component';
 import { ThemePalette } from '@angular/material/core';
 import { TOTS_FORM_BUTTONS_CONFIG, TotsFormButtonMatDirective, TotsFormButtonsConfig } from '../../entities/tots-buttons-config';
+import { TOTS_FORM_DEFAULT_CONFIG, TotsFormDefaultConfig } from '../../entities/tots-form-default-config';
 
 @Component({
   selector: 'tots-submit-and-cancel-buttons-field',
@@ -19,8 +20,11 @@ export class SubmitAndCancelButtonsFieldComponent extends TotsBaseFieldComponent
   cancelMatColor! : ThemePalette;
   cancelMatButtonDirective! : TotsFormButtonMatDirective;
 
-  constructor(@Inject(TOTS_FORM_BUTTONS_CONFIG) protected totsButtonConfig: TotsFormButtonsConfig) {
-    super();
+  constructor(
+    @Inject(TOTS_FORM_BUTTONS_CONFIG) protected totsButtonConfig: TotsFormButtonsConfig,
+    @Inject(TOTS_FORM_DEFAULT_CONFIG) totsFormDefaultConfig: TotsFormDefaultConfig
+  ) {
+    super(totsFormDefaultConfig);
   }
 
   override ngOnInit(): void {
