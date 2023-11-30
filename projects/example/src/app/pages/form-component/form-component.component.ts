@@ -17,6 +17,7 @@ import { MentionHtmlFieldComponent } from 'projects/tots/quill-mention-field-for
 /** Mention Style */
 import Quill from 'quill';
 import { MonacoEditorFieldComponent } from 'projects/tots/monaco-editor-field-form/src/public-api';
+import { StringArrayFieldComponent } from 'projects/tots/form/src/lib/fields/string-array-field/string-array-field.component';
 
 const MentionBlot = Quill.import("blots/mention");
 class StyledMentionBlot extends MentionBlot {
@@ -54,7 +55,7 @@ export class FormComponentComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.configForm();
+    this.configForm2();
     this.loadConfigUserSelector();
   }
 
@@ -66,7 +67,7 @@ export class FormComponentComponent implements OnInit {
     this.fields = [
       // Campo string
       { key: 'title', component: StringFieldComponent, label: 'Titulo', validators: [Validators.required], extra: { caption: 'Este se mostrara publicamente...', icon: 'home', placeholder: "Placeholder", appearance: "fill" }, errors: [{ name: 'required', message: 'You must enter a value' }] },
-
+      
       // Campo Row
       { key: '', component: RowFieldComponent, extra: {
         fields: [
@@ -183,6 +184,13 @@ export class FormComponentComponent implements OnInit {
       } },
 
       { key: "toggle", component: ToggleFieldComponent, label: "Toggle" },
+
+      { key: 'submit', component: SubmitButtonFieldComponent, label: 'Enviar' }
+    ];
+  }
+  configForm2() {
+    this.fields = [
+      { key: 'array', component: StringArrayFieldComponent, label: 'String array', validators: [Validators.required, Validators.maxLength(10)], extra: { caption: 'Este se mostrara publicamente...', placeholder: "Array", appearance: "fill" }, errors: [{ name: 'required', message: 'You must enter a value' }, { name: 'maxlength', message: 'Max 10' }] },
 
       { key: 'submit', component: SubmitButtonFieldComponent, label: 'Enviar' }
     ];

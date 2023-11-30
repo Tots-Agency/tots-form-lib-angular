@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormComponentComponent } from './pages/form-component/form-component.component';
 
 import { TotsCoreModule } from '@tots/core';
-import { TotsFormModule, TOTS_FORM_DEFAULT_CONFIG } from 'projects/tots/form/src/public-api';
+import { TotsFormModule, TOTS_FORM_DEFAULT_CONFIG, TOTS_STRING_ARRAY_CONFIG } from 'projects/tots/form/src/public-api';
 import { TOTS_WIZARD_FORM_DEFAULT_CONFIG, TotsFormWizardModule } from '@tots/form-wizard';
 
 import { wizardDefaultConfig } from './helpers/tots-wizard-form-default-config';
@@ -25,6 +25,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { TotsMonacoEditorFieldFormModule } from 'projects/tots/monaco-editor-field-form/src/public-api';
 import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
 import { FormWizardComponent } from './pages/form-wizard/form-wizard.component';
+import { totsStringArrayConfig } from './helpers/tots-string-array-config';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,10 @@ import { FormWizardComponent } from './pages/form-wizard/form-wizard.component';
     {
       provide: TOTS_FORM_DEFAULT_CONFIG,
       useValue: formDefaultConfig
+    },
+    {
+      provide: TOTS_STRING_ARRAY_CONFIG,
+      useValue: totsStringArrayConfig
     }
   ],
   bootstrap: [AppComponent]
