@@ -8,5 +8,5 @@ export enum eTotsFormLabelPosition {
 
 @Injectable()
 export class TotsFormDefaultConfig {
-  labelPosition : eTotsFormLabelPosition = eTotsFormLabelPosition.INSIDE;
+  labelPosition? : eTotsFormLabelPosition = eTotsFormLabelPosition.INSIDE;
 }
