@@ -6,7 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 /** Angular Material */
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
-import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule } from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -21,6 +21,7 @@ import { TotsLoadingModule } from '@tots/loading';
 /** Entities */
 import { TOTS_FORM_BUTTONS_CONFIG, TotsFormButtonsConfig } from './entities/tots-buttons-config';
 import { TOTS_FORM_DEFAULT_CONFIG, TotsFormDefaultConfig } from './entities/tots-form-default-config';
+import { TOTS_STRING_ARRAY_CONFIG, TotsStringArrayConfig } from './entities/tots-string-array-config';
 
 /** Components */
 import { TotsFormComponent } from './components/tots-form/tots-form.component';
@@ -48,6 +49,7 @@ import { SubmitAndCancelButtonsFieldComponent } from './fields/submit-and-cancel
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { SelectObsFieldComponent } from './fields/select-obs-field/select-obs-field.component';
 import { ToggleFieldComponent } from './fields/toggle-field/toggle-field.component';
+import { StringArrayFieldComponent } from './fields/string-array-field/string-array-field.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +77,8 @@ import { ToggleFieldComponent } from './fields/toggle-field/toggle-field.compone
     PhotosFieldComponent,
     SubmitAndCancelButtonsFieldComponent,
     SelectObsFieldComponent,
-    ToggleFieldComponent
+    ToggleFieldComponent,
+    StringArrayFieldComponent
   ],
   imports: [
     CommonModule,
@@ -118,13 +121,9 @@ import { ToggleFieldComponent } from './fields/toggle-field/toggle-field.compone
       provide: TOTS_FORM_DEFAULT_CONFIG,
       useClass: TotsFormDefaultConfig
     },
-
-    // Probando si anda bien sin tener que tocar appearance como variable dentro de TotsForm
     {
-      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, 
-      useValue: {
-        appearance: "outline"
-      }
+      provide: TOTS_STRING_ARRAY_CONFIG,
+      useClass: TotsStringArrayConfig
     },
   ]
 })
