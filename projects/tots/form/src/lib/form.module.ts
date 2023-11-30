@@ -118,14 +118,6 @@ import { ToggleFieldComponent } from './fields/toggle-field/toggle-field.compone
       provide: TOTS_FORM_DEFAULT_CONFIG,
       useClass: TotsFormDefaultConfig
     },
-
-    // Probando si anda bien sin tener que tocar appearance como variable dentro de TotsForm
-    {
-      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, 
-      useValue: {
-        appearance: "outline"
-      }
-    },
   ]
 })
 export class TotsFormModule { }
