@@ -55,7 +55,7 @@ export class FormComponentComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.configForm2();
+    this.configForm();
     this.loadConfigUserSelector();
   }
 
@@ -77,11 +77,16 @@ export class FormComponentComponent implements OnInit {
       },
       
       // Campo de selector normal
-      { key: 'type', component: SelectFieldComponent, label: 'Tipo', validators: [Validators.required], extra: { options: [
-        { id: 1, title: 'Tipo 1'},
-        { id: 2, title: 'Tipo 2'},
-        { id: 3, title: 'Tipo 3'},
-      ] } },
+      { key: 'type', component: SelectFieldComponent, label: 'Tipo', validators: [Validators.required],
+        extra: {
+          options: [
+            { id: 1, name: 'Tipo 1'},
+            { id: 2, name: 'Tipo 2'},
+            { id: 3, name: 'Tipo 3'},
+          ],
+          display_key: "name"
+        }
+      },
       // Campo Avatar
       { key: 'avatar', component: AvatarPhotoFieldComponent, label: 'Avatar', extra: { label: "Avatar label", button_text: 'Subir imagen', remove_text: 'Eliminar imagen', service: { upload: () => { return of({ url: 'https://storage.googleapis.com/tots-send-public/Frame%2028.png' }) } } } },
       // Campo Date
