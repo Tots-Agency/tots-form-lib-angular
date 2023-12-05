@@ -1,4 +1,5 @@
-import { TotsFieldForm, TotsValidator } from "../entities/tots-field-form";
+import { TotsFieldForm } from "../entities/tots-field-form";
+import { TotsValidator } from "../entities/tots-validator";
 import { OneFileFieldComponent } from "../fields/one-file-field/one-file-field.component";
 import { Observable } from "rxjs";
 

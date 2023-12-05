@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { TotsBaseFieldComponent } from '@tots/form';
 
 @Component({
-  selector: 'tots-html-field',
-  templateUrl: './html-field.component.html',
-  styleUrls: ['./html-field.component.scss']
+  selector: 'tots-quill-field',
+  templateUrl: './quill-field.component.html',
+  styleUrls: ['./quill-field.component.scss']
 })
-export class HtmlFieldComponent extends TotsBaseFieldComponent implements OnInit {
+export class QuillFieldComponent extends TotsBaseFieldComponent implements OnInit {
 
   heightEditor = 250;
   theme?: string;

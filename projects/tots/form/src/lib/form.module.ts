@@ -21,6 +21,7 @@ import { TotsLoadingModule } from '@tots/loading';
 /** Entities */
 import { TOTS_FORM_BUTTONS_CONFIG, TotsFormButtonsConfig } from './entities/tots-buttons-config';
 import { TOTS_FORM_DEFAULT_CONFIG, TotsFormDefaultConfig } from './entities/tots-form-default-config';
+import { TOTS_STRING_ARRAY_CONFIG, TotsStringArrayConfig } from './entities/tots-string-array-config';
 
 /** Components */
 import { TotsFormComponent } from './components/tots-form/tots-form.component';
@@ -48,6 +49,7 @@ import { SubmitAndCancelButtonsFieldComponent } from './fields/submit-and-cancel
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { SelectObsFieldComponent } from './fields/select-obs-field/select-obs-field.component';
 import { ToggleFieldComponent } from './fields/toggle-field/toggle-field.component';
+import { StringArrayFieldComponent } from './fields/string-array-field/string-array-field.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +77,8 @@ import { ToggleFieldComponent } from './fields/toggle-field/toggle-field.compone
     PhotosFieldComponent,
     SubmitAndCancelButtonsFieldComponent,
     SelectObsFieldComponent,
-    ToggleFieldComponent
+    ToggleFieldComponent,
+    StringArrayFieldComponent
   ],
   imports: [
     CommonModule,
@@ -100,6 +103,7 @@ import { ToggleFieldComponent } from './fields/toggle-field/toggle-field.compone
   ],
   exports: [
     TotsFormComponent,
+    TotsOuterLabelComponent,
 
     /** Fields */
     BasePrintFieldComponent,
@@ -117,6 +121,10 @@ import { ToggleFieldComponent } from './fields/toggle-field/toggle-field.compone
     {
       provide: TOTS_FORM_DEFAULT_CONFIG,
       useClass: TotsFormDefaultConfig
+    },
+    {
+      provide: TOTS_STRING_ARRAY_CONFIG,
+      useClass: TotsStringArrayConfig
     },
   ]
 })

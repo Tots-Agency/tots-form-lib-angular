@@ -1,6 +1,7 @@
 import { Observable } from "rxjs";
-import { TotsFieldForm, TotsValidator } from "../entities/tots-field-form";
+import { TotsFieldForm } from "../entities/tots-field-form";
 import { FilesListFieldComponent } from "../fields/files-list-field/files-list-field.component";
+import { TotsValidator } from "../entities/tots-validator";
 
 export class TotsFilesListField extends TotsFieldForm {
 	constructor(key:string, uploadingFunction:()=> Observable<any>, addButtonCaption:string, fileDisplayKey:string, label?:string, validators?:TotsValidator[]) {

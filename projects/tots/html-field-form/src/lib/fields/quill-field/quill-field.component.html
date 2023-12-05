@@ -1,0 +1,13 @@
+<tots-outer-label
+	*ngIf="field.label"
+	[label]="field.label"
+	[isRequired]="isRequired()"
+></tots-outer-label>
+
+<quill-editor
+	[modules]="modules"
+	[formControl]="input"
+	[styles]="{height:  heightEditor + 'px'}"
+	[theme]="theme"
+	(onEditorCreated)="editorCreated($event)"
+></quill-editor>

@@ -1,4 +1,5 @@
 import { ValidatorFn } from "@angular/forms";
+import { TotsValidator } from "./tots-validator";
 
 export class TotsFieldForm {
 	key : string|string[];
@@ -10,7 +11,7 @@ export class TotsFieldForm {
 	
 	extra? : any;
 
-	constructor(key:string, component:any, label?:string, validators?:TotsValidator[]) {
+	constructor(key:string|string[], component:any, label?:string, validators?:TotsValidator[]) {
 		this.key = key;
 		this.component = component;
 		this.label = label;
@@ -18,19 +19,5 @@ export class TotsFieldForm {
 		this.errors = validators?.map(v=> {
 			return {name: v.key, message: v.errorMessage}
 		});
-	}
-}
-
-export class TotsValidator {
-	validator : ValidatorFn;
-	key : string;
-	errorMessage : string;
-
-	constructor(validator:ValidatorFn, key:string, errorMessage:string) {
-		this.validator = validator,
-		this.key = key;
-		this.errorMessage = errorMessage;
-
-		console.warn(this.validator.name);
 	}
 }

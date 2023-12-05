@@ -16,4 +16,24 @@ export class SelectFieldComponent extends TotsBaseFieldComponent {
     if(this.field.extra && this.field.extra.multiple){ return this.field.extra.multiple; }
     return false;
   }
+
+  selectedKey(item: any): string {
+    if (this.field.extra?.selected_key) {
+      return item[this.field.extra.selected_key];
+    }
+
+    return "id";
+  }
+
+  displayName(item: any): string {
+    if(item == undefined){
+      return '';
+    }
+
+    if (this.field.extra?.display_key) {
+      return item[this.field.extra.display_key];
+    }
+
+    return item.title;
+  }
 }

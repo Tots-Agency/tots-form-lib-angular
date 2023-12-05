@@ -1,6 +1,7 @@
 import { MatFormFieldAppearance } from "@angular/material/form-field";
-import { TotsFieldForm, TotsValidator } from "../entities/tots-field-form";
+import { TotsFieldForm } from "../entities/tots-field-form";
 import { AutocompleteFieldComponent } from "../fields/autocomplete-field/autocomplete-field.component";
+import { TotsValidator } from "../entities/tots-validator";
 
 export class TotsAutocompleteStaticField extends TotsFieldForm {
     //Sin first_query

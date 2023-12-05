@@ -11,27 +11,32 @@ import { UserService } from '../../services/user.service';
 import * as moment from 'moment';
 import { DatepickerAndTimeEndFieldComponent } from 'projects/tots/date-field-form/src/public-api';
 import { TotsFormApiService, TotsFormModalApiConfig } from 'projects/tots/form-api/src/public-api';
-import { HtmlFieldComponent } from 'projects/tots/html-field-form/src/public-api';
+import { QuillFieldComponent } from 'projects/tots/html-field-form/src/public-api';
 import { MentionHtmlFieldComponent } from 'projects/tots/quill-mention-field-form/src/public-api';
 
 /** Mention Style */
 import Quill from 'quill';
-import { MonacoEditorFieldComponent } from 'projects/tots/monaco-editor-field-form/src/public-api';
-
-const MentionBlot = Quill.import("blots/mention");
-class StyledMentionBlot extends MentionBlot {
-  static render(data: any) {
-    const element = document.createElement('span');
-    element.innerText = data.value + '}}';
-    element.style.color = data.color;
-    return element;
-  }
-}
-StyledMentionBlot['blotName'] = "styled-mention";
-
-Quill.register(StyledMentionBlot);
-/** End Mention Style */
-
+import { MonacoEditorFieldComponent, TotsMonacoEditorField } from 'projects/tots/monaco-editor-field-form/src/public-api';
+import { StringArrayFieldComponent } from 'projects/tots/form/src/lib/fields/string-array-field/string-array-field.component';
+import { TotsStringField } from 'projects/tots/form/src/lib/field-factories/tots-string-field';
+import { ValidatorMax, ValidatorMin, ValidatorRequired } from '../../helpers/tots-validators';
+import { TotsSelectField } from 'projects/tots/form/src/lib/field-factories/tots-select-field';
+import { TotsAvatarPhotoField } from 'projects/tots/form/src/lib/field-factories/tots-avatar-photo-field';
+import { TotsFilesListField } from 'projects/tots/form/src/lib/field-factories/tots-files-list-field';
+import { TotsButtonToggleField } from 'projects/tots/form/src/lib/field-factories/tots-button-toggle-field';
+import { TotsOneFileField } from 'projects/tots/form/src/lib/field-factories/tots-one-file-field';
+import { TotsTextareaField } from 'projects/tots/form/src/lib/field-factories/tots-textarea-field';
+import { TotsIntegerField } from 'projects/tots/form/src/lib/field-factories/tots-integer-field';
+import { TotsAutocompleteObsField } from 'projects/tots/form/src/lib/field-factories/tots-autocomplete-obs-field';
+import { TotsAutocompleteListField } from 'projects/tots/form/src/lib/field-factories/tots-autocomplete-list-field';
+import { TotsPhotosField } from 'projects/tots/form/src/lib/field-factories/tots-photos-field';
+import { TotsHtmlField } from 'projects/tots/form/src/lib/field-factories/tots-html-field';
+import { TotsSelectObsField } from 'projects/tots/form/src/lib/field-factories/tots-select-obs-field';
+import { TotsToggleField } from 'projects/tots/form/src/lib/field-factories/tots-toggle-field';
+import { TotsSubmitButton } from 'projects/tots/form/src/lib/field-factories/tots-submit-button';
+import { TotsDatepickerField, TotsDatepickerTimeRangeField } from '@tots/date-field-form';
+import { TotsQuillField } from '@tots/html-field-form';
+import { TotsAutocompleteStaticField } from '@tots/form';
 
 @Component({
   selector: 'app-form-component',
@@ -64,127 +69,58 @@ export class FormComponentComponent implements OnInit {
 
   configForm() {
     this.fields = [
-      // Campo string
-      { key: 'title', component: StringFieldComponent, label: 'Titulo', validators: [Validators.required], extra: { caption: 'Este se mostrara publicamente...', icon: 'home', placeholder: "Placeholder", appearance: "fill" }, errors: [{ name: 'required', message: 'You must enter a value' }] },
-
-      // Campo Row
-      { key: '', component: RowFieldComponent, extra: {
-        fields: [
-          { key: 'title', component: StringFieldComponent, label: 'Titulo', validators: [Validators.required], extra: { caption: 'Este se mostrara publicamente...', icon: 'home' } },
-          { key: 'title', component: StringFieldComponent, label: 'Titulo', validators: [Validators.required], extra: { caption: 'Este se mostrara publicamente...', icon: 'home' } },
-        ]}
-      },
-      
-      // Campo de selector normal
-      { key: 'type', component: SelectFieldComponent, label: 'Tipo', validators: [Validators.required], extra: { options: [
+      new TotsStringField("title", "Título", [ValidatorRequired], "Placeholder", "fill", "Este se mostrara publicamente..."),
+      new TotsSelectField("type", [
+        { id: 1, name: 'Tipo 1'},
+        { id: 2, name: 'Tipo 2'},
+        { id: 3, name: 'Tipo 3'},
+      ], "id", "name", "Tipo"),
+      new TotsAvatarPhotoField("avatar", () => { return of({ url: 'https://storage.googleapis.com/tots-send-public/Frame%2028.png' })}, "Subir imagen", "Eliminar imagen", undefined, "Avatar" ),
+      new TotsDatepickerField("start_date", moment(), "Start date"),
+      new TotsFilesListField("attachments", ()=> { return of({ filename: 'test_file.png', url: 'https://storage.googleapis.com/tots-send-public/Frame%2028.png' }) }, "+ Add new file", "filename", "Attachments" ),
+      new TotsButtonToggleField("type_toggle", [
         { id: 1, title: 'Tipo 1'},
         { id: 2, title: 'Tipo 2'},
         { id: 3, title: 'Tipo 3'},
-      ] } },
-      // Campo Avatar
-      { key: 'avatar', component: AvatarPhotoFieldComponent, label: 'Avatar', extra: { label: "Avatar label", button_text: 'Subir imagen', remove_text: 'Eliminar imagen', service: { upload: () => { return of({ url: 'https://storage.googleapis.com/tots-send-public/Frame%2028.png' }) } } } },
-      // Campo Date
-      { key: 'start_date', component: DatepickerFieldComponent, label: 'Start date', extra: { /*minDate: new Date(),*/ format_output: 'YYYY-MM-DDTHH:mm:ss' } },
-      // Campo Files List
-      { key: 'attachments', component: FilesListFieldComponent, label: 'Attachments', extra: { textAddButton: '+ Add new file', display_key: 'filename', service: { upload: () => { return of({ filename: 'test_file.png', url: 'https://storage.googleapis.com/tots-send-public/Frame%2028.png' }) } } } },
-      // Campo Button Toggle
-      { key: 'type_toggle', component: ButtonToggleFieldComponent, label: 'Tipo', validators: [Validators.required], extra: { options: [
-        { id: 1, title: 'Tipo 1'},
-        { id: 2, title: 'Tipo 2'},
-        { id: 3, title: 'Tipo 3'},
-      ] } },
-      // Campo One File
-      { key: 'file_one', component: OneFileFieldComponent, label: 'Upload SIF File', extra: { display_key: 'filename', service: { upload: () => { return of({ filename: 'test_file.png', url: 'https://storage.googleapis.com/tots-send-public/Frame%2028.png' }) } } } },
-      // Campo textarea
-      { key: 'caption', component: TextareaFieldComponent, label: 'Caption' },
-      // Campo Integer
-      { key: 'integer', component: IntegerFieldComponent, label: 'Integer Number', validators: [Validators.min(1), Validators.max(5)] },
-      // campo Autocomplete OBS
-      { key: 'customer_id', component: AutocompleteObsFieldComponent, label: 'Customer', extra: {
-        selected_key: 'id',
-        filter_key: 'title',
-        display_key: 'title',
-        display_photo: 'photo',
-        first_query: { id: 4, title: 'Customer 4' },
-        obs: this.customerAutocompleteObsProcessed.bind(this)
-      } },
-      // Campo Autocompleete List
-      { key: 'customers', component: AutocompleteListFieldComponent, label: 'Select Customer', extra: {
-          selected_key: 'id',
-          filter_key: 'title',
-          display_key: 'title',
-          is_show_photo: false,
-          placeholder_photo: 'https://storage.googleapis.com/tots-send-public/Frame%2028.png',
-          obs: this.customerAutocompleteObsProcessed.bind(this)
-      } },
-      // Campo Files List
-      { key: 'photos', component: PhotosFieldComponent, label: 'Upload photo', extra: { display_key: 'url', service: { upload: () => { return of({ filename: 'test_file.png', url: 'https://storage.googleapis.com/tots-send-public/Frame%2028.png' }) } } } },
-      //{ key: 'datepicker_time', component: DatepickerAndTimeEndFieldComponent, label: 'Date picker and time', extra: { field_key_end: 'datepicker_time_end', label_start: 'Start time', label_end: 'End time', format_output: 'YYYY-MM-DDTHH:mm:ss' } },
-      { key: 'datepicker_time', component: DatepickerAndTimeEndFieldComponent, label: 'Date picker and time', extra: { field_key_end: 'datepicker_time_end', label_start: 'Start time', label_end: 'End time' } },
-      // HTMl Editor
-      { key: 'html_editor', component: HtmlFieldComponent, label: 'HTML Editor', extra: { fileService: { upload: () => { return of({ filename: 'test_file.png', url: 'https://storage.googleapis.com/tots-send-public/Frame%2028.png' }).pipe(map(res => res.url)) } } } },
-      // HTMl Editor with mention
-      {
-        key: 'html_editor_mention',
-        component: MentionHtmlFieldComponent,
-        label: 'HTML Editor with Mention',
-        extra: {
-          denotationChars: ['@', '{{'],
-          blotName: 'styled-mention',
-          onSelect: this.mentionOnSelect.bind(this),
-          source: this.mentionSource.bind(this),
-
-          fileService: {
-            upload: () => {
-              return of({ filename: 'test_file.png', url: 'https://storage.googleapis.com/tots-send-public/Frame%2028.png' }).pipe(map(res => res.url))
-            }
+      ], "Tipo", [ValidatorRequired]),
+      new TotsOneFileField("file_one", ()=> { return of({ filename: 'test_file.png', url: 'https://storage.googleapis.com/tots-send-public/Frame%2028.png' }) }, "filename", "Upload File", ),
+      new TotsTextareaField("caption", "Caption"),
+      new TotsIntegerField("integer", "Integer number", [ValidatorMin, ValidatorMax]),
+      new TotsAutocompleteObsField("customer_id", this.customerAutocompleteObsProcessed.bind(this), "id", "title", "Customer"),
+      new TotsAutocompleteListField("customers", this.customerAutocompleteObsProcessed.bind(this), "id", "title", "Select customer", "photo", "https://storage.googleapis.com/tots-send-public/Frame%2028.png"),
+      new TotsPhotosField("photos", ()=> { return of({ filename: 'test_file.png', url: 'https://storage.googleapis.com/tots-send-public/Frame%2028.png' }) }, "url", "Upload photo"),
+      new TotsDatepickerTimeRangeField("datepicker_time_range", "datepicker_time_start", "datepicker_time_end", "Start time", "End time"),
+      new TotsHtmlField("html", "<hr><hr><hr>"),
+      new TotsQuillField("quill_editor", ()=> {
+        return of({ filename: 'test_file.png', url: 'https://storage.googleapis.com/tots-send-public/Frame%2028.png' }).pipe(map(res => res.url))
+      }, 80, "Html Editor"),
+      new TotsMonacoEditorField("monaco_editor", "mysql", ()=> {
+        return [
+          {
+            label: 'Ejemplo1',
+            kind: (<any>window).monaco.languages.CompletionItemKind.Method,
+            insertText: '{{Ejemplo1}}',
+            documentation: 'Descripción de Ejemplo1',
+          },
+          {
+            label: 'Test2',
+            kind: (<any>window).monaco.languages.CompletionItemKind.Variable,
+            insertText: '{{Test2}}',
+            preselect: true,
+            documentation: 'Descripción de Ejemplo2',
+          },
+          {
+            label: 'Snipper',
+            kind: (<any>window).monaco.languages.CompletionItemKind.Snippet,
+            insertText: '${sinpper}',
+            //command: { id: 'editor.action.insertLineAfter' }
           }
-        }
-      },
-      {
-        key: 'monaco_editor',
-        component: MonacoEditorFieldComponent,
-        label: 'Editor monaco',
-        extra: {
-          language: 'mysql',
-          // Kinds: https://microsoft.github.io/monaco-editor/typedoc/enums/languages.CompletionItemKind.html
-          suggestions: () => {
-            return [
-              {
-                label: 'Ejemplo1',
-                kind: (<any>window).monaco.languages.CompletionItemKind.Method,
-                insertText: '{{Ejemplo1}}',
-                documentation: 'Descripción de Ejemplo1',
-              },
-              {
-                label: 'Test2',
-                kind: (<any>window).monaco.languages.CompletionItemKind.Variable,
-                insertText: '{{Test2}}',
-                preselect: true,
-                documentation: 'Descripción de Ejemplo2',
-              },
-              {
-                label: 'Snipper',
-                kind: (<any>window).monaco.languages.CompletionItemKind.Snippet,
-                insertText: '${sinpper}',
-                //command: { id: 'editor.action.insertLineAfter' }
-              }
-            ];
-          }
-        }
-      },
-
-      { key: ['extra', 'param_test'], component: StringFieldComponent, label: 'Extra Param' },
-      // campo Slect OBS
-      { key: 'select_obs', component: SelectObsFieldComponent, label: 'Select Customers', extra: {
-        selected_key: 'id',
-        display_key: 'title',
-        obs: this.customerForSelectObs.bind(this)
-      } },
-
-      { key: "toggle", component: ToggleFieldComponent, label: "Toggle" },
-
-      { key: 'submit', component: SubmitButtonFieldComponent, label: 'Enviar' }
+        ];
+      }, "Editor Monaco"),
+      new TotsStringField(["extra", "param_test"], "Extra param"),
+      new TotsSelectObsField("select_obs", this.customerForSelectObs.bind(this), "id", "title", "Customers select"),
+      new TotsToggleField("toggle", "Toggle"),
+      new TotsSubmitButton("submit", "Enviar")
     ];
   }
 
@@ -194,30 +130,19 @@ export class FormComponentComponent implements OnInit {
     config.autoSave = true;
     config.item = this.item;
     config.fields = [
-      // Campo string
-      { key: 'title', component: StringFieldComponent, label: 'Titulo', validators: [Validators.required], extra: { caption: 'Este se mostrara publicamente...' } },
-      // Campo de selector normal
-      { key: 'type', component: SelectFieldComponent, label: 'Tipo', validators: [Validators.required], extra: { options: [
+      new TotsStringField("title", "Título", [ValidatorRequired], undefined, undefined, "Esto se mostrará publicamente..."),
+      new TotsSelectField("type", [
         { id: 1, title: 'Tipo 1'},
         { id: 2, title: 'Tipo 2'},
         { id: 3, title: 'Tipo 3'},
-      ] } },
-
-      { key: 'customer_id', component: AutocompleteFieldComponent, label: 'Customer', extra: {
-        selected_key: 'id',
-        filter_key: 'title',
-        display_key: 'title',
-        display_photo: 'photo',
-        //first_query: { id: 4, title: 'Customer 4' },
-        options: [
-          { id: 1, title: 'Customer 1' },
-          { id: 2, title: 'Customer 2' },
-          { id: 3, title: 'Customer 3' },
-          { id: 4, title: 'Customer 4' },
-        ]
-      } },
-
-      { key: 'submit', component: SubmitButtonFieldComponent, label: 'Enviar' }
+      ], "id", "title", "Tipo"),
+      new TotsAutocompleteStaticField("customer_id", [
+        { id: 1, title: 'Customer 1' },
+        { id: 2, title: 'Customer 2' },
+        { id: 3, title: 'Customer 3' },
+        { id: 4, title: 'Customer 4' },
+      ], "id", "title", "title", "Customer"),
+      new TotsSubmitButton("submit", "Enviar")
     ];
     this.modalService.open(config)
     .pipe(tap(action => {
@@ -239,8 +164,8 @@ export class FormComponentComponent implements OnInit {
     config.service = this.userService;
     config.item = {};
     config.fields = [
-        { key: 'title', component: StringFieldComponent, label: 'Title', validators: [Validators.required] },
-        { key: 'submit', component: SubmitButtonFieldComponent, label: 'CREATE' }
+      new TotsStringField("title", "Title", [ValidatorRequired]),
+      new TotsSubmitButton("submit", "CREATE", "accent", "mat-stroked-button")
     ];
 
     this.apiService.open(config)

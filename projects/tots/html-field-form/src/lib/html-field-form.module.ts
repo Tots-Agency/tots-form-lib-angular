@@ -1,29 +1,28 @@
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { TotsFormModule } from '@tots/form';
 
 /** Others libraries */
 import { QuillModule } from 'ngx-quill'
 
 /** Fields */
-import { HtmlFieldComponent } from './fields/html-field/html-field.component';
+import { QuillFieldComponent } from './fields/quill-field/quill-field.component';
+import { CommonModule } from '@angular/common';
 
 
 
 @NgModule({
   declarations: [
-    
-    /** Fields */
-    HtmlFieldComponent
+    QuillFieldComponent
   ],
   imports: [
-    /** Angular */
+    CommonModule,
     ReactiveFormsModule,
-    /** Others libraries */
-    QuillModule
+    TotsFormModule,
+    QuillModule,
   ],
   exports: [
-    /** Fields */
-    HtmlFieldComponent
+    QuillFieldComponent
   ]
 })
 export class TotsHtmlFieldFormModule { }
