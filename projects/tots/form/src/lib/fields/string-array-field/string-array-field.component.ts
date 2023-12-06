@@ -15,6 +15,7 @@ import { TotsFormButtonMatDirective } from '../../entities/tots-buttons-config';
 export class StringArrayFieldComponent extends TotsBaseFieldComponent implements OnInit {
 
   protected fg! : FormGroup;
+  private validators? : ValidatorFn[];
 
   constructor(
     @Inject(TOTS_STRING_ARRAY_CONFIG) protected totsStringArrayConfig: TotsStringArrayConfig,
@@ -40,7 +41,7 @@ export class StringArrayFieldComponent extends TotsBaseFieldComponent implements
     // If form array is valid, set the validators values on the parent input
     if (this.formArray.valid) {
       this.input.setValue(this.formArray.value);
-      this.input.removeValidators(Validators.requiredTrue);
+      this.input.clearValidators();
 
     // If not, set it to null and add a validator that will render it invalid
     } else {
