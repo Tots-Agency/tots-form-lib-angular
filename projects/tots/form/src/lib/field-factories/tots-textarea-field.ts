@@ -4,9 +4,10 @@ import { TextareaFieldComponent } from "../fields/textarea-field/textarea-field.
 import { TotsValidator } from "../entities/tots-validator";
 
 export class TotsTextareaField extends TotsFieldForm {
-	constructor(key:string, label?:string, validators?:TotsValidator[], placeholder?:string, appearance?:MatFormFieldAppearance, hint?:string, cssClass?:string) {
+	constructor(key:string, label?:string, validators?:TotsValidator[], rows?:number, placeholder?:string, appearance?:MatFormFieldAppearance, hint?:string, cssClass?:string) {
         super(key, TextareaFieldComponent, label, validators);
         this.extra = {
+            rows: rows,
             appearance: appearance,
             placeholder: placeholder,
             caption: hint,
