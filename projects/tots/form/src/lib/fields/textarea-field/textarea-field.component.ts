@@ -7,8 +7,12 @@ import { TotsBaseFieldComponent } from '../tots-base-field.component';
   styleUrls: ['./textarea-field.component.css']
 })
 export class TextareaFieldComponent extends TotsBaseFieldComponent {
-  getCaption() {
-    if(this.field.extra && this.field.extra.caption){ return this.field.extra.caption; }
-    return '';
+  
+  protected get hint() : string|undefined {
+    return this.field.extra?.caption;
   }
+  protected get rows() : number {
+    return this.field.extra?.rows || 2;
+  }
+  
 }
