@@ -1,1 +1,11 @@
-<ngx-monaco-editor [options]="editorOptions" [formControl]="input" (onInit)="onInit($event)"></ngx-monaco-editor>
+<tots-outer-label
+	*ngIf="field.label"
+	[label]="field.label"
+	[isRequired]="isRequired()"
+></tots-outer-label>
+
+<ngx-monaco-editor
+	[options]="editorOptions"
+	[formControl]="input"
+	(onInit)="onInit($event)"
+></ngx-monaco-editor>

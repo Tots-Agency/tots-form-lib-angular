@@ -5,7 +5,12 @@
 /**
  * Fields
  */
-export * from './lib/fields/html-field/html-field.component';
+export * from './lib/fields/quill-field/quill-field.component';
+
+/**
+ * Factories
+ */
+export * from './lib/field-factories/tots-quill-field';
 
 /**
  * Modules

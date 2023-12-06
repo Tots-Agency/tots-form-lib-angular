@@ -13,6 +13,7 @@ export * from './lib/entities/tots-buttons-config';
 export * from './lib/entities/tots-form-default-config';
 export * from './lib/entities/tots-item-interface';
 export * from './lib/entities/tots-string-array-config';
+export * from './lib/entities/tots-validator';
 
 /**
  * Services
@@ -50,9 +51,32 @@ export * from './lib/fields/toggle-field/toggle-field.component';
 export * from './lib/fields/string-array-field/string-array-field.component';
 
 /**
+ * Factories
+ */
+export * from './lib/field-factories/tots-autocomplete-list-field';
+export * from './lib/field-factories/tots-autocomplete-obs-field';
+export * from './lib/field-factories/tots-autocomplete-static-field';
+export * from './lib/field-factories/tots-avatar-photo-field';
+export * from './lib/field-factories/tots-button-toggle-field';
+export * from './lib/field-factories/tots-files-list-field';
+export * from './lib/field-factories/tots-html-field';
+export * from './lib/field-factories/tots-integer-field';
+export * from './lib/field-factories/tots-one-file-field';
+export * from './lib/field-factories/tots-photos-field';
+export * from './lib/field-factories/tots-select-field';
+export * from './lib/field-factories/tots-select-obs-field';
+export * from './lib/field-factories/tots-string-array-field';
+export * from './lib/field-factories/tots-string-field';
+export * from './lib/field-factories/tots-submit-and-cancel-buttons';
+export * from './lib/field-factories/tots-submit-button';
+export * from './lib/field-factories/tots-textarea-field';
+export * from './lib/field-factories/tots-toggle-field';
+
+/**
  * Components
  */
 export * from './lib/components/tots-form/tots-form.component';
+export * from './lib/components/outer-label/outer-label.component';
 
 /**
  * Modals

@@ -103,6 +103,7 @@ import { StringArrayFieldComponent } from './fields/string-array-field/string-ar
   ],
   exports: [
     TotsFormComponent,
+    TotsOuterLabelComponent,
 
     /** Fields */
     BasePrintFieldComponent,
