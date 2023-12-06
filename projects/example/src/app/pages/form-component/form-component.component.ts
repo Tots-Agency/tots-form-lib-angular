@@ -59,7 +59,7 @@ export class FormComponentComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.configForm();
+    this.configForm2();
     this.loadConfigUserSelector();
   }
 
@@ -120,6 +120,18 @@ export class FormComponentComponent implements OnInit {
       new TotsStringField(["extra", "param_test"], "Extra param"),
       new TotsSelectObsField("select_obs", this.customerForSelectObs.bind(this), "id", "title", "Customers select"),
       new TotsToggleField("toggle", "Toggle"),
+      new TotsSubmitButton("submit", "Enviar")
+    ];
+  }
+  configForm2() {
+    this.fields = [
+      { key: 'select_obs', component: SelectObsFieldComponent, label: 'Select Customers',
+        extra: {
+          selected_key: 'id',
+          display_key: 'title',
+          obs: this.customerForSelectObs.bind(this)
+        }
+      },
       new TotsSubmitButton("submit", "Enviar")
     ];
   }

@@ -9,7 +9,5 @@ export class TotsValidator {
 		this.validator = validator,
 		this.key = key;
 		this.errorMessage = errorMessage;
-
-		console.warn(this.validator.name);
 	}
 }
