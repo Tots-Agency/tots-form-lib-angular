@@ -40,7 +40,7 @@ export class StringArrayFieldComponent extends TotsBaseFieldComponent implements
     // If form array is valid, set the validators values on the parent input
     if (this.formArray.valid) {
       this.input.setValue(this.formArray.value);
-      this.input.removeValidators(Validators.requiredTrue);
+      this.input.clearValidators();
 
     // If not, set it to null and add a validator that will render it invalid
     } else {
