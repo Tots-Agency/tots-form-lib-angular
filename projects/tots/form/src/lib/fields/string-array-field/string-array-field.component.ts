@@ -15,7 +15,6 @@ import { TotsFormButtonMatDirective } from '../../entities/tots-buttons-config';
 export class StringArrayFieldComponent extends TotsBaseFieldComponent implements OnInit {
 
   protected fg! : FormGroup;
-  private validators? : ValidatorFn[];
 
   constructor(
     @Inject(TOTS_STRING_ARRAY_CONFIG) protected totsStringArrayConfig: TotsStringArrayConfig,
