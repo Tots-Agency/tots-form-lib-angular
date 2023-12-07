@@ -6,7 +6,7 @@ import { ThemePalette } from '@angular/material/core';
 import { TOTS_FORM_DEFAULT_CONFIG, TotsFormDefaultConfig } from '../../entities/tots-form-default-config';
 import { TotsFormHelper } from '../../helpers/tots-form-helper';
 import { TotsFormButtonMatDirective } from '../../entities/tots-buttons-config';
-import { TotsFieldForm } from '@tots/form';
+import { TotsFieldForm } from '../../entities/tots-field-form';
 
 @Component({
   selector: 'tots-string-array-field',
