@@ -18,20 +18,20 @@ export class StringArrayFieldComponent extends TotsBaseFieldComponent implements
 
   protected fg! : FormGroup;
   static updateForm$ = new Subject<void>();
-  static updateFormFromItemSuscription : Subscription;
+  static updateFormFromItemSubscription : Subscription;
 
   constructor(
     @Inject(TOTS_STRING_ARRAY_CONFIG) protected totsStringArrayConfig: TotsStringArrayConfig,
     @Inject(TOTS_FORM_DEFAULT_CONFIG) totsFormDefaultConfig: TotsFormDefaultConfig
   ) {
     super(totsFormDefaultConfig);
-    let updateFormFromItemSuscription = StringArrayFieldComponent.updateForm$.pipe().subscribe(()=> {
+    let updateFormFromItemSubscription = StringArrayFieldComponent.updateForm$.pipe().subscribe(()=> {
       this.initFromItem();
     });
   }
 
   ngOnDestroy() {
-    StringArrayFieldComponent.updateFormFromItemSuscription.unsubscribe();
+    StringArrayFieldComponent.updateFormFromItemSubscription.unsubscribe();
   }
   override ngOnInit(): void {
       this.input = TotsFormHelper.createFormControl(this.field, this.group);
