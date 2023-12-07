@@ -1,28 +1,38 @@
-import { FormArray, FormGroup, ValidatorFn, Validators } from '@angular/forms';
-import { Component, Inject, OnInit } from '@angular/core';
+import { FormArray, FormControl, FormGroup, UntypedFormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { TotsBaseFieldComponent } from '../tots-base-field.component';
 import { TOTS_STRING_ARRAY_CONFIG, TotsStringArrayConfig } from '../../entities/tots-string-array-config';
 import { ThemePalette } from '@angular/material/core';
 import { TOTS_FORM_DEFAULT_CONFIG, TotsFormDefaultConfig } from '../../entities/tots-form-default-config';
 import { TotsFormHelper } from '../../helpers/tots-form-helper';
 import { TotsFormButtonMatDirective } from '../../entities/tots-buttons-config';
+import { TotsFieldForm } from '../../entities/tots-field-form';
+import { Subject, Subscription, first } from 'rxjs';
 
 @Component({
   selector: 'tots-string-array-field',
   templateUrl: './string-array-field.component.html',
   styleUrls: ['./string-array-field.component.scss']
 })
-export class StringArrayFieldComponent extends TotsBaseFieldComponent implements OnInit {
+export class StringArrayFieldComponent extends TotsBaseFieldComponent implements OnInit, OnDestroy {
 
   protected fg! : FormGroup;
+  static updateForm$ = new Subject<void>();
+  static updateFormFromItemSuscription : Subscription;
 
   constructor(
     @Inject(TOTS_STRING_ARRAY_CONFIG) protected totsStringArrayConfig: TotsStringArrayConfig,
     @Inject(TOTS_FORM_DEFAULT_CONFIG) totsFormDefaultConfig: TotsFormDefaultConfig
   ) {
     super(totsFormDefaultConfig);
+    let updateFormFromItemSuscription = StringArrayFieldComponent.updateForm$.pipe().subscribe(()=> {
+      this.initFromItem();
+    });
   }
 
+  ngOnDestroy() {
+    StringArrayFieldComponent.updateFormFromItemSuscription.unsubscribe();
+  }
   override ngOnInit(): void {
       this.input = TotsFormHelper.createFormControl(this.field, this.group);
 
@@ -34,6 +44,26 @@ export class StringArrayFieldComponent extends TotsBaseFieldComponent implements
       this.formArray.valueChanges.subscribe(value=> {
         this.updateInput();
       });
+  }
+  private initFromItem() {
+    let itemValue = this.input.value;
+    let fc = TotsFormHelper.createFormControl(this.field, this.group);
+    fc.setValue(itemValue[0]);
+
+    let formArray = new FormArray([fc]);
+    this.fg = new FormGroup({
+      formArray: formArray
+    });
+    
+    for (let f = 1; f < itemValue.length; f++) {
+      let fc = TotsFormHelper.createFormControl(this.field, this.group);
+      fc.setValue(itemValue[f]);
+      this.addOne(fc);
+    }
+
+    this.formArray.valueChanges.subscribe(value=> {
+      this.updateInput();
+    });
   }
 
   private updateInput() {
@@ -50,7 +80,6 @@ export class StringArrayFieldComponent extends TotsBaseFieldComponent implements
     
     this.input.updateValueAndValidity();
   }
-
 
 
   protected get formArray() : FormArray {
@@ -75,6 +104,7 @@ export class StringArrayFieldComponent extends TotsBaseFieldComponent implements
     return this.field.extra?.caption;
   }
   
+
   protected hasIndividualError(index:number) {
     return this.formArray.controls[index].invalid && (this.formArray.controls[index].dirty || this.formArray.controls[index].touched);
   }
@@ -92,8 +122,8 @@ export class StringArrayFieldComponent extends TotsBaseFieldComponent implements
     return '';
   }
 
-  protected addOne() {
-    this.formArray.push(TotsFormHelper.createFormControl(this.field, this.group));
+  protected addOne(fc:FormControl = TotsFormHelper.createFormControl(this.field, this.group)) {
+    this.formArray.push(fc);
     setTimeout(() => {
       this.formArray.updateValueAndValidity();
     });
@@ -101,4 +131,16 @@ export class StringArrayFieldComponent extends TotsBaseFieldComponent implements
   protected removeOne(index:number) {
     this.formArray.removeAt(index);
   }
+
+
+  static override updateFormByItem(group: UntypedFormGroup, item: any, field: TotsFieldForm) {
+    let itemValue = TotsFormHelper.getItemValueByKey(item, field.key);
+    if (Array.isArray(field.key)) {
+      group.get(field.key.join('_'))?.setValue(itemValue);
+    } else {
+      group.get(field.key)?.setValue(itemValue);
+    }
+    this.updateForm$.next();
+  }
+
 }
