@@ -24,16 +24,13 @@
 	</button>
 </div>
 
-
-<form [formGroup]="fg">
-	<div formArrayName="formArray">
-		<mat-form-field *ngFor="let control of formArray.controls; let index=index; let first=first" class="{{getClases()}}" [appearance]="getAppearance()">
-			<input matInput type="text" [formControlName]="index" [placeholder]="getPlaceholder()"/>
-			<mat-hint *ngIf="first && matHint" [align]="'end'"> {{matHint}} </mat-hint>
-			<mat-error *ngIf="hasIndividualError(index)">{{getIndividualMessageError(index)}}</mat-error>
-			<button *ngIf="!first" mat-icon-button matSuffix color="warn" (click)="removeOne(index)">
-				<mat-icon>close</mat-icon>
-			</button>
-		</mat-form-field>
-	</div>
-</form>
+<div>
+  <mat-form-field *ngFor="let control of formArray.controls; let index=index; let first=first" class="{{getClases()}}" [appearance]="getAppearance()">
+    <input matInput type="text" [formControl]="getControlByIndex(index)" [placeholder]="getPlaceholder()"/>
+    <mat-hint *ngIf="first && matHint" [align]="'end'"> {{matHint}} </mat-hint>
+    <mat-error *ngIf="hasIndividualError(index)">{{getIndividualMessageError(index)}}</mat-error>
+    <button *ngIf="!first" mat-icon-button matSuffix color="warn" (click)="removeOne(index)">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+</div>
