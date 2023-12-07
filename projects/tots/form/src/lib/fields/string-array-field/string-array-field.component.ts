@@ -30,41 +30,20 @@ export class StringArrayFieldComponent extends TotsBaseFieldComponent implements
   }
 
   createFormArray() {
+    let fc = new FormControl();
+    if (this.field.validators?.length) {
+      fc.setValidators(this.field.validators);
+    }
+
     // Create Control
-    this.formArray = new FormArray([new FormControl<String>('')]);
-    // Config validators
-    if(this.field.validators != undefined && this.field.validators.length > 0){
-      this.formArray.setValidators(this.field.validators);
-    }
-    // If include default value
-    if(this.field.extra && this.field.extra.default_value){
-      this.formArray.setValue(this.field.extra.default_value);
-    }
-    // if disable
-    if(this.field.extra && this.field.extra.disabled){
-        this.formArray.disable();
-    }
+    this.formArray = new FormArray([fc]);
+
     // Add in Group
     if(Array.isArray(this.field.key)){
       this.group.addControl(this.field.key.join('_'), this.formArray);
     } else {
       this.group.addControl(this.field.key, this.formArray);
     }
-}
-
-  private updateInput() {
-    // If form array is valid, set the validators values on the parent input
-    if (this.formArray.valid) {
-      this.input.setValue(this.formArray.value);
-      this.input.clearValidators();
-
-    // If not, set it to null and add a validator that will render it invalid
-    } else {
-      this.input.setValue(null);
-      this.input.addValidators(Validators.requiredTrue);
-    }
-
-    this.input.updateValueAndValidity();
   }
 
   protected get addButtonStyle() : TotsFormButtonMatDirective {
@@ -108,17 +87,21 @@ export class StringArrayFieldComponent extends TotsBaseFieldComponent implements
   }
 
   protected addOne() {
-    this.formArray.push(TotsFormHelper.createFormControl(this.field, this.group));
+    let fc = new FormControl();
+    if (this.field.validators?.length) {
+      fc.setValidators(this.field.validators);
+    }
+    this.formArray.push(fc);
     setTimeout(() => {
       this.formArray.updateValueAndValidity();
     });
   }
+
   protected removeOne(index:number) {
     this.formArray.removeAt(index);
   }
 
   static override updateFormByItem(group: UntypedFormGroup, item: any, field: TotsFieldForm) {
-
 
     if(Array.isArray(field.key)){
       let dataArray = TotsFormHelper.getItemValueByKey(item, field.key);
@@ -130,9 +113,13 @@ export class StringArrayFieldComponent extends TotsBaseFieldComponent implements
 
       // Create all controls
       for (let index = 0; index < dataArray.length; index++) {
-        let inpt = new FormControl<String>(dataArray[index]);
-        (group.get(field.key.join('_')) as FormArray).push(inpt);
+        let input = new FormControl<String>(dataArray[index]);
+        if (field.validators?.length) {
+          input.setValidators(field.validators);
+        }
+        (group.get(field.key.join('_')) as FormArray).push(input);
       }
+
     } else {
       let dataArray = item[field.key];
       if(dataArray == undefined || dataArray == ''){
@@ -143,8 +130,11 @@ export class StringArrayFieldComponent extends TotsBaseFieldComponent implements
 
       // Create all controls
       for (let index = 0; index < dataArray.length; index++) {
-        let inpt = new FormControl<String>(dataArray[index]);
-        (group.get(field.key) as FormArray).push(inpt);
+        let input = new FormControl<String>(dataArray[index]);
+        if (field.validators?.length) {
+          input.setValidators(field.validators);
+        }
+        (group.get(field.key) as FormArray).push(input);
       }
     }
   }

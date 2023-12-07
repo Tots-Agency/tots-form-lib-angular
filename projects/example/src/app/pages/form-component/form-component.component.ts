@@ -126,13 +126,6 @@ export class FormComponentComponent implements OnInit {
   configForm2() {
     this.fields = [
       new TotsStringArrayField('list_names', 10, 'List names', [ValidatorRequired], 'Add new name', 'fill', 'Add new name', 'add', 'mat-stroked-button', 'primary'),
-      { key: 'select_obs', component: SelectObsFieldComponent, label: 'Select Customers',
-        extra: {
-          selected_key: 'id',
-          display_key: 'title',
-          obs: this.customerForSelectObs.bind(this)
-        }
-      },
       new TotsSubmitButton("submit", "Enviar")
     ];
   }
