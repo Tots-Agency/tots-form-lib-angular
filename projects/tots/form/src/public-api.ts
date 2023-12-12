@@ -5,13 +5,14 @@
 /**
  * Entities
  */
-export * from './lib/entities/tots-field-form';
 export * from './lib/entities/tots-action-form';
-export * from './lib/entities/tots-modal-config';
 export * from './lib/entities/tots-action-modal-form';
+export * from './lib/entities/tots-button-toggle-option';
 export * from './lib/entities/tots-buttons-config';
+export * from './lib/entities/tots-field-form';
 export * from './lib/entities/tots-form-default-config';
 export * from './lib/entities/tots-item-interface';
+export * from './lib/entities/tots-modal-config';
 export * from './lib/entities/tots-string-array-config';
 export * from './lib/entities/tots-validator';
 
