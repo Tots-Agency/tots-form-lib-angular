@@ -1,0 +1,5 @@
+<mat-radio-group class="flex_column" [formControl]="input" [ngClass]="{vertical: alignment=='vertical'}">
+    <mat-radio-button *ngFor="let o of options" [value]="o.value">
+        {{o.caption}}
+    </mat-radio-button>
+</mat-radio-group>

@@ -14,6 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatRadioModule } from '@angular/material/radio';
 
 /** Tots Libraries */
 import { TotsLoadingModule } from '@tots/loading';
@@ -46,11 +47,13 @@ import { SubmitAndCancelButtonsFieldComponent } from './fields/submit-and-cancel
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { SelectObsFieldComponent } from './fields/select-obs-field/select-obs-field.component';
 import { ToggleFieldComponent } from './fields/toggle-field/toggle-field.component';
+import { RadioGroupFieldComponent } from './fields/radio-group-field/radio-group-field.component';
 
 @NgModule({
   declarations: [
     // Components
     TotsFormComponent,
+
     // Fields
     BasePrintFieldComponent,
     StringFieldComponent,
@@ -71,7 +74,8 @@ import { ToggleFieldComponent } from './fields/toggle-field/toggle-field.compone
     PhotosFieldComponent,
     SubmitAndCancelButtonsFieldComponent,
     SelectObsFieldComponent,
-    ToggleFieldComponent
+    ToggleFieldComponent,
+    RadioGroupFieldComponent
   ],
   imports: [
     CommonModule,
@@ -90,6 +94,7 @@ import { ToggleFieldComponent } from './fields/toggle-field/toggle-field.compone
     MatAutocompleteModule,
     MatButtonToggleModule,
     MatSlideToggleModule,
+    MatRadioModule,
 
     /** Tots Libraries */
     TotsLoadingModule
