@@ -4,7 +4,7 @@ import { DatepickerFieldComponent } from 'projects/tots/date-field-form/src/lib/
 import { TotsActionForm } from 'projects/tots/form/src/lib/entities/tots-action-form';
 import { TotsModalConfig } from 'projects/tots/form/src/lib/entities/tots-modal-config';
 import { SubmitButtonFieldComponent } from 'projects/tots/form/src/lib/fields/submit-button-field/submit-button-field.component';
-import { AutocompleteFieldComponent, AutocompleteListFieldComponent, AutocompleteObsFieldComponent, AvatarPhotoFieldComponent, ButtonToggleFieldComponent, FilesListFieldComponent, IntegerFieldComponent, OneFileFieldComponent, PhotosFieldComponent, RowFieldComponent, SelectFieldComponent, SelectObsFieldComponent, StringFieldComponent, TextareaFieldComponent, TotsFieldForm, TotsFormComponent, TotsFormModalService } from 'projects/tots/form/src/public-api';
+import { AutocompleteFieldComponent, AutocompleteListFieldComponent, AutocompleteObsFieldComponent, AvatarPhotoFieldComponent, ButtonToggleFieldComponent, FilesListFieldComponent, IntegerFieldComponent, OneFileFieldComponent, PhotosFieldComponent, RadioGroupFieldComponent, RowFieldComponent, SelectFieldComponent, SelectObsFieldComponent, StringFieldComponent, TextareaFieldComponent, TotsFieldForm, TotsFormComponent, TotsFormModalService } from 'projects/tots/form/src/public-api';
 import { TotsUsersSelectorMenuConfig } from 'projects/tots/users-selector-menu/src/lib/entities/tots-users-selector-menu-config';
 import { delay, map, Observable, of, tap } from 'rxjs';
 import { UserService } from '../../services/user.service';
@@ -54,7 +54,7 @@ export class FormComponentComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.configForm();
+    this.configForm2();
     this.loadConfigUserSelector();
   }
 
@@ -178,6 +178,22 @@ export class FormComponentComponent implements OnInit {
         obs: this.customerForSelectObs.bind(this)
       } },
 
+      { key: 'submit', component: SubmitButtonFieldComponent, label: 'Enviar' }
+    ];
+  }
+  configForm2() {
+    this.fields = [
+      { key: "radio", component: RadioGroupFieldComponent, label: "Radio",
+        extra: {
+          options: [
+            {value: 1, caption: "Valor 1"},
+            {value: 2, caption: "Valor 2"},
+            {value: 3, caption: "Valor 3"},
+            {value: 4, caption: "Valor 4"},
+          ],
+          alignment: "vertical"
+        }
+      },
       { key: 'submit', component: SubmitButtonFieldComponent, label: 'Enviar' }
     ];
   }
