@@ -13,6 +13,7 @@ export * from './lib/entities/tots-field-form';
 export * from './lib/entities/tots-form-default-config';
 export * from './lib/entities/tots-item-interface';
 export * from './lib/entities/tots-modal-config';
+export * from './lib/entities/tots-radio-button-option';
 export * from './lib/entities/tots-string-array-config';
 export * from './lib/entities/tots-validator';
 
@@ -50,6 +51,7 @@ export * from './lib/fields/submit-and-cancel-buttons-field/submit-and-cancel-bu
 export * from './lib/fields/select-obs-field/select-obs-field.component';
 export * from './lib/fields/toggle-field/toggle-field.component';
 export * from './lib/fields/string-array-field/string-array-field.component';
+export * from './lib/fields/radio-group-field/radio-group-field.component';
 
 /**
  * Factories
