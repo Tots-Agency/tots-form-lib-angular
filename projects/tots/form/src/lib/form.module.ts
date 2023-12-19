@@ -14,6 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatRadioModule } from '@angular/material/radio';
 
 /** Tots Libraries */
 import { TotsLoadingModule } from '@tots/loading';
@@ -50,6 +51,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { SelectObsFieldComponent } from './fields/select-obs-field/select-obs-field.component';
 import { ToggleFieldComponent } from './fields/toggle-field/toggle-field.component';
 import { StringArrayFieldComponent } from './fields/string-array-field/string-array-field.component';
+import { RadioGroupFieldComponent } from './fields/radio-group-field/radio-group-field.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +80,8 @@ import { StringArrayFieldComponent } from './fields/string-array-field/string-ar
     SubmitAndCancelButtonsFieldComponent,
     SelectObsFieldComponent,
     ToggleFieldComponent,
-    StringArrayFieldComponent
+    StringArrayFieldComponent,
+    RadioGroupFieldComponent
   ],
   imports: [
     CommonModule,
@@ -97,7 +100,8 @@ import { StringArrayFieldComponent } from './fields/string-array-field/string-ar
     MatAutocompleteModule,
     MatButtonToggleModule,
     MatSlideToggleModule,
-
+    MatRadioModule,
+    
     /** Tots Libraries */
     TotsLoadingModule
   ],
