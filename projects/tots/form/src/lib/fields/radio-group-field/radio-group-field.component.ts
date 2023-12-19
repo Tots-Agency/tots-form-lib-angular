@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TotsBaseFieldComponent } from '../tots-base-field.component';
-import { TotsFormHelper } from '@tots/form';
+import { TotsFormHelper } from '../../helpers/tots-form-helper';
 
 @Component({
 	selector: 'tots-radio-group-field',
@@ -17,7 +17,7 @@ export class RadioGroupFieldComponent extends TotsBaseFieldComponent implements 
 
 	override ngOnInit() {
         this.input = TotsFormHelper.createFormControl(this.field, this.group);
-		
+
 		this.options = this.field.extra.options;
 		this.alignment = this.field.extra.alignment || "horizontal";
 	}
