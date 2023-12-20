@@ -4,7 +4,7 @@ import { DatepickerFieldComponent } from 'projects/tots/date-field-form/src/lib/
 import { TotsActionForm } from 'projects/tots/form/src/lib/entities/tots-action-form';
 import { TotsModalConfig } from 'projects/tots/form/src/lib/entities/tots-modal-config';
 import { SubmitButtonFieldComponent } from 'projects/tots/form/src/lib/fields/submit-button-field/submit-button-field.component';
-import { AutocompleteFieldComponent, AutocompleteListFieldComponent, AutocompleteObsFieldComponent, AvatarPhotoFieldComponent, ButtonToggleFieldComponent, FilesListFieldComponent, IntegerFieldComponent, OneFileFieldComponent, PhotosFieldComponent, RowFieldComponent, SelectFieldComponent, SelectObsFieldComponent, StringFieldComponent, TextareaFieldComponent, ToggleFieldComponent, TotsFieldForm, TotsFormComponent, TotsFormModalService, TotsStringArrayField } from 'projects/tots/form/src/public-api';
+import { AutocompleteFieldComponent, AutocompleteListFieldComponent, AutocompleteObsFieldComponent, AvatarPhotoFieldComponent, ButtonToggleFieldComponent, FilesListFieldComponent, IntegerFieldComponent, OneFileFieldComponent, PhotosFieldComponent, RowFieldComponent, SelectFieldComponent, SelectObsFieldComponent, StringFieldComponent, TextareaFieldComponent, ToggleFieldComponent, TotsFieldForm, TotsFormComponent, TotsFormModalService, TotsRadioButtonOption, TotsStringArrayField } from 'projects/tots/form/src/public-api';
 import { TotsUsersSelectorMenuConfig } from 'projects/tots/users-selector-menu/src/lib/entities/tots-users-selector-menu-config';
 import { delay, map, Observable, of, tap } from 'rxjs';
 import { UserService } from '../../services/user.service';
@@ -37,6 +37,7 @@ import { TotsSubmitButton } from 'projects/tots/form/src/lib/field-factories/tot
 import { TotsDatepickerField, TotsDatepickerTimeRangeField } from '@tots/date-field-form';
 import { TotsQuillField } from '@tots/html-field-form';
 import { TotsAutocompleteStaticField } from '@tots/form';
+import { TotsRadioGroupField } from 'projects/tots/form/src/lib/field-factories/tots-radio-group-field';
 
 @Component({
   selector: 'app-form-component',
