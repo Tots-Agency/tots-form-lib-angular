@@ -9,7 +9,7 @@ import { TotsUsersSelectorMenuConfig } from 'projects/tots/users-selector-menu/s
 import { delay, map, Observable, of, tap } from 'rxjs';
 import { UserService } from '../../services/user.service';
 import * as moment from 'moment';
-import { DatepickerAndTimeEndFieldComponent } from 'projects/tots/date-field-form/src/public-api';
+import { DatepickerAndTimeEndFieldComponent, TotsRangeDatepickerField } from 'projects/tots/date-field-form/src/public-api';
 import { TotsFormApiService, TotsFormModalApiConfig } from 'projects/tots/form-api/src/public-api';
 import { QuillFieldComponent } from 'projects/tots/html-field-form/src/public-api';
 import { MentionHtmlFieldComponent } from 'projects/tots/quill-mention-field-form/src/public-api';
@@ -46,7 +46,7 @@ import { TotsAutocompleteStaticField } from '@tots/form';
 export class FormComponentComponent implements OnInit {
 
   fields = new Array<TotsFieldForm>();
-  item = { type: 2, customer_id: 3, start_date: '2023-08-25', type_toggle: 2, datepicker_time: '1989-08-25 14:00:00', datepicker_time_end: '1989-08-25 18:00:00', extra: { param_test: '123' }, list_names: ['Matias', 'Pedro', 'Jorge'] };
+  item = { type: 2, customer_id: 3, start_date: undefined, type_toggle: 2, datepicker_time: '1989-08-25 14:00:00', datepicker_time_end: '1989-08-25 18:00:00', extra: { param_test: '123' }, list_names: ['Matias', 'Pedro', 'Jorge'] };
 
   configUserSelector = new TotsUsersSelectorMenuConfig();
 
@@ -125,7 +125,7 @@ export class FormComponentComponent implements OnInit {
   }
   configForm2() {
     this.fields = [
-      new TotsStringArrayField('list_names', 10, 'List names', [ValidatorRequired], 'Add new name', 'fill', 'Add new name', 'add', 'mat-stroked-button', 'primary'),
+      new TotsRangeDatepickerField("start_date", "end_date", moment(), 6),
       new TotsSubmitButton("submit", "Enviar")
     ];
   }
