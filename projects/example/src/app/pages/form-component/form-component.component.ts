@@ -181,22 +181,6 @@ export class FormComponentComponent implements OnInit {
       { key: 'submit', component: SubmitButtonFieldComponent, label: 'Enviar' }
     ];
   }
-  configForm2() {
-    this.fields = [
-      { key: "radio", component: RadioGroupFieldComponent, label: "Radio",
-        extra: {
-          options: [
-            {value: 1, caption: "Valor 1"},
-            {value: 2, caption: "Valor 2"},
-            {value: 3, caption: "Valor 3"},
-            {value: 4, caption: "Valor 4"},
-          ],
-          alignment: "vertical"
-        }
-      },
-      { key: 'submit', component: SubmitButtonFieldComponent, label: 'Enviar' }
-    ];
-  }
 
   configForm2() {
     this.fields = [
