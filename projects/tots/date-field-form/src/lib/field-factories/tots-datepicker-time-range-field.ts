@@ -4,7 +4,7 @@ import moment from "moment";
 import { TotsFieldForm, TotsValidator } from "@tots/form";
 
 export class TotsDatepickerTimeRangeField extends TotsFieldForm {
-	constructor(key:string|string[], startTimeKey:string, endTimeKey:string, startTimeLabel:string, endTimeLabel:string, minDate?:moment.Moment, dateFormatIn?:string, dateFormatOut?:string, label?:string, validators?:TotsValidator[], placeholder?:string, appearance?:MatFormFieldAppearance, hint?:string, cssClass?:string) {
+	constructor(key:string|string[], startTimeKey:string, endTimeKey:string, startTimeLabel:string, endTimeLabel:string, minDate?:moment.Moment, label?:string, dateFormatIn?:string, dateFormatOut?:string, validators?:TotsValidator[], placeholder?:string, appearance?:MatFormFieldAppearance, hint?:string, cssClass?:string) {
         super(key, DatepickerAndTimeEndFieldComponent, label, validators);
         this.extra = {
             field_key_start: startTimeKey,
