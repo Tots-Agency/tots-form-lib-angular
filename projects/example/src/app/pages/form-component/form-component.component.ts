@@ -9,7 +9,7 @@ import { TotsUsersSelectorMenuConfig } from 'projects/tots/users-selector-menu/s
 import { delay, map, Observable, of, tap } from 'rxjs';
 import { UserService } from '../../services/user.service';
 import * as moment from 'moment';
-import { DatepickerAndTimeEndFieldComponent } from 'projects/tots/date-field-form/src/public-api';
+import { DatepickerAndTimeEndFieldComponent, RangeDatepickerFieldComponent } from 'projects/tots/date-field-form/src/public-api';
 import { TotsFormApiService, TotsFormModalApiConfig } from 'projects/tots/form-api/src/public-api';
 import { HtmlFieldComponent } from 'projects/tots/html-field-form/src/public-api';
 import { MentionHtmlFieldComponent } from 'projects/tots/quill-mention-field-form/src/public-api';
@@ -41,7 +41,7 @@ Quill.register(StyledMentionBlot);
 export class FormComponentComponent implements OnInit {
 
   fields = new Array<TotsFieldForm>();
-  item = { type: 2, customer_id: 3, start_date: '2023-08-25', type_toggle: 2, datepicker_time: '1989-08-25 14:00:00', datepicker_time_end: '1989-08-25 18:00:00', extra: { param_test: '123' } };
+  item = { type: 2, customer_id: 3, type_toggle: 2, datepicker_time: '1989-08-25 14:00:00', datepicker_time_end: '1989-08-25 18:00:00', extra: { param_test: '123' } };
 
   configUserSelector = new TotsUsersSelectorMenuConfig();
 
@@ -54,7 +54,7 @@ export class FormComponentComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.configForm();
+    this.configForm2();
     this.loadConfigUserSelector();
   }
 
@@ -178,6 +178,22 @@ export class FormComponentComponent implements OnInit {
         obs: this.customerForSelectObs.bind(this)
       } },
 
+      { key: 'submit', component: SubmitButtonFieldComponent, label: 'Enviar' }
+    ];
+  }
+
+  configForm2() {
+    this.fields = [
+      {
+        key: "start_date",
+        component: RangeDatepickerFieldComponent,
+        label: "Rango de fechas",
+        extra: {
+          minDate: moment(),
+          maxDays: 7,
+          end_date_field_key: "end_date"
+        }
+      },
       { key: 'submit', component: SubmitButtonFieldComponent, label: 'Enviar' }
     ];
   }

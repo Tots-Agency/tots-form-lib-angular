@@ -16,15 +16,15 @@ import { TotsFormModule } from '@tots/form';
 /** Fields */
 import { DatepickerFieldComponent } from './fields/datepicker-field/datepicker-field.component';
 import { DatepickerAndTimeEndFieldComponent } from './fields/datepicker-and-time-end-field/datepicker-and-time-end-field.component';
-
-
+import { RangeDatepickerFieldComponent } from './fields/range-datepicker-field/range-datepicker-field.component';
 
 
 @NgModule({
   declarations: [
     /** Fields */
     DatepickerFieldComponent,
-    DatepickerAndTimeEndFieldComponent
+    DatepickerAndTimeEndFieldComponent,
+    RangeDatepickerFieldComponent
   ],
   imports: [
     /** Angular */
