@@ -19,10 +19,10 @@ export class RangeDatepickerFieldComponent extends TotsBaseFieldComponent implem
     	this.group.addControl(this.field.extra.end_date_field_key, this.inputEnd);
 	}
 
-	protected get minDate() : moment.Moment | undefined {
+	protected get minDate() {
 		return this.field.extra?.minDate;
 	}
-	protected get maxDate() : moment.Moment | void {
+	protected get maxDate() {
 		if (this.field.extra?.maxDays && this.input.value) {
 			return this.input.value.clone().add(this.field.extra?.maxDays, "days");
 
