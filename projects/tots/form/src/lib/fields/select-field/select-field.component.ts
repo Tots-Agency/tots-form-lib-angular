@@ -22,7 +22,7 @@ export class SelectFieldComponent extends TotsBaseFieldComponent {
       return item[this.field.extra.selected_key];
     }
 
-    return "id";
+    return item["id"];
   }
 
   displayName(item: any): string {
