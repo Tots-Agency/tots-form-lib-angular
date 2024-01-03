@@ -8,7 +8,7 @@
     <mat-label *ngIf="field.label && totsFormDefaultConfig.labelPosition==eTotsFormLabelPosition.INSIDE"> {{ field.label }} </mat-label>
 
     <mat-select [formControl]="input" [placeholder]="getPlaceholder()" [multiple]="isMultiple()">
-        <mat-option *ngFor="let option of field.extra.options" [value]="selectedKey(option.id)"> {{ displayName(option) }} </mat-option>
+        <mat-option *ngFor="let option of field.extra.options" [value]="selectedKey(option)"> {{ displayName(option) }} </mat-option>
     </mat-select>
 
     <mat-hint *ngIf="getCaption() != ''" [align]="'end'"> {{getCaption()}} </mat-hint>
