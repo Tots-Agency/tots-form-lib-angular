@@ -1,5 +1,11 @@
+<tots-outer-label
+    *ngIf="field.label && totsFormDefaultConfig.labelPosition==eTotsFormLabelPosition.ABOVE"
+    [label]="field.label"
+    [isRequired]="isRequired()"
+></tots-outer-label>
+
 <mat-form-field *ngIf="input" class="{{getClases()}}" (click)="picker.open()" [appearance]="getAppearance()">
-    <mat-label *ngIf="field.label"> {{ field.label }} </mat-label>
+    <mat-label *ngIf="field.label && totsFormDefaultConfig.labelPosition==eTotsFormLabelPosition.INSIDE"> {{ field.label }} </mat-label>
     <input matInput [matDatepicker]="picker" [formControl]="input" [placeholder]="getPlaceholder()" [min]="getMinDate()">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
