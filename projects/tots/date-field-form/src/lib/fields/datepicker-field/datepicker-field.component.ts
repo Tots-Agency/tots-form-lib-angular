@@ -15,10 +15,13 @@ export class DatepickerFieldComponent extends TotsBaseFieldComponent {
     return '';
   }
 
-  getMinDate() {
-    if(this.field.extra && this.field.extra.minDate){ return this.field.extra.minDate; }
-    return null;
+  protected get minDate() {
+    return this.field.extra?.minDate;
   }
+  protected get maxDate() {
+    return this.field.extra?.maxDate;
+  }
+  
 
   static override updateFormByItem(group: UntypedFormGroup, item: any, field: TotsFieldForm) {
     if(Array.isArray(field.key)){
