@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
 import { TotsFieldForm } from '../../entities/tots-field-form';
 import { TotsBaseFieldComponent } from '../tots-base-field.component';
@@ -9,12 +9,17 @@ import { TOTS_FORM_DEFAULT_CONFIG, TotsFormDefaultConfig } from '../../entities/
 @Component({
   selector: 'tots-submit-button-field',
   templateUrl: './submit-button-field.component.html',
-  styleUrls: ['./submit-button-field.component.css']
+  styleUrls: ['./submit-button-field.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class SubmitButtonFieldComponent extends TotsBaseFieldComponent implements OnInit {
 
   matColor : ThemePalette;
   matButtonDirective! : TotsFormButtonMatDirective;
+
+  public get matIcon() : string {
+    return this.field.extra?.matIcon || this.totsButtonConfig.positiveButtonIcon;
+  }
 
   constructor(
     @Inject(TOTS_FORM_BUTTONS_CONFIG) protected totsButtonConfig: TotsFormButtonsConfig,

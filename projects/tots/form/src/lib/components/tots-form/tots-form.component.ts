@@ -14,6 +14,13 @@ export class TotsFormComponent implements OnInit, AfterViewInit {
   @Input() fields: Array<TotsFieldForm> = new Array<TotsFieldForm>();
   @Input() item: any;
   @Input() autoSave: boolean = false;
+  @Input() set loading(value:boolean) {
+    if (value) {
+      this.group.disable();
+    } else {
+      this.group.enable();
+    }
+  }
 
   @Output() onAction = new EventEmitter<TotsActionForm>();
   privateActions = new Subject<TotsActionForm>();

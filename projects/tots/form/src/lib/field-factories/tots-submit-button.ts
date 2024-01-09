@@ -4,9 +4,10 @@ import { SubmitButtonFieldComponent } from "../fields/submit-button-field/submit
 import { TotsFormButtonMatDirective } from "../entities/tots-buttons-config";
 
 export class TotsSubmitButton extends TotsFieldForm {
-	constructor(key:string, submitCaption:string, submitMatColor?:ThemePalette, submitMatDirective?:TotsFormButtonMatDirective) {
+	constructor(key:string, submitCaption:string, matIcon?:string, submitMatColor?:ThemePalette, submitMatDirective?:TotsFormButtonMatDirective) {
         super(key, SubmitButtonFieldComponent, submitCaption);
         this.extra = {
+            matIcon: matIcon,
             matColor: submitMatColor,
             matButtonDirective: submitMatDirective,
         };

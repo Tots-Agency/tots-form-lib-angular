@@ -13,3 +13,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-
     --tots-form-sidebar-bg-item-active: #9F8D84;
     --tots-form-sidebar-border-item: #F4DED3;
 }
+
+tots-form {
+    .tots-field-main-container:not(:last-of-type) {
+        margin-bottom: 20px;
+    }
+}
