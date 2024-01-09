@@ -8,6 +8,7 @@ export type TotsFormButtonMatDirective = "mat-button"|"mat-flat-button"|"mat-rai
 export class TotsFormButtonsConfig {
   positiveButtonMaterialDirective : TotsFormButtonMatDirective = "mat-button";
   positiveButtonColor : ThemePalette = "primary";
+  positiveButtonIcon : string|undefined = undefined;
   negativeButtonCaption : string = "Cancel";
   negativeButtonMaterialDirective : TotsFormButtonMatDirective = "mat-button";
   negativeButtonColor : ThemePalette = undefined;   // Unthemed

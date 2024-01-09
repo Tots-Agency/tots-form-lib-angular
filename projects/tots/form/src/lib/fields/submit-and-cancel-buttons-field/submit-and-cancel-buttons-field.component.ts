@@ -20,6 +20,10 @@ export class SubmitAndCancelButtonsFieldComponent extends TotsBaseFieldComponent
   cancelMatColor! : ThemePalette;
   cancelMatButtonDirective! : TotsFormButtonMatDirective;
 
+  public get matIcon() : string {
+    return this.field.extra?.matIcon || this.totsButtonConfig.positiveButtonIcon;
+  }
+
   constructor(
     @Inject(TOTS_FORM_BUTTONS_CONFIG) protected totsButtonConfig: TotsFormButtonsConfig,
     @Inject(TOTS_FORM_DEFAULT_CONFIG) totsFormDefaultConfig: TotsFormDefaultConfig

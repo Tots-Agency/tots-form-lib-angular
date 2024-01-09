@@ -4,10 +4,11 @@ import { SubmitAndCancelButtonsFieldComponent } from "../fields/submit-and-cance
 import { TotsFormButtonMatDirective } from "../entities/tots-buttons-config";
 
 export class TotsSubmitAndCancelButtons extends TotsFieldForm {
-	constructor(key:string, submitCaption:string, cancelCaption?:string, submitMatColor?:ThemePalette, submitMatDirective?:TotsFormButtonMatDirective, cancelMatDirective?:TotsFormButtonMatDirective) {
+	constructor(key:string, submitCaption:string, cancelCaption?:string, matIcon?:string, submitMatColor?:ThemePalette, submitMatDirective?:TotsFormButtonMatDirective, cancelMatDirective?:TotsFormButtonMatDirective) {
         super(key, SubmitAndCancelButtonsFieldComponent, submitCaption);
         this.extra = {
             matColor: submitMatColor,
+            matIcon: matIcon,
             matButtonDirective: submitMatDirective,
             cancelLabel: cancelCaption,
             matCancelButtonDirective: cancelMatDirective,

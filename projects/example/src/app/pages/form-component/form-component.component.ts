@@ -4,7 +4,7 @@ import { DatepickerFieldComponent } from 'projects/tots/date-field-form/src/lib/
 import { TotsActionForm } from 'projects/tots/form/src/lib/entities/tots-action-form';
 import { TotsModalConfig } from 'projects/tots/form/src/lib/entities/tots-modal-config';
 import { SubmitButtonFieldComponent } from 'projects/tots/form/src/lib/fields/submit-button-field/submit-button-field.component';
-import { AutocompleteFieldComponent, AutocompleteListFieldComponent, AutocompleteObsFieldComponent, AvatarPhotoFieldComponent, ButtonToggleFieldComponent, FilesListFieldComponent, IntegerFieldComponent, OneFileFieldComponent, PhotosFieldComponent, RowFieldComponent, SelectFieldComponent, SelectObsFieldComponent, StringFieldComponent, TextareaFieldComponent, ToggleFieldComponent, TotsFieldForm, TotsFormComponent, TotsFormModalService, TotsRadioButtonOption, TotsStringArrayField } from 'projects/tots/form/src/public-api';
+import { AutocompleteFieldComponent, AutocompleteListFieldComponent, AutocompleteObsFieldComponent, AvatarPhotoFieldComponent, ButtonToggleFieldComponent, FilesListFieldComponent, IntegerFieldComponent, OneFileFieldComponent, PhotosFieldComponent, RowFieldComponent, SelectFieldComponent, SelectObsFieldComponent, StringFieldComponent, TextareaFieldComponent, ToggleFieldComponent, TotsAutocompleteStaticField, TotsFieldForm, TotsFormComponent, TotsFormModalService, TotsRadioButtonOption, TotsStringArrayField, TotsSubmitAndCancelButtons } from 'projects/tots/form/src/public-api';
 import { TotsUsersSelectorMenuConfig } from 'projects/tots/users-selector-menu/src/lib/entities/tots-users-selector-menu-config';
 import { delay, map, Observable, of, tap } from 'rxjs';
 import { UserService } from '../../services/user.service';
@@ -36,7 +36,6 @@ import { TotsToggleField } from 'projects/tots/form/src/lib/field-factories/tots
 import { TotsSubmitButton } from 'projects/tots/form/src/lib/field-factories/tots-submit-button';
 import { TotsDatepickerField, TotsDatepickerTimeRangeField } from '@tots/date-field-form';
 import { TotsQuillField } from '@tots/html-field-form';
-import { TotsAutocompleteStaticField } from '@tots/form';
 import { TotsRadioGroupField } from 'projects/tots/form/src/lib/field-factories/tots-radio-group-field';
 
 @Component({
@@ -48,7 +47,7 @@ export class FormComponentComponent implements OnInit {
 
   fields = new Array<TotsFieldForm>();
   item = { type: 2, customer_id: 3, start_date: undefined, type_toggle: 2, datepicker_time: '1989-08-25 14:00:00', datepicker_time_end: '1989-08-25 18:00:00', extra: { param_test: '123' }, list_names: ['Matias', 'Pedro', 'Jorge'] };
-
+  loading = false;
   configUserSelector = new TotsUsersSelectorMenuConfig();
 
   dateNow = moment();
@@ -66,6 +65,12 @@ export class FormComponentComponent implements OnInit {
 
   onActionForm(action: TotsActionForm) {
     console.log(action);
+    switch (action.key) {
+      case "submit" : {
+        this.loading = true;
+        break;
+      }
+    }
   }
 
   configForm() {
@@ -126,8 +131,9 @@ export class FormComponentComponent implements OnInit {
   }
   configForm2() {
     this.fields = [
-      new TotsRangeDatepickerField("start_date", "end_date", moment(), 6),
-      new TotsSubmitButton("submit", "Enviar")
+      new TotsStringField("title", "Title", [ValidatorRequired], "Loading test"),
+      new TotsSubmitButton("submit", "Enviar", "toys"),
+      new TotsSubmitAndCancelButtons("submit", "Enviar")  // icon pasado por provider
     ];
   }
 
@@ -172,7 +178,7 @@ export class FormComponentComponent implements OnInit {
     config.item = {};
     config.fields = [
       new TotsStringField("title", "Title", [ValidatorRequired]),
-      new TotsSubmitButton("submit", "CREATE", "accent", "mat-stroked-button")
+      new TotsSubmitButton("submit", "CREATE", "check", "accent", "mat-stroked-button")
     ];
 
     this.apiService.open(config)

@@ -10,6 +10,7 @@
     }"
     type="button"
     [color]="cancelMatColor"
+    [disabled]="group.disabled"
     (click)="onCancel()"
   >
     {{ cancelLabel }}
@@ -25,10 +26,16 @@
       'mat-mdc-outlined-button mdc-button--outlined': submitMatButtonDirective=='mat-stroked-button'
     }"
     [color]="submitMatColor"
-    [disabled]="!group.valid"
+    [disabled]="!group.valid || group.disabled"
     (click)="onClick()"
   >
     {{ field.label }}
+
+    <mat-icon iconPositionEnd *ngIf="matIcon && !group.disabled">
+      {{ matIcon }}
+    </mat-icon>
+    <mat-spinner *ngIf="group.disabled" diameter="18" strokeWidth="1.5"></mat-spinner>
+
   </button>
 
 </div>
