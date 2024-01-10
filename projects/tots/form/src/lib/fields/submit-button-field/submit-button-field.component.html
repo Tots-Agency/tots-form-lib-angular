@@ -1,21 +1,23 @@
-<button
-    mat-button
-    [ngClass]="{
-        'mat-mdc-button': matButtonDirective=='mat-button',
-        'mat-mdc-unelevated-button mdc-button--unelevated': matButtonDirective=='mat-flat-button',
-        'mat-mdc-raised-button mdc-button--raised': matButtonDirective=='mat-raised-button',
-        'mat-mdc-outlined-button mdc-button--outlined': matButtonDirective=='mat-stroked-button'
-      }"
-    type="button"
-    [color]="matColor"
-    [disabled]="!group.valid || group.disabled"
-    (click)="onClick()"
->
-    {{ field.label }}
+<div class="submit_button_wrapper">
+	<button
+		mat-button
+		[ngClass]="{
+			'mat-mdc-button': matButtonDirective=='mat-button',
+			'mat-mdc-unelevated-button mdc-button--unelevated': matButtonDirective=='mat-flat-button',
+			'mat-mdc-raised-button mdc-button--raised': matButtonDirective=='mat-raised-button',
+			'mat-mdc-outlined-button mdc-button--outlined': matButtonDirective=='mat-stroked-button'
+		}"
+		type="button"
+		[color]="matColor"
+		[disabled]="!group.valid || group.disabled"
+		(click)="onClick()"
+	>
+		{{ field.label }}
 
-    <mat-icon iconPositionEnd *ngIf="matIcon && !group.disabled">
-        {{ matIcon }}
-    </mat-icon>
-	<mat-spinner *ngIf="group.disabled" diameter="18" strokeWidth="1.5"></mat-spinner>
+		<mat-icon iconPositionEnd *ngIf="matIcon && !group.disabled">
+			{{ matIcon }}
+		</mat-icon>
+		<mat-spinner *ngIf="group.disabled" diameter="18" strokeWidth="1.5"></mat-spinner>
 
-</button>
+	</button>
+</div>
