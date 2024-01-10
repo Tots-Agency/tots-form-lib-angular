@@ -1,14 +1,14 @@
-.mat-mdc-button-base {
+.submit_button_wrapper .mat-mdc-button-base {
     width: 100%;
     height: 42px !important;
 }
 
-.mat-mdc-button-base .mdc-button__label {
+.submit_button_wrapper .mat-mdc-button-base .mdc-button__label {
     display: flex;
     gap: 12px;
     align-items: center;
 }
 
-.mat-mdc-button-base .mdc-button__label .mat-mdc-button-touch-target {
+.submit_button_wrapper .mat-mdc-button-base .mdc-button__label .mat-mdc-button-touch-target {
     height: 100%;
 }
