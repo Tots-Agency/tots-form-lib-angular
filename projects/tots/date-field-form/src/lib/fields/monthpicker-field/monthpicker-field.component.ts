@@ -37,7 +37,6 @@ export class MonthpickerFieldComponent extends TotsBaseFieldComponent {
 		return this.field.extra?.maxDate;
 	}
 
-
 	static override updateFormByItem(group: UntypedFormGroup, item: any, field: TotsFieldForm) {
 		if (Array.isArray(field.key)) {
 		} else {
