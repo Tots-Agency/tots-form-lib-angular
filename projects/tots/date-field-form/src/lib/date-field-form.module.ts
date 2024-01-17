@@ -17,7 +17,7 @@ import { TotsFormModule } from '@tots/form';
 import { DatepickerFieldComponent } from './fields/datepicker-field/datepicker-field.component';
 import { DatepickerAndTimeEndFieldComponent } from './fields/datepicker-and-time-end-field/datepicker-and-time-end-field.component';
 import { RangeDatepickerFieldComponent } from './fields/range-datepicker-field/range-datepicker-field.component';
-
+import { MonthpickerFieldComponent } from './fields/monthpicker-field/monthpicker-field.component';
 
 
 
@@ -26,7 +26,8 @@ import { RangeDatepickerFieldComponent } from './fields/range-datepicker-field/r
     /** Fields */
     DatepickerFieldComponent,
     DatepickerAndTimeEndFieldComponent,
-    RangeDatepickerFieldComponent
+    RangeDatepickerFieldComponent,
+    MonthpickerFieldComponent
   ],
   imports: [
     /** Angular */

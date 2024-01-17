@@ -9,7 +9,7 @@ import { TotsUsersSelectorMenuConfig } from 'projects/tots/users-selector-menu/s
 import { delay, map, Observable, of, tap } from 'rxjs';
 import { UserService } from '../../services/user.service';
 import * as moment from 'moment';
-import { DatepickerAndTimeEndFieldComponent, TotsRangeDatepickerField } from 'projects/tots/date-field-form/src/public-api';
+import { DatepickerAndTimeEndFieldComponent, TotsMonthpickerField, TotsRangeDatepickerField } from 'projects/tots/date-field-form/src/public-api';
 import { TotsFormApiService, TotsFormModalApiConfig } from 'projects/tots/form-api/src/public-api';
 import { QuillFieldComponent } from 'projects/tots/html-field-form/src/public-api';
 import { MentionHtmlFieldComponent } from 'projects/tots/quill-mention-field-form/src/public-api';
@@ -82,7 +82,7 @@ export class FormComponentComponent implements OnInit {
         { id: 3, name: 'Tipo 3'},
       ], "id", "name", "Tipo"),
       new TotsAvatarPhotoField("avatar", () => { return of({ url: 'https://storage.googleapis.com/tots-send-public/Frame%2028.png' })}, "Subir imagen", "Eliminar imagen", undefined, "Avatar" ),
-      new TotsDatepickerField("start_date", moment(), "Start date"),
+      new TotsDatepickerField("start_date", moment(), undefined, "Start date"),
       new TotsFilesListField("attachments", ()=> { return of({ filename: 'test_file.png', url: 'https://storage.googleapis.com/tots-send-public/Frame%2028.png' }) }, "+ Add new file", "filename", "Attachments" ),
       new TotsButtonToggleField("type_toggle", [
         { id: 1, title: 'Tipo 1'},
@@ -131,9 +131,8 @@ export class FormComponentComponent implements OnInit {
   }
   configForm2() {
     this.fields = [
-      new TotsStringField("title", "Title", [ValidatorRequired], "Loading test"),
-      new TotsSubmitButton("submit", "Enviar", "toys"),
-      new TotsSubmitAndCancelButtons("submit", "Enviar")  // icon pasado por provider
+      new TotsMonthpickerField("month", undefined, moment(), "Month Picker", undefined, undefined, [ValidatorRequired]),
+      new TotsSubmitButton("submit", "Enviar"),
     ];
   }
 
