@@ -30,12 +30,6 @@ export class MonthpickerFieldComponent extends TotsBaseFieldComponent {
 	protected get hint() : string | undefined {
 		return this.field.extra?.caption;
 	}
-	
-	getCaption() {
-		if (this.field.extra && this.field.extra.caption) { ; }
-		return '';
-	}
-
 	protected get minDate() {
 		return this.field.extra?.minDate;
 	}
