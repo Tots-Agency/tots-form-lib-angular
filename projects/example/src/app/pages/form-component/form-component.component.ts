@@ -131,7 +131,7 @@ export class FormComponentComponent implements OnInit {
   }
   configForm2() {
     this.fields = [
-      new TotsMonthpickerField("month", undefined, moment(), "Month Picker", undefined, undefined, [ValidatorRequired]),
+      new TotsMonthpickerField("month", undefined, undefined, "Month Picker", undefined, undefined, [ValidatorRequired]),
       new TotsSubmitButton("submit", "Enviar"),
     ];
   }

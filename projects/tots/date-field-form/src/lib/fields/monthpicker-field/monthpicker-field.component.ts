@@ -1,20 +1,19 @@
-import { Component, ElementRef, Inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
-import { MomentDateAdapter } from '@angular/material-moment-adapter';
-import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
-import { MatCalendarUserEvent, MatDatepicker } from '@angular/material/datepicker';
-import { TOTS_FORM_DEFAULT_CONFIG, TotsBaseFieldComponent, TotsFieldForm, TotsFormDefaultConfig } from '@tots/form';
+import { MAT_DATE_FORMATS } from '@angular/material/core';
+import { MatDatepicker } from '@angular/material/datepicker';
+import { TotsBaseFieldComponent, TotsFieldForm } from '@tots/form';
 import moment from 'moment';
 
-export const MY_FORMATS = {
+export const MONTH_FORMATS = {
 	parse: {
-	  dateInput: 'MM/YYYY',
+		dateInput: 'MM/YYYY',
 	},
 	display: {
-	  dateInput: 'MM/YYYY',
-	  monthYearLabel: 'MMM YYYY',
-	  dateA11yLabel: 'LL',
-	  monthYearA11yLabel: 'MMMM YYYY',
+		dateInput: 'MM/YYYY',
+		monthYearLabel: 'MMM YYYY',
+		dateA11yLabel: 'LL',
+		monthYearA11yLabel: 'MMMM YYYY',
 	},
 };
 
@@ -23,18 +22,11 @@ export const MY_FORMATS = {
 	templateUrl: './monthpicker-field.component.html',
 	styleUrls: ['./monthpicker-field.component.css'],
 	providers: [
-		{ provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
+		{ provide: MAT_DATE_FORMATS, useValue: MONTH_FORMATS },
 	]
 })
 export class MonthpickerFieldComponent extends TotsBaseFieldComponent {
 
-	constructor(
-		@Inject(TOTS_FORM_DEFAULT_CONFIG) totsFormDefaultConfig: TotsFormDefaultConfig,
-		private elementRef: ElementRef
-	) {
-		super(totsFormDefaultConfig);
-	}
-	
 	protected get hint() : string | undefined {
 		return this.field.extra?.caption;
 	}
