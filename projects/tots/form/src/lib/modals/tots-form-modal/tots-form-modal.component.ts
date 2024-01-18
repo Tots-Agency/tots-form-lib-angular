@@ -23,7 +23,8 @@ export class TotsFormModalComponent {
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: Event): void {   
     const target = event.target as HTMLElement;
-    if (target.classList.contains("cdk-overlay-backdrop")) {
+
+    if (target.classList.contains("tots-modal-backdrop")) {
       let newAction = new TotsActionModalForm();
       newAction.key = "cancel";
       newAction.item = null;

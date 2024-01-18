@@ -17,6 +17,7 @@ export class TotsFormModalService {
     let dialogRef = this.dialog.open(TotsFormModalComponent, {
       width: '700px',
       panelClass: 'tots-form-modal-overlay-pane',
+      backdropClass: "tots-modal-backdrop",
       data: config
     });
     return dialogRef.componentInstance.actions;
