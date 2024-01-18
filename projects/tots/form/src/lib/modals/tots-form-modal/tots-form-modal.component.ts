@@ -23,7 +23,6 @@ export class TotsFormModalComponent {
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: Event): void {   
     const target = event.target as HTMLElement;
-    console.log(target.classList);
     
     if (target.classList.contains("tots-modal-backdrop")) {
       let newAction = new TotsActionModalForm();
