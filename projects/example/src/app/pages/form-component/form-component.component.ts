@@ -207,7 +207,7 @@ export class FormComponentComponent implements OnInit {
       // Campo string
       { key: 'title', component: StringFieldComponent, label: 'Titulo', validators: [Validators.required], extra: { caption: 'Este se mostrara publicamente...' } },
       // Campo de selector normal
-      { key: 'type', component: SelectFieldComponent, label: 'Tipo', validators: [Validators.required], extra: { options: [
+      { key: 'type', component: SelectFieldComponent, label: 'Tipo', validators: [Validators.required], extra: { multiple: true, options: [
         { id: 1, title: 'Tipo 1'},
         { id: 2, title: 'Tipo 2'},
         { id: 3, title: 'Tipo 3'},
