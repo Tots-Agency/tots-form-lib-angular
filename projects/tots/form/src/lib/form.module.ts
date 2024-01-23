@@ -52,6 +52,7 @@ import { SelectObsFieldComponent } from './fields/select-obs-field/select-obs-fi
 import { ToggleFieldComponent } from './fields/toggle-field/toggle-field.component';
 import { StringArrayFieldComponent } from './fields/string-array-field/string-array-field.component';
 import { RadioGroupFieldComponent } from './fields/radio-group-field/radio-group-field.component';
+import { DoubleStringArrayFieldComponent } from './fields/double-string-array-field/double-string-array-field.component';
 
 @NgModule({
   declarations: [
@@ -81,7 +82,8 @@ import { RadioGroupFieldComponent } from './fields/radio-group-field/radio-group
     SelectObsFieldComponent,
     ToggleFieldComponent,
     StringArrayFieldComponent,
-    RadioGroupFieldComponent
+    RadioGroupFieldComponent,
+    DoubleStringArrayFieldComponent
   ],
   imports: [
     CommonModule,

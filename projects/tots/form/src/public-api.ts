@@ -51,6 +51,7 @@ export * from './lib/fields/submit-and-cancel-buttons-field/submit-and-cancel-bu
 export * from './lib/fields/select-obs-field/select-obs-field.component';
 export * from './lib/fields/toggle-field/toggle-field.component';
 export * from './lib/fields/string-array-field/string-array-field.component';
+export * from './lib/fields/double-string-array-field/double-string-array-field.component';
 export * from './lib/fields/radio-group-field/radio-group-field.component';
 
 /**
@@ -61,6 +62,7 @@ export * from './lib/field-factories/tots-autocomplete-obs-field';
 export * from './lib/field-factories/tots-autocomplete-static-field';
 export * from './lib/field-factories/tots-avatar-photo-field';
 export * from './lib/field-factories/tots-button-toggle-field';
+export * from './lib/field-factories/tots-double-string-array-field';
 export * from './lib/field-factories/tots-files-list-field';
 export * from './lib/field-factories/tots-html-field';
 export * from './lib/field-factories/tots-integer-field';
