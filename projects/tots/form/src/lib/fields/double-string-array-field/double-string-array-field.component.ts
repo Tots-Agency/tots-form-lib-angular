@@ -1,7 +1,12 @@
 import { Component, Inject } from '@angular/core';
 import { FormArray, FormControl, UntypedFormGroup } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
-import { TOTS_FORM_DEFAULT_CONFIG, TOTS_STRING_ARRAY_CONFIG, TotsBaseFieldComponent, TotsFieldForm, TotsFormButtonMatDirective, TotsFormDefaultConfig, TotsFormHelper, TotsStringArrayConfig } from '@tots/form';
+import { TotsBaseFieldComponent } from '../tots-base-field.component';
+import { TOTS_STRING_ARRAY_CONFIG, TotsStringArrayConfig } from '../../entities/tots-string-array-config';
+import { TOTS_FORM_DEFAULT_CONFIG, TotsFormDefaultConfig } from '../../entities/tots-form-default-config';
+import { TotsFormButtonMatDirective } from '../../entities/tots-buttons-config';
+import { TotsFieldForm } from '../../entities/tots-field-form';
+import { TotsFormHelper } from '../../helpers/tots-form-helper';
 
 @Component({
 	selector: 'app-double-string-array-field',
@@ -121,7 +126,7 @@ export class DoubleStringArrayFieldComponent extends TotsBaseFieldComponent {
 	protected addOne() {
 		let fc1 = new FormControl();
 		let fc2 = new FormControl();
-		
+
 		if (this.field.validators?.length) {
 			fc1.setValidators(this.field.validators);
 		}
