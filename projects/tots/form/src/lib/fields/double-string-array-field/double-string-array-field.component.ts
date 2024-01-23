@@ -4,7 +4,7 @@ import { ThemePalette } from '@angular/material/core';
 import { TOTS_FORM_DEFAULT_CONFIG, TOTS_STRING_ARRAY_CONFIG, TotsBaseFieldComponent, TotsFieldForm, TotsFormButtonMatDirective, TotsFormDefaultConfig, TotsFormHelper, TotsStringArrayConfig } from '@tots/form';
 
 @Component({
-	selector: 'app-double-string-array-field',
+	selector: 'tots-double-string-array-field',
 	templateUrl: './double-string-array-field.component.html',
 	styleUrls: ["./double-string-array-field.component.css"]
 })
