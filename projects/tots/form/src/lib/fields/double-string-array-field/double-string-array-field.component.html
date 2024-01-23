@@ -1,0 +1,34 @@
+<div class="string-array-field-header">
+	<tots-outer-label *ngIf="field.label" [label]="field.label" [isRequired]="isRequired()"></tots-outer-label>
+
+	<button mat-button [ngClass]="{
+			'mat-mdc-button': addButtonStyle=='mat-button',
+			'mat-mdc-unelevated-button mdc-button--unelevated': addButtonStyle=='mat-flat-button',
+			'mat-mdc-raised-button mdc-button--raised': addButtonStyle=='mat-raised-button',
+			'mat-mdc-outlined-button mdc-button--outlined': addButtonStyle=='mat-stroked-button',
+		}" type="button" [color]="addButtonMatColor" [disabled]="formArray1.controls.length >= maxAmount" (click)="addOne()">
+		<mat-icon *ngIf="addButtonMatIcon">{{addButtonMatIcon}}</mat-icon>
+		<ng-container *ngIf="addButtonCaption">
+			{{addButtonCaption}}
+		</ng-container>
+	</button>
+</div>
+
+<div class="double-string-fields">
+	<div class="pair" *ngFor="let control of formArray1.controls; let index=index; let first=first" class="{{getClases()}}">
+		<mat-form-field [appearance]="getAppearance()">
+			<input matInput type="text" [formControl]="getControlByIndex1(index)" [placeholder]="getPlaceholder()" />
+			<mat-error *ngIf="hasIndividualError1(index)">{{getIndividualMessageError1(index)}}</mat-error>
+		</mat-form-field>
+	
+		<mat-form-field [appearance]="getAppearance()">
+			<input matInput type="text" [formControl]="getControlByIndex2(index)" [placeholder]="placeholder2" />
+			<mat-hint *ngIf="first && matHint" [align]="'end'"> {{matHint}} </mat-hint>
+			<mat-error *ngIf="hasIndividualError2(index)">{{getIndividualMessageError2(index)}}</mat-error>
+	
+			<button *ngIf="!first" mat-icon-button matSuffix color="warn" (click)="removeOne(index)">
+				<mat-icon>close</mat-icon>
+			</button>
+		</mat-form-field>
+	</div>
+</div>
