@@ -9,7 +9,7 @@ import { TotsFieldForm } from '../../entities/tots-field-form';
 import { TotsFormHelper } from '../../helpers/tots-form-helper';
 
 @Component({
-	selector: 'app-double-string-array-field',
+	selector: 'tots-double-string-array-field',
 	templateUrl: './double-string-array-field.component.html',
 	styleUrls: ["./double-string-array-field.component.css"]
 })
