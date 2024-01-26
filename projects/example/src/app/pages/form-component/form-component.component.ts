@@ -56,7 +56,7 @@ export class FormComponentComponent implements OnInit {
     extra: { param_test: '123' },
     list_names: ['Matias', 'Pedro', 'Jorge'],
     articles: {
-      name: ["MENEM", "CARLANGUISMO"],
+      name: ["Artículo 1", "Artículo 2"],
       quantity: [1, 2]
     }
   };
