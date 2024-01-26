@@ -4,7 +4,7 @@ import { DatepickerFieldComponent } from 'projects/tots/date-field-form/src/lib/
 import { TotsActionForm } from 'projects/tots/form/src/lib/entities/tots-action-form';
 import { TotsModalConfig } from 'projects/tots/form/src/lib/entities/tots-modal-config';
 import { SubmitButtonFieldComponent } from 'projects/tots/form/src/lib/fields/submit-button-field/submit-button-field.component';
-import { AutocompleteFieldComponent, AutocompleteListFieldComponent, AutocompleteObsFieldComponent, AvatarPhotoFieldComponent, ButtonToggleFieldComponent, FilesListFieldComponent, IntegerFieldComponent, OneFileFieldComponent, PhotosFieldComponent, RowFieldComponent, SelectFieldComponent, SelectObsFieldComponent, StringFieldComponent, TextareaFieldComponent, ToggleFieldComponent, TotsAutocompleteStaticField, TotsFieldForm, TotsFormComponent, TotsFormModalService, TotsRadioButtonOption, TotsStringArrayField, TotsSubmitAndCancelButtons } from 'projects/tots/form/src/public-api';
+import { AutocompleteFieldComponent, AutocompleteListFieldComponent, AutocompleteObsFieldComponent, AvatarPhotoFieldComponent, ButtonToggleFieldComponent, FilesListFieldComponent, IntegerFieldComponent, OneFileFieldComponent, PhotosFieldComponent, RowFieldComponent, SelectFieldComponent, SelectObsFieldComponent, StringFieldComponent, TextareaFieldComponent, ToggleFieldComponent, TotsAutocompleteStaticField, TotsDoubleStringArrayField, TotsFieldForm, TotsFormComponent, TotsFormModalService, TotsRadioButtonOption, TotsStringArrayField, TotsSubmitAndCancelButtons } from 'projects/tots/form/src/public-api';
 import { TotsUsersSelectorMenuConfig } from 'projects/tots/users-selector-menu/src/lib/entities/tots-users-selector-menu-config';
 import { delay, map, Observable, of, tap } from 'rxjs';
 import { UserService } from '../../services/user.service';
@@ -46,7 +46,20 @@ import { TotsRadioGroupField } from 'projects/tots/form/src/lib/field-factories/
 export class FormComponentComponent implements OnInit {
 
   fields = new Array<TotsFieldForm>();
-  item = { type: 2, customer_id: 3, start_date: undefined, type_toggle: 2, datepicker_time: '1989-08-25 14:00:00', datepicker_time_end: '1989-08-25 18:00:00', extra: { param_test: '123' }, list_names: ['Matias', 'Pedro', 'Jorge'] };
+  item = {
+    type: 2,
+    customer_id: 3,
+    start_date: undefined,
+    type_toggle: 2,
+    datepicker_time: '1989-08-25 14:00:00',
+    datepicker_time_end: '1989-08-25 18:00:00',
+    extra: { param_test: '123' },
+    list_names: ['Matias', 'Pedro', 'Jorge'],
+    articles: {
+      name: ["MENEM", "CARLANGUISMO"],
+      quantity: [1, 2]
+    }
+  };
   loading = false;
   configUserSelector = new TotsUsersSelectorMenuConfig();
 
@@ -131,7 +144,7 @@ export class FormComponentComponent implements OnInit {
   }
   configForm2() {
     this.fields = [
-      new TotsMonthpickerField("month", undefined, undefined, "Month Picker", undefined, undefined, [ValidatorRequired]),
+      new TotsDoubleStringArrayField(["articles", "name"], ["articles", "quantity"], 5, "Double string"),
       new TotsSubmitButton("submit", "Enviar"),
     ];
   }
