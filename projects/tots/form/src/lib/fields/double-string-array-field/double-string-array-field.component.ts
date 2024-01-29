@@ -186,7 +186,7 @@ export class DoubleStringArrayFieldComponent extends TotsBaseFieldComponent {
 		}
 
 		if (Array.isArray(field.extra.secondaryKey)) {
-			let dataArray = TotsFormHelper.getItemValueByKey(item, field.key);
+			let dataArray = TotsFormHelper.getItemValueByKey(item, field.extra.secondaryKey);
 			if (!dataArray) {
 				return;
 			}
