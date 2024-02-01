@@ -67,7 +67,7 @@ export class HtmlFieldComponent extends TotsBaseFieldComponent implements OnInit
       .subscribe((urlImage: any) => {
 
         quillInstance.insertEmbed(quillInstance.getSelection().index, 'image', urlImage);
-        this.input.patchValue(quillInstance.getContents());
+        this.input.patchValue(quillInstance.root.innerHTML);
         this.input.updateValueAndValidity();
       });
     };
