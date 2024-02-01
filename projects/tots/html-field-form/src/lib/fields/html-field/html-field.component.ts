@@ -57,20 +57,21 @@ export class HtmlFieldComponent extends TotsBaseFieldComponent implements OnInit
   }
 
   showOpenImageSelector(quillInstance: any) {
-    const input = document.createElement('input');
-    input.setAttribute('type', 'file');
-    input.setAttribute('accept', 'image/*');
-    input.onchange = async () => {
+    const inputFile = document.createElement('input');
+    inputFile.setAttribute('type', 'file');
+    inputFile.setAttribute('accept', 'image/*');
+    inputFile.onchange = async () => {
       
       this.field.extra.fileService
-      .upload(input.files![0])
+      .upload(inputFile.files![0])
       .subscribe((urlImage: any) => {
 
         quillInstance.insertEmbed(quillInstance.getSelection().index, 'image', urlImage);
-        
+        this.input.patchValue(quillInstance.getContents());
+        this.input.updateValueAndValidity();
       });
     };
-    input.click();
+    inputFile.click();
   }
 
 
