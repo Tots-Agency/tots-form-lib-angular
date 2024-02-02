@@ -67,7 +67,8 @@ export class QuillFieldComponent extends TotsBaseFieldComponent implements OnIni
       .subscribe((urlImage: any) => {
 
         quillInstance.insertEmbed(quillInstance.getSelection().index, 'image', urlImage);
-        
+        this.input.patchValue(quillInstance.root.innerHTML);
+        this.input.updateValueAndValidity();
       });
     };
     input.click();
