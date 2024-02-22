@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
-import { TotsConfigWizardForm, TotsStepWizard } from '../../entities/tots-config-wizard-form';
+import { TotsConfigDynamicWizardForm, TotsConfigWizardForm, TotsStepWizard } from '../../entities/tots-config-wizard-form';
 import { TotsActionForm, TotsFormComponent } from '@tots/form';
 import { CdkStep, StepperSelectionEvent } from '@angular/cdk/stepper';
 import { FormGroup } from '@angular/forms';
@@ -27,6 +27,12 @@ export class FormWizardComponent {
   }
 
   ngOnInit(): void {
+    if(this.config instanceof TotsConfigDynamicWizardForm){
+      this.config.onChange!(0).subscribe(fields => {
+        this.config.steps[0].fields = fields;
+      });
+    }
+
     this.selectedItem = this.config.steps[0];
     this.selectedItem.isSelected = true;
     // Emit Action
@@ -59,8 +65,20 @@ export class FormWizardComponent {
     this.changeDetector.detectChanges();
     // Load Forms
     this.selectedIndex = this.config.steps.indexOf(item);
+
     this.selectedItem = item;
-    this.changeDetector.detectChanges();
+
+    // Verify if dynamic
+    if(this.config instanceof TotsConfigDynamicWizardForm){
+
+      this.config.onChange!(this.selectedIndex).subscribe(fields => {
+        this.config.steps[this.selectedIndex].fields = fields;
+        this.changeDetector.detectChanges();
+      });
+    } else {
+      this.changeDetector.detectChanges();
+    }
+
     // Emit Action
     this.onAction.emit({ key: 'load-item', item: item });
   }
