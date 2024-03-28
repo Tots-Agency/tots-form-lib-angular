@@ -144,7 +144,7 @@ export class FormComponentComponent implements OnInit {
   }
   configForm2() {
     this.fields = [
-      new TotsDoubleStringArrayField(["articles", "name"], ["articles", "quantity"], 5, "Double string"),
+      new TotsDoubleStringArrayField(["articles", "name"], ["articles", "quantity"], 5, "Double string", [ValidatorRequired], [ValidatorRequired], "Placeholder 1", "Placeholder 2"),
       new TotsSubmitButton("submit", "Enviar"),
     ];
   }
