@@ -37,8 +37,8 @@ export class DoubleStringArrayFieldComponent extends TotsBaseFieldComponent {
 		if (this.field.validators?.length) {
 			fc1.setValidators(this.field.validators);
 		}
-		if (this.field.extra?.secondInputvalidators?.length) {
-			fc2.setValidators(this.field.extra.secondInputvalidators);
+		if (this.field.extra?.secondInputValidators?.length) {
+			fc2.setValidators(this.field.extra.secondInputValidators);
 		}
 
 		// Create Control
