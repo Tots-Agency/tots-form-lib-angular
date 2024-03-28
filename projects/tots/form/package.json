@@ -1,6 +1,6 @@
 {
   "name": "@tots/form",
-  "version": "16.0.21",
+  "version": "16.0.22",
   "peerDependencies": {
     "@angular/common": "^16.0.0",
     "@angular/core": "^16.0.0",
