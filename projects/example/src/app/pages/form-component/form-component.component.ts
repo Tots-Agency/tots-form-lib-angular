@@ -4,7 +4,7 @@ import { DatepickerFieldComponent } from 'projects/tots/date-field-form/src/lib/
 import { TotsActionForm } from 'projects/tots/form/src/lib/entities/tots-action-form';
 import { TotsModalConfig } from 'projects/tots/form/src/lib/entities/tots-modal-config';
 import { SubmitButtonFieldComponent } from 'projects/tots/form/src/lib/fields/submit-button-field/submit-button-field.component';
-import { AutocompleteFieldComponent, AutocompleteListFieldComponent, AutocompleteObsFieldComponent, AvatarPhotoFieldComponent, ButtonToggleFieldComponent, FilesListFieldComponent, IntegerFieldComponent, OneFileFieldComponent, PhotosFieldComponent, RadioGroupFieldComponent, RowFieldComponent, SelectFieldComponent, SelectObsFieldComponent, StringFieldComponent, TextareaFieldComponent, TotsFieldForm, TotsFormComponent, TotsFormModalService } from 'projects/tots/form/src/public-api';
+import { AutocompleteFieldComponent, AutocompleteListFieldComponent, AutocompleteObsFieldComponent, AvatarPhotoFieldComponent, ButtonToggleFieldComponent, FilesListFieldComponent, IntegerFieldComponent, OneFileFieldComponent, PasswordFieldComponent, PhotosFieldComponent, RadioGroupFieldComponent, RowFieldComponent, SelectFieldComponent, SelectObsFieldComponent, StringFieldComponent, TextareaFieldComponent, TotsFieldForm, TotsFormComponent, TotsFormModalService } from 'projects/tots/form/src/public-api';
 import { TotsUsersSelectorMenuConfig } from 'projects/tots/users-selector-menu/src/lib/entities/tots-users-selector-menu-config';
 import { delay, map, Observable, of, tap } from 'rxjs';
 import { UserService } from '../../services/user.service';
@@ -185,14 +185,9 @@ export class FormComponentComponent implements OnInit {
   configForm2() {
     this.fields = [
       {
-        key: "start_date",
-        component: RangeDatepickerFieldComponent,
-        label: "Rango de fechas",
-        extra: {
-          minDate: moment(),
-          maxDays: 7,
-          end_date_field_key: "end_date"
-        }
+        key: "password",
+        component: PasswordFieldComponent,
+        label: "Password",
       },
       { key: 'submit', component: SubmitButtonFieldComponent, label: 'Enviar' }
     ];

@@ -46,6 +46,7 @@ export * from './lib/fields/submit-and-cancel-buttons-field/submit-and-cancel-bu
 export * from './lib/fields/select-obs-field/select-obs-field.component';
 export * from './lib/fields/toggle-field/toggle-field.component';
 export * from './lib/fields/radio-group-field/radio-group-field.component';
+export * from './lib/fields/password-field/password-field.component';
 
 /**
  * Components

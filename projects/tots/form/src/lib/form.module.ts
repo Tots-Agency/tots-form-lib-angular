@@ -48,6 +48,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { SelectObsFieldComponent } from './fields/select-obs-field/select-obs-field.component';
 import { ToggleFieldComponent } from './fields/toggle-field/toggle-field.component';
 import { RadioGroupFieldComponent } from './fields/radio-group-field/radio-group-field.component';
+import { PasswordFieldComponent } from './fields/password-field/password-field.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { RadioGroupFieldComponent } from './fields/radio-group-field/radio-group
     SubmitAndCancelButtonsFieldComponent,
     SelectObsFieldComponent,
     ToggleFieldComponent,
-    RadioGroupFieldComponent
+    RadioGroupFieldComponent,
+    PasswordFieldComponent
   ],
   imports: [
     CommonModule,
