@@ -52,6 +52,11 @@ export class AutocompleteObsFieldComponent extends TotsBaseFieldComponent implem
   }
 
   selectedOption(event: MatAutocompleteSelectedEvent) {
+    if(this.field.extra.need_full_object == true){
+      this.input.setValue(event.option.value);
+      return;
+    }
+
     this.input.setValue(event.option.value[this.field.extra.selected_key]);
   }
 

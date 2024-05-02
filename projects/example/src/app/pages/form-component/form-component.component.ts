@@ -54,7 +54,7 @@ export class FormComponentComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.configForm2();
+    this.configForm();
     this.loadConfigUserSelector();
   }
 
@@ -102,7 +102,8 @@ export class FormComponentComponent implements OnInit {
         display_key: 'title',
         display_photo: 'photo',
         first_query: { id: 4, title: 'Customer 4' },
-        obs: this.customerAutocompleteObsProcessed.bind(this)
+        obs: this.customerAutocompleteObsProcessed.bind(this),
+        //need_full_object: true
       } },
       // Campo Autocompleete List
       { key: 'customers', component: AutocompleteListFieldComponent, label: 'Select Customer', extra: {
