@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TotsBaseFieldComponent } from '../tots-base-field.component';
-import { TotsFormHelper } from '@tots/form';
+import { TotsFormHelper } from '../../helpers/tots-form-helper';
 
 @Component({
   selector: 'tots-select-field',
