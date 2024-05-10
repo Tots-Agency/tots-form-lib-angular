@@ -47,6 +47,7 @@ export class FormComponentComponent implements OnInit {
 
   fields = new Array<TotsFieldForm>();
   item = {
+    user: {},
     type: 2,
     customer_id: 3,
     start_date: undefined,
@@ -60,6 +61,16 @@ export class FormComponentComponent implements OnInit {
       quantity: [1, 2]
     }
   };
+  private options = [
+    {
+      id: 1,
+      user: {name: "User 1", age: 20}
+    },
+    {
+      id: 2,
+      user: {name: "User 2", age: 25}
+    }
+  ]
   loading = false;
   configUserSelector = new TotsUsersSelectorMenuConfig();
 
@@ -144,7 +155,7 @@ export class FormComponentComponent implements OnInit {
   }
   configForm2() {
     this.fields = [
-      new TotsDoubleStringArrayField(["articles", "name"], ["articles", "quantity"], 5, "Double string", [ValidatorRequired], [ValidatorRequired], "Placeholder 1", "Placeholder 2"),
+      new TotsSelectField(["user", "age"], this.options, ["user", "age"], ["user", "name"], "Testing key as array"),
       new TotsSubmitButton("submit", "Enviar"),
     ];
   }
