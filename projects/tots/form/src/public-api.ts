@@ -67,6 +67,7 @@ export * from './lib/field-factories/tots-files-list-field';
 export * from './lib/field-factories/tots-html-field';
 export * from './lib/field-factories/tots-integer-field';
 export * from './lib/field-factories/tots-one-file-field';
+export * from './lib/field-factories/tots-password-field';
 export * from './lib/field-factories/tots-photos-field';
 export * from './lib/field-factories/tots-radio-group-field';
 export * from './lib/field-factories/tots-select-field';

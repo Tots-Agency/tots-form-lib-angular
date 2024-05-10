@@ -37,6 +37,8 @@ import { TotsSubmitButton } from 'projects/tots/form/src/lib/field-factories/tot
 import { TotsDatepickerField, TotsDatepickerTimeRangeField } from '@tots/date-field-form';
 import { TotsQuillField } from '@tots/html-field-form';
 import { TotsRadioGroupField } from 'projects/tots/form/src/lib/field-factories/tots-radio-group-field';
+import { PasswordFieldComponent } from 'projects/tots/form/src/lib/fields/password-field/password-field.component';
+import { TotsPasswordField } from 'projects/tots/form/src/lib/field-factories/tots-password-field';
 
 @Component({
   selector: 'app-form-component',
