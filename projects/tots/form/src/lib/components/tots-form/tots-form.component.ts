@@ -63,9 +63,17 @@ export class TotsFormComponent implements OnInit, AfterViewInit {
     return this.item;
   }
 
+  getItemByForm() {
+    let newItem = Object.assign({}, this.item);;
+    for (const field of this.fields) {
+      field.component.updateItemByForm(this.group, newItem, field);
+    }
+    return newItem;
+  }
+
   loadConfig() {
     this.privateActions.subscribe(action => {
-      action.item = this.updateItemByForm();
+      action.item = this.getItemByForm();
       this.onAction.emit(action);
     });
   }
