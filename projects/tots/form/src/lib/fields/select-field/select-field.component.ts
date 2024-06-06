@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TotsBaseFieldComponent } from '../tots-base-field.component';
+import { TotsFormHelper } from '../../helpers/tots-form-helper';
 
 @Component({
   selector: 'tots-select-field',
@@ -19,7 +20,7 @@ export class SelectFieldComponent extends TotsBaseFieldComponent {
 
   selectedKey(item: any): string {
     if (this.field.extra?.selected_key) {
-      return item[this.field.extra.selected_key];
+      return TotsFormHelper.getItemValueByKey(item, this.field.extra.selected_key);
     }
 
     return item["id"];
@@ -31,7 +32,7 @@ export class SelectFieldComponent extends TotsBaseFieldComponent {
     }
 
     if (this.field.extra?.display_key) {
-      return item[this.field.extra.display_key];
+      return TotsFormHelper.getItemValueByKey(item, this.field.extra.display_key);
     }
 
     return item.title;

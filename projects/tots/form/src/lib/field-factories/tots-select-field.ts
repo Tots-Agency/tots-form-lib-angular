@@ -4,7 +4,7 @@ import { SelectFieldComponent } from "../fields/select-field/select-field.compon
 import { TotsValidator } from "../entities/tots-validator";
 
 export class TotsSelectField extends TotsFieldForm {
-	constructor(key:string, options:any[], keyToSelect:string, keyToDisplay:string, label?:string, multiple?:boolean, validators?:TotsValidator[], placeholder?:string, appearance?:MatFormFieldAppearance, hint?:string, cssClass?:string) {
+	constructor(key:string|string[], options:any[], keyToSelect:string|string[], keyToDisplay:string|string[], label?:string, multiple?:boolean, validators?:TotsValidator[], placeholder?:string, appearance?:MatFormFieldAppearance, hint?:string, cssClass?:string) {
         super(key, SelectFieldComponent, label, validators);
         this.extra = {
             options: options,
