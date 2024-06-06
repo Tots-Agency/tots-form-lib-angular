@@ -1,23 +1,16 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Validators } from '@angular/forms';
-import { DatepickerFieldComponent } from 'projects/tots/date-field-form/src/lib/fields/datepicker-field/datepicker-field.component';
+import { Component, OnInit } from '@angular/core';
 import { TotsActionForm } from 'projects/tots/form/src/lib/entities/tots-action-form';
 import { TotsModalConfig } from 'projects/tots/form/src/lib/entities/tots-modal-config';
-import { SubmitButtonFieldComponent } from 'projects/tots/form/src/lib/fields/submit-button-field/submit-button-field.component';
-import { AutocompleteFieldComponent, AutocompleteListFieldComponent, AutocompleteObsFieldComponent, AvatarPhotoFieldComponent, ButtonToggleFieldComponent, FilesListFieldComponent, IntegerFieldComponent, OneFileFieldComponent, PhotosFieldComponent, RowFieldComponent, SelectFieldComponent, SelectObsFieldComponent, StringFieldComponent, TextareaFieldComponent, ToggleFieldComponent, TotsAutocompleteStaticField, TotsDoubleStringArrayField, TotsFieldForm, TotsFormComponent, TotsFormModalService, TotsRadioButtonOption, TotsStringArrayField, TotsSubmitAndCancelButtons } from 'projects/tots/form/src/public-api';
+import { TotsAutocompleteStaticField, TotsFieldForm, TotsFormModalService } from 'projects/tots/form/src/public-api';
 import { TotsUsersSelectorMenuConfig } from 'projects/tots/users-selector-menu/src/lib/entities/tots-users-selector-menu-config';
 import { delay, map, Observable, of, tap } from 'rxjs';
 import { UserService } from '../../services/user.service';
 import * as moment from 'moment';
-import { DatepickerAndTimeEndFieldComponent, TotsMonthpickerField, TotsRangeDatepickerField } from 'projects/tots/date-field-form/src/public-api';
 import { TotsFormApiService, TotsFormModalApiConfig } from 'projects/tots/form-api/src/public-api';
-import { QuillFieldComponent } from 'projects/tots/html-field-form/src/public-api';
-import { MentionHtmlFieldComponent } from 'projects/tots/quill-mention-field-form/src/public-api';
 
 /** Mention Style */
 import Quill from 'quill';
-import { MonacoEditorFieldComponent, TotsMonacoEditorField } from 'projects/tots/monaco-editor-field-form/src/public-api';
-import { StringArrayFieldComponent } from 'projects/tots/form/src/lib/fields/string-array-field/string-array-field.component';
+import { TotsMonacoEditorField } from 'projects/tots/monaco-editor-field-form/src/public-api';
 import { TotsStringField } from 'projects/tots/form/src/lib/field-factories/tots-string-field';
 import { ValidatorMax, ValidatorMin, ValidatorRequired } from '../../helpers/tots-validators';
 import { TotsSelectField } from 'projects/tots/form/src/lib/field-factories/tots-select-field';
@@ -36,9 +29,7 @@ import { TotsToggleField } from 'projects/tots/form/src/lib/field-factories/tots
 import { TotsSubmitButton } from 'projects/tots/form/src/lib/field-factories/tots-submit-button';
 import { TotsDatepickerField, TotsDatepickerTimeRangeField } from '@tots/date-field-form';
 import { TotsQuillField } from '@tots/html-field-form';
-import { TotsRadioGroupField } from 'projects/tots/form/src/lib/field-factories/tots-radio-group-field';
-import { PasswordFieldComponent } from 'projects/tots/form/src/lib/fields/password-field/password-field.component';
-import { TotsPasswordField } from 'projects/tots/form/src/lib/field-factories/tots-password-field';
+import { TotsCheckboxField } from 'projects/tots/form/src/lib/field-factories/tots-checkbox-field';
 
 @Component({
   selector: 'app-form-component',
@@ -49,6 +40,7 @@ export class FormComponentComponent implements OnInit {
 
   fields = new Array<TotsFieldForm>();
   item = {
+    aBoolean: true,
     type: 2,
     customer_id: 3,
     start_date: undefined,
@@ -146,7 +138,7 @@ export class FormComponentComponent implements OnInit {
   }
   configForm2() {
     this.fields = [
-      new TotsPasswordField("password", "Contraseña", [ValidatorRequired], "Placeholder", "outline", "Hint hint hint"),
+      new TotsCheckboxField("aBoolean", "Checkbox test"),
       new TotsSubmitButton("submit", "Enviar"),
     ];
   }

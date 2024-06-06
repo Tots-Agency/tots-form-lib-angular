@@ -53,6 +53,7 @@ export * from './lib/fields/toggle-field/toggle-field.component';
 export * from './lib/fields/string-array-field/string-array-field.component';
 export * from './lib/fields/double-string-array-field/double-string-array-field.component';
 export * from './lib/fields/radio-group-field/radio-group-field.component';
+export * from './lib/fields/checkbox-field/checkbox-field.component';
 
 /**
  * Factories
@@ -78,6 +79,7 @@ export * from './lib/field-factories/tots-submit-and-cancel-buttons';
 export * from './lib/field-factories/tots-submit-button';
 export * from './lib/field-factories/tots-textarea-field';
 export * from './lib/field-factories/tots-toggle-field';
+export * from './lib/field-factories/tots-checkbox-field';
 
 /**
  * Components

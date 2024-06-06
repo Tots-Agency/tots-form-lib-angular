@@ -54,6 +54,8 @@ import { StringArrayFieldComponent } from './fields/string-array-field/string-ar
 import { RadioGroupFieldComponent } from './fields/radio-group-field/radio-group-field.component';
 import { DoubleStringArrayFieldComponent } from './fields/double-string-array-field/double-string-array-field.component';
 import { PasswordFieldComponent } from './fields/password-field/password-field.component';
+import { MatCheckboxModule } from '@angular/material/checkbox'; 
+import { CheckboxFieldComponent } from '../public-api';
 
 @NgModule({
   declarations: [
@@ -85,7 +87,8 @@ import { PasswordFieldComponent } from './fields/password-field/password-field.c
     StringArrayFieldComponent,
     RadioGroupFieldComponent,
     DoubleStringArrayFieldComponent,
-    PasswordFieldComponent
+    PasswordFieldComponent,
+    CheckboxFieldComponent
   ],
   imports: [
     CommonModule,
@@ -105,6 +108,7 @@ import { PasswordFieldComponent } from './fields/password-field/password-field.c
     MatButtonToggleModule,
     MatSlideToggleModule,
     MatRadioModule,
+    MatCheckboxModule,
     
     /** Tots Libraries */
     TotsLoadingModule
