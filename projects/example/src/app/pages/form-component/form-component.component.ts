@@ -4,7 +4,7 @@ import { DatepickerFieldComponent } from 'projects/tots/date-field-form/src/lib/
 import { TotsActionForm } from 'projects/tots/form/src/lib/entities/tots-action-form';
 import { TotsModalConfig } from 'projects/tots/form/src/lib/entities/tots-modal-config';
 import { SubmitButtonFieldComponent } from 'projects/tots/form/src/lib/fields/submit-button-field/submit-button-field.component';
-import { AutocompleteFieldComponent, AutocompleteListFieldComponent, AutocompleteObsFieldComponent, AvatarPhotoFieldComponent, ButtonToggleFieldComponent, FilesListFieldComponent, IntegerFieldComponent, OneFileFieldComponent, PasswordFieldComponent, PhotosFieldComponent, RadioGroupFieldComponent, RowFieldComponent, SelectFieldComponent, SelectObsFieldComponent, StringFieldComponent, TextareaFieldComponent, TotsFieldForm, TotsFormComponent, TotsFormModalService } from 'projects/tots/form/src/public-api';
+import { AutocompleteFieldComponent, AutocompleteListFieldComponent, AutocompleteObsFieldComponent, AvatarPhotoFieldComponent, ButtonToggleFieldComponent, CheckboxFieldComponent, FilesListFieldComponent, IntegerFieldComponent, OneFileFieldComponent, PasswordFieldComponent, PhotosFieldComponent, RadioGroupFieldComponent, RowFieldComponent, SelectFieldComponent, SelectObsFieldComponent, StringFieldComponent, TextareaFieldComponent, TotsFieldForm, TotsFormComponent, TotsFormModalService } from 'projects/tots/form/src/public-api';
 import { TotsUsersSelectorMenuConfig } from 'projects/tots/users-selector-menu/src/lib/entities/tots-users-selector-menu-config';
 import { delay, map, Observable, of, tap } from 'rxjs';
 import { UserService } from '../../services/user.service';
@@ -41,7 +41,15 @@ Quill.register(StyledMentionBlot);
 export class FormComponentComponent implements OnInit {
 
   fields = new Array<TotsFieldForm>();
-  item = { type: 2, customer_id: 3, type_toggle: 2, datepicker_time: '1989-08-25 14:00:00', datepicker_time_end: '1989-08-25 18:00:00', extra: { param_test: '123' } };
+  item = {
+    aBoolean: false,
+    type: 2,
+    customer_id: 3,
+    type_toggle: 2,
+    datepicker_time: '1989-08-25 14:00:00',
+    datepicker_time_end: '1989-08-25 18:00:00',
+    extra: { param_test: '123' }
+  };
 
   configUserSelector = new TotsUsersSelectorMenuConfig();
 
@@ -54,7 +62,7 @@ export class FormComponentComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.configForm();
+    this.configForm2();
     this.loadConfigUserSelector();
   }
 
@@ -186,9 +194,9 @@ export class FormComponentComponent implements OnInit {
   configForm2() {
     this.fields = [
       {
-        key: "password",
-        component: PasswordFieldComponent,
-        label: "Password",
+        key: "aBoolean",
+        component: CheckboxFieldComponent,
+        label: "Checkbox Test",
       },
       { key: 'submit', component: SubmitButtonFieldComponent, label: 'Enviar' }
     ];

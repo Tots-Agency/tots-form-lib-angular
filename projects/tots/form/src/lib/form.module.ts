@@ -49,6 +49,8 @@ import { SelectObsFieldComponent } from './fields/select-obs-field/select-obs-fi
 import { ToggleFieldComponent } from './fields/toggle-field/toggle-field.component';
 import { RadioGroupFieldComponent } from './fields/radio-group-field/radio-group-field.component';
 import { PasswordFieldComponent } from './fields/password-field/password-field.component';
+import { CheckboxFieldComponent } from './fields/checkbox-field/checkbox-field.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -77,7 +79,8 @@ import { PasswordFieldComponent } from './fields/password-field/password-field.c
     SelectObsFieldComponent,
     ToggleFieldComponent,
     RadioGroupFieldComponent,
-    PasswordFieldComponent
+    PasswordFieldComponent,
+    CheckboxFieldComponent
   ],
   imports: [
     CommonModule,
@@ -97,6 +100,7 @@ import { PasswordFieldComponent } from './fields/password-field/password-field.c
     MatButtonToggleModule,
     MatSlideToggleModule,
     MatRadioModule,
+    MatCheckboxModule,
 
     /** Tots Libraries */
     TotsLoadingModule
