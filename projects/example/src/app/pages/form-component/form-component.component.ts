@@ -12,7 +12,7 @@ import { TotsFormApiService, TotsFormModalApiConfig } from 'projects/tots/form-a
 import Quill from 'quill';
 import { TotsMonacoEditorField } from 'projects/tots/monaco-editor-field-form/src/public-api';
 import { TotsStringField } from 'projects/tots/form/src/lib/field-factories/tots-string-field';
-import { ValidatorMax, ValidatorMin, ValidatorRequired } from '../../helpers/tots-validators';
+import { ValidatorMax, ValidatorMin, ValidatorRequired, ValidatorRequiredTrue } from '../../helpers/tots-validators';
 import { TotsSelectField } from 'projects/tots/form/src/lib/field-factories/tots-select-field';
 import { TotsAvatarPhotoField } from 'projects/tots/form/src/lib/field-factories/tots-avatar-photo-field';
 import { TotsFilesListField } from 'projects/tots/form/src/lib/field-factories/tots-files-list-field';
@@ -138,7 +138,7 @@ export class FormComponentComponent implements OnInit {
   }
   configForm2() {
     this.fields = [
-      new TotsCheckboxField("aBoolean", "Checkbox test"),
+      new TotsCheckboxField("aBoolean", "Checkbox test", [ValidatorRequiredTrue]),
       new TotsSubmitButton("submit", "Enviar"),
     ];
   }
