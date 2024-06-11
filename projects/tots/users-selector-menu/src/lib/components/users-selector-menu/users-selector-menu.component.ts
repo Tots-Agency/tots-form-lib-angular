@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { TotsQuery } from '@tots/core';
@@ -15,6 +15,7 @@ export class TotsUsersSelectorMenuComponent implements OnInit {
   @ViewChild('selectorButton') selectorButton!: MatMenuTrigger;
 
   @Input() config!: TotsUsersSelectorMenuConfig;
+  @Output() selected = new EventEmitter<any[]>();
 
   inputQuery = new UntypedFormControl('');
 
@@ -37,6 +38,7 @@ export class TotsUsersSelectorMenuComponent implements OnInit {
     } else {
       this.selecteds.push(item);
     }
+    this.selected.emit(this.selecteds);
     this.inputQuery.setValue('');
   }
 
