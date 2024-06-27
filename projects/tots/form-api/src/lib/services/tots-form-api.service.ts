@@ -15,9 +15,18 @@ export class TotsFormApiService {
   ) { }
 
   open(config: TotsFormModalApiConfig): Observable<any> {
+    let panelClass : string|string[];
+    if (config.panelClass) {
+      panelClass = Array.isArray(config.panelClass) ? 
+        ['tots-form-modal-overlay-pane', ...config.panelClass] :
+        ['tots-form-modal-overlay-pane', config.panelClass];
+    } else {
+      panelClass = 'tots-form-modal-overlay-pane';
+    }
+
     let dialogRef = this.dialog.open(TotsFormModalComponent, {
       width: '700px',
-      panelClass: 'tots-form-modal-overlay-pane',
+      panelClass: panelClass,
       data: config,
       autoFocus: config.autoFocus
     });
