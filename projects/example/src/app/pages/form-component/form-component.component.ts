@@ -167,6 +167,7 @@ export class FormComponentComponent implements OnInit {
     config.title = 'Modal de ejemplo';
     config.autoSave = true;
     config.item = this.item;
+    config.panelClass = "test_class";
     config.fields = [
       new TotsStringField("title", "Título", [ValidatorRequired], undefined, undefined, "Esto se mostrará publicamente..."),
       new TotsSelectField("type", [
@@ -201,6 +202,7 @@ export class FormComponentComponent implements OnInit {
     config.autoSave = false;
     config.service = this.userService;
     config.item = {};
+    config.panelClass = "test_class";
     config.fields = [
       new TotsStringField("title", "Title", [ValidatorRequired]),
       new TotsSubmitButton("submit", "CREATE", "check", "accent", "mat-stroked-button")

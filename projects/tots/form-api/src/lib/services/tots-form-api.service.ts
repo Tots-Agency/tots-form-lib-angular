@@ -9,15 +9,26 @@ import { TotsFormModalApiConfig } from '../entities/tots-form-modal-api-config';
 })
 export class TotsFormApiService {
 
+  private defaultPanelClass = 'tots-form-modal-overlay-pane';
+
   constructor(
     protected modalService: TotsFormModalService,
     protected dialog: MatDialog
   ) { }
 
   open(config: TotsFormModalApiConfig): Observable<any> {
+    let panelClass : string|string[];
+    if (config.panelClass) {
+      panelClass = Array.isArray(config.panelClass) ? 
+        [this.defaultPanelClass, ...config.panelClass] :
+        [this.defaultPanelClass, config.panelClass];
+    } else {
+      panelClass = this.defaultPanelClass;
+    }
+
     let dialogRef = this.dialog.open(TotsFormModalComponent, {
       width: '700px',
-      panelClass: 'tots-form-modal-overlay-pane',
+      panelClass: panelClass,
       data: config,
       autoFocus: config.autoFocus
     });
