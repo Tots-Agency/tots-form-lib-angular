@@ -32,9 +32,27 @@ export class AutocompleteListFieldComponent extends TotsBaseFieldComponent imple
         }
         return value;
       }),
-      switchMap(value => obs(value!)),
+      switchMap(
+        value => obs(value!).pipe(
+          map(value => {
+            if (this.input.value.length)
+              return this.removeSelectedOptionInOptions(value);
+            return value;
+          })
+        ),
+      ),
     );
   }
+
+  removeSelectedOptionInOptions(items: any[]): any[] {
+    this.input.value.forEach((selectedItem:any) => {
+      items = items.filter((x: any) => {
+        return x[this.field.extra.selected_key] != selectedItem[this.field.extra.selected_key]
+      })
+    });
+    return items;
+  }
+
 
   selectedOption(event: MatAutocompleteSelectedEvent) {
     let data: Array<any> = this.input.value;
