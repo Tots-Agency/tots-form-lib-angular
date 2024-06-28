@@ -207,6 +207,7 @@ export class FormComponentComponent implements OnInit {
     config.title = 'Modal de ejemplo';
     config.autoSave = true;
     config.item = this.item;
+    config.panelClass = "test_class";
     config.fields = [
       // Campo string
       { key: 'title', component: StringFieldComponent, label: 'Titulo', validators: [Validators.required], extra: { caption: 'Este se mostrara publicamente...' } },
@@ -249,6 +250,7 @@ export class FormComponentComponent implements OnInit {
   onClickOpenModalApi() {
     let config = new TotsFormModalApiConfig();
     config.title = 'General Event';
+    config.panelClass = "test_class";
     config.autoSave = false;
     config.service = this.userService;
     config.item = {};

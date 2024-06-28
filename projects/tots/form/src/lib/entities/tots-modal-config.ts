@@ -5,4 +5,5 @@ export class TotsModalConfig {
     fields: Array<TotsFieldForm> = [];
     item: any;
     autoSave?: boolean = false;
+    panelClass? : string|string[];
 }
