@@ -193,10 +193,18 @@ export class FormComponentComponent implements OnInit {
 
   configForm2() {
     this.fields = [
-      {
-        key: "aBoolean",
-        component: CheckboxFieldComponent,
-        label: "Checkbox Test",
+      { key: 'customer_id',
+        component: AutocompleteObsFieldComponent,
+        label: 'Customer',
+        validators: [Validators.required],
+        extra: {
+          selected_key: 'id',
+          filter_key: 'title',
+          display_key: 'title',
+          display_photo: 'photo',
+          first_query: { id: 4, title: 'Customer 4' },
+          obs: this.customerAutocompleteObsProcessed.bind(this),
+        }
       },
       { key: 'submit', component: SubmitButtonFieldComponent, label: 'Enviar' }
     ];
