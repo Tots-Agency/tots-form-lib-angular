@@ -149,7 +149,7 @@ export class FormComponentComponent implements OnInit {
   }
   configForm2() {
     this.fields = [
-      new TotsCheckboxField("aBoolean", "Checkbox test", [ValidatorRequiredTrue]),
+      new TotsAutocompleteObsField("customer_id", this.customerAutocompleteObsProcessed.bind(this), "id", "title", null, "Customer", [ValidatorRequired]),
       new TotsSubmitButton("submit", "Enviar"),
     ];
   }
