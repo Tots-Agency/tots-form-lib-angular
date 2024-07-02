@@ -35,8 +35,14 @@ export class AutocompleteListFieldComponent extends TotsBaseFieldComponent imple
       switchMap(
         value => obs(value!).pipe(
           map(value => {
-            if (this.input?.value?.length)
-              return this.removeSelectedOptionInOptions(value);
+            if (this.input.value != undefined) {
+              // IF IT IS A ARRAY
+              if (Array.isArray(this.input.value) && this.input.value.length)
+                return this.removeSelectedOptionInOptions(value);
+              else { // IF IT IS AN OBJECT
+                value = this.filterByValue(value, this.inputQuery.value);
+              }
+            }
             return value;
           })
         ),
@@ -45,12 +51,18 @@ export class AutocompleteListFieldComponent extends TotsBaseFieldComponent imple
   }
 
   removeSelectedOptionInOptions(items: any[]): any[] {
-    this.input.value.forEach((selectedItem:any) => {
-      items = items.filter((x: any) => {
-        return x[this.field.extra.selected_key] != selectedItem[this.field.extra.selected_key]
-      })
+    this.input.value.forEach((selectedItem: any) => {
+      items = this.filterByValue(items, selectedItem);
     });
     return items;
+  }
+
+  filterByValue(items: any[], selectedItem: any) {
+    return items.filter((x: any) => {
+      if (selectedItem != undefined && selectedItem[this.field.extra.selected_key] != undefined)
+        return x[this.field.extra.selected_key] != selectedItem[this.field.extra.selected_key]
+      return false;
+    })
   }
 
 

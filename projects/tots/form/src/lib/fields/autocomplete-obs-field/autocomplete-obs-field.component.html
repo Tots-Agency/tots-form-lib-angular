@@ -14,4 +14,5 @@
   </button>
 
   <mat-hint *ngIf="getCaption() != ''" [align]="'end'"> {{getCaption()}} </mat-hint>
+  <mat-error *ngIf="hasError()">{{getMessageError()}}</mat-error>
 </mat-form-field>
