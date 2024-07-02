@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { Observable, switchMap, tap } from 'rxjs';
 import { TotsBaseFieldComponent } from '../tots-base-field.component';
@@ -23,6 +23,10 @@ export class AutocompleteObsFieldComponent extends TotsBaseFieldComponent implem
   }
 
   loadInputConfig() {
+    if (this.field.validators?.includes(Validators.required)) {
+      this.inputQuery.addValidators(Validators.required);
+    }
+
     this.input.valueChanges.subscribe(value => {
       if (this.inputQuery.value != '' && this.inputQuery.value != undefined) {
         return;
