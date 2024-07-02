@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
-import { Observable, startWith, switchMap, takeWhile, tap } from 'rxjs';
+import { Observable, switchMap, tap } from 'rxjs';
 import { TotsBaseFieldComponent } from '../tots-base-field.component';
 
 @Component({
@@ -28,10 +28,10 @@ export class AutocompleteObsFieldComponent extends TotsBaseFieldComponent implem
     }
 
     this.input.valueChanges.subscribe(value => {
-      if(this.inputQuery.value != ''&&this.inputQuery.value != undefined){
+      if (this.inputQuery.value != '' && this.inputQuery.value != undefined) {
         return;
       }
-      if(this.isFirstLoad == false){
+      if (this.isFirstLoad == false) {
         return;
       }
 
@@ -44,10 +44,8 @@ export class AutocompleteObsFieldComponent extends TotsBaseFieldComponent implem
   loadQueryConfig() {
     let obs: (query?: string) => Observable<Array<any>> = this.field.extra.obs;
     this.filteredOptions = this.inputQuery.valueChanges.pipe(
-      //startWith(''),
-      //takeWhile(value => typeof value === "string"),
       tap(value => {
-        if(typeof value === "string" && value == ''){
+        if (typeof value === "string" && value == '') {
           this.input.setValue(undefined);
         }
       }),
@@ -56,7 +54,7 @@ export class AutocompleteObsFieldComponent extends TotsBaseFieldComponent implem
   }
 
   selectedOption(event: MatAutocompleteSelectedEvent) {
-    if(this.field.extra.need_full_object == true){
+    if (this.field.extra.need_full_object == true) {
       this.input.setValue(event.option.value);
       return;
     }
@@ -65,11 +63,11 @@ export class AutocompleteObsFieldComponent extends TotsBaseFieldComponent implem
   }
 
   getItem(itemIdentifier: any): any {
-    if(this.field.extra.first_query != undefined){
+    if (this.field.extra.first_query != undefined) {
       return this.field.extra.first_query;
     }
 
-    if(this.field.extra.options == undefined){
+    if (this.field.extra.options == undefined) {
       return;
     }
 
@@ -78,14 +76,14 @@ export class AutocompleteObsFieldComponent extends TotsBaseFieldComponent implem
   }
 
   displayOption(item: any): string {
-    if(item == undefined){
+    if (item == undefined) {
       return '';
     }
     return item[this.field.extra.display_key];
   }
 
   getCaption() {
-    if(this.field.extra && this.field.extra.caption){ return this.field.extra.caption; }
+    if (this.field.extra && this.field.extra.caption) { return this.field.extra.caption; }
     return '';
   }
 
