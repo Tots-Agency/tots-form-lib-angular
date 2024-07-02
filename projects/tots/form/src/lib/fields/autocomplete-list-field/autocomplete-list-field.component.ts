@@ -35,7 +35,7 @@ export class AutocompleteListFieldComponent extends TotsBaseFieldComponent imple
       switchMap(
         value => obs(value!).pipe(
           map(value => {
-            if (this.input.value.length)
+            if (this.input?.value?.length)
               return this.removeSelectedOptionInOptions(value);
             return value;
           })
