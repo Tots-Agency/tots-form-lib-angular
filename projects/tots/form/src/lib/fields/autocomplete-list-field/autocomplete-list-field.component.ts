@@ -27,7 +27,7 @@ export class AutocompleteListFieldComponent extends TotsBaseFieldComponent imple
     let obs: (query?: string) => Observable<Array<any>> = this.field.extra.obs;
     this.filteredOptions = this.inputQuery.valueChanges.pipe(
       map(value => {
-        if(typeof value === "object"){
+        if (typeof value === "object") {
           return this.displayOption(value);
         }
         return value;
@@ -35,19 +35,24 @@ export class AutocompleteListFieldComponent extends TotsBaseFieldComponent imple
       switchMap(
         value => obs(value!).pipe(
           map(value => {
-            if (this.input.value != undefined) {
-              // IF IT IS A ARRAY
-              if (Array.isArray(this.input.value) && this.input.value.length)
-                return this.removeSelectedOptionInOptions(value);
-              else { // IF IT IS AN OBJECT
-                value = this.filterByValue(value, this.inputQuery.value);
-              }
+            if (this.checkType(this.input.value) == 'array' && this.input.value.length) {
+              return this.removeSelectedOptionInOptions(value);
+            } else if (this.checkType(this.input.value) == 'object') {
+              value = this.filterByValue(value, this.inputQuery.value);
             }
             return value;
           })
         ),
       ),
     );
+  }
+
+  checkType(item: any) {
+    if (item instanceof Array) return "array";
+    else {
+      if (item instanceof Object) return "object";
+      else return null; // Not Array nor Object
+    }
   }
 
   removeSelectedOptionInOptions(items: any[]): any[] {
