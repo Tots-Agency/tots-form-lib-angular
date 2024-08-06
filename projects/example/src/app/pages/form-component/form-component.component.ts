@@ -225,7 +225,18 @@ export class FormComponentComponent implements OnInit {
         { id: 2, title: 'Tipo 2'},
         { id: 3, title: 'Tipo 3'},
       ] } },
-
+      {
+        key: 'Autocomplete',
+        component: AutocompleteObsFieldComponent,
+        label: 'Autocomplete',
+        extra: {
+          selected_key: 'id',
+          filter_key: 'name',
+          display_key: 'name',
+          show_loader: true,
+          obs: this.autocompleteService.bind(this)
+        }
+      },
       { key: 'customer_id', component: AutocompleteFieldComponent, label: 'Customer', extra: {
         selected_key: 'id',
         filter_key: 'title',
@@ -264,6 +275,17 @@ export class FormComponentComponent implements OnInit {
     config.item = {};
     config.fields = [
         { key: 'title', component: StringFieldComponent, label: 'Title', validators: [Validators.required] },
+        {
+          key: 'Autocomplete',
+          component: AutocompleteObsFieldComponent,
+          label: 'Autocomplete',
+          extra: {
+            selected_key: 'id',
+            filter_key: 'name',
+            display_key: 'name',
+            obs: this.autocompleteService.bind(this)
+          }
+        },
         { key: 'submit', component: SubmitButtonFieldComponent, label: 'CREATE' }
     ];
 
@@ -343,5 +365,31 @@ export class FormComponentComponent implements OnInit {
 
   onChangeDate(value: any) {
     console.log(value);
+  }
+
+  private autocompleteService(query: string = ''): Observable<any[]> {
+    // Mock data for the autocomplete service
+    const mockData = [
+      { id: 1, name: 'Apple' },
+      { id: 2, name: 'Banana' },
+      { id: 3, name: 'Cherry' },
+      { id: 4, name: 'Date' },
+      { id: 5, name: 'Elderberry' },
+      { id: 6, name: 'Fig' },
+      { id: 7, name: 'Grape' },
+      { id: 8, name: 'Honeydew' }
+    ];
+
+    // If a query is provided, filter the mock data
+    const filteredData = query
+      ? mockData.filter(item =>
+          item.name.toLowerCase().includes(query.toLowerCase())
+        )
+      : mockData;
+
+    // Return the filtered data as an observable with a 2-second delay
+    return of(filteredData).pipe(
+      delay(2000) // Add a delay of 2000 milliseconds (2 seconds)
+    );
   }
 }
