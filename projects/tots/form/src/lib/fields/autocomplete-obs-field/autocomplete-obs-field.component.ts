@@ -11,6 +11,7 @@ import {
   Subject,
   switchMap,
   takeUntil,
+  takeWhile,
   tap,
 } from 'rxjs';
 import { TotsBaseFieldComponent } from '../tots-base-field.component';
@@ -24,11 +25,11 @@ export class AutocompleteObsFieldComponent
   extends TotsBaseFieldComponent
   implements OnInit, OnDestroy
 {
-
   filteredOptions!: any[];
   inputQuery = new FormControl<string>('');
   isLoading: boolean = false;
   isFirstLoad = true;
+  NO_RESULTS_TEXT = 'No results found';
 
   // Create a Subject to manage the subscription lifecycle
   private destroy$ = new Subject<void>();
@@ -65,7 +66,7 @@ export class AutocompleteObsFieldComponent
         tap((value) => {
           this.hideLoader();
           this.clearFilteredOptions();
-          if(value === ''){
+          if (value === '') {
             this.input.setValue(null);
           }
         }),
@@ -73,9 +74,9 @@ export class AutocompleteObsFieldComponent
         distinctUntilChanged(), // Only proceed if the current value is different from the last
         takeUntil(this.destroy$),
         switchMap((value) => {
-          this.showLoader();
-          // If the input is a string, start the search
-          if (typeof value === 'string') {
+          if (typeof value === 'string' && value.trim() !== '') {
+            // Check if value is a non-empty string
+            this.showLoader();
             this.handleInputStart(value); // Perform any additional logic when input starts
 
             // Call the data service with the query and handle results
@@ -89,14 +90,20 @@ export class AutocompleteObsFieldComponent
               })
             );
           } else {
-            // If input is not a string, return an empty observable
+            // If input is not a string or is empty, return an empty observable
             this.hideLoader(); // Ensure loader is hidden if no search is initiated
-            return of([]);
+            return of([]); // Return an empty array if input is empty
           }
         })
       )
       .subscribe((result) => {
-        this.filteredOptions = result; // Update the filtered options with the search result
+        if (this.inputQuery.value && typeof this.inputQuery.value === 'string' && this.inputQuery.value.trim() !== '') {
+          // Only update if the input is not empty
+          this.filteredOptions =
+            result.length > 0 ? result : [this.NO_RESULTS_TEXT]; // Update the filtered options with the search result
+          return;
+        }
+        this.filteredOptions = []; // Clear filtered options if the input is empty
       });
   }
 
@@ -151,7 +158,11 @@ export class AutocompleteObsFieldComponent
   }
 
   get isWithLoader(): boolean {
-    if (!this.field.extra || this.field.extra.show_loader === undefined || this.field.extra.show_loader === null) {
+    if (
+      !this.field.extra ||
+      this.field.extra.show_loader === undefined ||
+      this.field.extra.show_loader === null
+    ) {
       return true;
     }
 
@@ -159,6 +170,9 @@ export class AutocompleteObsFieldComponent
   }
 
   displayOption(item: any): string {
+    if (item === this.NO_RESULTS_TEXT) {
+      return item;
+    }
     if (item == undefined) {
       return '';
     }
@@ -181,5 +195,4 @@ export class AutocompleteObsFieldComponent
     this.destroy$.next();
     this.destroy$.complete();
   }
-
 }
