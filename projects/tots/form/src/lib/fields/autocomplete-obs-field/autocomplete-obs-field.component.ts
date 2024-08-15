@@ -29,7 +29,7 @@ export class AutocompleteObsFieldComponent
   inputQuery = new FormControl<string>('');
   isLoading: boolean = false;
   isFirstLoad = true;
-  NO_RESULTS_TEXT = 'No results found';
+  notFoundMessage = 'No results found';
 
   // Create a Subject to manage the subscription lifecycle
   private destroy$ = new Subject<void>();
@@ -60,6 +60,11 @@ export class AutocompleteObsFieldComponent
   }
 
   private setupAutocomplete() {
+
+    if(this.field.extra?.not_found_message){
+      this.notFoundMessage = this.field.extra?.not_found_message;
+    }
+
     let obs: (query?: string) => Observable<any[]> = this.field.extra?.obs;
     this.inputQuery.valueChanges
       .pipe(
@@ -97,13 +102,18 @@ export class AutocompleteObsFieldComponent
         })
       )
       .subscribe((result) => {
-        if (this.inputQuery.value && typeof this.inputQuery.value === 'string' && this.inputQuery.value.trim() !== '') {
-          // Only update if the input is not empty
-          this.filteredOptions =
-            result.length > 0 ? result : [this.NO_RESULTS_TEXT]; // Update the filtered options with the search result
-          return;
+        const queryValue = this.inputQuery.value;
+
+        if (typeof queryValue === 'string' && queryValue.trim()) {
+            // Update the filtered options based on the result
+            this.filteredOptions = this.field.extra?.show_not_found_message === true && result.length === 0
+                ? [this.notFoundMessage]
+                : result;
+            return;
         }
-        this.filteredOptions = []; // Clear filtered options if the input is empty
+
+        // Clear filtered options if the input is empty
+        this.filteredOptions = [];
       });
   }
 
@@ -170,7 +180,7 @@ export class AutocompleteObsFieldComponent
   }
 
   displayOption(item: any): string {
-    if (item === this.NO_RESULTS_TEXT) {
+    if (item === this.notFoundMessage) {
       return item;
     }
     if (item == undefined) {

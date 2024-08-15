@@ -4,7 +4,7 @@
   <input matInput type="text" [formControl]="inputQuery" [matAutocomplete]="autoInput" [placeholder]="getPlaceholder()">
 
   <mat-autocomplete #autoInput="matAutocomplete" [displayWith]="displayOption.bind(this)" (optionSelected)="selectedOption($event)">
-    <mat-option [disabled]="item === NO_RESULTS_TEXT" *ngFor="let item of filteredOptions" [value]="item">
+    <mat-option [disabled]="item === notFoundMessage" *ngFor="let item of filteredOptions" [value]="item">
       {{ displayOption(item) }}
     </mat-option>
   </mat-autocomplete>
