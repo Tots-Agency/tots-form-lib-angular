@@ -1,5 +1,16 @@
-<p *ngIf="field.label"> {{ field.label }} </p>
+<p class="toggle-description" *ngIf="field.label">
+  {{ field.label
+  }}<span
+    style="display: contents"
+    class="mat-mdc-form-field-error"
+    *ngIf="input.hasValidator(validatorRequired) && input.enabled"
+    >&nbsp;*</span
+  >
+</p>
 <mat-button-toggle-group [formControl]="input">
-    <mat-button-toggle *ngFor="let option of field.extra.options" [value]="option.id">{{ option.title }}</mat-button-toggle>
+  <mat-button-toggle
+    *ngFor="let option of field.extra.options"
+    [value]="option.id"
+    >{{ option.title }}</mat-button-toggle
+  >
 </mat-button-toggle-group>
-

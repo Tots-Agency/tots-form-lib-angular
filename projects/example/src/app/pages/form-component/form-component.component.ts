@@ -237,6 +237,16 @@ export class FormComponentComponent implements OnInit {
           obs: this.autocompleteService.bind(this)
         }
       },
+      {
+        key: 'toggle',
+        component: ButtonToggleFieldComponent,
+        label: 'Toggle con muchisimo texto y hace que el texto se baje a una segunda linea',
+        validators: [Validators.required],
+        extra: {
+          options: [{ id: true, title: "Flexible"}, { id: false, title: "Fixed"}],
+          default_value: true,
+        }
+      },
       { key: 'customer_id', component: AutocompleteFieldComponent, label: 'Customer', extra: {
         selected_key: 'id',
         filter_key: 'title',
