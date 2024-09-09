@@ -11,4 +11,7 @@ export class TextareaFieldComponent extends TotsBaseFieldComponent {
     if(this.field.extra && this.field.extra.caption){ return this.field.extra.caption; }
     return '';
   }
+  protected get rows() : number {
+    return this.field.extra?.rows || 2;
+  }
 }
