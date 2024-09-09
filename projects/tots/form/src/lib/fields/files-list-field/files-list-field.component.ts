@@ -55,4 +55,8 @@ export class FilesListFieldComponent extends TotsBaseFieldComponent {
     }
     return item[this.field.extra.display_key];
   }
+
+  isExtraText(): boolean {
+    return this.field.extra.text_extra_when_empty != undefined;
+  }
 }

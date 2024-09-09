@@ -18,4 +18,8 @@
                 </button>
             </div>
         </div>
+    </div>
+    <div *ngIf="isExtraText()" class="extra-when-empty-files">
+      <p>{{field.extra.text_extra_when_empty}}</p>
+    </div>
 </div>
