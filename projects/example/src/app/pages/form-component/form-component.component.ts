@@ -283,6 +283,8 @@ export class FormComponentComponent implements OnInit {
             selected_key: 'id',
             filter_key: 'name',
             display_key: 'name',
+            show_not_found_message: true,
+            not_found_message: "No se encontraron resultados",
             obs: this.autocompleteService.bind(this)
           }
         },
