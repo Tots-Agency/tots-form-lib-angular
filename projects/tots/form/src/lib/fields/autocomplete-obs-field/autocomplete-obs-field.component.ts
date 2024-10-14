@@ -5,9 +5,7 @@ import {
   catchError,
   debounceTime,
   distinctUntilChanged,
-  EMPTY,
   finalize,
-  map,
   Observable,
   of,
   startWith,
@@ -94,7 +92,7 @@ export class AutocompleteObsFieldComponent
             this.isLoading = true;
 
             return obs(value!).pipe(
-              catchError((error) => {
+              catchError(() => {
                 return of([]);
               }),
               finalize(() => {
