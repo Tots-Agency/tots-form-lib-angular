@@ -149,7 +149,7 @@ export class AutocompleteObsFieldComponent
     return item[this.field.extra.display_key];
   }
 
-  hasError_custom(): boolean {
+  customHasError(): boolean {
     return this.input.invalid && (this.inputQuery.dirty || this.inputQuery.touched);
   }
 

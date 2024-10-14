@@ -14,5 +14,5 @@
   </button>
   <mat-spinner style="padding-right: 16px;" matSuffix *ngIf="isLoading && isWithLoader" diameter="24"></mat-spinner>
   <mat-hint *ngIf="getCaption() != ''" [align]="'end'"> {{getCaption()}} </mat-hint>
-  <mat-error *ngIf="hasError_custom()">{{getMessageError()}}</mat-error>
+  <mat-error *ngIf="customHasError()">{{getMessageError()}}</mat-error>
 </mat-form-field>
