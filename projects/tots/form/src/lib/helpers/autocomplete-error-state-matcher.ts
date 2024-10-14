@@ -10,6 +10,6 @@ export class AutoCompleteErorrStateMatcher implements ErrorStateMatcher {
 	}
 
 	isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-		return (control && (form?.form.get(this.controlKey)?.invalid) && control.touched ) as boolean;
+		return (control && control.touched && (form?.form.get(this.controlKey)?.invalid)) as boolean;
 	}
 }
