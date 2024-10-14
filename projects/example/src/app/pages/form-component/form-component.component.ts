@@ -193,16 +193,17 @@ export class FormComponentComponent implements OnInit {
 
   configForm2() {
     this.fields = [
-      { key: 'customer_id',
+      {
+        key: ['test', "test2"],
         component: AutocompleteObsFieldComponent,
         label: 'Customer',
         validators: [Validators.required],
+        errors: [{name: "required", message: "Required"}],
         extra: {
           selected_key: 'id',
           filter_key: 'title',
           display_key: 'title',
           display_photo: 'photo',
-          first_query: { id: 4, title: 'Customer 4' },
           obs: this.customerAutocompleteObsProcessed.bind(this),
         }
       },
@@ -334,9 +335,7 @@ export class FormComponentComponent implements OnInit {
   }
 
   customerAutocompleteObsProcessed(query?: string): Observable<Array<any>> {
-    if(typeof query !== "string"){
-      return of();
-    }
+    console.log(query);
 
     let customers = [
       { id: 1, title: 'Customer 1' },
@@ -345,7 +344,7 @@ export class FormComponentComponent implements OnInit {
       { id: 4, title: 'Customer 4' },
     ];
 
-    if(query == undefined||query == ''){
+    if(query == undefined || query == ''){
       return of(customers);
     }
 

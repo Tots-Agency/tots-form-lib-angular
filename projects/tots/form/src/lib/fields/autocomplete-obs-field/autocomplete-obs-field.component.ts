@@ -8,12 +8,14 @@ import {
   finalize,
   Observable,
   of,
+  startWith,
   Subject,
   switchMap,
   takeUntil,
   tap,
 } from 'rxjs';
 import { TotsBaseFieldComponent } from '../tots-base-field.component';
+import { AutoCompleteErorrStateMatcher } from '../../helpers/autocomplete-error-state-matcher';
 
 @Component({
   selector: 'tots-autocomplete-obs-field',
@@ -33,10 +35,21 @@ export class AutocompleteObsFieldComponent
   // Create a Subject to manage the subscription lifecycle
   private destroy$ = new Subject<void>();
 
+	protected autocompleteErrorStateMatcher! : AutoCompleteErorrStateMatcher;
+
   override ngOnInit(): void {
     super.ngOnInit();
+    this.setupErrorStateMatcher();
     this.setupAutocomplete();
     this.loadInputConfig();
+  }
+
+  private setupErrorStateMatcher() {
+    if (Array.isArray(this.field.key)) {
+      this.autocompleteErrorStateMatcher = new AutoCompleteErorrStateMatcher(this.field.key.join('_'))
+    } else {
+      this.autocompleteErrorStateMatcher = new AutoCompleteErorrStateMatcher(this.field.key)
+    }
   }
 
   loadInputConfig() {
@@ -62,68 +75,39 @@ export class AutocompleteObsFieldComponent
     let obs: (query?: string) => Observable<any[]> = this.field.extra?.obs;
     this.inputQuery.valueChanges
       .pipe(
+        startWith(''),
         tap((value) => {
-          this.hideLoader();
-          this.clearFilteredOptions();
-          if(value === ''){
-            this.input.setValue(null);
+          this.isLoading = false;
+          this.filteredOptions = [];
+
+          if (typeof value === "string") {
+            this.input.reset();
           }
         }),
         debounceTime(300),
-        distinctUntilChanged(), // Only proceed if the current value is different from the last
+        distinctUntilChanged(),
         takeUntil(this.destroy$),
         switchMap((value) => {
-          this.showLoader();
-          // If the input is a string, start the search
-          if (typeof value === 'string') {
-            this.handleInputStart(value); // Perform any additional logic when input starts
+          if (typeof value === 'string' || !value) {
+            this.isLoading = true;
 
-            // Call the data service with the query and handle results
-            return obs(value).pipe(
-              catchError((error) => {
-                console.error('Search error:', error); // Log the error for debugging
-                return of([]); // Return an empty array on error
+            return obs(value!).pipe(
+              catchError(() => {
+                return of([]);
               }),
               finalize(() => {
-                this.hideLoader(); // Hide loader when the search completes
+                this.isLoading = false;
               })
             );
+
           } else {
-            // If input is not a string, return an empty observable
-            this.hideLoader(); // Ensure loader is hidden if no search is initiated
             return of([]);
           }
         })
       )
       .subscribe((result) => {
-        this.filteredOptions = result; // Update the filtered options with the search result
+        this.filteredOptions = result;
       });
-  }
-
-  // Helper methods to manage loader visibility
-  private showLoader() {
-    this.isLoading = true;
-  }
-
-  private hideLoader() {
-    this.isLoading = false;
-  }
-
-  private handleInputStart(value: string) {
-    if (value === '') {
-      this.resetInputIfEmpty(value);
-    }
-    this.isLoading = true; // Show loading indicator
-  }
-
-  private resetInputIfEmpty(value: string) {
-    if (value === '') {
-      this.inputQuery.setValue(null);
-    }
-  }
-
-  private clearFilteredOptions() {
-    this.filteredOptions = [];
   }
 
   selectedOption(event: MatAutocompleteSelectedEvent) {
@@ -163,6 +147,10 @@ export class AutocompleteObsFieldComponent
       return '';
     }
     return item[this.field.extra.display_key];
+  }
+
+  customHasError(): boolean {
+    return this.input.invalid && (this.inputQuery.dirty || this.inputQuery.touched);
   }
 
   getCaption() {
