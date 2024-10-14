@@ -1,7 +1,7 @@
 <mat-form-field *ngIf="input" [appearance]="getAppearance()" class="{{getClases()}}">
   <mat-label *ngIf="field.label"> {{ field.label }} </mat-label>
 
-  <input matInput type="text" [formControl]="inputQuery" [matAutocomplete]="autoInput" [placeholder]="getPlaceholder()">
+  <input matInput type="text" [formControl]="inputQuery" [matAutocomplete]="autoInput" [placeholder]="getPlaceholder()" [errorStateMatcher]="autocompleteErrorStateMatcher">
 
   <mat-autocomplete #autoInput="matAutocomplete" [displayWith]="displayOption.bind(this)" (optionSelected)="selectedOption($event)">
     <mat-option *ngFor="let item of filteredOptions" [value]="item">
@@ -12,7 +12,7 @@
   <button *ngIf="input.value && (!isLoading || !isWithLoader)" matSuffix mat-icon-button aria-label="Clear" (click)="inputQuery.setValue('');input.setValue(null)">
     <mat-icon>close</mat-icon>
   </button>
-  <mat-spinner style="padding-right: 16px;" matSuffix *ngIf="isLoading && isWithLoader" diameter="30"></mat-spinner>
+  <mat-spinner style="padding-right: 16px;" matSuffix *ngIf="isLoading && isWithLoader" diameter="24"></mat-spinner>
   <mat-hint *ngIf="getCaption() != ''" [align]="'end'"> {{getCaption()}} </mat-hint>
-  <mat-error *ngIf="hasError()">{{getMessageError()}}</mat-error>
+  <mat-error *ngIf="hasError_custom()">{{getMessageError()}}</mat-error>
 </mat-form-field>
