@@ -26,7 +26,7 @@ export class StringArrayFieldComponent extends TotsBaseFieldComponent implements
 
   override ngOnInit(): void {
     this.createFormArray();
-    // No Utilizar this.input
+    // No utilizar this.input
   }
 
   createFormArray() {
@@ -136,7 +136,18 @@ export class StringArrayFieldComponent extends TotsBaseFieldComponent implements
         }
         (group.get(field.key) as FormArray).push(input);
       }
+
     }
   }
 
+  static override updateItemByForm(group: UntypedFormGroup, item: any, field: TotsFieldForm) {
+    // Filter out empty fields
+    const filteredValues = group.get(field.key)?.value.filter((v:string|null)=> !!v);
+
+    if(Array.isArray(field.key)){
+      TotsFormHelper.setValueInItemByKey(item, field.key, filteredValues);
+    } else {
+      item[field.key] = filteredValues;
+    }
+  }
 }

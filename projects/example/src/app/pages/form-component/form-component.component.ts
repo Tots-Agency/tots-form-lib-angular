@@ -30,6 +30,7 @@ import { TotsSubmitButton } from 'projects/tots/form/src/lib/field-factories/tot
 import { TotsDatepickerField, TotsDatepickerTimeRangeField } from '@tots/date-field-form';
 import { TotsQuillField } from '@tots/html-field-form';
 import { TotsCheckboxField } from 'projects/tots/form/src/lib/field-factories/tots-checkbox-field';
+import { TotsStringArrayField } from '@tots/form';
 
 @Component({
   selector: 'app-form-component',
@@ -86,6 +87,10 @@ export class FormComponentComponent implements OnInit {
     switch (action.key) {
       case "submit" : {
         this.loading = true;
+        console.log(action.item);
+        setTimeout(() => {
+          this.loading = false;
+        }, 1000);
         break;
       }
     }
@@ -149,7 +154,7 @@ export class FormComponentComponent implements OnInit {
   }
   configForm2() {
     this.fields = [
-      new TotsAutocompleteObsField("customer_id", this.customerAutocompleteObsProcessed.bind(this), "id", "title", null, "Customer", [ValidatorRequired]),
+      new TotsStringArrayField("emails", 5, "Correo electrónico"),
       new TotsSubmitButton("submit", "Enviar"),
     ];
   }
