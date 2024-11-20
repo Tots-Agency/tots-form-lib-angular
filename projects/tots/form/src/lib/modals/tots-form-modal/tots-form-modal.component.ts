@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 import { TotsActionModalForm } from '../../entities/tots-action-modal-form';
 import { TotsModalConfig } from '../../entities/tots-modal-config';
 import { TotsActionForm } from '../../entities/tots-action-form';
+import { TotsFormComponent } from '../../../public-api';
 
 @Component({
   selector: 'tots-form-modal',
@@ -19,6 +20,7 @@ export class TotsFormModalComponent {
   colorLoading = '#80bc00';
 
   @ViewChild('dialog') dialog? : ElementRef;
+  @ViewChild("form") totsForm! : TotsFormComponent;
 
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: Event): void {   
