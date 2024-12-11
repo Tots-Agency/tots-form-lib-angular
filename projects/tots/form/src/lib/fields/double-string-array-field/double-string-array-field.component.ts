@@ -197,7 +197,7 @@ export class DoubleStringArrayFieldComponent extends TotsBaseFieldComponent {
 			for (let index = 0; index < dataArray.length; index++) {
 				let input = new FormControl<String>(dataArray[index]);
 				if (field.validators?.length) {
-					input.setValidators(field.validators);
+					input.setValidators(field.extra.secondInputValidators);
 				}
 				(group.get(field.extra.secondaryKey.join('_')) as FormArray).push(input);
 			}
@@ -214,7 +214,7 @@ export class DoubleStringArrayFieldComponent extends TotsBaseFieldComponent {
 			for (let index = 0; index < dataArray.length; index++) {
 				let input = new FormControl<String>(dataArray[index]);
 				if (field.validators?.length) {
-					input.setValidators(field.validators);
+					input.setValidators(field.extra.secondInputValidators);
 				}
 				(group.get(field.extra.secondaryKey) as FormArray).push(input);
 			}
