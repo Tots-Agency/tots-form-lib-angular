@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TotsActionForm } from 'projects/tots/form/src/lib/entities/tots-action-form';
 import { TotsModalConfig } from 'projects/tots/form/src/lib/entities/tots-modal-config';
-import { TotsAutocompleteStaticField, TotsFieldForm, TotsFormModalService } from 'projects/tots/form/src/public-api';
+import { TotsAutocompleteStaticField, TotsDoubleStringArrayField, TotsFieldForm, TotsFormModalService } from 'projects/tots/form/src/public-api';
 import { TotsUsersSelectorMenuConfig } from 'projects/tots/users-selector-menu/src/lib/entities/tots-users-selector-menu-config';
 import { delay, map, Observable, of, tap } from 'rxjs';
 import { UserService } from '../../services/user.service';
@@ -12,7 +12,7 @@ import { TotsFormApiService, TotsFormModalApiConfig } from 'projects/tots/form-a
 import Quill from 'quill';
 import { TotsMonacoEditorField } from 'projects/tots/monaco-editor-field-form/src/public-api';
 import { TotsStringField } from 'projects/tots/form/src/lib/field-factories/tots-string-field';
-import { ValidatorMax, ValidatorMin, ValidatorRequired, ValidatorRequiredTrue } from '../../helpers/tots-validators';
+import { ValidatorMax, ValidatorMin, ValidatorPattern, ValidatorRequired, ValidatorRequiredTrue } from '../../helpers/tots-validators';
 import { TotsSelectField } from 'projects/tots/form/src/lib/field-factories/tots-select-field';
 import { TotsAvatarPhotoField } from 'projects/tots/form/src/lib/field-factories/tots-avatar-photo-field';
 import { TotsFilesListField } from 'projects/tots/form/src/lib/field-factories/tots-files-list-field';
@@ -154,7 +154,7 @@ export class FormComponentComponent implements OnInit {
   }
   configForm2() {
     this.fields = [
-      new TotsStringArrayField("emails", 5, "Correo electrónico"),
+      new TotsDoubleStringArrayField("key1", "key2", 4, "Label", [ValidatorRequired], [ValidatorRequired, ValidatorMin, ValidatorMax, ValidatorPattern], "First input", "Second input"),
       new TotsSubmitButton("submit", "Enviar"),
     ];
   }
