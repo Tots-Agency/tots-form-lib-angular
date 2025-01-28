@@ -15,10 +15,12 @@ export class FilesListFieldComponent extends TotsBaseFieldComponent {
     if(target.files.length == 0){
       return;
     }
+
     // For each all files selected
-    for (let i = 0; i < target.files.length; i++) {
-      this.uploadFile(target.files[i]);
-    }
+    const files = Array.from(target.files);
+    files.forEach((file: any) => this.uploadFile(file));
+
+    target.value = '';
   }
 
   onClickRemove(item: any) {
