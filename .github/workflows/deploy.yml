@@ -24,7 +24,7 @@ jobs:
           npm install -g @angular/cli
 
       - name: Build
-        run: ng build --prod --project=@tots/form
+        run: ng build --configuration production --project=@tots/form
 
       - name: Replace version in package.json
         run: |
