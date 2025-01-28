@@ -44,8 +44,11 @@ export class FormComponentComponent implements OnInit {
   item = {
     aBoolean: false,
     type: 2,
+    title: 'One title',
     customer_id: 3,
     type_toggle: 2,
+    autocomplete: 1,
+    toggle: true,
     datepicker_time: '1989-08-25 14:00:00',
     datepicker_time_end: '1989-08-25 18:00:00',
     extra: { param_test: '123' }
@@ -221,13 +224,13 @@ export class FormComponentComponent implements OnInit {
       // Campo string
       { key: 'title', component: StringFieldComponent, label: 'Titulo', validators: [Validators.required], extra: { caption: 'Este se mostrara publicamente...' } },
       // Campo de selector normal
-      { key: 'type', component: SelectFieldComponent, label: 'Tipo', validators: [Validators.required], extra: { multiple: true, options: [
-        { id: 1, title: 'Tipo 1'},
-        { id: 2, title: 'Tipo 2'},
-        { id: 3, title: 'Tipo 3'},
-      ] } },
+      // { key: 'type', component: SelectFieldComponent, label: 'Tipo', validators: [Validators.required], extra: { multiple: true, options: [
+      //   { id: 1, title: 'Tipo 1'},
+      //   { id: 2, title: 'Tipo 2'},
+      //   { id: 3, title: 'Tipo 3'},
+      // ] } },
       {
-        key: 'Autocomplete',
+        key: 'autocomplete',
         component: AutocompleteObsFieldComponent,
         label: 'Autocomplete',
         extra: {
@@ -236,6 +239,15 @@ export class FormComponentComponent implements OnInit {
           display_key: 'name',
           show_loader: true,
           obs: this.autocompleteService.bind(this)
+        }
+      },
+      {
+        key: 'toggle',
+        component: ButtonToggleFieldComponent,
+        label: 'Toggle con muchisimo texto y hace que el texto se baje a una segunda linea',
+        validators: [Validators.required],
+        extra: {
+          options: [{ id: true, title: "Flexible"}, { id: false, title: "Fixed"}],
         }
       },
       { key: 'customer_id', component: AutocompleteFieldComponent, label: 'Customer', extra: {
