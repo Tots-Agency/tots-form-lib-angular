@@ -65,11 +65,25 @@ export class AutocompleteListFieldComponent
 
       this.isFirstLoad = false;
     });
+
+    // Update inputQuery validation when selected items change
+    this.input.valueChanges.subscribe((value: any) => {
+      if (this.field.validators?.includes(Validators.required)) {
+        if (value && Array.isArray(value) && value.length > 0) {
+          // Clear required validation when items are selected
+          this.inputQuery.setValidators([]);
+        } else {
+          // Restore required validation when no items are selected
+          this.inputQuery.setValidators([Validators.required]);
+        }
+        this.inputQuery.updateValueAndValidity();
+      }
+    });
   }
 
   private setupAutocomplete() {
     let obs: (query?: string) => Observable<any[]> = this.field.extra?.obs;
-    
+
     // Setup search subject to handle search requests with cancellation
     this.searchSubject$
       .pipe(
@@ -258,6 +272,11 @@ export class AutocompleteListFieldComponent
   }
 
   customHasError(): boolean {
+    // Don't show errors if there are selected items
+    if (this.input.value && Array.isArray(this.input.value) && this.input.value.length > 0) {
+      return false;
+    }
+    
     return (
       this.input.invalid && (this.inputQuery.dirty || this.inputQuery.touched)
     );

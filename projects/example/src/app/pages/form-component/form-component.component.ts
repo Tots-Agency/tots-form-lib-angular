@@ -379,6 +379,7 @@ export class FormComponentComponent implements OnInit {
         key: 'autocomplete_list',
         component: AutocompleteListFieldComponent,
         label: 'Autocomplete List (with HTTP delay)',
+        validators: [Validators.required],
         extra: {
           selected_key: 'id',
           filter_key: 'title',
