@@ -1,16 +1,18 @@
-<mat-form-field *ngIf="input" [appearance]="getAppearance()" class="{{getClases()}}">
+<mat-form-field *ngIf="input" [appearance]="getAppearance()" class="{{getClases()}}" >
     <mat-label *ngIf="field.label"> {{ field.label }} </mat-label>
 
-    <input matInput type="text" [formControl]="inputQuery" [matAutocomplete]="autoInput" [placeholder]="getPlaceholder()">
+    <input matInput type="text" [formControl]="inputQuery" [matAutocomplete]="autoInput" [placeholder]="getPlaceholder()" (focus)="onInputFocus()">
 
     <mat-autocomplete #autoInput="matAutocomplete" [displayWith]="displayOption.bind(this)" (optionSelected)="selectedOption($event)" >
-      <mat-option *ngFor="let item of filteredOptions | async" [value]="item">
+      <mat-option *ngFor="let item of filteredOptions" [value]="item">
         {{ displayOption(item) }}
       </mat-option>
     </mat-autocomplete>
 
+    <mat-spinner *ngIf="isLoading && isWithLoader" matSuffix diameter="20"></mat-spinner>
+
     <mat-hint *ngIf="getCaption() != ''" [align]="'end'"> {{getCaption()}} </mat-hint>
-    <mat-error *ngIf="hasError()">{{getMessageError()}}</mat-error>
+    <mat-error *ngIf="customHasError()">{{getMessageError()}}</mat-error>
 </mat-form-field>
 
 <div class="tots-autocomplete-list">
