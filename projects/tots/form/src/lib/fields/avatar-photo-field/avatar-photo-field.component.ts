@@ -4,7 +4,8 @@ import { TotsBaseFieldComponent } from '../tots-base-field.component';
 @Component({
   selector: 'avatar-photo-field',
   templateUrl: './avatar-photo-field.component.html',
-  styleUrls: ['./avatar-photo-field.component.scss']
+  styleUrls: ['./avatar-photo-field.component.scss'],
+  standalone: false
 })
 export class AvatarPhotoFieldComponent extends TotsBaseFieldComponent {
 

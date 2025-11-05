@@ -8,16 +8,20 @@
 			'mat-mdc-outlined-button mdc-button--outlined': matButtonDirective=='mat-stroked-button'
 		}"
 		type="button"
-		[color]="matColor"
+		[class]="matColor"
 		[disabled]="!group.valid || group.disabled"
 		(click)="onClick()"
 	>
 		{{ field.label }}
 
-		<mat-icon iconPositionEnd *ngIf="matIcon && !group.disabled">
-			{{ matIcon }}
-		</mat-icon>
-		<mat-spinner *ngIf="group.disabled" diameter="18" strokeWidth="1.5"></mat-spinner>
+		@if (matIcon && !group.disabled) {
+			<mat-icon iconPositionEnd>
+				{{ matIcon }}
+			</mat-icon>
+		}
 
+		@if (group.disabled) {
+			<mat-spinner diameter="18" strokeWidth="1.5"></mat-spinner>
+		}
 	</button>
 </div>

@@ -7,7 +7,8 @@ import { TotsFormWizardComponent } from 'projects/tots/form-wizard/src/public-ap
 @Component({
   selector: 'app-form-wizard',
   templateUrl: './form-wizard.component.html',
-  styleUrls: ['./form-wizard.component.scss']
+  styleUrls: ['./form-wizard.component.scss'],
+  standalone: false
 })
 export class FormWizardComponent implements OnInit {
 

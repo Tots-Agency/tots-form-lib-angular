@@ -5,7 +5,8 @@ import { TotsFormHelper } from '../../helpers/tots-form-helper';
 @Component({
 	selector: 'tots-radio-group-field',
 	templateUrl: './radio-group-field.component.html',
-	styleUrls: ['./radio-group-field.component.scss']
+	styleUrls: ['./radio-group-field.component.scss'],
+	standalone: false
 })
 export class RadioGroupFieldComponent extends TotsBaseFieldComponent implements OnInit {
 

@@ -5,7 +5,8 @@ import { TotsFormHelper } from '../../helpers/tots-form-helper';
 @Component({
   selector: 'tots-select-field',
   templateUrl: './select-field.component.html',
-  styleUrls: ['./select-field.component.scss']
+  styleUrls: ['./select-field.component.scss'],
+  standalone: false
 })
 export class SelectFieldComponent extends TotsBaseFieldComponent {
   getCaption() {

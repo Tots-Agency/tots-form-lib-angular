@@ -1,16 +1,37 @@
-<tots-outer-label
-    *ngIf="field.label && totsFormDefaultConfig.labelPosition==eTotsFormLabelPosition.ABOVE"
-    [label]="field.label"
-    [isRequired]="isRequired()"
-></tots-outer-label>
+@if (field.label && totsFormDefaultConfig.labelPosition==eTotsFormLabelPosition.ABOVE) {
+	<tots-outer-label
+		[label]="field.label"
+		[isRequired]="isRequired()"
+	></tots-outer-label>
+}
 
-<mat-form-field *ngIf="input" [appearance]="getAppearance()" class="{{getClases()}}">
-    <mat-label *ngIf="field.label && totsFormDefaultConfig.labelPosition==eTotsFormLabelPosition.INSIDE"> {{ field.label }} </mat-label>
+@if (input) {
+	<mat-form-field [appearance]="getAppearance()" class="{{getClases()}}">
 
-    <mat-select [formControl]="input" [placeholder]="getPlaceholder()" [multiple]="isMultiple()">
-        <mat-option *ngFor="let option of field.extra.options" [value]="selectedKey(option)"> {{ displayName(option) }} </mat-option>
-    </mat-select>
+		@if (field.label && totsFormDefaultConfig.labelPosition==eTotsFormLabelPosition.INSIDE) {
+			<mat-label>
+				{{ field.label }}
+			</mat-label>
+		}
 
-    <mat-hint *ngIf="getCaption() != ''" [align]="'end'"> {{getCaption()}} </mat-hint>
-    <mat-error *ngIf="hasError()">{{getMessageError()}}</mat-error>
-</mat-form-field>
+		<mat-select [formControl]="input" [placeholder]="getPlaceholder()" [multiple]="isMultiple()">
+			@for (option of field.extra.options; track $index) {
+				<mat-option [value]="selectedKey(option)">
+					{{ displayName(option) }}
+				</mat-option>
+			}
+		</mat-select>
+
+		@if (getCaption()) {
+			<mat-hint [align]="'end'">
+				{{ getCaption() }}
+			</mat-hint>
+		}
+
+		@if (hasError()) {
+			<mat-error>
+				{{ getMessageError() }}
+			</mat-error>
+		}
+	</mat-form-field>
+}

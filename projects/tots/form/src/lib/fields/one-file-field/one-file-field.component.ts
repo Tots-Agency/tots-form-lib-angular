@@ -4,7 +4,8 @@ import { TotsBaseFieldComponent } from '../tots-base-field.component';
 @Component({
   selector: 'tots-one-file-field',
   templateUrl: './one-file-field.component.html',
-  styleUrls: ['./one-file-field.component.css']
+  styleUrls: ['./one-file-field.component.css'],
+  standalone: false
 })
 export class OneFileFieldComponent extends TotsBaseFieldComponent {
 

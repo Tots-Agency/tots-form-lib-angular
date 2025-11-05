@@ -4,7 +4,8 @@ import { TotsBaseFieldComponent } from '../tots-base-field.component';
 @Component({
 	selector: 'tots-password-field',
 	templateUrl: './password-field.component.html',
-	styleUrls: ['./password-field.component.scss']
+	styleUrls: ['./password-field.component.scss'],
+	standalone: false
 })
 export class PasswordFieldComponent extends TotsBaseFieldComponent implements OnInit {
 

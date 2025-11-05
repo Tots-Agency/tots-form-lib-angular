@@ -1,10 +1,13 @@
-<tots-outer-label
-    *ngIf="field.label"
-    [label]="field.label"
-    [isRequired]="isRequired()"
-></tots-outer-label>
+@if (field.label) {
+	<tots-outer-label
+		[label]="field.label"
+		[isRequired]="isRequired()"
+	></tots-outer-label>
+}
 
 <mat-button-toggle-group [formControl]="input">
-    <mat-button-toggle *ngFor="let option of field.extra.options" [value]="option.id">{{ option.title }}</mat-button-toggle>
+	@for (option of field.extra.options; track $index) {
+		<mat-button-toggle [value]="option.id">{{ option.title }}</mat-button-toggle>
+	}
 </mat-button-toggle-group>
 

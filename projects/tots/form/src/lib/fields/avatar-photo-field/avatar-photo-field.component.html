@@ -1,20 +1,36 @@
-<tots-outer-label
-    *ngIf="field.label"
-    [label]="field.label"
-    [isRequired]="isRequired()"
-></tots-outer-label>
+@if (field.label) {
+	<tots-outer-label
+		[label]="field.label"
+		[isRequired]="isRequired()"
+	></tots-outer-label>
+}
 
 <div class="avatar-photo-field">
-    <input type="hidden" [formControl]="input" />
+	<input type="hidden" [formControl]="input" />
 
-    <input #inputFile type="file" accept="image/png, image/jpeg, image/gif" style="display: none;" (change)="onChange($event.target)">
+	<input #inputFile type="file" accept="image/png, image/jpeg, image/gif" style="display: none;" (change)="onChange($event.target)">
 
-    <mat-spinner *ngIf="isUploading" [diameter]="50"></mat-spinner>
-    <button *ngIf="(input.value == ''||input.value == undefined) && !isUploading" mat-stroked-button class="container-image btn-upload-image" (click)="inputFile.click()">
-        <mat-icon>collections</mat-icon> <br> {{getButtonText()}}
-    </button>
-    <div *ngIf="(input.value != '' && input.value != undefined) && !isUploading" class="container-image" (click)="inputFile.click()">
-        <img [src]="input.value" onerror="this.src='https://storage.googleapis.com/tots-send-public/user-avatar-empty.png'" />
-    </div>
-    <button *ngIf="(input.value != '' && input.value != undefined) && !isUploading" mat-icon-button matTooltip="{{getRemoveText()}}" class="btn-delete" color="warn" (click)="input.setValue('')"><mat-icon>delete</mat-icon></button>
+	@if (isUploading) {
+		<mat-spinner [diameter]="50"></mat-spinner>
+	}
+
+	@if ((input.value == ''||input.value == undefined) && !isUploading) {
+		<button mat-stroked-button class="container-image btn-upload-image" (click)="inputFile.click()">
+			<mat-icon>collections</mat-icon>
+			<br>
+			{{ getButtonText() }}
+		</button>
+	}
+
+	@if ((input.value != '' && input.value != undefined) && !isUploading) {
+		<div class="container-image" (click)="inputFile.click()">
+			<img [src]="input.value" onerror="this.src='https://storage.googleapis.com/tots-send-public/user-avatar-empty.png'" />
+		</div>
+	}
+    
+	@if ((input.value != '' && input.value != undefined) && !isUploading) {
+		<button mat-icon-button matTooltip="{{ getRemoveText() }}" class="btn-delete warn" (click)="input.setValue('')">
+			<mat-icon>delete</mat-icon>
+		</button>
+	}
 </div>

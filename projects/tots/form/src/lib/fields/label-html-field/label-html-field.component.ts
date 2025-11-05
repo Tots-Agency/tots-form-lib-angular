@@ -6,7 +6,8 @@ import { TotsBaseFieldComponent } from '../tots-base-field.component';
 @Component({
   selector: 'hos-label-html-field',
   templateUrl: './label-html-field.component.html',
-  styleUrls: ['./label-html-field.component.css']
+  styleUrls: ['./label-html-field.component.css'],
+  standalone: false
 })
 export class LabelHtmlFieldComponent extends TotsBaseFieldComponent implements OnInit {
 

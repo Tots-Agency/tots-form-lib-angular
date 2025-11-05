@@ -4,7 +4,8 @@ import { TotsBaseFieldComponent } from '../tots-base-field.component';
 @Component({
   selector: 'tots-string-field',
   templateUrl: './string-field.component.html',
-  styleUrls: ['./string-field.component.scss']
+  styleUrls: ['./string-field.component.scss'],
+  standalone: false
 })
 export class StringFieldComponent extends TotsBaseFieldComponent implements OnInit {
 

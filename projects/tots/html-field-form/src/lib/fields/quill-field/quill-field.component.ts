@@ -4,12 +4,13 @@ import { TotsBaseFieldComponent } from '@tots/form';
 @Component({
   selector: 'tots-quill-field',
   templateUrl: './quill-field.component.html',
-  styleUrls: ['./quill-field.component.scss']
+  styleUrls: ['./quill-field.component.scss'],
+  standalone: false
 })
 export class QuillFieldComponent extends TotsBaseFieldComponent implements OnInit {
 
   heightEditor = 250;
-  theme?: string;
+	protected theme = "";
 
   modules = {
     toolbar: [

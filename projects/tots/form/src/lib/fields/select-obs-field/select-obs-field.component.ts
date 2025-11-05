@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { TotsBaseFieldComponent } from '../tots-base-field.component';
 import { SelectFieldComponent } from '../select-field/select-field.component';
 import { Observable } from 'rxjs';
 
 @Component({
   selector: 'tots-select-obs-field',
   templateUrl: './select-obs-field.component.html',
-  styleUrls: ['./select-obs-field.component.scss']
+  styleUrls: ['./select-obs-field.component.scss'],
+  standalone: false
 })
 export class SelectObsFieldComponent extends SelectFieldComponent {
 

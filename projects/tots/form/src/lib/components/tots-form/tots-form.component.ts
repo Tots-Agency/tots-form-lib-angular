@@ -7,7 +7,8 @@ import { TotsFieldForm } from '../../entities/tots-field-form';
 @Component({
   selector: 'tots-form',
   templateUrl: './tots-form.component.html',
-  styleUrls: ['./tots-form.component.scss']
+  styleUrls: ['./tots-form.component.scss'],
+  standalone: false
 })
 export class TotsFormComponent implements OnInit, AfterViewInit {
 

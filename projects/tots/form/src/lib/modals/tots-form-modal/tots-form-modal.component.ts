@@ -8,7 +8,8 @@ import { TotsActionForm } from '../../entities/tots-action-form';
 @Component({
   selector: 'tots-form-modal',
   templateUrl: './tots-form-modal.component.html',
-  styleUrls: ['./tots-form-modal.component.scss']
+  styleUrls: ['./tots-form-modal.component.scss'],
+  standalone: false
 })
 export class TotsFormModalComponent {
 

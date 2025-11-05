@@ -1,6 +1,9 @@
 <mat-label class="tots-form-outer-label">
-    {{ label }}
-    <span *ngIf="isRequired" class="tots-form-outer-label-required">
-        *
-    </span>
+	{{ label }}
+
+	@if (isRequired) {
+		<span class="tots-form-outer-label-required">
+			*
+		</span>
+	}
 </mat-label>

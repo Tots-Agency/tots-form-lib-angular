@@ -2,7 +2,6 @@ import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
 import { TotsFieldForm } from '../../entities/tots-field-form';
 import { TotsBaseFieldComponent } from '../tots-base-field.component';
-import { ThemePalette } from '@angular/material/core';
 import { TotsFormButtonMatDirective, TOTS_FORM_BUTTONS_CONFIG, TotsFormButtonsConfig } from '../../entities/tots-buttons-config';
 import { TOTS_FORM_DEFAULT_CONFIG, TotsFormDefaultConfig } from '../../entities/tots-form-default-config';
 
@@ -10,11 +9,12 @@ import { TOTS_FORM_DEFAULT_CONFIG, TotsFormDefaultConfig } from '../../entities/
   selector: 'tots-submit-button-field',
   templateUrl: './submit-button-field.component.html',
   styleUrls: ['./submit-button-field.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  standalone: false
 })
 export class SubmitButtonFieldComponent extends TotsBaseFieldComponent implements OnInit {
 
-  matColor : ThemePalette;
+	protected matColor! : string;
   matButtonDirective! : TotsFormButtonMatDirective;
 
   public get matIcon() : string {
@@ -29,7 +29,7 @@ export class SubmitButtonFieldComponent extends TotsBaseFieldComponent implement
   }
 
   override ngOnInit(): void {
-    this.matColor = this.field.extra?.matColor || this.totsButtonConfig.positiveButtonColor;
+    this.matColor = this.field.extra?.matColor || this.totsButtonConfig.positiveButtonColor || "";
     this.matButtonDirective = this.field.extra?.matButtonDirective || this.totsButtonConfig.positiveButtonMaterialDirective;
   }
 

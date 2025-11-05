@@ -1,31 +1,54 @@
-<tots-outer-label
-    *ngIf="field.label && totsFormDefaultConfig.labelPosition==eTotsFormLabelPosition.ABOVE"
-    [label]="field.label"
-    [isRequired]="isRequired()"
-></tots-outer-label>
+@if (field.label && totsFormDefaultConfig.labelPosition==eTotsFormLabelPosition.ABOVE) {
+	<tots-outer-label
+		[label]="field.label"
+		[isRequired]="isRequired()"
+	></tots-outer-label>
+}
 
-<mat-form-field *ngIf="input" [appearance]="getAppearance()" class="{{getClases()}}">
-    <mat-label *ngIf="field.label && totsFormDefaultConfig.labelPosition==eTotsFormLabelPosition.INSIDE"> {{ field.label }} </mat-label>
+@if (input) {
+	<mat-form-field [appearance]="getAppearance()" class="{{getClases()}}">
+		@if (field.label && totsFormDefaultConfig.labelPosition==eTotsFormLabelPosition.INSIDE) {
+			<mat-label>
+				{{ field.label }}
+			</mat-label>
+		}
 
-    <input matInput type="text" [formControl]="inputQuery" [matAutocomplete]="autoInput" [placeholder]="getPlaceholder()">
+		<input matInput type="text" [formControl]="inputQuery" [matAutocomplete]="autoInput" [placeholder]="getPlaceholder()">
 
-    <mat-autocomplete #autoInput="matAutocomplete" [displayWith]="displayOption.bind(this)" (optionSelected)="selectedOption($event)" >
-      <mat-option *ngFor="let item of filteredOptions | async" [value]="item">
-        {{ displayOption(item) }}
-      </mat-option>
-    </mat-autocomplete>
+		<mat-autocomplete #autoInput="matAutocomplete" [displayWith]="displayOption.bind(this)" (optionSelected)="selectedOption($event)" >
+			@for (item of filteredOptions|async; track $index) {
+				<mat-option [value]="item">
+					{{ displayOption(item) }}
+				</mat-option>
+			}
+		</mat-autocomplete>
 
-    <mat-hint *ngIf="getCaption() != ''" [align]="'end'"> {{getCaption()}} </mat-hint>
-</mat-form-field>
+		@if (getCaption()) {
+			<mat-hint [align]="'end'">
+				{{ getCaption() }}
+			</mat-hint>
+		}
+	</mat-form-field>
+}
 
 <div class="tots-autocomplete-list">
-    <div *ngFor="let item of input.value" class="tots-item-auto">
-        <div class="tots-item-info">
-            <img *ngIf="isShowPhoto()" [src]="displayPhoto(item)" (error)="onImgError($event)" />
-            <p>{{ displayOption(item) }}</p>
-        </div>
-        <div class="tots-item-remove">
-            <button mat-icon-button color="warn" (click)="onClickRemove(item)"><mat-icon>close</mat-icon></button>
-        </div>
-    </div>
+	@for (item of input.value; track $index) {
+		<div class="tots-item-auto">
+			<div class="tots-item-info">
+				@if (isShowPhoto()) {
+					<img [src]="displayPhoto(item)" (error)="onImgError($event)" />
+				}
+				<p>
+					{{ displayOption(item) }}
+				</p>
+			</div>
+
+			<div class="tots-item-remove">
+				<button mat-icon-button class="warn" (click)="onClickRemove(item)">
+					<mat-icon>close</mat-icon>
+				</button>
+			</div>
+		</div>
+	}
+
 </div>

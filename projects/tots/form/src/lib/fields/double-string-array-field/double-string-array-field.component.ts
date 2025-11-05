@@ -11,7 +11,8 @@ import { TotsFormHelper } from '../../helpers/tots-form-helper';
 @Component({
 	selector: 'tots-double-string-array-field',
 	templateUrl: './double-string-array-field.component.html',
-	styleUrls: ["./double-string-array-field.component.css"]
+	styleUrls: ["./double-string-array-field.component.css"],
+	standalone: false
 })
 export class DoubleStringArrayFieldComponent extends TotsBaseFieldComponent {
 
@@ -65,7 +66,7 @@ export class DoubleStringArrayFieldComponent extends TotsBaseFieldComponent {
 	protected get addButtonMatIcon(): string {
 		return this.field.extra?.addButtonMatIcon || this.totsStringArrayConfig.addButtonMatIcon;
 	}
-	protected get addButtonMatColor(): ThemePalette {
+	protected get addButtonMatColor(): string {
 		return this.field.extra?.addButtonMatColor || this.totsStringArrayConfig.addButtonMatColor;
 	}
 	protected get addButtonCaption(): string {

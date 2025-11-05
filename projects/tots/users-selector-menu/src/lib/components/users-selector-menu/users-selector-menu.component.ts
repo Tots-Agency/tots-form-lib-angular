@@ -8,7 +8,8 @@ import { TotsUsersSelectorMenuConfig } from '../../entities/tots-users-selector-
 @Component({
   selector: 'tots-users-selector-menu',
   templateUrl: './users-selector-menu.component.html',
-  styleUrls: ['./users-selector-menu.component.scss']
+  styleUrls: ['./users-selector-menu.component.scss'],
+  standalone: false
 })
 export class TotsUsersSelectorMenuComponent implements OnInit {
 

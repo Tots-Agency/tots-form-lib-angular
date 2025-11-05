@@ -7,7 +7,8 @@ import { LabelHtmlFieldComponent, RowFieldComponent } from 'projects/tots/form/s
 @Component({
   selector: 'app-form-sidebar',
   templateUrl: './form-sidebar.component.html',
-  styleUrls: ['./form-sidebar.component.scss']
+  styleUrls: ['./form-sidebar.component.scss'],
+  standalone: false
 })
 export class FormSidebarComponent implements OnInit {
   config!: TotsFormSidebarPageConfig;

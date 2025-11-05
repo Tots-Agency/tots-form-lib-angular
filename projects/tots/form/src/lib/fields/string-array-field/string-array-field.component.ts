@@ -1,4 +1,4 @@
-import { FormArray, FormControl, FormGroup, UntypedFormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { FormArray, FormControl, UntypedFormGroup } from '@angular/forms';
 import { Component, Inject, OnInit } from '@angular/core';
 import { TotsBaseFieldComponent } from '../tots-base-field.component';
 import { TOTS_STRING_ARRAY_CONFIG, TotsStringArrayConfig } from '../../entities/tots-string-array-config';
@@ -11,7 +11,8 @@ import { TotsFieldForm } from '../../entities/tots-field-form';
 @Component({
   selector: 'tots-string-array-field',
   templateUrl: './string-array-field.component.html',
-  styleUrls: ['./string-array-field.component.scss']
+  styleUrls: ['./string-array-field.component.scss'],
+  standalone: false
 })
 export class StringArrayFieldComponent extends TotsBaseFieldComponent implements OnInit {
 
@@ -52,8 +53,8 @@ export class StringArrayFieldComponent extends TotsBaseFieldComponent implements
   protected get addButtonMatIcon() : string {
     return this.field.extra?.addButtonMatIcon || this.totsStringArrayConfig.addButtonMatIcon;
   }
-  protected get addButtonMatColor() : ThemePalette {
-    return this.field.extra?.addButtonMatColor || this.totsStringArrayConfig.addButtonMatColor;
+  protected get addButtonMatColor() : string {
+    return this.field.extra?.addButtonMatColor || this.totsStringArrayConfig.addButtonMatColor || "";
   }
   protected get addButtonCaption() : string {
     return this.field.extra?.addButtonCaption || this.totsStringArrayConfig.addButtonCaption;

@@ -7,7 +7,8 @@ import { TotsFieldForm } from '../../entities/tots-field-form';
 @Component({
   selector: 'tots-base-print-field',
   templateUrl: './base-print-field.component.html',
-  styleUrls: ['./base-print-field.component.scss']
+  styleUrls: ['./base-print-field.component.scss'],
+  standalone: false
 })
 export class BasePrintFieldComponent implements OnInit {
 

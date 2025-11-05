@@ -3,7 +3,8 @@ import { Component, Input } from "@angular/core";
 @Component({
   selector: 'tots-outer-label',
   templateUrl: './outer-label.component.html',
-  styleUrls: ['./outer-label.component.scss']
+  styleUrls: ['./outer-label.component.scss'],
+  standalone: false
 })
 export class TotsOuterLabelComponent {
 

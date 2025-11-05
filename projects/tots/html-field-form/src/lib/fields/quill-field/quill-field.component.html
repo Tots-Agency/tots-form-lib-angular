@@ -1,8 +1,9 @@
-<tots-outer-label
-	*ngIf="field.label"
-	[label]="field.label"
-	[isRequired]="isRequired()"
-></tots-outer-label>
+@if (field.label) {
+	<tots-outer-label
+		[label]="field.label"
+		[isRequired]="isRequired()"
+	></tots-outer-label>
+}
 
 <quill-editor
 	[modules]="modules"

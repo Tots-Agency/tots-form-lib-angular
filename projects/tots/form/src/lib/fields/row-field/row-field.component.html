@@ -1,6 +1,16 @@
 <div class="tots-row-field">
-    <div *ngFor="let f of field.extra.fields" class="tots-field-main-container {{ f.extra?.classes ?? '' }}">
-        <mat-icon *ngIf="isHasIcon(f)">{{getIconField(f)}}</mat-icon>
-        <div class="tots-field-print-container"><tots-base-print-field [field]="f" [group]="group" [onAction]="onAction"></tots-base-print-field></div>
-    </div>
+
+	@for (f of field.extra.fields; track $index) {
+		<div class="tots-field-main-container {{ f.extra?.classes ?? '' }}">
+			@if (isHasIcon(f)) {
+				<mat-icon>
+					{{ getIconField(f) }}
+				</mat-icon>
+			}
+
+			<div class="tots-field-print-container">
+				<tots-base-print-field [field]="f" [group]="group" [onAction]="onAction"></tots-base-print-field>
+			</div>
+		</div>
+	}
 </div>

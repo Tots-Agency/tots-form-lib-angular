@@ -6,7 +6,8 @@ import { TotsBaseFieldComponent } from '../tots-base-field.component';
 @Component({
   selector: 'tots-row-field',
   templateUrl: './row-field.component.html',
-  styleUrls: ['./row-field.component.scss']
+  styleUrls: ['./row-field.component.scss'],
+  standalone: false
 })
 export class RowFieldComponent extends TotsBaseFieldComponent implements OnInit {
 

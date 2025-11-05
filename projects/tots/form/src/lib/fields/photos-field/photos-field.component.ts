@@ -4,7 +4,8 @@ import { TotsBaseFieldComponent } from '../tots-base-field.component';
 @Component({
   selector: 'tots-photos-field',
   templateUrl: './photos-field.component.html',
-  styleUrls: ['./photos-field.component.css']
+  styleUrls: ['./photos-field.component.css'],
+  standalone: false
 })
 export class PhotosFieldComponent extends TotsBaseFieldComponent {
 

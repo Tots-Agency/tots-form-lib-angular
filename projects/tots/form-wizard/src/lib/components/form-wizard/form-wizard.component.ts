@@ -10,7 +10,8 @@ import { MatStepper } from '@angular/material/stepper';
 @Component({
   selector: 'tots-form-wizard',
   templateUrl: './form-wizard.component.html',
-  styleUrls: ['./form-wizard.component.scss']
+  styleUrls: ['./form-wizard.component.scss'],
+  standalone: false
 })
 export class TotsFormWizardComponent implements AfterViewInit {
 
@@ -35,7 +36,8 @@ export class TotsFormWizardComponent implements AfterViewInit {
     this.onAction.emit({ key: 'load-item', item: this.currentStep });
   }
   ngAfterViewInit() {
-    this.stepper._getIndicatorType = ()=> 'number';
+    // Not allowed anymore
+    //this.stepper._getIndicatorType = ()=> 'number';
   }
   //#endregion
 

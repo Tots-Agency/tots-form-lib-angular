@@ -1,41 +1,33 @@
 <div class="submit_and_cancel_wrapper">
 
-  <button
-    mat-button
-    [ngClass]="{
-      'mat-mdc-button': cancelMatButtonDirective=='mat-button',
-      'mat-mdc-unelevated-button mdc-button--unelevated': cancelMatButtonDirective=='mat-flat-button',
-      'mat-mdc-raised-button mdc-button--raised': cancelMatButtonDirective=='mat-raised-button',
-      'mat-mdc-outlined-button mdc-button--outlined': cancelMatButtonDirective=='mat-stroked-button'
-    }"
-    type="button"
-    [color]="cancelMatColor"
-    [disabled]="group.disabled"
-    (click)="onCancel()"
-  >
-    {{ cancelLabel }}
-  </button>
+	<button mat-button [ngClass]="{
+		'mat-mdc-button': cancelMatButtonDirective=='mat-button',
+		'mat-mdc-unelevated-button mdc-button--unelevated': cancelMatButtonDirective=='mat-flat-button',
+		'mat-mdc-raised-button mdc-button--raised': cancelMatButtonDirective=='mat-raised-button',
+		'mat-mdc-outlined-button mdc-button--outlined': cancelMatButtonDirective=='mat-stroked-button'
+	}" type="button" [class]="cancelMatColor" [disabled]="group.disabled" (click)="onCancel()">
+		{{ cancelLabel }}
+	</button>
 
-  <button
-    mat-button
-    type="submit"
-    [ngClass]="{
-      'mat-mdc-button': submitMatButtonDirective=='mat-button',
-      'mat-mdc-unelevated-button mdc-button--unelevated': submitMatButtonDirective=='mat-flat-button',
-      'mat-mdc-raised-button mdc-button--raised': submitMatButtonDirective=='mat-raised-button',
-      'mat-mdc-outlined-button mdc-button--outlined': submitMatButtonDirective=='mat-stroked-button'
-    }"
-    [color]="submitMatColor"
-    [disabled]="!group.valid || group.disabled"
-    (click)="onClick()"
-  >
-    {{ field.label }}
+	<button mat-button type="submit" [ngClass]="{
+		'mat-mdc-button': submitMatButtonDirective=='mat-button',
+		'mat-mdc-unelevated-button mdc-button--unelevated': submitMatButtonDirective=='mat-flat-button',
+		'mat-mdc-raised-button mdc-button--raised': submitMatButtonDirective=='mat-raised-button',
+		'mat-mdc-outlined-button mdc-button--outlined': submitMatButtonDirective=='mat-stroked-button'
+	}" [color]="submitMatColor" [disabled]="!group.valid || group.disabled" (click)="onClick()">
 
-    <mat-icon iconPositionEnd *ngIf="matIcon && !group.disabled">
-      {{ matIcon }}
-    </mat-icon>
-    <mat-spinner *ngIf="group.disabled" diameter="18" strokeWidth="1.5"></mat-spinner>
+		{{ field.label }}
 
-  </button>
+		@if (matIcon && !group.disabled) {
+			<mat-icon iconPositionEnd>
+				{{ matIcon }}
+			</mat-icon>
+		}
+
+		@if (group.disabled) {
+			<mat-spinner diameter="18" strokeWidth="1.5"></mat-spinner>
+		}
+
+	</button>
 
 </div>

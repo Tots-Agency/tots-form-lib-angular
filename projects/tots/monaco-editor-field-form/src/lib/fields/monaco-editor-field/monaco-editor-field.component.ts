@@ -1,10 +1,11 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TotsBaseFieldComponent } from '@tots/form';
 
 @Component({
   selector: 'tots-monaco-editor-field',
   templateUrl: './monaco-editor-field.component.html',
-  styleUrls: ['./monaco-editor-field.component.scss']
+  styleUrls: ['./monaco-editor-field.component.scss'],
+  standalone: false
 })
 export class MonacoEditorFieldComponent extends TotsBaseFieldComponent implements OnInit {
   editorOptions = { theme: 'vs-dark', language: '' };

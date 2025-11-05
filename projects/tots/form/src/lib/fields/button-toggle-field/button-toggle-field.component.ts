@@ -5,7 +5,8 @@ import { TotsBaseFieldComponent } from '../tots-base-field.component';
 @Component({
   selector: 'tots-button-toggle-field',
   templateUrl: './button-toggle-field.component.html',
-  styleUrls: ['./button-toggle-field.component.css']
+  styleUrls: ['./button-toggle-field.component.css'],
+  standalone: false
 })
 export class ButtonToggleFieldComponent extends TotsBaseFieldComponent {
 

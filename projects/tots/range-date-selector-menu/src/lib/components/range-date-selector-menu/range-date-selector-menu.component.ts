@@ -5,7 +5,8 @@ import moment from 'moment';
 @Component({
   selector: 'tots-range-date-selector-menu',
   templateUrl: './range-date-selector-menu.component.html',
-  styleUrls: ['./range-date-selector-menu.component.scss']
+  styleUrls: ['./range-date-selector-menu.component.scss'],
+  standalone: false
 })
 export class RangeDateSelectorMenuComponent {
 

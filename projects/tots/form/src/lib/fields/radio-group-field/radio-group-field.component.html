@@ -1,11 +1,14 @@
-<tots-outer-label
-    *ngIf="field.label"
-    [label]="field.label"
-    [isRequired]="isRequired()"
-></tots-outer-label>
+@if (field.label) {
+	<tots-outer-label
+		[label]="field.label"
+		[isRequired]="isRequired()"
+	></tots-outer-label>
+}
 
 <mat-radio-group [formControl]="input" [ngClass]="{vertical: alignment=='vertical'}">
-    <mat-radio-button *ngFor="let o of options" [value]="o.value">
-        {{o.caption}}
-    </mat-radio-button>
+	@for (o of options; track $index) {
+		<mat-radio-button [value]="o.value">
+			{{o.caption}}
+		</mat-radio-button>
+	}
 </mat-radio-group>

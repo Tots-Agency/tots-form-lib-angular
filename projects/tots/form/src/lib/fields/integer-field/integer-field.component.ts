@@ -4,7 +4,8 @@ import { TotsBaseFieldComponent } from '../tots-base-field.component';
 @Component({
   selector: 'tots-integer-field',
   templateUrl: './integer-field.component.html',
-  styleUrls: ['./integer-field.component.css']
+  styleUrls: ['./integer-field.component.css'],
+  standalone: false
 })
 export class IntegerFieldComponent extends TotsBaseFieldComponent {
   getCaption() {

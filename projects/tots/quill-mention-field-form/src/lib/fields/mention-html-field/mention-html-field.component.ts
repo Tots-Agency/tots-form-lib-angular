@@ -6,14 +6,15 @@ import 'quill-mention';
 @Component({
   selector: 'tots-mention-html-field',
   templateUrl: './mention-html-field.component.html',
-  styleUrls: ['./mention-html-field.component.scss']
+  styleUrls: ['./mention-html-field.component.scss'],
+  standalone: false
 })
 export class MentionHtmlFieldComponent extends TotsBaseFieldComponent implements OnInit {
 
   @ViewChild(QuillEditorComponent, { static: true }) editor?: QuillEditorComponent;
 
   heightEditor = 250;
-  theme?: string;
+	protected theme = "";
 
   modules: any = {
     mention: {

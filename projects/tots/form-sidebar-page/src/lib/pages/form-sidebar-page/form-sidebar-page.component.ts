@@ -6,7 +6,8 @@ import { TotsFormSidebarItem, TotsFormSidebarPageConfig } from '../../entities/t
 @Component({
   selector: 'tots-form-sidebar-page',
   templateUrl: './form-sidebar-page.component.html',
-  styleUrls: ['./form-sidebar-page.component.scss']
+  styleUrls: ['./form-sidebar-page.component.scss'],
+  standalone: false
 })
 export class TotsFormSidebarPageComponent implements OnInit {
 

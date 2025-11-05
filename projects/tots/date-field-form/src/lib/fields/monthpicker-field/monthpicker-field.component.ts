@@ -23,7 +23,8 @@ export const MONTH_FORMATS = {
 	styleUrls: ['./monthpicker-field.component.css'],
 	providers: [
 		{ provide: MAT_DATE_FORMATS, useValue: MONTH_FORMATS },
-	]
+	],
+	standalone: false
 })
 export class MonthpickerFieldComponent extends TotsBaseFieldComponent {
 

@@ -4,7 +4,8 @@ import { TotsBaseFieldComponent } from '../tots-base-field.component';
 @Component({
   selector: 'tots-textarea-field',
   templateUrl: './textarea-field.component.html',
-  styleUrls: ['./textarea-field.component.css']
+  styleUrls: ['./textarea-field.component.css'],
+  standalone: false
 })
 export class TextareaFieldComponent extends TotsBaseFieldComponent {
   

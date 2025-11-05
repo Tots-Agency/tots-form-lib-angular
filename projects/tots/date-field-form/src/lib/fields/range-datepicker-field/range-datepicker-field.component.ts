@@ -6,7 +6,8 @@ import moment from 'moment';
 @Component({
 	selector: 'tots-range-datepicker-field',
 	templateUrl: './range-datepicker-field.component.html',
-	styleUrls: ['./range-datepicker-field.component.scss']
+	styleUrls: ['./range-datepicker-field.component.scss'],
+	standalone: false
 })
 export class RangeDatepickerFieldComponent extends TotsBaseFieldComponent implements OnInit {
 

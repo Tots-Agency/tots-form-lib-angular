@@ -5,7 +5,8 @@ import { TotsBaseFieldComponent } from '../tots-base-field.component';
 @Component({
   selector: 'tots-autocomplete-field',
   templateUrl: './autocomplete-field.component.html',
-  styleUrls: ['./autocomplete-field.component.scss']
+  styleUrls: ['./autocomplete-field.component.scss'],
+  standalone: false
 })
 export class AutocompleteFieldComponent extends TotsBaseFieldComponent implements OnInit {
 

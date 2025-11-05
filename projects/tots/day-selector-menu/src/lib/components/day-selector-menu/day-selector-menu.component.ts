@@ -5,7 +5,8 @@ import * as moment from 'moment';
 @Component({
   selector: 'tots-day-selector-menu',
   templateUrl: './day-selector-menu.component.html',
-  styleUrls: ['./day-selector-menu.component.css']
+  styleUrls: ['./day-selector-menu.component.css'],
+  standalone: false
 })
 export class DaySelectorMenuComponent implements OnInit {
 

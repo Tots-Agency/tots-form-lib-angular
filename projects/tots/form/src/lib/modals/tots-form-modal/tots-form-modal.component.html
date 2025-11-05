@@ -1,7 +1,13 @@
 <div #dialog>
-    <h1 mat-dialog-title>{{data.title}}</h1>
+    <h1 mat-dialog-title>
+        {{data.title}}
+    </h1>
+
     <div mat-dialog-content>
         <tots-form #form [fields]="data.fields" [item]="data.item" (onAction)="onActionForm($event)" [autoSave]="data.autoSave ?? false"></tots-form>
     </div>
-    <tots-loading-factory *ngIf="isLoading" [type]="typeLoading" [color]="colorLoading" [isFullPage]="true"></tots-loading-factory>
+
+    @if (isLoading) {
+        <tots-loading-factory [type]="typeLoading" [color]="colorLoading" [isFullPage]="true"></tots-loading-factory>
+    }
 </div>

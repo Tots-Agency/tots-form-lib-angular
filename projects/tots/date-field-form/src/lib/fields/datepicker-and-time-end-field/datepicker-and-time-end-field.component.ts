@@ -6,7 +6,8 @@ import moment from 'moment';
 @Component({
   selector: 'tots-datepicker-and-time-end-field',
   templateUrl: './datepicker-and-time-end-field.component.html',
-  styleUrls: ['./datepicker-and-time-end-field.component.css']
+  styleUrls: ['./datepicker-and-time-end-field.component.css'],
+  standalone: false
 })
 export class DatepickerAndTimeEndFieldComponent extends TotsBaseFieldComponent implements OnInit {
 

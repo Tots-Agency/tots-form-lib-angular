@@ -9,15 +9,16 @@ import { TOTS_FORM_DEFAULT_CONFIG, TotsFormDefaultConfig } from '../../entities/
 @Component({
   selector: 'tots-submit-and-cancel-buttons-field',
   templateUrl: './submit-and-cancel-buttons-field.component.html',
-  styleUrls: ['./submit-and-cancel-buttons-field.component.css']
+  styleUrls: ['./submit-and-cancel-buttons-field.component.css'],
+  standalone: false
 })
 export class SubmitAndCancelButtonsFieldComponent extends TotsBaseFieldComponent implements OnInit {
 
-  submitMatColor! : ThemePalette;
+  submitMatColor! : string;
   submitMatButtonDirective! : TotsFormButtonMatDirective;
 
   cancelLabel! : string;
-  cancelMatColor! : ThemePalette;
+  cancelMatColor! : string;
   cancelMatButtonDirective! : TotsFormButtonMatDirective;
 
   public get matIcon() : string {
@@ -36,7 +37,7 @@ export class SubmitAndCancelButtonsFieldComponent extends TotsBaseFieldComponent
     this.submitMatButtonDirective = this.field.extra?.matButtonDirective || this.totsButtonConfig.positiveButtonMaterialDirective;
 
     this.cancelLabel = this.field.extra?.cancelLabel || this.totsButtonConfig.negativeButtonCaption;
-    this.cancelMatColor = this.totsButtonConfig.negativeButtonColor;
+    this.cancelMatColor = this.totsButtonConfig.negativeButtonColor || "";
     this.cancelMatButtonDirective = this.field.extra?.matCancelButtonDirective || this.totsButtonConfig.negativeButtonMaterialDirective;
   }
 

@@ -7,7 +7,8 @@ import { TotsBaseFieldComponent } from '../tots-base-field.component';
 @Component({
   selector: 'tots-autocomplete-obs-field',
   templateUrl: './autocomplete-obs-field.component.html',
-  styleUrls: ['./autocomplete-obs-field.component.css']
+  styleUrls: ['./autocomplete-obs-field.component.css'],
+  standalone: false
 })
 export class AutocompleteObsFieldComponent extends TotsBaseFieldComponent implements OnInit {
 
@@ -44,8 +45,6 @@ export class AutocompleteObsFieldComponent extends TotsBaseFieldComponent implem
   loadQueryConfig() {
     let obs: (query?: string) => Observable<Array<any>> = this.field.extra.obs;
     this.filteredOptions = this.inputQuery.valueChanges.pipe(
-      //startWith(''),
-      //takeWhile(value => typeof value === "string"),
       tap(value => {
         if(typeof value === "string" && value == ''){
           this.input.setValue(undefined);

@@ -12,7 +12,7 @@ import { TotsFormApiService, TotsFormModalApiConfig } from 'projects/tots/form-a
 import Quill from 'quill';
 import { TotsMonacoEditorField } from 'projects/tots/monaco-editor-field-form/src/public-api';
 import { TotsStringField } from 'projects/tots/form/src/lib/field-factories/tots-string-field';
-import { ValidatorMax, ValidatorMin, ValidatorRequired, ValidatorRequiredTrue } from '../../helpers/tots-validators';
+import { ValidatorEmail, ValidatorMax, ValidatorMin, ValidatorRequired, ValidatorRequiredTrue } from '../../helpers/tots-validators';
 import { TotsSelectField } from 'projects/tots/form/src/lib/field-factories/tots-select-field';
 import { TotsAvatarPhotoField } from 'projects/tots/form/src/lib/field-factories/tots-avatar-photo-field';
 import { TotsFilesListField } from 'projects/tots/form/src/lib/field-factories/tots-files-list-field';
@@ -29,13 +29,13 @@ import { TotsToggleField } from 'projects/tots/form/src/lib/field-factories/tots
 import { TotsSubmitButton } from 'projects/tots/form/src/lib/field-factories/tots-submit-button';
 import { TotsDatepickerField, TotsDatepickerTimeRangeField } from '@tots/date-field-form';
 import { TotsQuillField } from '@tots/html-field-form';
-import { TotsCheckboxField } from 'projects/tots/form/src/lib/field-factories/tots-checkbox-field';
-import { TotsStringArrayField } from '@tots/form';
+import { TotsStringArrayField, TotsValidator } from '@tots/form';
 
 @Component({
   selector: 'app-form-component',
   templateUrl: './form-component.component.html',
-  styleUrls: ['./form-component.component.scss']
+  styleUrls: ['./form-component.component.scss'],
+  standalone: false
 })
 export class FormComponentComponent implements OnInit {
 
@@ -154,7 +154,7 @@ export class FormComponentComponent implements OnInit {
   }
   configForm2() {
     this.fields = [
-      new TotsStringArrayField("emails", 5, "Correo electrónico"),
+      new TotsStringArrayField("emails", 5, "Correo electrónico", [ValidatorRequired, ValidatorEmail]),
       new TotsSubmitButton("submit", "Enviar"),
     ];
   }
