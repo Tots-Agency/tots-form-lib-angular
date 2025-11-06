@@ -25,7 +25,7 @@ export class TotsWizardFormDefaultConfig {
   /**
    * Material button color class for the next step and submit buttons. Ex color directive
    */
-  skipButtonColor? : undefined = undefined;
+  skipButtonColor? : string = undefined;
 
 
   /**
