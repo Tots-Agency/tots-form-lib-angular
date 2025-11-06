@@ -2,9 +2,9 @@
   "name": "@tots/form",
   "version": "20.0.0",
   "peerDependencies": {
-    "@angular/common": "^20.0.0",
-    "@angular/core": "^20.0.0",
-    "@tots/loading": "file:/home/tots/Repositories/Librerías/Tots/tots-loading-lib-angular/dist/tots/loading"
+    "@angular/common": "^20.3.0",
+    "@angular/core": "^20.3.0",
+    "@tots/loading": "^20.0.0"
   },
   "dependencies": {
     "tslib": "^2.8.0"
