@@ -6,9 +6,13 @@ export type TotsFormButtonMatDirective = "mat-button"|"mat-flat-button"|"mat-rai
 @Injectable()
 export class TotsFormButtonsConfig {
   positiveButtonMaterialDirective : TotsFormButtonMatDirective = "mat-button";
+
+  /** Ex color directive, now passed as class */
   positiveButtonColor : string = "primary";
   positiveButtonIcon : string|undefined = undefined;
   negativeButtonCaption : string = "Cancel";
   negativeButtonMaterialDirective : TotsFormButtonMatDirective = "mat-button";
+
+  /** Ex color directive, now passed as class */
   negativeButtonColor : string|undefined = undefined;   // Unthemed
 }

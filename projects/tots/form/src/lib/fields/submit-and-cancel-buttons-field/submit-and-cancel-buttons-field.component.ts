@@ -2,7 +2,6 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
 import { TotsFieldForm } from '../../entities/tots-field-form';
 import { TotsBaseFieldComponent } from '../tots-base-field.component';
-import { ThemePalette } from '@angular/material/core';
 import { TOTS_FORM_BUTTONS_CONFIG, TotsFormButtonMatDirective, TotsFormButtonsConfig } from '../../entities/tots-buttons-config';
 import { TOTS_FORM_DEFAULT_CONFIG, TotsFormDefaultConfig } from '../../entities/tots-form-default-config';
 

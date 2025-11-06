@@ -7,6 +7,10 @@ export const TOTS_STRING_ARRAY_CONFIG = new InjectionToken<TotsStringArrayConfig
 export class TotsStringArrayConfig {
   addButtonStyle? : TotsFormButtonMatDirective;
   addButtonMatIcon? : string = "add";
+
+  /**
+   * Material button color class for the add field button. Ex color directive
+   */
   addButtonMatColor? : string = "primary";
   addButtonCaption? : string = "Add";
 }

@@ -4,7 +4,6 @@ import { TotsActionForm, TotsFormButtonMatDirective, TotsFormComponent } from '@
 import { StepperOrientation, StepperSelectionEvent } from '@angular/cdk/stepper';
 import { FormGroup } from '@angular/forms';
 import { TOTS_WIZARD_FORM_DEFAULT_CONFIG, TotsWizardFormDefaultConfig } from '../../entities/tots-wizard-form-default-config';
-import { ThemePalette } from '@angular/material/core';
 import { MatStepper } from '@angular/material/stepper';
 
 @Component({
@@ -49,8 +48,8 @@ export class TotsFormWizardComponent implements AfterViewInit {
   protected get backButtonCaption() : string | undefined {
     return this.config.backButtonCaption || this.defaultConfig.backButtonCaption;
   }
-  protected get backButtonColor() : ThemePalette {
-    return this.defaultConfig.backButtonColor;
+  protected get backButtonColor() : string {
+    return this.defaultConfig.backButtonColor || "";
   }
   protected get backButtonDirectiveClass() : string | undefined {
     return this.getMaterialButtonClasses(this.defaultConfig.backButtonMaterialDirective);
@@ -66,8 +65,8 @@ export class TotsFormWizardComponent implements AfterViewInit {
       return this.defaultConfig.loadingCaption;
     return this.config.submitButtonCaption || this.defaultConfig.submitButtonCaption;
   }
-  protected get nextSubmitStepButtonColor() : ThemePalette {
-    return this.defaultConfig.nextSubmitButtonColor;
+  protected get nextSubmitStepButtonColor() : string {
+    return this.defaultConfig.nextSubmitButtonColor || "";
   }
   protected get nextSubmitButtonDirectiveClass() : string | undefined {
     return this.getMaterialButtonClasses(this.defaultConfig.nextSubmitButtonMaterialDirective);
@@ -76,8 +75,8 @@ export class TotsFormWizardComponent implements AfterViewInit {
   protected get skipButtonCaption() : string | undefined {
     return this.config.skipButtonCaption || this.defaultConfig.skipButtonCaption;
   }
-  protected get skipButtonColor() : ThemePalette {
-    return this.defaultConfig.skipButtonColor;
+  protected get skipButtonColor() : string {
+    return this.defaultConfig.skipButtonColor || "";
   }
   protected get skipButtonDirectiveClass() : string | undefined {
     return this.getMaterialButtonClasses(this.defaultConfig.skipButtonMaterialDirective);

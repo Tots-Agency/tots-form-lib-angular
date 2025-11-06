@@ -1,27 +1,129 @@
-# TotsFormLibAngular
+<div align="center">
+  <img src="https://avatars.githubusercontent.com/u/117909365" alt="Tots Logo" width="150">
+  
+  <h1>
+    @tots/form
+  </h1>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.10.
+</div>
 
-## Development server
+<br><br>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 20.0.0.
 
-## Code scaffolding
+`@tots/form` is a library for creating forms through field definitions with a predefined logic and look. It includes
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- A main form component
+- A set of interchangeable field from basic to moderate complexity
+- Configuration through dependency injection
+- The posibility of creating custom fields
+- A validation system
 
-## Build
+<br>
+<hr>
+<br>
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Installation
 
-## Running unit tests
+```bash
+npm install @tots/form
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Ensure your project uses Angular 20+ and compatible versions of TypeScript, zone.js, and rxjs.
 
-## Running end-to-end tests
+<br>
+<hr>
+<br>
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Importing the module
 
-## Further help
+```typescript
+import { NgModule } from '@angular/core';
+import { TotsFormModule } from 'projects/tots/form/src/public-api';
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+@NgModule({
+	imports: [TotsFormModule]
+})
+export class AppModule { }
+```
+
+<br>
+
+## Configuration through providers
+
+```typescript
+import { NgModule } from '@angular/core';
+import { TotsFormModule, TOTS_FORM_DEFAULT_CONFIG, TotsFormDefaultConfig } from '@tots/form';
+
+const formDefaultConfig : TotsFormDefaultConfig = {
+	labelPosition: eTotsFormLabelPosition.INSIDE
+}
+
+@NgModule({
+	imports: [TotsFormModule],
+	providers: [
+		{
+			provide: TOTS_FORM_DEFAULT_CONFIG,
+			useValue: formDefaultConfig
+		}
+	]
+})
+```
+
+Other providers tokens:
+
+- TOTS_STRING_ARRAY_CONFIG
+- TOTS_FORM_BUTTONS_CONFIG
+
+<br>
+
+## Usage of Tots Form
+
+```html
+<tots-form
+	[fields]="fields"
+	[item]="item"
+	(onAction)="onActionForm($event)"
+	[loading]="loading"
+></tots-form>
+```
+
+```typescript
+import { Component, OnInit } from '@angular/core';
+import { Validators } from "@angular/forms";
+import { TotsValidator, TotsFieldForm } from '@tots/form';
+
+@Component({
+	//...
+})
+export class AppComponent implements OnInit {
+	
+	protected fields! : TotsFieldForm[];
+	private validatorRequired = new TotsValidator(Validators.required, "required", "This field is required");
+	// Can contain data for starting values or be empty
+	protected item = {
+		name: "Name",
+    		type: 2
+	};
+
+	ngOnInit() {
+		this.fields = [
+			new TotsStringField("name", "Name", [ValidatorRequired]),
+			new TotsSelectField("type", [
+				{ id: 1, type_name: 'Type 1'},
+				{ id: 2, type_name: 'Type 2'},
+				{ id: 3, type_name: 'Type 3'},
+			], "id", "name", "Tipo"),
+			new TotsSubmitButton("submit", "Enviar")
+		];
+	}
+
+	onActionForm(action:TotsActionForm) {
+		switch (action.key) {
+			case "submit" : {
+				// do something
+			}
+		}
+	}
+}
+```

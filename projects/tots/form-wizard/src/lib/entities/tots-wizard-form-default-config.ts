@@ -12,9 +12,9 @@ export class TotsWizardFormDefaultConfig {
    */
   backButtonMaterialDirective? : TotsFormButtonMatDirective = "mat-button";
   /**
-   * Material button color for the next step and submit buttons
+   * Material button color class for the next step and submit buttons. Ex color directive
    */
-  backButtonColor? : ThemePalette = undefined;
+  backButtonColor? : string = undefined;
 
 
   skipButtonCaption? : string = "SKIP";
@@ -23,9 +23,9 @@ export class TotsWizardFormDefaultConfig {
    */
   skipButtonMaterialDirective? : TotsFormButtonMatDirective = "mat-button";
   /**
-   * Material button color for the next step and submit buttons
+   * Material button color class for the next step and submit buttons. Ex color directive
    */
-  skipButtonColor? : ThemePalette = undefined;
+  skipButtonColor? : undefined = undefined;
 
 
   /**

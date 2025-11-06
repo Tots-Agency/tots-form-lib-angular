@@ -9,7 +9,6 @@ import * as moment from 'moment';
 import { TotsFormApiService, TotsFormModalApiConfig } from 'projects/tots/form-api/src/public-api';
 
 /** Mention Style */
-import Quill from 'quill';
 import { TotsMonacoEditorField } from 'projects/tots/monaco-editor-field-form/src/public-api';
 import { TotsStringField } from 'projects/tots/form/src/lib/field-factories/tots-string-field';
 import { ValidatorEmail, ValidatorMax, ValidatorMin, ValidatorRequired, ValidatorRequiredTrue } from '../../helpers/tots-validators';
@@ -78,7 +77,7 @@ export class FormComponentComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.configForm2();
+    this.configForm();
     this.loadConfigUserSelector();
   }
 
