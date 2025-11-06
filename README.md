@@ -53,7 +53,7 @@ export class AppModule { }
 
 ```typescript
 import { NgModule } from '@angular/core';
-import { TotsFormModule, TOTS_FORM_DEFAULT_CONFIG, TotsFormDefaultConfig } from '@tots/form';
+import { TotsFormModule, TOTS_FORM_DEFAULT_CONFIG } from '@tots/form';
 
 const formDefaultConfig : TotsFormDefaultConfig = {
 	labelPosition: eTotsFormLabelPosition.INSIDE
