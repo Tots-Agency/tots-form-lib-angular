@@ -39,7 +39,7 @@ Ensure your project uses Angular 20+ and compatible versions of TypeScript, zone
 
 ```typescript
 import { NgModule } from '@angular/core';
-import { TotsFormModule } from 'projects/tots/form/src/public-api';
+import { TotsFormModule } from '@tots/form';
 
 @NgModule({
 	imports: [TotsFormModule]
