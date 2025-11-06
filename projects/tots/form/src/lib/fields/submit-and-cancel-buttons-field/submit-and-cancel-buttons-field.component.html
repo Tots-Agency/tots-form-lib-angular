@@ -14,7 +14,7 @@
 		'mat-mdc-unelevated-button mdc-button--unelevated': submitMatButtonDirective=='mat-flat-button',
 		'mat-mdc-raised-button mdc-button--raised': submitMatButtonDirective=='mat-raised-button',
 		'mat-mdc-outlined-button mdc-button--outlined': submitMatButtonDirective=='mat-stroked-button'
-	}" [color]="submitMatColor" [disabled]="!group.valid || group.disabled" (click)="onClick()">
+	}" [class]="submitMatColor" [disabled]="!group.valid || group.disabled" (click)="onClick()">
 
 		{{ field.label }}
 
