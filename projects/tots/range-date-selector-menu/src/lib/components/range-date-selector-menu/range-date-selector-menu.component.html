@@ -1,10 +1,12 @@
 <button mat-raised-button [matMenuTriggerFor]="menuFilter">
     <mat-icon>today</mat-icon> &nbsp;
-    <ng-container *ngIf="filterType == 1">This day</ng-container>
-    <ng-container *ngIf="filterType == 2">This week</ng-container>
-    <ng-container *ngIf="filterType == 3">This month</ng-container>
-    <ng-container *ngIf="filterType == 4">This year</ng-container>
-    <ng-container *ngIf="filterType == 5">{{ rangeString }}</ng-container>
+    @switch (filterType) {
+      @case (1) { This day }
+      @case (2) { This week }
+      @case (3) { This month }
+      @case (4) { This year }
+      @case (5) { {{ rangeString }} }
+    }
     &nbsp;
     <mat-icon>arrow_drop_down</mat-icon>
   </button>

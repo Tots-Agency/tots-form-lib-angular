@@ -21,9 +21,7 @@ export class TotsFormSidebarPageComponent implements OnInit {
 
   constructor(
     protected changeDetector: ChangeDetectorRef,
-  ) {
-
-  }
+  ) {}
 
   ngOnInit(): void {
     this.selectedItem = this.config.items[0];

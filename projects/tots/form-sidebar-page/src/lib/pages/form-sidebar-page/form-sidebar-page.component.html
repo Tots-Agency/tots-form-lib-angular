@@ -1,19 +1,37 @@
 <div class="form-sidebar-container">
-    <div class="form-sidebar-left">
-        <h1 class="form-sidebar-title">{{config.title}}</h1>
+	<div class="form-sidebar-left">
+		<h1 class="form-sidebar-title">{{config.title}}</h1>
 
-        <div class="form-sidebar-items">
-            <div *ngFor="let item of config.items" class="form-sidebar-item" [ngClass]="{'active': item.isSelected}" (click)="onClickItem(item)">
-                <mat-icon *ngIf="item.icon">{{item.icon}}</mat-icon>
-                <div class="item-contain">
-                    <p class="title">{{item.title}}</p>
-                    <p *ngIf="item.subtitle" class="subtitle">{{item.subtitle}}</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="form-sidebar-right">
-        <div *ngIf="selectedItem && selectedItem.isLoading" class="form-sidebar-loading">Loading...</div>
-        <tots-form *ngIf="selectedItem && (selectedItem.isLoading == undefined||!selectedItem.isLoading)" #form [fields]="selectedItem.fields" [item]="selectedItem.item" (onAction)="onActionForm($event)" [autoSave]="true"></tots-form>
-    </div>
+		<div class="form-sidebar-items">
+			@for (item of config.items; track $index) {
+				<div class="form-sidebar-item" [ngClass]="{'active': item.isSelected}" (click)="onClickItem(item)">
+					@if (item.icon) {
+						<mat-icon> {{ item.icon }} </mat-icon>
+					}
+					<div class="item-contain">
+						<p class="title"> {{ item.title }} </p>
+						@if (item.subtitle) {
+							<p class="subtitle"> {{ item.subtitle }} </p>
+						}
+					</div>
+				</div>
+			}
+		</div>
+	</div>
+
+	<div class="form-sidebar-right">
+		@if (selectedItem && selectedItem.isLoading) {
+        		<div class="form-sidebar-loading">Loading...</div>
+		}
+
+		@if (selectedItem && (selectedItem.isLoading == undefined||!selectedItem.isLoading)) {
+        		<tots-form
+				#form
+				[fields]="selectedItem.fields"
+				[item]="selectedItem.item"
+				(onAction)="onActionForm($event)"
+				[autoSave]="true"
+			></tots-form>
+		}
+	</div>
 </div>

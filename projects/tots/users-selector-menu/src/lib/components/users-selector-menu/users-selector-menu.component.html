@@ -1,18 +1,31 @@
 <div class="tots-users-selector-menu-button">
-    <button #selectorButton="matMenuTrigger"  mat-button [matMenuTriggerFor]="selector">
-        <mat-icon *ngIf="config.prependIcon">{{config.prependIcon}}</mat-icon>
-        <span *ngIf="selecteds.length == 0">{{config.textButton}}</span>
-        <div *ngIf="selecteds.length > 0" class="selecteds-in-menu">
-            <div class="item-selected" *ngFor="let item of selecteds">
-                <div *ngIf="getPhoto(item) == undefined||getPhoto(item) == ''" class="item-result-image not-photo">
-                    <span>{{getNoPhoto(item)}}</span>
-                </div>
-                <div *ngIf="getPhoto(item) != undefined && getPhoto(item) != ''" class="item-result-image">
-                    <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="image">
-                </div>
-            </div>
-        </div>
-    </button>
+	<button #selectorButton="matMenuTrigger"  mat-button [matMenuTriggerFor]="selector">
+		@if (config.prependIcon) {
+        		<mat-icon> {{ config.prependIcon }} </mat-icon>
+		}
+		@if (selecteds.length) {
+			<div class="selecteds-in-menu">
+				@for (item of selecteds; track $index) {
+					<div class="item-selected">
+						@if (getPhoto(item) == undefined||getPhoto(item) == '') {
+							<div class="item-result-image not-photo">
+								<span> {{ getNoPhoto(item) }} </span>
+							</div>
+						}
+
+						@if (getPhoto(item) != undefined && getPhoto(item) != '') {
+							<div class="item-result-image">
+								<img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="image">
+							</div>
+						}
+					</div>
+				}
+			</div>
+
+		} @else {
+			<span>{{ config.textButton }}</span>
+		}
+	</button>
 
     <mat-menu #selector="matMenu" [class]="'container-users-selector-menu'" (closed)="onClosed()">
         <div class="selector-menu" (click)="$event.stopPropagation()">
@@ -23,21 +36,38 @@
                 <input matInput type="text" [formControl]="inputQuery" [placeholder]="'Search...'"/>
             </mat-form-field>
 
-            <div *ngIf="!isLoading && results.length == 0" class="not-results">Ninguna persona coincide con tu busqueda.</div>
+			@if (!isLoading && results.length == 0) {
+				<div class="not-results">
+					Ninguna persona coincide con tu busqueda.
+				</div>
+			}
 
-            <div *ngIf="!isLoading" class="results-selector-menu">
-                <div *ngFor="let item of results" class="item-result" [ngClass]="{'selected': isSelectedItem(item)}" (click)="selectItem(item)">
-                    <div *ngIf="getPhoto(item) == undefined||getPhoto(item) == ''" class="item-result-image not-photo">
-                        <span>{{getNoPhoto(item)}}</span>
-                    </div>
-                    <div *ngIf="getPhoto(item) != undefined && getPhoto(item) != ''" class="item-result-image">
-                        <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="image">
-                    </div>
-                    <div class="item-result-info">
-                        <div class="item-result-info-name">{{getFirstname(item)}} {{getLastname(item)}}</div>
-                    </div>
-                </div>
-            </div>
+			@if (!isLoading) {
+				<div class="results-selector-menu">
+					@for (item of results; track $index) {
+						<div class="item-result" [ngClass]="{'selected': isSelectedItem(item)}" (click)="selectItem(item)">
+							@if (getPhoto(item) == undefined||getPhoto(item) == '') {
+								<div class="item-result-image not-photo">
+									<span> {{ getNoPhoto(item) }} </span>
+								</div>
+							}
+							
+							@if (getPhoto(item) != undefined && getPhoto(item) != '') {
+								<div class="item-result-image">
+									<img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="image">
+								</div>
+							}
+
+							<div class="item-result-info">
+								<div class="item-result-info-name">
+									{{getFirstname(item)}} {{getLastname(item)}}
+								</div>
+							</div>
+						</div>
+					}
+				</div>
+			}
+
         </div>
     </mat-menu>
 </div>

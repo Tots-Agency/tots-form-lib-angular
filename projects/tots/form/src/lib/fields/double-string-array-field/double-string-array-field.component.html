@@ -13,10 +13,12 @@
 			'mat-mdc-raised-button mdc-button--raised': addButtonStyle=='mat-raised-button',
 			'mat-mdc-outlined-button mdc-button--outlined': addButtonStyle=='mat-stroked-button',
 		}" type="button" [class]="addButtonMatColor" [disabled]="formArray1.controls.length >= maxAmount" (click)="addOne()">
-		<mat-icon *ngIf="addButtonMatIcon">{{addButtonMatIcon}}</mat-icon>
-		<ng-container *ngIf="addButtonCaption">
+		@if (addButtonMatIcon) {
+			<mat-icon> {{ addButtonMatIcon }} </mat-icon>
+		}
+		@if (addButtonCaption) {
 			{{addButtonCaption}}
-		</ng-container>
+		}
 	</button>
 </div>
 
