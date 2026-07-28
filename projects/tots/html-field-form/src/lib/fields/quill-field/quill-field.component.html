@@ -5,6 +5,7 @@
 ></tots-outer-label>
 
 <quill-editor
+	*ngIf="isImageResizeReady"
 	[modules]="modules"
 	[formControl]="input"
 	[styles]="{height:  heightEditor + 'px'}"
