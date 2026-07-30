@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TotsBaseFieldComponent } from '@tots/form';
+import { ensureImageResizeRegistered } from './register-image-resize';
 
 @Component({
   selector: 'tots-quill-field',
@@ -10,8 +11,12 @@ export class QuillFieldComponent extends TotsBaseFieldComponent implements OnIni
 
   heightEditor = 250;
   theme?: string;
+  isImageResizeReady = false;
 
   modules = {
+    imageResize: {
+      modules: ['Resize', 'DisplaySize'],
+    },
     toolbar: [
       ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
       ['blockquote', 'code-block'],
@@ -39,6 +44,9 @@ export class QuillFieldComponent extends TotsBaseFieldComponent implements OnIni
   override ngOnInit(): void {
     super.ngOnInit();
     this.loadConfig();
+    ensureImageResizeRegistered().then(() => {
+      this.isImageResizeReady = true;
+    });
   }
 
   editorCreated(quillInstance: any) {
