@@ -1,5 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { TotsBaseFieldComponent } from '@tots/form';
+import Quill from 'quill';
+import QuillResizeImage from 'quill-resize-image';
+
+// Unlike quill-image-resize-module (Quill 1.x), quill-resize-image
+// receives the Quill instance directly as a constructor argument and
+// doesn't rely on a global `window.Quill`, so a plain static import
+// and registration is safe here.
+Quill.register('modules/resize', QuillResizeImage);
 
 @Component({
   selector: 'tots-quill-field',
@@ -13,6 +21,7 @@ export class QuillFieldComponent extends TotsBaseFieldComponent implements OnIni
 	protected theme = "";
 
   modules = {
+    resize: {},
     toolbar: [
       ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
       ['blockquote', 'code-block'],
